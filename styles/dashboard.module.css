@@ -1,0 +1,728 @@
+/* styles/dashboard.module.css */
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* ============ 헤더 ============ */
+.header {
+  padding: 0;
+  border-bottom: 2px solid rgba(139, 127, 244, 0.2);
+  position: sticky;
+  top: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.timestamp {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============ 검색바 ============ */
+.headerControls {
+  display: flex;
+  gap: 10px;
+  padding: 16px 24px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.searchBox {
+  flex: 1;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 38px;
+  transition: all 0.2s ease;
+}
+
+.searchBox:focus-within {
+  border-color: rgba(139, 127, 244, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.searchIcon {
+  margin-right: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+  height: 100%;
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.settingsBtn {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settingsBtn:hover {
+  background: rgba(139, 127, 244, 0.1);
+  border-color: rgba(139, 127, 244, 0.3);
+  box-shadow: 0 0 15px rgba(139, 127, 244, 0.1);
+}
+
+/* ============ 그룹 ??============ */
+.groupTabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.groupTab {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.tabLabel {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.tabDesc {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0px;
+}
+
+.groupTab:hover {
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.groupTab:hover .tabDesc {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.groupTab.active {
+  color: #8B7FF4;
+  border-bottom-color: #8B7FF4;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.groupTab.active .tabLabel {
+  color: #8B7FF4;
+}
+
+.groupTab.active .tabDesc {
+  color: rgba(139, 127, 244, 0.7);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(139, 127, 244, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(139, 127, 244, 0.8);
+  }
+}
+
+/* ============ ?�위 ??============ */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tab:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tab.active {
+  color: #8B7FF4;
+  border-bottom-color: #8B7FF4;
+}
+
+/* ============ 컬럼 ?�더 ============ */
+.columnHeaders {
+  display: grid;
+  grid-template-columns: 2fr 0.7fr 0.8fr 1fr;
+  gap: 12px;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, #0a0a0a 0%, rgba(13, 13, 15, 0.98) 100%);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  position: sticky;
+  top: 160px;
+  z-index: 98;
+}
+
+.colSymbol {
+  text-align: left;
+}
+
+.colChange {
+  text-align: center;
+}
+
+.colPrice {
+  text-align: right;
+}
+
+.colVolume {
+  text-align: right;
+}
+
+/* ============ 코인 리스??============ */
+.coinsList {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.coinRow {
+  display: grid;
+  grid-template-columns: 2fr 0.7fr 0.8fr 1fr;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  align-items: center;
+  transition: background 0.15s ease;
+}
+
+.coinRow:hover {
+  background: rgba(139, 127, 244, 0.05);
+  cursor: pointer;
+  box-shadow: inset 0 0 20px rgba(139, 127, 244, 0.03);
+}
+
+/* ============ ?�쪽 컬럼 ============ */
+.coinInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.coinMark {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  min-width: 32px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.coinMark.medal {
+  font-size: 24px;
+  filter: drop-shadow(0 0 8px rgba(139, 127, 244, 0.5));
+}
+
+.coinMark.rank {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+.coinRow:hover .coinMark.medal {
+  transform: scale(1.2) rotate(15deg);
+  filter: drop-shadow(0 0 12px rgba(139, 127, 244, 0.8));
+}
+
+.coinRow:hover .coinMark.rank {
+  color: #8B7FF4;
+  background: rgba(139, 127, 244, 0.15);
+  transform: scale(1.1);
+}
+
+.coinDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.coinSymbol {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.coinName {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.recommendBox {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.recommendReason {
+  font-size: 11px;
+  color: #8B7FF4;
+  font-weight: 600;
+  padding: 6px 10px;
+  background: linear-gradient(90deg, rgba(139, 127, 244, 0.15), rgba(139, 127, 244, 0.05));
+  border-left: 3px solid #8B7FF4;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(139, 127, 244, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+.recommendMeta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.recommendType,
+.recommendRisk {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.recommendType {
+  background: rgba(14, 203, 129, 0.15);
+  color: #0ECB81;
+  border: 1px solid rgba(14, 203, 129, 0.3);
+}
+
+.recommendRisk {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============ 변?�률 ============ */
+.colChange {
+  text-align: center;
+}
+
+.changeValue {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.2px;
+}
+
+.positive {
+  color: #0ECB81 !important;
+  background: rgba(14, 203, 129, 0.15);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(14, 203, 129, 0.1);
+}
+
+.negative {
+  color: #F6465D !important;
+  background: rgba(246, 70, 93, 0.15);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(246, 70, 93, 0.1);
+}
+
+/* ============ 가�?============ */
+.colPrice {
+  text-align: right;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+/* ============ 거래?��?============ */
+.colVolume {
+  text-align: right;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============ 로딩 ============ */
+.loading {
+  text-align: center;
+  padding: 120px 32px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  border-top-color: #8B7FF4;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 32px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============ ?�터 ============ */
+.footer {
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============ 반응??============ */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .columnHeaders,
+  .coinRow {
+    grid-template-columns: 1.5fr 0.7fr 1fr;
+    gap: 8px;
+    padding: 12px 12px;
+  }
+
+  .colVolume {
+    display: none;
+  }
+
+  .header {
+    padding: 0;
+  }
+
+  .headerControls {
+    padding: 10px 12px;
+  }
+
+  .tabs {
+    padding: 0 12px;
+  }
+}
+
+
+/* ============ ���ã�� ��ư ============ */
+.favoriteBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 8px;
+  color: rgba(255, 255, 255, 0.3);
+  z-index: 10;
+}
+
+.favoriteBtn:hover {
+  transform: scale(1.2);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.favoriteBtn.active {
+  color: #8B7FF4;
+}
+
+/* ============ ?�위 ?�택 ??============ */
+.unitTabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.unitTab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.unitTab:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.unitTab.active {
+  background: rgba(139, 127, 244, 0.2);
+  border-color: rgba(139, 127, 244, 0.4);
+  color: #8B7FF4;
+  font-weight: 700;
+}
+
+/* ============ 메뉴 ??============ */
+.menuTabs {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.menuTab {
+  background: linear-gradient(135deg, rgba(139, 127, 244, 0.1), rgba(108, 92, 231, 0.1));
+  border: 1px solid rgba(139, 127, 244, 0.3);
+  color: #8B7FF4;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.menuTab:hover {
+  background: linear-gradient(135deg, rgba(139, 127, 244, 0.2), rgba(108, 92, 231, 0.2));
+  border-color: rgba(139, 127, 244, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 127, 244, 0.2);
+}
+
+.menuTab.active {
+  background: linear-gradient(135deg, #8B7FF4, #6C5CE7);
+  border-color: #8B7FF4;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(139, 127, 244, 0.4);
+}
+
+/* ============ 거래??+ 찜꽁 버튼 ============ */
+.volumeContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* ============ 찜꽁 뱃�? 버튼 ============ */
+.favoriteBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.favoriteBtn:hover {
+  background: rgba(139, 127, 244, 0.15);
+  border-color: rgba(139, 127, 244, 0.3);
+  color: #8B7FF4;
+  transform: scale(1.05);
+}
+
+.favoriteBtn.active {
+  background: linear-gradient(135deg, rgba(139, 127, 244, 0.3), rgba(108, 92, 231, 0.3));
+  border-color: #8B7FF4;
+  color: #8B7FF4;
+  font-weight: 800;
+}
+
+
+/* ���ΰ�ħ ��ư */
+.refreshBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.refreshBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(139, 127, 244, 0.4);
+  color: #fff;
+  transform: rotate(180deg);
+}
+
+
+/* ���α׷����� */
+.progressBar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #8B7FF4, #A78BFA, #8B7FF4);
+  background-size: 200% 100%;
+  animation: progress 1.5s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ���ΰ�ħ ���� */
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.refreshBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(139, 127, 244, 0.95);
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+  z-index: 9999;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

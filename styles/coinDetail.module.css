@@ -1,0 +1,482 @@
+/* styles/coinDetail.module.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 16px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0f 100%);
+  color: #fff;
+}
+
+.backBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.backBtn:hover {
+  background: rgba(252, 213, 53, 0.1);
+  border-color: rgba(252, 213, 53, 0.3);
+  box-shadow: 0 0 15px rgba(252, 213, 53, 0.1);
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #fff 0%, rgba(252, 213, 53, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.price .positive {
+  color: #0ECB81;
+  font-size: 20px;
+  padding: 6px 12px;
+  background: rgba(14, 203, 129, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(14, 203, 129, 0.2);
+}
+
+.price .negative {
+  color: #F6465D;
+  font-size: 20px;
+  padding: 6px 12px;
+  background: rgba(246, 70, 93, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(246, 70, 93, 0.2);
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 30px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tab.active {
+  color: #FCD535;
+  border-bottom-color: #FCD535;
+}
+
+/* 캔들 타입 탭 */
+.candleTypeTabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  max-height: 110px;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.candleTypeTab {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  min-width: 80px;
+}
+
+.candleLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: -0.3px;
+}
+
+.candleDesc {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: -0.2px;
+}
+
+.candleTypeTab:hover:not(:disabled) {
+  background: rgba(252, 213, 53, 0.12);
+  border-color: rgba(252, 213, 53, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(252, 213, 53, 0.15);
+}
+
+.candleTypeTab:hover:not(:disabled) .candleLabel {
+  color: #FCD535;
+}
+
+.candleTypeTab:hover:not(:disabled) .candleDesc {
+  color: rgba(252, 213, 53, 0.8);
+  background: rgba(252, 213, 53, 0.15);
+}
+
+.candleTypeTab.active {
+  background: linear-gradient(135deg, #FCD535 0%, #f0c030 100%);
+  border-color: #FCD535;
+  font-weight: 700;
+  box-shadow: 0 0 24px rgba(252, 213, 53, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.candleTypeTab.active .candleLabel {
+  color: #0a0a0a;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.candleTypeTab.active .candleDesc {
+  color: rgba(10, 10, 10, 0.85);
+  background: rgba(10, 10, 10, 0.15);
+  font-weight: 700;
+  border: 1px solid rgba(10, 10, 10, 0.2);
+}
+
+.candleTypeTab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.content {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.chartSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bottomSection {
+  min-height: 300px;
+}
+
+/* 호가창 스타일 */
+.orderbookContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.orderbookSell,
+.orderbookBuy {
+  flex: 1;
+}
+
+.orderbookSell h3,
+.orderbookBuy h3 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.orderbookSell h3 {
+  color: #F6465D;
+}
+
+.orderbookBuy h3 {
+  color: #0ECB81;
+}
+
+.orderbookList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.orderbookRow {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.orderbookRow:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(4px);
+}
+
+.orderbookBar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.orderbookPrice,
+.orderbookSize {
+  position: relative;
+  z-index: 1;
+}
+
+.orderbookPrice {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.orderbookSize {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 현재가 */
+.currentPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  margin: 16px 0;
+  background: linear-gradient(135deg, rgba(252, 213, 53, 0.1), rgba(252, 213, 53, 0.05));
+  border: 2px solid rgba(252, 213, 53, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(252, 213, 53, 0.1);
+}
+
+.currentPriceLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.currentPriceValue {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.currentPriceValue.up {
+  color: #0ECB81;
+  text-shadow: 0 0 20px rgba(14, 203, 129, 0.3);
+}
+
+.currentPriceValue.down {
+  color: #F6465D;
+  text-shadow: 0 0 20px rgba(246, 70, 93, 0.3);
+}
+
+.currentPriceChange {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.orderbookGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.orderbookGrid h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+/* 체결 내역 스타일 */
+.tradesContainer {
+  padding: 16px;
+}
+
+.tradesContainer h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tradesHeader {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 0.8fr;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tradesList {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.tradeRow {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 0.8fr;
+  gap: 12px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.tradeRow:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(4px);
+}
+
+.tradeRow.buyRow {
+  border-left-color: rgba(14, 203, 129, 0.5);
+  background: rgba(14, 203, 129, 0.03);
+}
+
+.tradeRow.sellRow {
+  border-left-color: rgba(246, 70, 93, 0.5);
+  background: rgba(246, 70, 93, 0.03);
+}
+
+.tradeTime {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+}
+
+.tradePrice {
+  font-weight: 700;
+}
+
+.tradeVolume {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.tradeBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.buyBadge {
+  background: rgba(14, 203, 129, 0.2);
+  color: #0ECB81;
+  border: 1px solid rgba(14, 203, 129, 0.3);
+}
+
+.sellBadge {
+  background: rgba(246, 70, 93, 0.2);
+  color: #F6465D;
+  border: 1px solid rgba(246, 70, 93, 0.3);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 13px;
+}
+
+.tradesList {
+  display: flex;
+  flex-direction: column;
+}
+
+.row .buy {
+  color: #0ECB81;
+  font-weight: 600;
+}
+
+.row .sell {
+  color: #F6465D;
+  font-weight: 600;
+}
+
+.loading {
+  text-align: center;
+  padding: 100px 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
