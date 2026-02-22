@@ -128,14 +128,20 @@ export default function CoinDetail() {
       const market = `KRW-${symbol}`;
       const count = getCandleCount(candleType);
 
-      console.log(`Fetching candles (${candleType})...`);
+      console.log(`Fetching candles (${candleType}) for ${market}...`);
       const candleRes = await fetch(`/api/candles?market=${market}&type=${candleType}&count=${count}`);
+      
+      if (!candleRes.ok) {
+        throw new Error(`HTTP error! status: ${candleRes.status}`);
+      }
+      
       const candleRawData = await candleRes.json();
       
       console.log('Candle response:', candleRawData);
       
       if (candleRawData.error) {
-        console.warn('Candle API error:', candleRawData.error.message);
+        console.warn('Candle API error:', candleRawData.error);
+        setCandleData([]);
       } else if (candleRawData && Array.isArray(candleRawData) && candleRawData.length > 0) {
         const formatted = candleRawData.map((candle) => ({
           time: new Date(candle.candle_date_time_utc).toLocaleTimeString('ko-KR', {
