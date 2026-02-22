@@ -40,7 +40,7 @@ export default function Dashboard() {
     const interval = setInterval(() => {
       loadData();
       loadExchangeRates();
-    }, 30000);
+    }, 3000); // 3초마다 업데이트
     return () => clearInterval(interval);
   }, []);
 
@@ -51,19 +51,19 @@ export default function Dashboard() {
     }
   }, [group]);
 
-  const loadData = async () => {
+  const loadData = async (showNotification = false) => {
     try {
       setLoading(true);
-      const response = await fetch('/crypto_dashboard.json');
+      const response = await fetch('/api/dashboard');
       const dashboardData = await response.json();
       setData(dashboardData);
       setLastUpdated(new Date().toISOString());
       setLoading(false);
-      showToast('✅ 데이터 업데이트 완료!');
+      if (showNotification) showToast('✅ 데이터 업데이트 완료!');
     } catch (error) {
       console.error('Error loading data:', error);
       setLoading(false);
-      showToast('❌ 업데이트 실패');
+      if (showNotification) showToast('❌ 업데이트 실패');
     }
   };
 
@@ -249,7 +249,7 @@ export default function Dashboard() {
             <div className={styles.timestamp}>{formatTime(lastUpdated)}</div>
             <button 
               className={`${styles.refreshBtn} ${loading ? styles.loading : ''}`} 
-              onClick={loadData}
+              onClick={() => loadData(true)}
               disabled={loading}
             >
               <IoRefreshOutline size={16} className={loading ? styles.spin : ''} />
