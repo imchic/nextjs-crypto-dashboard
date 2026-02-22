@@ -111,7 +111,7 @@ export default function CoinTable({ coins, searchQuery = "" }: CoinTableProps) {
               sorted.map((coin) => (
                 <tr
                   key={coin.id}
-                  className="hover:bg-gray-750 transition-colors group"
+                  className="hover:bg-gray-700 transition-colors group"
                 >
                   <td className="px-4 py-3 text-gray-400">
                     {coin.market_cap_rank}
