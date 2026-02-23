@@ -170,7 +170,13 @@ export default function Dashboard() {
   };
 
   const handleCoinClick = (coin) => {
-    setSelectedCoin(coin);
+    // 모바일: 상세페이지로 이동
+    if (window.innerWidth < 768) {
+      router.push(`/coin/${coin.symbol}`);
+    } else {
+      // 데스크톱: 분할창 표시
+      setSelectedCoin(coin);
+    }
   };
 
   const addRecentSearch = (coin) => {
