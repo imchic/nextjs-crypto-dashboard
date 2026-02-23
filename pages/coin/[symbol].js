@@ -364,6 +364,22 @@ export default function CoinDetail() {
         <div className={styles.subtitle}>{KOREAN_NAMES[symbol] || symbol}</div>
       </div>
 
+      {/* 📊 가격 범위 섹션 */}
+      <div className={styles.priceRangeSection}>
+        <div className={styles.priceItem}>
+          <span className={styles.priceLabel}>24h 고가</span>
+          <span className={`${styles.priceValue} ${styles.high}`}>₩{coinData.high.toLocaleString()}</span>
+        </div>
+        <div className={styles.priceItem}>
+          <span className={styles.priceLabel}>24h 저가</span>
+          <span className={`${styles.priceValue} ${styles.low}`}>₩{coinData.low.toLocaleString()}</span>
+        </div>
+        <div className={styles.priceItem}>
+          <span className={styles.priceLabel}>거래대금</span>
+          <span className={styles.priceValue}>₩{(coinData.trade_price_24h / 1000000000).toFixed(2)}B</span>
+        </div>
+      </div>
+
       {/* 캔들 타입 탭 (가로 스크롤) */}
       <div className={styles.tabs}>
         {CANDLE_TYPES.map((type) => (

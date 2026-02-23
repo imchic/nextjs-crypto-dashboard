@@ -638,3 +638,72 @@
 .tooltip p:last-child {
   padding-bottom: 0;
 }
+
+/* 가격 범위 섹션 */
+.priceRangeSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 16px 24px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.priceItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  transition: all 0.2s ease;
+}
+
+.priceItem:hover {
+  border-color: var(--border-medium);
+  background: var(--bg-primary);
+}
+
+.priceLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.priceValue {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.priceValue.high {
+  color: #0ECB81;
+}
+
+.priceValue.low {
+  color: #F6465D;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 600px) {
+  .priceRangeSection {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  
+  .priceItem {
+    padding: 10px;
+  }
+  
+  .priceLabel {
+    font-size: 10px;
+  }
+  
+  .priceValue {
+    font-size: 16px;
+  }
+}
