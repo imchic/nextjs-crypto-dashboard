@@ -118,3 +118,34 @@ code {
   background: rgba(139, 127, 244, 0.3);
   color: #fff;
 }
+
+/* ===== Recharts 커스터마이징 ===== */
+
+/* 다크 모드: Recharts 축 텍스트 */
+[data-theme="dark"] .recharts-cartesian-axis-tick text {
+  fill: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+}
+
+[data-theme="dark"] .recharts-yAxis .recharts-cartesian-axis-tick text {
+  font-size: 13px !important;
+}
+
+/* 라이트 모드: Recharts 축 텍스트 */
+[data-theme="light"] .recharts-cartesian-axis-tick text {
+  fill: #333333 !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+}
+
+[data-theme="light"] .recharts-yAxis .recharts-cartesian-axis-tick text {
+  font-size: 13px !important;
+}
+
+/* 기본값 (theme 미설정 시) */
+.recharts-cartesian-axis-tick text {
+  fill: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+}

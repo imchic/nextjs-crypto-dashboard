@@ -486,7 +486,7 @@ export default function CoinDetail() {
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                 style={{
-                  backgroundColor: theme === 'light' ? '#ffffff' : 'transparent'
+                  backgroundColor: 'transparent'
                 }}
               >
                 <CartesianGrid 
@@ -497,15 +497,16 @@ export default function CoinDetail() {
                   dataKey="time"
                   stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
                   axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  tick={<CustomXAxisTick theme={theme} />}
-                  height={40}
+                  tick={{ fill: theme === 'light' ? '#333333' : '#ffffff', fontSize: 13, fontWeight: 700 }}
+                  height={45}
                 />
                 <YAxis
                   stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
                   domain={['dataMin - 100', 'dataMax + 100']}
-                  tick={<CustomYAxisTick theme={theme} isCandleChart={true} />}
+                  tick={{ fill: theme === 'light' ? '#333333' : '#ffffff', fontSize: 13, fontWeight: 700 }}
                   axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  width={60}
+                  width={70}
+                  tickFormatter={(value) => `₩${(value / 1000).toFixed(0)}K`}
                 />
                 <Tooltip content={<CustomTooltip />} />
 
@@ -549,7 +550,7 @@ export default function CoinDetail() {
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                 style={{
-                  backgroundColor: theme === 'light' ? '#ffffff' : 'transparent'
+                  backgroundColor: 'transparent'
                 }}
               >
                 <CartesianGrid 
@@ -560,14 +561,15 @@ export default function CoinDetail() {
                   dataKey="time"
                   stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
                   axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  tick={<CustomXAxisTick theme={theme} />}
-                  height={35}
+                  tick={{ fill: theme === 'light' ? '#333333' : '#ffffff', fontSize: 12, fontWeight: 700 }}
+                  height={40}
                 />
                 <YAxis
                   stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
-                  tick={<CustomYAxisTick theme={theme} isCandleChart={false} />}
+                  tick={{ fill: theme === 'light' ? '#333333' : '#ffffff', fontSize: 12, fontWeight: 700 }}
                   axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  width={60}
+                  width={70}
+                  tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`}
                 />
                 <Tooltip 
                   formatter={(value) => `${(value / 1000000).toFixed(2)}M`}
