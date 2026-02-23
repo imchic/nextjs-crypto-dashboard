@@ -79,17 +79,17 @@ export default async function handler(req, res) {
     // 4. 카테고리별 분류 (실시간 데이터 기반)
     const byVolume = [...formatted]
       .sort((a, b) => b.volume - a.volume)
-      .slice(0, 10);
+      .slice(0, 30);
     
     const gainers = [...formatted]
       .filter(c => c.change > 0)
       .sort((a, b) => b.change - a.change)
-      .slice(0, 10);
+      .slice(0, 30);
     
     const losers = [...formatted]
       .filter(c => c.change < 0)
       .sort((a, b) => a.change - b.change)
-      .slice(0, 10);
+      .slice(0, 30);
     
     const dashboardData = {
       timestamp: new Date().toISOString(),
