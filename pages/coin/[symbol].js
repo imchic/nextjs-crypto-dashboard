@@ -83,6 +83,7 @@ export default function CoinDetail() {
   const [showOrderbook, setShowOrderbook] = useState(true);
   const [candleType, setCandleType] = useState('minutes/60');
   const [initialLoad, setInitialLoad] = useState(false);
+  const [theme, setTheme] = useState('dark');
 
   // 커스텀 툴팁 컴포넌트
   const CustomTooltip = ({ active, payload, label }) => {
@@ -138,6 +139,18 @@ export default function CoinDetail() {
 
   useEffect(() => {
     if (!router.isReady || !symbol) return;
+    
+    // 테마 초기 설정
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    
+    // MutationObserver로 테마 변경 감지
+    const observer = new MutationObserver(() => {
+      const newTheme = document.documentElement.getAttribute('data-theme') || savedTheme;
+      setTheme(newTheme);
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    
     loadCoinData();
     setInitialLoad(true);
 
@@ -146,7 +159,10 @@ export default function CoinDetail() {
       loadCoinData(false); // 백그라운드 업데이트
     }, 5000);
 
-    return () => clearInterval(priceInterval);
+    return () => {
+      clearInterval(priceInterval);
+      observer.disconnect();
+    };
   }, [router.isReady, symbol]);
 
   // 캔들 타입 변경 시 또는 초기 로드 시
@@ -365,7 +381,7 @@ export default function CoinDetail() {
 
       {/* Content */}
       <div className={styles.content}>
-        <div className={styles.chartSection}>
+        <div className={`${styles.chartSection} ${theme}`}>
           {candleLoading ? (
             <div className={styles.loading}>📊 차트 그리는 중...</div>
           ) : candleData.length > 0 ? (
@@ -374,18 +390,21 @@ export default function CoinDetail() {
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
               >
-                <CartesianGrid stroke="rgba(255,255,255,0.05)" strokeDasharray="3 3" />
+                <CartesianGrid 
+                  stroke={theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.05)'} 
+                  strokeDasharray="3 3" 
+                />
                 <XAxis
                   dataKey="time"
-                  stroke="rgba(255,255,255,0.5)"
-                  tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.7)' }}
-                  axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+                  stroke={theme === 'light' ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.5)'}
+                  tick={{ fontSize: 11, fill: theme === 'light' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)' }}
+                  axisLine={{ stroke: theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)' }}
                 />
                 <YAxis
-                  stroke="rgba(255,255,255,0.5)"
+                  stroke={theme === 'light' ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.5)'}
                   domain={['dataMin - 100', 'dataMax + 100']}
-                  tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.7)' }}
-                  axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+                  tick={{ fontSize: 11, fill: theme === 'light' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)' }}
+                  axisLine={{ stroke: theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)' }}
                   tickFormatter={(value) => `₩${(value / 1000).toFixed(0)}K`}
                 />
                 <Tooltip content={<CustomTooltip />} />
