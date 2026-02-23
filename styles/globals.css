@@ -1,0 +1,116 @@
+/* styles/globals.css */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+  /* 다크 모드 (기본) */
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #252525;
+
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-tertiary: rgba(255, 255, 255, 0.5);
+  --text-disabled: rgba(255, 255, 255, 0.3);
+
+  --border-light: rgba(255, 255, 255, 0.05);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+
+  /* 액센트 컬러 */
+  --accent-primary: #8B7FF4;
+  --accent-secondary: #6C5CE7;
+  --accent-light: #A78BFA;
+  --accent-bg: rgba(139, 127, 244, 0.1);
+  --accent-border: rgba(139, 127, 244, 0.3);
+
+  /* 기능 컬러 */
+  --green: #0ECB81;
+  --green-bg: rgba(14, 203, 129, 0.15);
+  --red: #F6465D;
+  --red-bg: rgba(246, 70, 93, 0.15);
+
+  /* 인터랙션 */
+  --hover-overlay: rgba(255, 255, 255, 0.05);
+  --active-overlay: rgba(139, 127, 244, 0.15);
+
+  /* 그림자 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* 라이트 모드 */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f7;
+  --bg-tertiary: #efefef;
+
+  --text-primary: #1a1a1a;
+  --text-secondary: rgba(0, 0, 0, 0.7);
+  --text-tertiary: rgba(0, 0, 0, 0.5);
+  --text-disabled: rgba(0, 0, 0, 0.3);
+
+  --border-light: rgba(0, 0, 0, 0.08);
+  --border-medium: rgba(0, 0, 0, 0.15);
+  --border-strong: rgba(0, 0, 0, 0.25);
+
+  --accent-bg: rgba(139, 127, 244, 0.08);
+  --accent-border: rgba(139, 127, 244, 0.25);
+
+  --green-bg: rgba(14, 203, 129, 0.1);
+  --red-bg: rgba(246, 70, 93, 0.1);
+
+  --hover-overlay: rgba(0, 0, 0, 0.03);
+  --active-overlay: rgba(139, 127, 244, 0.1);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* 스크롤바 - 퍼플로 변경 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 127, 244, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 127, 244, 0.5);
+}
+
+/* 선택 스타일 - 퍼플로 변경 */
+::selection {
+  background: rgba(139, 127, 244, 0.3);
+  color: #fff;
+}
