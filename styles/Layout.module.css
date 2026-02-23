@@ -49,6 +49,9 @@
 .logo {
   font-size: 22px;
   font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.8px;
+  margin: 0;
   background: linear-gradient(90deg, 
     var(--accent-primary) 0%, 
     var(--accent-light) 50%, 
@@ -59,8 +62,6 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradientFlow 3s ease infinite;
-  letter-spacing: -0.8px;
-  margin: 0;
 }
 
 @keyframes gradientFlow {
