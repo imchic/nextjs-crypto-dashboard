@@ -321,6 +321,14 @@
   padding: 16px;
 }
 
+@media (max-width: 480px) {
+  .orderbookContainer {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+}
+
 .orderbookSell,
 .orderbookBuy {
   flex: 1;
