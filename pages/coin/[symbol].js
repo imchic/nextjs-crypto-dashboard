@@ -336,14 +336,16 @@ export default function CoinDetail() {
           </button>
         </Link>
 
-        <h1 className={styles.title}>{symbol}</h1>
-        <div className={styles.subtitle}>{KOREAN_NAMES[symbol] || symbol}</div>
-        <div className={styles.price}>
-          ₩{coinData.price.toLocaleString('ko-KR')}
-          <span className={coinData.change > 0 ? styles.positive : styles.negative}>
-            {coinData.change > 0 ? '+' : ''}{coinData.change}%
-          </span>
+        <div className={styles.headerTitle}>
+          <h1 className={styles.title}>{symbol}</h1>
+          <div className={styles.headerPrice}>
+            ₩{coinData.price.toLocaleString('ko-KR')}
+            <span className={coinData.change > 0 ? styles.positive : styles.negative}>
+              {coinData.change > 0 ? '+' : ''}{coinData.change}%
+            </span>
+          </div>
         </div>
+        <div className={styles.subtitle}>{KOREAN_NAMES[symbol] || symbol}</div>
       </div>
 
       {/* 캔들 타입 탭 (가로 스크롤) */}
