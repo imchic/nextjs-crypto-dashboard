@@ -47,7 +47,7 @@
 
 /* 다크모드: 배경색 추가 */
 [data-theme="dark"] .logoIcon {
-  background: var(--bg-secondary);
+  background: rgba(139, 127, 244, 0.15);
 }
 
 /* 라이트모드: 투명 유지 */
