@@ -457,15 +457,15 @@ export default function CoinDetail() {
                 />
                 <XAxis
                   dataKey="time"
-                  stroke={theme === 'light' ? '#333333' : 'rgba(255,255,255,0.5)'}
-                  tick={{ fontSize: 11, fill: theme === 'light' ? '#1a1a1a' : 'rgba(255,255,255,0.8)' }}
-                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.1)' }}
+                  stroke={theme === 'light' ? '#000000' : 'rgba(255,255,255,0.5)'}
+                  tick={{ fontSize: 11, fill: theme === 'light' ? '#000000' : 'rgba(255,255,255,0.8)', fontWeight: 600 }}
+                  axisLine={{ stroke: theme === 'light' ? '#666666' : 'rgba(255,255,255,0.1)' }}
                 />
                 <YAxis
-                  stroke={theme === 'light' ? '#333333' : 'rgba(255,255,255,0.5)'}
+                  stroke={theme === 'light' ? '#000000' : 'rgba(255,255,255,0.5)'}
                   domain={['dataMin - 100', 'dataMax + 100']}
-                  tick={{ fontSize: 11, fill: theme === 'light' ? '#1a1a1a' : 'rgba(255,255,255,0.8)' }}
-                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.1)' }}
+                  tick={{ fontSize: 11, fill: theme === 'light' ? '#000000' : 'rgba(255,255,255,0.8)', fontWeight: 600 }}
+                  axisLine={{ stroke: theme === 'light' ? '#666666' : 'rgba(255,255,255,0.1)' }}
                   tickFormatter={(value) => `₩${(value / 1000).toFixed(0)}K`}
                 />
                 <Tooltip content={<CustomTooltip />} />
@@ -516,14 +516,14 @@ export default function CoinDetail() {
                 />
                 <XAxis
                   dataKey="time"
-                  stroke={theme === 'light' ? '#333333' : 'rgba(255,255,255,0.5)'}
-                  tick={{ fontSize: 10, fill: theme === 'light' ? '#1a1a1a' : 'rgba(255,255,255,0.8)' }}
-                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.1)' }}
+                  stroke={theme === 'light' ? '#000000' : 'rgba(255,255,255,0.5)'}
+                  tick={{ fontSize: 10, fill: theme === 'light' ? '#000000' : 'rgba(255,255,255,0.8)', fontWeight: 600 }}
+                  axisLine={{ stroke: theme === 'light' ? '#666666' : 'rgba(255,255,255,0.1)' }}
                 />
                 <YAxis
-                  stroke={theme === 'light' ? '#333333' : 'rgba(255,255,255,0.5)'}
-                  tick={{ fontSize: 10, fill: theme === 'light' ? '#1a1a1a' : 'rgba(255,255,255,0.8)' }}
-                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.1)' }}
+                  stroke={theme === 'light' ? '#000000' : 'rgba(255,255,255,0.5)'}
+                  tick={{ fontSize: 10, fill: theme === 'light' ? '#000000' : 'rgba(255,255,255,0.8)', fontWeight: 600 }}
+                  axisLine={{ stroke: theme === 'light' ? '#666666' : 'rgba(255,255,255,0.1)' }}
                   tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`}
                 />
                 <Tooltip 
