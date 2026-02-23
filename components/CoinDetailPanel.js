@@ -299,11 +299,20 @@ export default function CoinDetailPanel({ coin }) {
             trades.length > 0 ? (
               <div className={styles.tradesContainer}>
                 <h3>체결 내역</h3>
+                <div className={styles.tradesTotal}>
+                  <span className={styles.tradesTotalLabel}>실시간 체결량 (최근 20)</span>
+                  <div className={styles.tradesTotalMain}>
+                    <strong className={styles.tradesTotalAmount}>{trades.slice(0,20).reduce((s,t)=>s + Number(t.trade_volume || 0),0).toFixed(4)}</strong>
+                    <span className={styles.tradesTotalUnit}>개</span>
+                  </div>
+                  <div className={styles.tradesTotalKrw}>₩{trades.slice(0,20).reduce((s,t)=>s + (Number(t.trade_price || 0) * Number(t.trade_volume || 0)),0).toLocaleString()}</div>
+                </div>
+
                 <div className={styles.tradesHeader}>
                   <span>시간</span>
+                  <span>구분</span>
                   <span>가격</span>
                   <span>수량</span>
-                  <span>구분</span>
                 </div>
                 <div className={styles.tradesList}>
                   {trades.slice(0, 20).map((trade, i) => {
@@ -335,13 +344,13 @@ export default function CoinDetailPanel({ coin }) {
                     return (
                       <div key={i} className={`${styles.tradeRow} ${isBuy ? styles.buyRow : styles.sellRow}`}>
                         <span className={styles.tradeTime}>{time}</span>
+                        <span className={`${styles.tradeBadge} ${isBuy ? styles.buyBadge : styles.sellBadge}`}>
+                          {isBuy ? '매수' : '매도'}
+                        </span>
                         <span className={`${styles.tradePrice} ${isBuy ? styles.buy : styles.sell}`}>
                           ₩{trade.trade_price.toLocaleString()}
                         </span>
                         <span className={styles.tradeVolume}>{trade.trade_volume.toFixed(4)}</span>
-                        <span className={`${styles.tradeBadge} ${isBuy ? styles.buyBadge : styles.sellBadge}`}>
-                          {isBuy ? '매수' : '매도'}
-                        </span>
                       </div>
                     );
                   })}
