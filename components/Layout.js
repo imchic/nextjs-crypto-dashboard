@@ -47,7 +47,7 @@ export default function Layout({ children }) {
         <header className={styles.globalHeader}>
           <Link href="/">
             <div className={styles.logoContainer}>
-              <img src="/favicon.png" alt="DolPick" className={styles.logoIcon} />
+              <img src="/dolpick-icon.png" alt="DolPick" className={styles.logoIcon} />
               <h1 className={styles.logo}>DolPick - 암호화폐 대시보드</h1>
             </div>
           </Link>
