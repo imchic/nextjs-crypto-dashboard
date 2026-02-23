@@ -14,11 +14,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--accent-border);
+  padding: 16px 20px;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
   backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 .logoContainer {
@@ -35,10 +35,10 @@
 }
 
 .logoIcon {
-  width: 88px;
-  height: 88px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(139, 127, 244, 0.3));
+  filter: drop-shadow(0 0 4px rgba(139, 127, 244, 0.2));
   transition: all 0.3s ease;
   background: transparent;
 }
@@ -49,8 +49,8 @@
 }
 
 .logo {
-  font-size: 28px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 700;
   background: linear-gradient(90deg, 
     var(--accent-primary) 0%, 
     var(--accent-light) 50%, 
@@ -61,7 +61,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradientFlow 3s ease infinite;
-  letter-spacing: -0.5px;
+  letter-spacing: 0px;
   margin: 0;
   white-space: nowrap;
 }
@@ -87,19 +87,19 @@
 }
 
 .themeBtn {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-medium);
+  background: transparent;
+  border: none;
   color: var(--text-primary);
-  padding: 8px;
-  font-size: 20px;
+  padding: 6px;
+  font-size: 18px;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
 }
 
 .themeBtn svg {
@@ -108,9 +108,9 @@
 }
 
 .themeBtn:hover {
-  background: var(--accent-bg);
-  border-color: var(--accent-border);
-  transform: scale(1.1) rotate(15deg);
+  background: var(--hover-overlay);
+  border-color: transparent;
+  transform: scale(1.08);
 }
 
 .headerRight {
@@ -126,18 +126,18 @@
 }
 
 .refreshBtn {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-medium);
+  background: transparent;
+  border: none;
   color: var(--text-primary);
   padding: 0;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
 }
 
 .refreshBtn svg {
@@ -146,9 +146,9 @@
 }
 
 .refreshBtn:hover:not(:disabled) {
-  background: var(--accent-bg);
-  border-color: var(--accent-border);
-  transform: scale(1.1);
+  background: var(--hover-overlay);
+  border-color: transparent;
+  transform: scale(1.08);
 }
 
 .refreshBtn:disabled {
