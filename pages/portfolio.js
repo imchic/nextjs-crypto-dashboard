@@ -159,14 +159,25 @@ export default function Portfolio() {
   }
 
   if (error) {
+    const isProduction = typeof window !== 'undefined' && window.location.hostname !== 'localhost';
+    const isIpError = error.includes('IP가 Upbit에 등록');
+
     return (
       <div className={styles.container}>
         <div className={styles.error}>
-          <h2>⚠️ API 키가 필요합니다</h2>
+          <h2>⚠️ {isIpError ? '서버 설정 필요' : 'API 키 필요'}</h2>
           <p>{error}</p>
-          <p className={styles.hint}>
-            .env.local 파일에 UPBIT_ACCESS_KEY와 UPBIT_SECRET_KEY를 설정하세요.
-          </p>
+          {isIpError ? (
+            <div className={styles.hint}>
+              <p>현재는 <strong>로컬 개발 환경에서만</strong> 정상 작동합니다.</p>
+              <p><strong>프로덕션 배포 시:</strong> Upbit API 설정 → IP 화이트리스트에서 Vercel 서버 IP를 추가해주세요.</p>
+              <p style={{ fontSize: '12px', marginTop: '8px', color: '#999' }}>Vercel은 고정 IP가 없으므로, 이 문제를 해결하려면 다른 백엔드 서버가 필요할 수 있습니다.</p>
+            </div>
+          ) : (
+            <p className={styles.hint}>
+              .env.local 파일에 UPBIT_ACCESS_KEY와 UPBIT_SECRET_KEY를 설정하세요.
+            </p>
+          )}
           <button className={styles.backBtnWithText} onClick={() => router.push('/')}>
             <IoArrowBack size={16} /> 대시보드로 돌아가기
           </button>

@@ -14,8 +14,23 @@ export default async function handler(req, res) {
       });
     }
 
+    // 프록시 설정
+    const PROXY_URL = process.env.UPBIT_PROXY_URL || null;
+    let proxyAgent = null;
+
+    if (PROXY_URL) {
+      const { HttpProxyAgent } = await import('http-proxy-agent');
+      const { HttpsProxyAgent } = await import('https-proxy-agent');
+      proxyAgent = {
+        http: new HttpProxyAgent(PROXY_URL),
+        https: new HttpsProxyAgent(PROXY_URL),
+      };
+    }
+
     // 마켓 정보 가져오기 (한글명, 경고)
-    const marketsRes = await fetch('https://api.upbit.com/v1/market/all');
+    const marketsRes = await fetch('https://api.upbit.com/v1/market/all', {
+      ...(proxyAgent && { agent: proxyAgent.https })
+    });
     const allMarkets = await marketsRes.json();
     const marketInfo = {};
     const krwListedCoins = new Set(); // KRW 마켓에 상장된 코인
@@ -44,12 +59,32 @@ export default async function handler(req, res) {
     // 업비트 계좌 조회
     const response = await fetch('https://api.upbit.com/v1/accounts', {
       headers: { Authorization: authorizationToken },
+      ...(proxyAgent && { agent: proxyAgent.https })
     });
 
     if (!response.ok) {
       const errorText = await response.text();
       console.error('Upbit API Error:', errorText);
-      return res.status(response.status).json({ error: 'Upbit API failed', details: errorText });
+
+      // IP 제한 에러 감지
+      let errorMessage = 'Upbit API 호출 실패';
+      let isIpError = false;
+
+      try {
+        const errorObj = JSON.parse(errorText);
+        if (errorObj.error?.name === 'no_authorization_ip') {
+          isIpError = true;
+          errorMessage = '이 서버의 IP가 Upbit에 등록되지 않았습니다. Upbit 설정에서 IP 화이트리스트를 확인해주세요.';
+        }
+      } catch (e) {
+        // JSON 파싱 실패, 원본 메시지 사용
+      }
+
+      return res.status(response.status).json({
+        error: errorMessage,
+        details: errorText,
+        isIpError: isIpError
+      });
     }
 
     const accounts = await response.json();

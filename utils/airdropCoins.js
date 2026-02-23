@@ -9,10 +9,10 @@ const AIRDROP_COINS = [
   'APT',  // Aptos
   'SEI',  // Sei
   'TIA',  // Celestia
-  'SGB',  // 테스트용
-  'SOLO', // 테스트용
-  'FLR',  // 테스트용
-  'XCORE', // 테스트용
+  'SGB',  // Songbird
+  'SOLO', // Solo
+  'FLR',  // Flare
+  'XCORE', // Xcore
 ];
 
 export default AIRDROP_COINS;

@@ -1,18 +1,18 @@
 // pages/coin/[symbol].js
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import styles from '@/styles/CoinDetail.module.css';
 import Link from 'next/link';
-import styles from '@/styles/coinDetail.module.css';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { IoArrowBack, IoBarChartOutline, IoReceiptOutline } from 'react-icons/io5';
 import {
-  ComposedChart,
   Bar,
+  CartesianGrid,
+  Cell,
+  ComposedChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
 } from 'recharts';
 
 const CANDLE_TYPES = [
@@ -91,7 +91,7 @@ export default function CoinDetail() {
       const change = data.close - data.open;
       const changePercent = ((change / data.open) * 100).toFixed(2);
       const isUp = change >= 0;
-      
+
       return (
         <div style={{
           backgroundColor: '#1a1a1a',
@@ -100,9 +100,9 @@ export default function CoinDetail() {
           padding: '12px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
         }}>
-          <div style={{ 
-            fontSize: '12px', 
-            color: '#888', 
+          <div style={{
+            fontSize: '12px',
+            color: '#888',
             marginBottom: '8px',
             borderBottom: '1px solid rgba(255,255,255,0.1)',
             paddingBottom: '6px',
@@ -121,8 +121,8 @@ export default function CoinDetail() {
           <div style={{ fontSize: '13px', color: '#fff', marginBottom: '8px' }}>
             <span style={{ color: '#888' }}>종가:</span> <span style={{ fontWeight: 'bold' }}>₩{data.close?.toLocaleString()}</span>
           </div>
-          <div style={{ 
-            fontSize: '13px', 
+          <div style={{
+            fontSize: '13px',
             fontWeight: 'bold',
             color: isUp ? '#0ECB81' : '#F6465D',
             borderTop: '1px solid rgba(255,255,255,0.1)',
@@ -140,12 +140,12 @@ export default function CoinDetail() {
     if (!router.isReady || !symbol) return;
     loadCoinData();
     setInitialLoad(true);
-    
+
     // 5초마다 가격 자동 업데이트 (백그라운드)
     const priceInterval = setInterval(() => {
       loadCoinData(false); // 백그라운드 업데이트
     }, 5000);
-    
+
     return () => clearInterval(priceInterval);
   }, [router.isReady, symbol]);
 
@@ -192,15 +192,15 @@ export default function CoinDetail() {
 
       console.log(`Fetching candles (${candleType}) for ${market}...`);
       const candleRes = await fetch(`/api/candles?market=${market}&type=${candleType}&count=${count}`);
-      
+
       if (!candleRes.ok) {
         throw new Error(`HTTP error! status: ${candleRes.status}`);
       }
-      
+
       const candleRawData = await candleRes.json();
-      
+
       console.log('Candle response:', candleRawData);
-      
+
       if (candleRawData.error) {
         console.warn('Candle API error:', candleRawData.error);
         setCandleData([]);
@@ -209,7 +209,7 @@ export default function CoinDetail() {
           const open = candle.opening_price;
           const close = candle.trade_price;
           const isUp = close >= open;
-          
+
           return {
             time: new Date(candle.candle_date_time_utc).toLocaleTimeString('ko-KR', {
               month: 'short',
@@ -368,44 +368,44 @@ export default function CoinDetail() {
             <div className={styles.loading}>📊 차트 그리는 중...</div>
           ) : candleData.length > 0 ? (
             <ResponsiveContainer width="100%" height={450}>
-              <ComposedChart 
+              <ComposedChart
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
               >
                 <CartesianGrid stroke="rgba(255,255,255,0.05)" strokeDasharray="3 3" />
-                <XAxis 
-                  dataKey="time" 
-                  stroke="rgba(255,255,255,0.5)" 
+                <XAxis
+                  dataKey="time"
+                  stroke="rgba(255,255,255,0.5)"
                   tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.7)' }}
                   axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
                 />
-                <YAxis 
-                  stroke="rgba(255,255,255,0.5)" 
+                <YAxis
+                  stroke="rgba(255,255,255,0.5)"
                   domain={['dataMin - 100', 'dataMax + 100']}
                   tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.7)' }}
                   axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
                   tickFormatter={(value) => `₩${(value / 1000).toFixed(0)}K`}
                 />
                 <Tooltip content={<CustomTooltip />} />
-                
+
                 {/* 하단 꼬리 */}
                 <Bar dataKey="lowerWick" barSize={2}>
                   {candleData.map((entry, index) => (
                     <Cell key={`lower-${index}`} fill={entry.isUp ? '#0ECB81' : '#F6465D'} />
                   ))}
                 </Bar>
-                
+
                 {/* 캔들 몸통 */}
                 <Bar dataKey="body" barSize={10}>
                   {candleData.map((entry, index) => (
-                    <Cell 
-                      key={`body-${index}`} 
+                    <Cell
+                      key={`body-${index}`}
                       fill={entry.isUp ? '#0ECB81' : '#F6465D'}
                       opacity={0.9}
                     />
                   ))}
                 </Bar>
-                
+
                 {/* 상단 꼬리 */}
                 <Bar dataKey="upperWick" barSize={2}>
                   {candleData.map((entry, index) => (
@@ -448,9 +448,9 @@ export default function CoinDetail() {
                       const percentage = (unit.ask_size / maxSize) * 100;
                       return (
                         <div key={i} className={styles.orderbookRow}>
-                          <div 
-                            className={styles.orderbookBar} 
-                            style={{ 
+                          <div
+                            className={styles.orderbookBar}
+                            style={{
                               width: `${percentage}%`,
                               background: 'linear-gradient(90deg, transparent, rgba(246, 70, 93, 0.2))'
                             }}
@@ -485,9 +485,9 @@ export default function CoinDetail() {
                       const percentage = (unit.bid_size / maxSize) * 100;
                       return (
                         <div key={i} className={styles.orderbookRow}>
-                          <div 
-                            className={styles.orderbookBar} 
-                            style={{ 
+                          <div
+                            className={styles.orderbookBar}
+                            style={{
                               width: `${percentage}%`,
                               background: 'linear-gradient(90deg, transparent, rgba(14, 203, 129, 0.2))'
                             }}
