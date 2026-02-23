@@ -53,34 +53,19 @@ export default function Portfolio() {
       const res = await fetch(`/api/ticker?market=${markets.join(',')}`);
       const data = await res.json();
 
-      console.log('티커 응답:', data);
-
       if (Array.isArray(data)) {
         const map = {};
         data.forEach((t) => {
           if (t && t.market) {
             const symbol = t.market.replace('KRW-', '');
             map[symbol] = t;
-            console.log(`${symbol}: trade_price=${t.trade_price}`);
           }
         });
         setTickers(map);
-        console.log('최종 tickers:', map);
       }
     } catch (e) {
       console.error('티커 정보를 불러올 수 없습니다.', e);
     }
-  };
-
-  const getMoodLabel = (rate) => {
-    if (!isFinite(rate)) return '😐 관망 모드';
-    if (rate >= 15) return '🚀 불장 미소폭발존';
-    if (rate >= 5) return '😎 기분좋은 미소존';
-    if (rate > 0) return '🙂 은근히 수익존';
-    if (rate <= -15) return '🩸 심각한 출혈존';
-    if (rate <= -5) return '🥵 식은땀 출혈존';
-    if (rate < 0) return '😣 멘탈관리 구간';
-    return '😐 관망 모드';
   };
 
   // 모든 코인 평가 계산
@@ -89,7 +74,6 @@ export default function Portfolio() {
   let profitCount = 0;
   let lossCount = 0;
   let evenCount = 0;
-
   const coinDetails = accounts
     .filter((acc) => acc.currency !== 'KRW')
     .filter((acc) => parseFloat(acc.balance || 0) > 0 || parseFloat(acc.locked || 0) > 0)
@@ -122,10 +106,7 @@ export default function Portfolio() {
 
       return {
         account,
-        balance,
-        locked,
         quantity,
-        avgBuyPrice,
         buyValue,
         hasValidTicker,
         currentPrice,
@@ -139,16 +120,20 @@ export default function Portfolio() {
     .filter((acc) => acc.currency === 'KRW')
     .reduce((sum, acc) => sum + parseFloat(acc.balance || 0) + parseFloat(acc.locked || 0), 0);
 
-  // KRW 표시는 모두 1원 단위로 반올림해서 사용
-  const roundedKrwBalance = Math.round(krwBalance);
-  const roundedTotalInvested = Math.round(totalInvested);
-  const roundedTotalCurrent = Math.round(totalCurrent);
-  const roundedTotalCurrentAsset = Math.round(totalCurrent + krwBalance);
-  const roundedTotalProfit = Math.round(totalCurrent - totalInvested);
-
-  const totalCurrentAsset = roundedTotalCurrentAsset;
-  const totalProfit = roundedTotalProfit;
+  const totalCurrentAsset = totalCurrent + krwBalance;
+  const totalProfit = totalCurrent - totalInvested;
   const totalProfitRate = totalInvested > 0 ? (totalProfit / totalInvested) * 100 : 0;
+
+  const getMoodLabel = (rate) => {
+    if (!isFinite(rate)) return '😐 관망 모드';
+    if (rate >= 15) return '🚀 불장 미소폭발존';
+    if (rate >= 5) return '😎 기분좋은 미소존';
+    if (rate > 0) return '🙂 은근히 수익존';
+    if (rate <= -15) return '🩸 심각한 출혈존';
+    if (rate <= -5) return '🥵 식은땀 출혈존';
+    if (rate < 0) return '😣 멘탈관리 구간';
+    return '😐 관망 모드';
+  };
 
   if (loading) {
     return (
@@ -194,43 +179,35 @@ export default function Portfolio() {
 
       <div className={styles.summary}>
         <div className={styles.summaryCard}>
-          <div className={styles.summaryGrid}>
-            <div className={styles.summaryLeft}>
-              <div className={styles.summaryItem}>
-                <div className={styles.itemLabel}>보유 KRW</div>
-                <div className={styles.itemValue}>{roundedKrwBalance.toLocaleString()} <span className={styles.itemUnit}>KRW</span></div>
-              </div>
-              <div className={styles.summaryItem}>
-                <div className={styles.itemLabel}>총 매수</div>
-                <div className={styles.itemValue}>{roundedTotalInvested.toLocaleString()} <span className={styles.itemUnit}>KRW</span></div>
-              </div>
-              <div className={styles.summaryItem}>
-                <div className={styles.itemLabel}>총 평가</div>
-                <div className={styles.itemValue}>{roundedTotalCurrent.toLocaleString()} <span className={styles.itemUnit}>KRW</span></div>
-              </div>
-              <div className={styles.summaryItem}>
-                <div className={styles.itemLabel}>주문가능</div>
-                <div className={styles.itemValue}>{roundedKrwBalance.toLocaleString()} <span className={styles.itemUnit}>KRW</span></div>
+          <div className={styles.summaryLabel}>총 평가 자산</div>
+          <div className={styles.summaryValue}>₩{totalCurrentAsset.toLocaleString()}</div>
+          <div className={styles.summaryChips}>
+            <div
+              className={`${styles.summaryChip} ${totalProfit > 0
+                ? styles.chipPositive
+                : totalProfit < 0
+                  ? styles.chipNegative
+                  : styles.chipNeutral
+                }`}
+            >
+              <div className={styles.chipLabel}>총 평가손익</div>
+              <div className={styles.chipValue}>
+                {totalProfit > 0 ? '+' : ''}₩{Math.abs(totalProfit).toLocaleString()} (
+                {isNaN(totalProfitRate) ? '0.00' : totalProfitRate.toFixed(2)}%)
               </div>
             </div>
-            <div className={styles.summaryRight}>
-              <div className={styles.summaryItem}>
-                <div className={styles.itemLabel}>총 보유자산</div>
-                <div className={styles.itemValue}>{totalCurrentAsset.toLocaleString()} <span className={styles.itemUnit}>KRW</span></div>
-              </div>
-              <div className={styles.summaryItem}>
-                <div className={styles.itemLabel}>총평가손익</div>
-                <div className={styles.itemValue} style={{ color: totalProfit > 0 ? '#ef5350' : totalProfit < 0 ? '#26a69a' : '#212121' }}>
-                  {totalProfit > 0 ? '+' : ''}{Math.abs(totalProfit).toLocaleString()} <span className={styles.itemUnit}>KRW</span>
-                </div>
-              </div>
-              <div className={styles.summaryItem}>
-                <div className={styles.itemLabel}>총평가수익률</div>
-                <div className={styles.itemValue} style={{ color: totalProfitRate > 0 ? '#ef5350' : totalProfitRate < 0 ? '#26a69a' : '#212121' }}>
-                  {totalProfitRate > 0 ? '+' : ''}{isNaN(totalProfitRate) ? '0.00' : totalProfitRate.toFixed(2)} <span className={styles.itemUnit}>%</span>
-                </div>
-              </div>
+            <div className={styles.summaryChip}>
+              <div className={styles.chipLabel}>수익중</div>
+              <div className={styles.chipValue}>{profitCount} 종목</div>
             </div>
+            <div className={styles.summaryChip}>
+              <div className={styles.chipLabel}>손실중</div>
+              <div className={styles.chipValue}>{lossCount} 종목</div>
+            </div>
+          </div>
+          <div className={styles.summarySub}>
+            <span className={styles.moodLabel}>오늘의 기분</span>
+            <span className={styles.moodChip}>{getMoodLabel(totalProfitRate)}</span>
           </div>
         </div>
       </div>
@@ -241,48 +218,43 @@ export default function Portfolio() {
       </div>
 
       <div className={styles.accountList}>
-        {/* KRW 잔고 표시 */}
-        {krwBalance > 0 && (
-          <div className={styles.accountCard}>
-            <div className={styles.accountHeader}>
-              <div className={styles.currency}>원화</div>
-            </div>
-            <div className={styles.accountBody}>
-              <div className={styles.balanceRow}>
-                <span>보유량</span>
-                <span className={styles.balance}>₩{krwBalance.toLocaleString()}</span>
-              </div>
-            </div>
-          </div>
-        )}
+        {accounts.map((account) => {
+          const balance = parseFloat(account.balance);
+          const locked = parseFloat(account.locked);
+          const avgBuyPrice = parseFloat(account.avg_buy_price || 0);
 
-        {/* 코인 카드들 */}
-        {coinDetails.map((detail) => {
-          const {
-            account,
-            balance,
-            locked,
-            quantity,
-            avgBuyPrice,
-            buyValue,
-            hasValidTicker,
-            currentPrice,
-            currentValue,
-            profit,
-            profitRate,
-          } = detail;
+          if (balance === 0 && locked === 0) return null;
 
+          const quantity = balance + locked;
+          const buyValue = quantity * avgBuyPrice;
+
+          // 티커 정보 확인
+          const ticker = tickers[account.currency];
+          const hasValidTicker = account.currency !== 'KRW' && ticker && typeof ticker.trade_price === 'number';
+
+          // 티커가 있을 때만 평가 관련 정보 계산
+          let currentValue = 0;
+          let profit = 0;
+          let profitRate = 0;
           let statusText = '';
           let statusClass = '';
-          if (hasValidTicker && avgBuyPrice > 0 && profitRate > 0.1) {
-            statusText = '수익중';
-            statusClass = styles.statusPositive;
-          } else if (hasValidTicker && avgBuyPrice > 0 && profitRate < -0.1) {
-            statusText = '손실중';
-            statusClass = styles.statusNegative;
-          } else if (hasValidTicker && avgBuyPrice > 0) {
-            statusText = '본전 근처';
-            statusClass = styles.statusNeutral;
+
+          if (hasValidTicker && avgBuyPrice > 0) {
+            const currentPrice = ticker.trade_price;
+            currentValue = quantity * currentPrice;
+            profit = currentValue - buyValue;
+            profitRate = (profit / buyValue) * 100;
+
+            if (profitRate > 0.1) {
+              statusText = '수익중';
+              statusClass = styles.statusPositive;
+            } else if (profitRate < -0.1) {
+              statusText = '손실중';
+              statusClass = styles.statusNegative;
+            } else {
+              statusText = '본전 근처';
+              statusClass = styles.statusNeutral;
+            }
           }
 
           return (
@@ -290,23 +262,25 @@ export default function Portfolio() {
               <div className={styles.accountHeader}>
                 <div className={styles.currencyRow}>
                   <div className={styles.currency}>
-                    {account.korean_name || account.currency}
+                    {account.currency === 'KRW' ? '원화' : (account.korean_name || account.currency)}
                   </div>
-                  <div className={styles.badges}>
-                    {statusText && (
-                      <span className={`${styles.statusChip} ${statusClass}`}>
-                        {statusText}
-                      </span>
-                    )}
-                    {account.market_warning === 'CAUTION' && (
-                      <span className={styles.badge} data-type="caution">유의</span>
-                    )}
-                    {account.is_airdrop && (
-                      <span className={styles.badge} data-type="airdrop">에어드랍</span>
-                    )}
-                  </div>
+                  {account.currency !== 'KRW' && (
+                    <div className={styles.badges}>
+                      {statusText && (
+                        <span className={`${styles.statusChip} ${statusClass}`}>
+                          {statusText}
+                        </span>
+                      )}
+                      {account.market_warning === 'CAUTION' && (
+                        <span className={styles.badge} data-type="caution">유의</span>
+                      )}
+                      {account.is_airdrop && (
+                        <span className={styles.badge} data-type="airdrop">에어드랍</span>
+                      )}
+                    </div>
+                  )}
                 </div>
-                {avgBuyPrice > 0 && (
+                {account.currency !== 'KRW' && avgBuyPrice > 0 && (
                   <div className={styles.avgPrice}>
                     평단: ₩{avgBuyPrice.toLocaleString()}
                   </div>
@@ -316,27 +290,27 @@ export default function Portfolio() {
                 <div className={styles.balanceRow}>
                   <span>보유량</span>
                   <span className={styles.balance}>
-                    {balance.toFixed(8)} {account.currency}
+                    {account.currency === 'KRW'
+                      ? `₩${balance.toLocaleString()}`
+                      : `${balance.toFixed(8)} ${account.currency}`
+                    }
                   </span>
                 </div>
                 {locked > 0 && (
                   <div className={styles.balanceRow}>
                     <span>주문 중</span>
                     <span className={styles.locked}>
-                      {locked.toFixed(8)} {account.currency}
+                      {account.currency === 'KRW'
+                        ? `₩${locked.toLocaleString()}`
+                        : `${locked.toFixed(8)} ${account.currency}`
+                      }
                     </span>
                   </div>
                 )}
-                {avgBuyPrice > 0 && (
+                {account.currency !== 'KRW' && avgBuyPrice > 0 && (
                   <div className={styles.balanceRow}>
                     <span>매수금액</span>
                     <span className={styles.value}>₩{buyValue.toLocaleString()}</span>
-                  </div>
-                )}
-                {hasValidTicker && currentPrice > 0 && (
-                  <div className={styles.balanceRow}>
-                    <span>현재가</span>
-                    <span className={styles.value}>₩{currentPrice.toLocaleString()}</span>
                   </div>
                 )}
                 {hasValidTicker && currentValue > 0 && (

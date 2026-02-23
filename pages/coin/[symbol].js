@@ -3,14 +3,16 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from '@/styles/coinDetail.module.css';
+import { IoArrowBack, IoBarChartOutline, IoReceiptOutline } from 'react-icons/io5';
 import {
-  LineChart,
-  Line,
+  ComposedChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Cell,
 } from 'recharts';
 
 const CANDLE_TYPES = [
@@ -78,13 +80,73 @@ export default function CoinDetail() {
   const [loading, setLoading] = useState(true);
   const [candleLoading, setCandleLoading] = useState(false);
   const [tab, setTab] = useState('candle');
+  const [showOrderbook, setShowOrderbook] = useState(true);
   const [candleType, setCandleType] = useState('minutes/60');
   const [initialLoad, setInitialLoad] = useState(false);
+
+  // 커스텀 툴팁 컴포넌트
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      const change = data.close - data.open;
+      const changePercent = ((change / data.open) * 100).toFixed(2);
+      const isUp = change >= 0;
+      
+      return (
+        <div style={{
+          backgroundColor: '#1a1a1a',
+          border: '1px solid rgba(255,255,255,0.2)',
+          borderRadius: '8px',
+          padding: '12px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
+        }}>
+          <div style={{ 
+            fontSize: '12px', 
+            color: '#888', 
+            marginBottom: '8px',
+            borderBottom: '1px solid rgba(255,255,255,0.1)',
+            paddingBottom: '6px',
+          }}>
+            {label}
+          </div>
+          <div style={{ fontSize: '13px', color: '#fff', marginBottom: '4px' }}>
+            <span style={{ color: '#888' }}>시가:</span> <span style={{ fontWeight: 'bold' }}>₩{data.open?.toLocaleString()}</span>
+          </div>
+          <div style={{ fontSize: '13px', color: '#fff', marginBottom: '4px' }}>
+            <span style={{ color: '#888' }}>고가:</span> <span style={{ fontWeight: 'bold', color: '#0ECB81' }}>₩{data.high?.toLocaleString()}</span>
+          </div>
+          <div style={{ fontSize: '13px', color: '#fff', marginBottom: '4px' }}>
+            <span style={{ color: '#888' }}>저가:</span> <span style={{ fontWeight: 'bold', color: '#F6465D' }}>₩{data.low?.toLocaleString()}</span>
+          </div>
+          <div style={{ fontSize: '13px', color: '#fff', marginBottom: '8px' }}>
+            <span style={{ color: '#888' }}>종가:</span> <span style={{ fontWeight: 'bold' }}>₩{data.close?.toLocaleString()}</span>
+          </div>
+          <div style={{ 
+            fontSize: '13px', 
+            fontWeight: 'bold',
+            color: isUp ? '#0ECB81' : '#F6465D',
+            borderTop: '1px solid rgba(255,255,255,0.1)',
+            paddingTop: '6px',
+          }}>
+            {isUp ? '▲' : '▼'} {isUp ? '+' : ''}{change.toLocaleString()} ({isUp ? '+' : ''}{changePercent}%)
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
 
   useEffect(() => {
     if (!router.isReady || !symbol) return;
     loadCoinData();
     setInitialLoad(true);
+    
+    // 5초마다 가격 자동 업데이트 (백그라운드)
+    const priceInterval = setInterval(() => {
+      loadCoinData(false); // 백그라운드 업데이트
+    }, 5000);
+    
+    return () => clearInterval(priceInterval);
   }, [router.isReady, symbol]);
 
   // 캔들 타입 변경 시 또는 초기 로드 시
@@ -143,18 +205,31 @@ export default function CoinDetail() {
         console.warn('Candle API error:', candleRawData.error);
         setCandleData([]);
       } else if (candleRawData && Array.isArray(candleRawData) && candleRawData.length > 0) {
-        const formatted = candleRawData.map((candle) => ({
-          time: new Date(candle.candle_date_time_utc).toLocaleTimeString('ko-KR', {
-            month: 'short',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-          }),
-          close: candle.trade_price,
-          high: candle.high_price,
-          low: candle.low_price,
-          open: candle.opening_price,
-        }));
+        const formatted = candleRawData.map((candle) => {
+          const open = candle.opening_price;
+          const close = candle.trade_price;
+          const isUp = close >= open;
+          
+          return {
+            time: new Date(candle.candle_date_time_utc).toLocaleTimeString('ko-KR', {
+              month: 'short',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+            }),
+            open: candle.opening_price,
+            close: candle.trade_price,
+            high: candle.high_price,
+            low: candle.low_price,
+            // 캔들 몸통 (상승/하락)
+            body: [Math.min(open, close), Math.max(open, close)],
+            // 꼬리 (하단)
+            lowerWick: [candle.low_price, Math.min(open, close)],
+            // 꼬리 (상단)
+            upperWick: [Math.max(open, close), candle.high_price],
+            isUp,
+          };
+        });
         setCandleData(formatted.reverse());
         console.log('Candles formatted:', formatted.length);
       } else {
@@ -168,9 +243,11 @@ export default function CoinDetail() {
     }
   };
 
-  const loadCoinData = async () => {
+  const loadCoinData = async (showLoadingIndicator = true) => {
     try {
-      setLoading(true);
+      if (showLoadingIndicator) {
+        setLoading(true);
+      }
       const market = `KRW-${symbol}`;
 
       // 1. Current price
@@ -189,35 +266,39 @@ export default function CoinDetail() {
           trade_price_24h: ticker.acc_trade_price_24h,
         });
 
-        // 2. Orderbook
-        try {
-          const orderbookRes = await fetch(`/api/orderbook?market=${market}`);
-          const orderbookData = await orderbookRes.json();
-          if (orderbookData && orderbookData.length > 0) {
-            setOrderbook(orderbookData[0]);
+        // 2. Orderbook (백그라운드일 때만 스킵 가능)
+        if (showLoadingIndicator) {
+          try {
+            const orderbookRes = await fetch(`/api/orderbook?market=${market}`);
+            const orderbookData = await orderbookRes.json();
+            if (orderbookData && orderbookData.length > 0) {
+              setOrderbook(orderbookData[0]);
+            }
+          } catch (e) {
+            console.error('Orderbook error:', e);
           }
-        } catch (e) {
-          console.error('Orderbook error:', e);
-        }
 
-        // 3. Trades
-        try {
-          const tradesRes = await fetch(`/api/trades?market=${market}&count=20`);
-          const tradesData = await tradesRes.json();
-          console.log('Trades data:', tradesData);
-          console.log('First trade:', tradesData[0]);
-          if (tradesData && tradesData.length > 0) {
-            setTrades(tradesData);
+          // 3. Trades
+          try {
+            const tradesRes = await fetch(`/api/trades?market=${market}&count=20`);
+            const tradesData = await tradesRes.json();
+            if (tradesData && tradesData.length > 0) {
+              setTrades(tradesData);
+            }
+          } catch (e) {
+            console.error('Trades error:', e);
           }
-        } catch (e) {
-          console.error('Trades error:', e);
         }
       }
 
-      setLoading(false);
+      if (showLoadingIndicator) {
+        setLoading(false);
+      }
     } catch (error) {
       console.error('Failed to load:', error);
-      setLoading(false);
+      if (showLoadingIndicator) {
+        setLoading(false);
+      }
     }
   };
 
@@ -247,86 +328,116 @@ export default function CoinDetail() {
 
   return (
     <div className={styles.container}>
-      <Link href="/">
-        <button className={styles.backBtn}>← 뒤로</button>
-      </Link>
+      {/* 헤더 */}
+      <div className={styles.header}>
+        <Link href="/">
+          <button className={styles.backBtn}>
+            <IoArrowBack /> 대시보드
+          </button>
+        </Link>
 
-      <h1 className={styles.title}>{symbol}</h1>
-      <div className={styles.subtitle}>{KOREAN_NAMES[symbol] || symbol}</div>
-      <div className={styles.price}>
-        ₩{coinData.price.toLocaleString('ko-KR')}
-        <span className={coinData.change > 0 ? styles.positive : styles.negative}>
-          {coinData.change > 0 ? '+' : ''}{coinData.change}%
-        </span>
+        <h1 className={styles.title}>{symbol}</h1>
+        <div className={styles.subtitle}>{KOREAN_NAMES[symbol] || symbol}</div>
+        <div className={styles.price}>
+          ₩{coinData.price.toLocaleString('ko-KR')}
+          <span className={coinData.change > 0 ? styles.positive : styles.negative}>
+            {coinData.change > 0 ? '+' : ''}{coinData.change}%
+          </span>
+        </div>
       </div>
 
-      {/* Tabs */}
+      {/* 캔들 타입 탭 (가로 스크롤) */}
       <div className={styles.tabs}>
-        <button
-          className={`${styles.tab} ${tab === 'candle' ? styles.active : ''}`}
-          onClick={() => setTab('candle')}
-        >
-          📈 캔들
-        </button>
-        <button
-          className={`${styles.tab} ${tab === 'orderbook' ? styles.active : ''}`}
-          onClick={() => setTab('orderbook')}
-        >
-          📊 호가
-        </button>
-        <button
-          className={`${styles.tab} ${tab === 'trades' ? styles.active : ''}`}
-          onClick={() => setTab('trades')}
-        >
-          💱 체결
-        </button>
+        {CANDLE_TYPES.map((type) => (
+          <button
+            key={type.id}
+            className={`${styles.tab} ${candleType === type.id ? styles.active : ''}`}
+            onClick={() => setCandleType(type.id)}
+            disabled={candleLoading}
+          >
+            <span className={styles.tabLabel}>{type.label}</span>
+            <span className={styles.tabDesc}>{type.desc}</span>
+          </button>
+        ))}
       </div>
 
       {/* Content */}
       <div className={styles.content}>
-        {/* 캔들은 항상 표시 */}
         <div className={styles.chartSection}>
-          {/* 캔들 타입 탭 */}
-          <div className={styles.candleTypeTabs}>
-            {CANDLE_TYPES.map((type) => (
-              <button
-                key={type.id}
-                className={`${styles.candleTypeTab} ${candleType === type.id ? styles.active : ''}`}
-                onClick={() => setCandleType(type.id)}
-                disabled={candleLoading}
-              >
-                <span className={styles.candleLabel}>{type.label}</span>
-                <span className={styles.candleDesc}>{type.desc}</span>
-              </button>
-            ))}
-          </div>
-
           {candleLoading ? (
             <div className={styles.loading}>📊 차트 그리는 중...</div>
           ) : candleData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={320}>
-              <LineChart data={candleData}>
-                <CartesianGrid stroke="rgba(255,255,255,0.08)" />
-                <XAxis dataKey="time" stroke="rgba(255,255,255,0.4)" />
-                <YAxis stroke="rgba(255,255,255,0.4)" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: '#1a1a1a',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                  }}
+            <ResponsiveContainer width="100%" height={450}>
+              <ComposedChart 
+                data={candleData}
+                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid stroke="rgba(255,255,255,0.05)" strokeDasharray="3 3" />
+                <XAxis 
+                  dataKey="time" 
+                  stroke="rgba(255,255,255,0.5)" 
+                  tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.7)' }}
+                  axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
                 />
-                <Line type="monotone" dataKey="close" stroke="#FCD535" strokeWidth={2} dot={false} />
-              </LineChart>
+                <YAxis 
+                  stroke="rgba(255,255,255,0.5)" 
+                  domain={['dataMin - 100', 'dataMax + 100']}
+                  tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.7)' }}
+                  axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+                  tickFormatter={(value) => `₩${(value / 1000).toFixed(0)}K`}
+                />
+                <Tooltip content={<CustomTooltip />} />
+                
+                {/* 하단 꼬리 */}
+                <Bar dataKey="lowerWick" barSize={2}>
+                  {candleData.map((entry, index) => (
+                    <Cell key={`lower-${index}`} fill={entry.isUp ? '#0ECB81' : '#F6465D'} />
+                  ))}
+                </Bar>
+                
+                {/* 캔들 몸통 */}
+                <Bar dataKey="body" barSize={10}>
+                  {candleData.map((entry, index) => (
+                    <Cell 
+                      key={`body-${index}`} 
+                      fill={entry.isUp ? '#0ECB81' : '#F6465D'}
+                      opacity={0.9}
+                    />
+                  ))}
+                </Bar>
+                
+                {/* 상단 꼬리 */}
+                <Bar dataKey="upperWick" barSize={2}>
+                  {candleData.map((entry, index) => (
+                    <Cell key={`upper-${index}`} fill={entry.isUp ? '#0ECB81' : '#F6465D'} />
+                  ))}
+                </Bar>
+              </ComposedChart>
             </ResponsiveContainer>
           ) : (
             <div className={styles.empty}>😢 차트가 없네요...</div>
           )}
         </div>
 
-        {/* 호가/체절은 탭으로 (캔들 탭일 때는 숨김) */}
-        {tab !== 'candle' && (
-          <div className={styles.bottomSection}>
-            {tab === 'orderbook' && orderbook ? (
+        {/* 호가/체결 (항상 표시) */}
+        <div className={styles.bottomSection}>
+          <div className={styles.bottomTabs}>
+            <button
+              className={`${styles.bottomTab} ${showOrderbook ? styles.active : ''}`}
+              onClick={() => setShowOrderbook(true)}
+            >
+              <IoBarChartOutline /> 호가
+            </button>
+            <button
+              className={`${styles.bottomTab} ${!showOrderbook ? styles.active : ''}`}
+              onClick={() => setShowOrderbook(false)}
+            >
+              <IoReceiptOutline /> 체결
+            </button>
+          </div>
+
+          {showOrderbook ? (
+            orderbook ? (
               <div className={styles.orderbookContainer}>
                 {/* 매도호가 (위) */}
                 <div className={styles.orderbookSell}>
@@ -389,7 +500,11 @@ export default function CoinDetail() {
                   </div>
                 </div>
               </div>
-            ) : tab === 'trades' && trades.length > 0 ? (
+            ) : (
+              <div className={styles.empty}>😭 호가 데이터가 없어요...</div>
+            )
+          ) : (
+            trades.length > 0 ? (
               <div className={styles.tradesContainer}>
                 <h3>체결 내역</h3>
                 <div className={styles.tradesHeader}>
@@ -418,10 +533,10 @@ export default function CoinDetail() {
                 </div>
               </div>
             ) : (
-              <div className={styles.empty}>😭 데이터가 없어요...</div>
-            )}
-          </div>
-        )}
+              <div className={styles.empty}>😭 체결 데이터가 없어요...</div>
+            )
+          )}
+        </div>
       </div>
     </div>
   );

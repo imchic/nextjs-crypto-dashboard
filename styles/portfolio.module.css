@@ -1,307 +1,328 @@
-/* styles/portfolio.module.css - Arkham Intel Style */
+/* styles/portfolio.module.css */
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  min-height: 100vh;
-  background: #0a0a0a;
-  color: #fff;
-  padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px;
+    min-height: calc(100vh - 70px);
 }
 
-/* ============ 헤더 ============ */
+.loading,
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.error h2 {
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.error p {
+    margin: 8px 0;
+    color: var(--text-tertiary);
+}
+
+.hint {
+    font-size: 12px;
+    padding: 12px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-medium);
+    border-radius: 8px;
+    margin-top: 16px;
+    max-width: 500px;
+}
+
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--accent-border);
 }
 
-.title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.5px;
+.header h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
 }
 
-.backBtn, .refreshBtn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.7);
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: all 0.2s;
+.backBtn,
+.refreshBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease-out;
 }
 
-.backBtn:hover, .refreshBtn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+.backBtn:hover,
+.refreshBtn:hover {
+    border-color: var(--accent-border);
+    color: var(--accent-primary);
 }
 
-/* ============ 통계 그리드 ============ */
-.summary {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-bottom: 32px;
+.backBtnWithText {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border-light);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 12px;
+    cursor: pointer;
 }
 
-.summaryCard {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 20px;
-  transition: all 0.2s;
-}
-
-.summaryCard:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(139, 127, 244, 0.3);
-}
-
-.cardHeader {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.cardIcon {
-  font-size: 16px;
-}
-
-.cardTitle {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-}
-
-.cardValue {
-  font-size: 24px;
-  font-weight: 700;
-  font-family: 'Courier New', monospace;
-  letter-spacing: -0.5px;
-}
-
-.cardPercent {
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 4px;
-  font-family: 'Courier New', monospace;
-}
-
-.positive {
-  color: #0ECB81;
-}
-
-.negative {
-  color: #F6465D;
-}
-
-/* ============ 파이차트 섹션 ============ */
-.chartSection {
-  margin-bottom: 32px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 24px;
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
 }
 
 .sectionTitle {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
-/* ============ 보유 자산 테이블 ============ */
-.holdings {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  overflow: hidden;
+.sectionSubtitle {
+    font-size: 12px;
+    color: var(--text-tertiary);
 }
 
-.coinCard {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 16px 20px;
-  transition: all 0.2s;
+.summary {
+    margin-bottom: 32px;
 }
 
-.coinCard.airdrop {
-  background: rgba(255, 165, 0, 0.03);
-  border-left: 3px solid rgba(255, 165, 0, 0.5);
+.summaryCard {
+    padding: 24px 32px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-medium);
+    box-shadow: var(--shadow-md);
 }
 
-.coinCard:last-child {
-  border-bottom: none;
+.summaryGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
 }
 
-.coinCard:hover {
-  background: rgba(255, 255, 255, 0.03);
+.summaryLeft,
+.summaryRight {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.coinCard.airdrop:hover {
-  background: rgba(255, 165, 0, 0.05);
+.summaryItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.coinHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
+.itemLabel {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-weight: 500;
 }
 
-.coinInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+.itemValue {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
 }
 
-.coinName {
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
+.itemUnit {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
-.coinSymbol {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
-  font-family: 'Courier New', monospace;
-  text-transform: uppercase;
+.accountList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* 카드 간 세로 간격 */
 }
 
-.noteLabel {
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 3px;
-  background: rgba(255, 165, 0, 0.2);
-  color: rgba(255, 165, 0, 1);
-  font-weight: 600;
-  white-space: nowrap;
+.accountCard {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-medium);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.2s;
 }
 
-.gainBadge {
-  font-size: 13px;
-  font-weight: 700;
-  font-family: 'Courier New', monospace;
-  padding: 4px 10px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
+.accountCard:hover {
+    border-color: var(--accent-border);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
-.gainBadge.positive {
-  color: #0ECB81;
-  background: rgba(14, 203, 129, 0.1);
+.accountHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
 }
 
-.gainBadge.negative {
-  color: #F6465D;
-  background: rgba(246, 70, 93, 0.1);
+.currency {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-primary);
 }
 
-.coinStats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
+.avgPrice {
+    font-size: 11px;
+    color: var(--text-tertiary);
 }
 
-.statRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.accountBody {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.statLabel {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.balanceRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-secondary);
 }
 
-.statValue {
-  font-size: 13px;
-  font-weight: 600;
-  font-family: 'Courier New', monospace;
-  color: rgba(255, 255, 255, 0.9);
+.balanceRow span:first-child {
+    color: var(--text-tertiary);
 }
 
-.statValue.bold {
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
+.balance,
+.locked,
+.value {
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
-/* ============ 로딩/에러 ============ */
-.loading, .error, .empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  text-align: center;
+.locked {
+    color: var(--text-secondary);
 }
 
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(139, 127, 244, 0.2);
-  border-top-color: #8B7FF4;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin-bottom: 16px;
+.value {
+    color: var(--accent-primary);
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.profitPositive,
+.profitNegative,
+.profitZero {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: 1px solid transparent;
 }
 
-.emptyIcon {
-  font-size: 48px;
-  margin-bottom: 16px;
+.profitPositive {
+    color: #26a69a;
+    background: rgba(38, 166, 154, 0.08);
+    border-color: rgba(38, 166, 154, 0.4);
 }
 
-.emptyText {
-  font-size: 18px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 8px;
+.profitNegative {
+    color: #ef5350;
+    background: rgba(239, 83, 80, 0.08);
+    border-color: rgba(239, 83, 80, 0.4);
 }
 
-.emptyHint {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.4);
+.profitZero {
+    color: var(--text-secondary);
+    background: rgba(158, 158, 158, 0.08);
+    border-color: rgba(158, 158, 158, 0.4);
 }
 
-/* ============ 반응형 ============ */
-@media (max-width: 768px) {
-  .container {
-    padding: 12px;
-  }
+.profitLabel {
+    font-size: 11px;
+    font-weight: 600;
+}
 
-  .summary {
-    grid-template-columns: 1fr;
-  }
+.currencyRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-  .coinStats {
-    grid-template-columns: 1fr;
-  }
+.badges {
+    display: flex;
+    gap: 4px;
+}
 
-  .cardValue {
-    font-size: 20px;
-  }
+.statusChip {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
 
-  .title {
-    font-size: 20px;
-  }
+.statusPositive {
+    background: rgba(38, 166, 154, 0.15);
+    color: #26a69a;
+    border-color: rgba(38, 166, 154, 0.6);
+}
+
+.statusNegative {
+    background: rgba(239, 83, 80, 0.15);
+    color: #ef5350;
+    border-color: rgba(239, 83, 80, 0.6);
+}
+
+.statusNeutral {
+    background: rgba(158, 158, 158, 0.15);
+    color: var(--text-secondary);
+    border-color: rgba(158, 158, 158, 0.6);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.badge[data-type="caution"] {
+    background: rgba(255, 152, 0, 0.15);
+    color: #ff9800;
+    border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.badge[data-type="airdrop"] {
+    background: linear-gradient(135deg, #8B7FF4, #6C5CE7);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(139, 127, 244, 0.3);
 }

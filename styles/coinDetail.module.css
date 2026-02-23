@@ -1,47 +1,71 @@
 /* styles/coinDetail.module.css */
 
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 40px 16px;
+  padding: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0f 100%);
-  color: #fff;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* 헤더 영역 */
+.header {
+  padding: 24px;
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--accent-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-md);
 }
 
 .backBtn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
   padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 20px;
   font-weight: 600;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.backBtn svg {
+  font-size: 16px;
 }
 
 .backBtn:hover {
-  background: rgba(252, 213, 53, 0.1);
-  border-color: rgba(252, 213, 53, 0.3);
-  box-shadow: 0 0 15px rgba(252, 213, 53, 0.1);
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  transform: translateX(-4px);
 }
 
 .title {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 800;
   margin-bottom: 8px;
   letter-spacing: -1px;
-  background: linear-gradient(135deg, #fff 0%, rgba(252, 213, 53, 0.8) 100%);
+  background: linear-gradient(90deg,
+      var(--accent-primary) 0%,
+      var(--accent-light) 50%,
+      var(--accent-primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .subtitle {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  color: var(--text-tertiary);
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .price {
@@ -50,71 +74,108 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
+  color: var(--text-primary);
 }
 
 .price .positive {
-  color: #0ECB81;
-  font-size: 20px;
+  color: var(--green);
+  font-size: 18px;
   padding: 6px 12px;
-  background: rgba(14, 203, 129, 0.15);
+  background: var(--green-bg);
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(14, 203, 129, 0.2);
+  font-weight: 700;
 }
 
 .price .negative {
-  color: #F6465D;
-  font-size: 20px;
+  color: var(--red);
+  font-size: 18px;
   padding: 6px 12px;
-  background: rgba(246, 70, 93, 0.15);
+  background: var(--red-bg);
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(246, 70, 93, 0.2);
+  font-weight: 700;
 }
 
+/* 캔들 타입 탭 (가로 스크롤) */
 .tabs {
   display: flex;
-  gap: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 30px;
+  gap: 4px;
+  padding: 12px 20px;
+  overflow-x: auto;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
-  background: none;
+  background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.5);
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 700;
+  color: var(--text-tertiary);
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  transition: all 0.2s ease;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  position: relative;
 }
 
 .tab:hover {
-  color: rgba(255, 255, 255, 0.8);
+  background: var(--hover-overlay);
+  color: var(--text-primary);
 }
 
 .tab.active {
-  color: #FCD535;
-  border-bottom-color: #FCD535;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 0 0 1px var(--border-light);
 }
 
-/* 캔들 타입 탭 */
+.tabLabel {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.tabDesc {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-disabled);
+  opacity: 0.8;
+}
+
+.tab.active .tabDesc {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+/* 차트 영역 */
+.chartContainer {
+  padding: 24px;
+  background: var(--bg-primary);
+}
+
+/* 캔들 타입 탭 (제거 - 위 tabs 섹션으로 통합) */
 .candleTypeTabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  max-height: 110px;
-  overflow-y: auto;
-  padding: 4px 0;
+  display: none;
 }
 
 .candleTypeTab {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
+  background: var(--hover-overlay, 0.08);
+  border: 1px solid var(--border-light, 0.1);
+  color: var(--text-primary, 0.6);
   padding: 10px 14px;
   border-radius: 10px;
   cursor: pointer;
@@ -133,15 +194,15 @@
 .candleLabel {
   font-size: 14px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-primary, 0.95);
   letter-spacing: -0.3px;
 }
 
 .candleDesc {
   font-size: 11px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary, 0.5);
+  background: var(--hover-overlay, 0.08);
   padding: 2px 8px;
   border-radius: 4px;
   letter-spacing: -0.2px;
@@ -191,33 +252,73 @@
 
 
 .content {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  background: var(--bg-primary);
   padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .chartSection {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .bottomSection {
-  min-height: 300px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.bottomTabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 16px;
+}
+
+.bottomTab {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-medium);
+  color: var(--text-secondary);
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.bottomTab svg {
+  font-size: 16px;
+}
+
+.bottomTab:hover {
+  background: var(--active-overlay);
+  color: var(--text-primary);
+}
+
+.bottomTab.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
 }
 
 /* 호가창 스타일 */
 .orderbookContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
 }
 
 .orderbookSell,
@@ -230,17 +331,21 @@
   font-size: 13px;
   font-weight: 700;
   margin-bottom: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border-light);
 }
 
 .orderbookSell h3 {
   color: #F6465D;
+  border-bottom-color: rgba(246, 70, 93, 0.3);
 }
 
 .orderbookBuy h3 {
   color: #0ECB81;
+  border-bottom-color: rgba(14, 203, 129, 0.3);
 }
 
 .orderbookList {
@@ -256,14 +361,13 @@
   align-items: center;
   padding: 8px 12px;
   font-size: 13px;
-  font-family: 'Courier New', monospace;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--hover-overlay);
   border-radius: 4px;
   transition: all 0.2s ease;
 }
 
 .orderbookRow:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--active-overlay);
   transform: translateX(4px);
 }
 
@@ -286,12 +390,12 @@
 
 .orderbookPrice {
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary, 0.9);
 }
 
 .orderbookSize {
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-primary, 0.6);
 }
 
 /* 현재가 */
@@ -311,7 +415,7 @@
 .currentPriceLabel {
   font-size: 12px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-primary, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -319,7 +423,6 @@
 .currentPriceValue {
   font-size: 28px;
   font-weight: 800;
-  font-family: 'Courier New', monospace;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -362,7 +465,7 @@
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 16px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary, 0.9);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -372,12 +475,12 @@
   grid-template-columns: 1fr 1.5fr 1fr 0.8fr;
   gap: 12px;
   padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--hover-overlay, 0.05);
   border-radius: 6px;
   margin-bottom: 8px;
   font-size: 11px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-primary, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -396,15 +499,14 @@
   gap: 12px;
   padding: 10px 12px;
   font-size: 12px;
-  font-family: 'Courier New', monospace;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--hover-overlay, 0.02);
   border-radius: 4px;
   border-left: 3px solid transparent;
   transition: all 0.2s ease;
 }
 
 .tradeRow:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--hover-overlay, 0.05);
   transform: translateX(4px);
 }
 
@@ -419,7 +521,7 @@
 }
 
 .tradeTime {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-primary, 0.5);
   font-size: 11px;
 }
 
@@ -428,7 +530,7 @@
 }
 
 .tradeVolume {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-primary, 0.6);
   font-weight: 600;
 }
 
@@ -478,5 +580,45 @@
 .loading {
   text-align: center;
   padding: 100px 20px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-primary, 0.5);
+}
+
+/* 캔들 차트 툴팁 */
+.tooltip {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  min-width: 180px;
+}
+
+.tooltipTime {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-light);
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.tooltip p {
+  margin: 0;
+  padding: 6px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.tooltip p:not(.tooltipTime) {}
+
+.tooltip p:last-child {
+  padding-bottom: 0;
 }

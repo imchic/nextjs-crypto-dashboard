@@ -1,11 +1,14 @@
-﻿import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import styles from '@/styles/dashboard.module.css';
-import { IoSearchOutline, IoRefreshOutline, IoTrendingUpOutline, IoTrendingDownOutline } from 'react-icons/io5';
-import { FaTrophy, FaMedal, FaAward } from 'react-icons/fa';
+﻿import styles from '@/styles/dashboard.module.css';
 import RECOMMENDATION_REASONS from '@/utils/recommendReasons';
+import AIRDROP_COINS from '@/utils/airdropCoins';
+import { useRouter } from 'next/router';
+import { useEffect, useState, useContext } from 'react';
+import { IoBulbOutline, IoSearchOutline } from 'react-icons/io5';
+import CoinDetailPanel from '@/components/CoinDetailPanel';
+import { DashboardContext } from '@/components/Layout';
 
 export default function Dashboard() {
+  const { setDashboardState } = useContext(DashboardContext);
   const router = useRouter();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -14,12 +17,22 @@ export default function Dashboard() {
   const [group, setGroup] = useState('all');
   const [allMarkets, setAllMarkets] = useState([]);
   const [loadingAll, setLoadingAll] = useState(false);
-  const [allMarketsLoaded, setAllMarketsLoaded] = useState(false);
+  const [allMarketsLoaded, setAllMarketsLoaded] = useState(() => {
+    // sessionStorage에서 복원 (페이지 새로고침 시에도 유지)
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem('allMarketsLoaded') === 'true';
+    }
+    return false;
+  });
   const [btcPrice, setBtcPrice] = useState(0);
   const [usdtPrice, setUsdtPrice] = useState(0);
   const [favorites, setFavorites] = useState([]);
   const [lastUpdated, setLastUpdated] = useState(new Date().toISOString());
   const [toast, setToast] = useState(null);
+  const [recentSearches, setRecentSearches] = useState([]);
+  const [showAutocomplete, setShowAutocomplete] = useState(false);
+  const [autocompleteResults, setAutocompleteResults] = useState([]);
+  const [selectedCoin, setSelectedCoin] = useState(null);
 
   const showToast = (message) => {
     setToast(message);
@@ -32,15 +45,45 @@ export default function Dashboard() {
     if (savedFavorites) {
       setFavorites(JSON.parse(savedFavorites));
     }
+
+    // 최근 검색어 불러오기
+    const savedSearches = localStorage.getItem('recentSearches');
+    if (savedSearches) {
+      setRecentSearches(JSON.parse(savedSearches));
+    }
+    
+    // sessionStorage에서 전체종목 데이터 복원 (있으면)
+    const savedAllMarkets = sessionStorage.getItem('allMarkets');
+    if (savedAllMarkets) {
+      try {
+        const parsed = JSON.parse(savedAllMarkets);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setAllMarkets(parsed);
+          setAllMarketsLoaded(true);
+        }
+      } catch (e) {
+        console.error('Failed to parse saved markets:', e);
+      }
+    }
+
+    // 헤더 새로고침 버튼 핸들러 등록
+    setDashboardState({
+      timestamp: null,
+      loading: false,
+      onRefresh: () => {
+        loadData(true);
+        showToast('✅ 새로고침!');
+      },
+    });
   }, []);
 
   useEffect(() => {
     loadData();
     loadExchangeRates();
     const interval = setInterval(() => {
-      loadData();
+      loadData(false); // 백그라운드 업데이트 (로딩 표시 안 함)
       loadExchangeRates();
-    }, 3000); // 3초마다 업데이트
+    }, 5000); // 3초 → 5초로 변경 (좀 더 여유롭게)
     return () => clearInterval(interval);
   }, []);
 
@@ -49,21 +92,30 @@ export default function Dashboard() {
     if (group === 'all' && !allMarketsLoaded && !loadingAll) {
       loadAllMarkets();
     }
-  }, [group]);
+  }, [group, allMarketsLoaded, loadingAll]);
 
-  const loadData = async (showNotification = false) => {
+  const loadData = async (showLoadingIndicator = true) => {
     try {
-      setLoading(true);
+      if (showLoadingIndicator) {
+        setLoading(true);
+        setDashboardState(prev => ({ ...prev, loading: true }));
+      }
       const response = await fetch('/api/dashboard');
       const dashboardData = await response.json();
       setData(dashboardData);
-      setLastUpdated(new Date().toISOString());
-      setLoading(false);
-      if (showNotification) showToast('✅ 데이터 업데이트 완료!');
+      const newTimestamp = new Date().toISOString();
+      setLastUpdated(newTimestamp);
+      setDashboardState(prev => ({ ...prev, timestamp: newTimestamp }));
+      if (showLoadingIndicator) {
+        setLoading(false);
+        setDashboardState(prev => ({ ...prev, loading: false }));
+      }
     } catch (error) {
       console.error('Error loading data:', error);
-      setLoading(false);
-      if (showNotification) showToast('❌ 업데이트 실패');
+      if (showLoadingIndicator) {
+        setLoading(false);
+        setDashboardState(prev => ({ ...prev, loading: false }));
+      }
     }
   };
 
@@ -71,10 +123,10 @@ export default function Dashboard() {
     try {
       const response = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-USDT');
       const data = await response.json();
-      
+
       const btc = data.find(t => t.market === 'KRW-BTC');
       const usdt = data.find(t => t.market === 'KRW-USDT');
-      
+
       if (btc) setBtcPrice(btc.trade_price);
       if (usdt) setUsdtPrice(usdt.trade_price);
     } catch (error) {
@@ -84,22 +136,27 @@ export default function Dashboard() {
 
   const loadAllMarkets = async () => {
     if (loadingAll || allMarketsLoaded) return; // 중복 방지
-    
+
     try {
       setLoadingAll(true);
       console.log('Loading all markets...');
       const response = await fetch('/api/all-markets', {
         signal: AbortSignal.timeout(10000) // 10초 타임아웃
       });
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const markets = await response.json();
       console.log('All markets loaded:', markets.length);
       setAllMarkets(markets);
       setAllMarketsLoaded(true);
+
+      // sessionStorage에 저장 (뒤로가기 시에도 유지)
+      sessionStorage.setItem('allMarkets', JSON.stringify(markets));
+      sessionStorage.setItem('allMarketsLoaded', 'true');
+
       setLastUpdated(new Date().toISOString());
       setLoadingAll(false);
     } catch (error) {
@@ -110,13 +167,53 @@ export default function Dashboard() {
     }
   };
 
-  const handleCoinClick = (symbol) => {
-    router.push(`/coin/${symbol}`);
+  const handleCoinClick = (coin) => {
+    setSelectedCoin(coin);
+  };
+
+  const addRecentSearch = (coin) => {
+    const newSearches = [coin, ...recentSearches.filter(c => c.symbol !== coin.symbol)].slice(0, 5);
+    setRecentSearches(newSearches);
+    localStorage.setItem('recentSearches', JSON.stringify(newSearches));
+  };
+
+  const removeRecentSearch = (symbol) => {
+    const newSearches = recentSearches.filter(c => c.symbol !== symbol);
+    setRecentSearches(newSearches);
+    localStorage.setItem('recentSearches', JSON.stringify(newSearches));
+  };
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    if (value.trim().length > 0) {
+      const allCoins = group === 'all' ? allMarkets : (data ? getDisplayCoins() : []);
+      const results = allCoins
+        .filter(coin =>
+          coin.symbol.toLowerCase().includes(value.toLowerCase()) ||
+          coin.name.toLowerCase().includes(value.toLowerCase())
+        )
+        .slice(0, 5);
+      setAutocompleteResults(results);
+      setShowAutocomplete(true);
+    } else {
+      setShowAutocomplete(false);
+      setAutocompleteResults([]);
+    }
+  };
+
+  const selectCoin = (coin) => {
+    addRecentSearch(coin);
+    setSearchTerm('');
+    setShowAutocomplete(false);
+    router.push(`/coin/${coin.symbol}`);
   };
 
   const handlePortfolioClick = () => {
     router.push('/portfolio');
   };
+
 
   const toggleFavorite = (symbol) => {
     setFavorites(prev => {
@@ -131,20 +228,9 @@ export default function Dashboard() {
     });
   };
 
-  const formatTime = (isoString) => {
-    if (!isoString) return 'Loading...';
-    const date = new Date(isoString);
-    return date.toLocaleTimeString('ko-KR', {
-      month: 'short',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  };
-
   const formatPrice = (price) => {
     if (!price || price === 0) return '0';
-    
+
     if (unit === 'KRW') {
       return price.toLocaleString('ko-KR');
     } else if (unit === 'BTC') {
@@ -162,7 +248,7 @@ export default function Dashboard() {
   // 금액을 한글로 표현 (1억, 1천만 등)
   const formatPriceKorean = (price) => {
     if (price === 0) return '0원';
-    
+
     const units = [
       { value: 1000000000, label: '억' },
       { value: 100000000, label: '억' },
@@ -179,7 +265,7 @@ export default function Dashboard() {
         return `${quotient}${unit.label}`;
       }
     }
-    
+
     return `${price.toLocaleString()}원`;
   };
 
@@ -205,7 +291,7 @@ export default function Dashboard() {
   }
 
   const { stats, timestamp: dataTimestamp, groups } = data;
-  
+
   // 그룹 매핑 처리
   let coins = [];
   if (group === 'all') {
@@ -222,7 +308,7 @@ export default function Dashboard() {
   } else if (group === 'favorites') {
     // 즐겨찾기 - 모든 코인 데이터에서 찾기 (중복 제거)
     const allCoins = [...(allMarkets || []), ...(data.by_volume || []), ...(data.by_change?.gainers || []), ...(data.by_decline || [])];
-    
+
     // symbol 기준으로 중복 제거
     const uniqueCoins = allCoins.reduce((acc, coin) => {
       if (!acc.find(c => c.symbol === coin.symbol)) {
@@ -230,95 +316,151 @@ export default function Dashboard() {
       }
       return acc;
     }, []);
-    
+
     coins = uniqueCoins.filter(coin => favorites.includes(coin.symbol));
   }
-  
-  const filteredCoins = coins.filter(coin => 
+
+  const filteredCoins = coins.filter(coin =>
     coin.symbol.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (coin.name && coin.name.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   return (
-    <div className={styles.container}>
-      {/* 헤더 */}
-      <div className={styles.header}>
-        <div className={styles.headerTop}>
-          <h1 className={styles.title}>백만원만 넣어</h1>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div className={styles.timestamp}>{formatTime(lastUpdated)}</div>
-            <button 
-              className={`${styles.refreshBtn} ${loading ? styles.loading : ''}`} 
-              onClick={() => loadData(true)}
-              disabled={loading}
-            >
-              <IoRefreshOutline size={16} className={loading ? styles.spin : ''} />
-            </button>
+    <div className={selectedCoin ? styles.splitLayout : styles.fullLayout}>
+      {/* 좌측: 상세 정보 (선택된 경우에만) */}
+      {selectedCoin && (
+        <div className={styles.detailPanel}>
+          <div className={styles.detailContent}>
+            <div className={styles.detailHeader}>
+              <div>
+                <h2>{selectedCoin.name} <span className={styles.detailSymbol}>{selectedCoin.symbol}</span></h2>
+                <div className={styles.detailPrice}>
+                  ₩{selectedCoin.price?.toLocaleString()}
+                </div>
+              </div>
+              <button 
+                className={styles.closeDetail}
+                onClick={() => setSelectedCoin(null)}
+              >
+                ✕
+              </button>
+            </div>
+            <CoinDetailPanel coin={selectedCoin} />
           </div>
         </div>
-        
+      )}
+
+      {/* 우측: 코인 목록 */}
+      <div className={styles.listPanel}>
+        <div className={styles.container}>
+      {/* 헤더 */}
+      <div className={styles.header}>
         {/* 프로그레스바 */}
         {loading && <div className={styles.progressBar}><div className={styles.progressFill}></div></div>}
 
         {/* 검색바 */}
         <div className={styles.headerControls}>
-          <div className={styles.searchBox}>
-            <IoSearchOutline className={styles.searchIcon} size={16} />
-            <input
-              type="text"
-              placeholder="코인 검색..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className={styles.searchInput}
-            />
+          <div className={styles.searchWrapper}>
+            <div className={styles.searchBox}>
+              <IoSearchOutline className={styles.searchIcon} size={16} />
+              <input
+                type="text"
+                placeholder="코인 검색..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                onFocus={() => searchTerm.length > 0 && setShowAutocomplete(true)}
+                className={styles.searchInput}
+              />
+
+              {/* 자동완성 결과 */}
+              {showAutocomplete && autocompleteResults.length > 0 && (
+                <div className={styles.autocomplete}>
+                  {autocompleteResults.map(coin => (
+                    <div
+                      key={coin.symbol}
+                      className={styles.autocompleteItem}
+                      onClick={() => selectCoin(coin)}
+                    >
+                      <span className={styles.autoSymbol}>{coin.name}</span>
+                      <span className={styles.autoName}>{coin.symbol}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* 최근 검색어 (검색창 아래) */}
+            {recentSearches.length > 0 && searchTerm.length === 0 && (
+              <div className={styles.recentSearchesWrapper}>
+                <span className={styles.recentLabel}>최근 검색</span>
+                <div className={styles.recentSearches}>
+                  {recentSearches.map(coin => (
+                    <div key={coin.symbol} className={styles.recentChip}>
+                      <span onClick={() => selectCoin(coin)}>
+                        {coin.name} ({coin.symbol})
+                      </span>
+                      <button
+                        className={styles.removeChip}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          removeRecentSearch(coin.symbol);
+                        }}
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
         {/* 그룹 탭 */}
         <div className={styles.groupTabs}>
-          <button 
-            className={`${styles.groupTab} ${group === 'all' ? styles.active : ''}`} 
+          <button
+            className={`${styles.groupTab} ${group === 'all' ? styles.active : ''}`}
             onClick={() => setGroup('all')}
           >
             <span className={styles.tabLabel}>📋 전체종목</span>
             <span className={styles.tabDesc}>업비트 전체</span>
           </button>
-          <button 
-            className={`${styles.groupTab} ${group === 'volume' ? styles.active : ''}`} 
+          <button
+            className={`${styles.groupTab} ${group === 'volume' ? styles.active : ''}`}
             onClick={() => setGroup('volume')}
           >
             <span className={styles.tabLabel}>🔥 핫한놈들</span>
             <span className={styles.tabDesc}>거래대금 Top10</span>
           </button>
-          <button 
-            className={`${styles.groupTab} ${group === 'gainers' ? styles.active : ''}`} 
+          <button
+            className={`${styles.groupTab} ${group === 'gainers' ? styles.active : ''}`}
             onClick={() => setGroup('gainers')}
           >
             <span className={styles.tabLabel}>🚀 풀매수가즈아</span>
             <span className={styles.tabDesc}>급등주 추천</span>
           </button>
-          <button 
-            className={`${styles.groupTab} ${group === 'losers' ? styles.active : ''}`} 
+          <button
+            className={`${styles.groupTab} ${group === 'losers' ? styles.active : ''}`}
             onClick={() => setGroup('losers')}
           >
             <span className={styles.tabLabel}>😭 존버가미래다</span>
             <span className={styles.tabDesc}>급락주 저가매수</span>
           </button>
-          <button 
-            className={`${styles.groupTab} ${group === 'recommended' ? styles.active : ''}`} 
+          <button
+            className={`${styles.groupTab} ${group === 'recommended' ? styles.active : ''}`}
             onClick={() => setGroup('recommended')}
           >
-            <span className={styles.tabLabel}>🌙 돌돌이픽</span>
+            <span className={styles.tabLabel}>돌돌이픽</span>
             <span className={styles.tabDesc}>엄선 Top10</span>
           </button>
-          <button 
-            className={`${styles.groupTab} ${group === 'favorites' ? styles.active : ''}`} 
+          <button
+            className={`${styles.groupTab} ${group === 'favorites' ? styles.active : ''}`}
             onClick={() => setGroup('favorites')}
           >
-            <span className={styles.tabLabel}>⭐ 찜꽁</span>
+            <span className={styles.tabLabel}>❤️ 찜꽁</span>
             <span className={styles.tabDesc}>즐겨찾기 {favorites.length}개</span>
           </button>
-          <button 
+          <button
             className={styles.groupTab}
             onClick={handlePortfolioClick}
           >
@@ -351,6 +493,19 @@ export default function Dashboard() {
         <div className={styles.colVolume}>거래량</div>
       </div>
 
+      {/* 돌돌이픽 설명 */}
+      {group === 'recommended' && (
+        <div className={styles.pickExplanation}>
+          <div className={styles.pickIcon}>
+            <IoBulbOutline />
+          </div>
+          <div className={styles.pickText}>
+            <strong>돌돌이 코인판 | 투자는 본인 책임입니다</strong>
+            <p>실시간 시장 데이터를 분석하여 거래량, 변동성, 수익 잠재력을 종합 평가한 코인을 선별했습니다. 각 코인의 투자 유형과 리스크를 확인하고 신중히 판단하세요.</p>
+          </div>
+        </div>
+      )}
+
       {/* 코인 리스트 */}
       <div className={styles.coinsList}>
         {loadingAll ? (
@@ -373,69 +528,107 @@ export default function Dashboard() {
             }
 
             return (
-            <div 
-              key={coin.symbol} 
-              className={styles.coinRow}
-              onClick={() => handleCoinClick(coin.symbol)}
-            >
-              <div className={styles.coinInfo}>
-                <div className={`${styles.coinMark} ${index < 3 ? styles.medal : styles.rank}`}>
-                  {rankDisplay}
-                </div>
-                <div className={styles.coinDetails}>
-                  <div className={styles.coinSymbol}>{coin.name}</div>
-                  <div className={styles.coinName}>{coin.symbol}</div>
-                  {RECOMMENDATION_REASONS[coin.symbol] && (
-                    <div className={styles.recommendBox}>
-                      <div className={styles.recommendReason}>
-                        💡 {RECOMMENDATION_REASONS[coin.symbol].reason}
-                      </div>
-                      <div className={styles.recommendMeta}>
-                        <span className={styles.recommendType}>
-                          {RECOMMENDATION_REASONS[coin.symbol].type}
-                        </span>
-                        <span className={styles.recommendRisk}>
-                          {RECOMMENDATION_REASONS[coin.symbol].risk}
-                        </span>
-                      </div>
+              <div
+                key={coin.symbol}
+                className={styles.coinRow}
+                onClick={() => handleCoinClick(coin)}
+              >
+                <div className={styles.coinInfo}>
+                  <div className={`${styles.coinMark} ${index < 3 ? styles.medal : styles.rank}`}>
+                    {rankDisplay}
+                  </div>
+                  <div className={styles.coinDetails}>
+                    <div className={styles.coinNameRow}>
+                      <span className={styles.coinSymbol}>{coin.name}</span>
+                      <span className={styles.coinName}>{coin.symbol}</span>
+                      {coin.isNew && (
+                        <span className={styles.badge} data-type="new">NEW</span>
+                      )}
+                      {coin.marketWarning === 'CAUTION' && (
+                        <span className={styles.badge} data-type="caution">유의</span>
+                      )}
+                      {AIRDROP_COINS.includes(coin.symbol) && (
+                        <span className={styles.badge} data-type="airdrop"></span>
+                      )}
                     </div>
-                  )}
+                    {RECOMMENDATION_REASONS[coin.symbol] && (
+                      <div className={styles.recommendBox}>
+                        <div className={styles.recommendReason}>
+                          💡 {RECOMMENDATION_REASONS[coin.symbol].reason}
+                        </div>
+                        <div className={styles.recommendMeta}>
+                          <span className={styles.recommendType}>
+                            {RECOMMENDATION_REASONS[coin.symbol].type}
+                          </span>
+                          <span className={styles.recommendRisk}>
+                            {RECOMMENDATION_REASONS[coin.symbol].risk}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className={styles.colChange}>
+                  <div className={`${styles.changeValue} ${parseFloat(coin.change) > 0 ? styles.positive : styles.negative}`}>
+                    {parseFloat(coin.change) > 0 ? '+' : ''}{parseFloat(coin.change).toFixed(2)}%
+                  </div>
+                </div>
+
+                <div className={styles.colPrice}>
+                  {unit === 'KRW' && '₩'}
+                  {unit === 'USDT' && '$'}
+                  {formatPrice(coin.price)}
+                  {unit === 'BTC' && ' BTC'}
+                </div>
+
+                <div className={styles.colVolume}>
+                  <div className={styles.volumeContent}>
+                    <span>{formatPriceKorean(coin.volume)}</span>
+                    <button
+                      className={`${styles.favoriteBtn} ${favorites.includes(coin.symbol) ? styles.active : ''}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const btn = e.currentTarget;
+                        if (btn) {
+                          btn.classList.add(styles.animate);
+                          setTimeout(() => {
+                            if (btn) btn.classList.remove(styles.animate);
+                          }, 600);
+                        }
+                        toggleFavorite(coin.symbol);
+                      }}
+                    >
+                      {favorites.includes(coin.symbol) ? '❤️' : '🤍'}
+                    </button>
+                  </div>
                 </div>
               </div>
-
-              <div className={styles.colChange}>
-                <div className={`${styles.changeValue} ${parseFloat(coin.change) > 0 ? styles.positive : styles.negative}`}>
-                  {parseFloat(coin.change) > 0 ? '+' : ''}{parseFloat(coin.change).toFixed(2)}%
-                </div>
-              </div>
-
-              <div className={styles.colPrice}>
-                {unit === 'KRW' && '₩'}
-                {unit === 'USDT' && '$'}
-                {formatPrice(coin.price)}
-                {unit === 'BTC' && ' BTC'}
-              </div>
-
-              <div className={styles.colVolume}>
-                <div className={styles.volumeContent}>
-                  <span>{formatPriceKorean(coin.volume)}</span>
-                  <button 
-                    className={`${styles.favoriteBtn} ${favorites.includes(coin.symbol) ? styles.active : ''}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleFavorite(coin.symbol);
-                    }}
-                  >
-                    {favorites.includes(coin.symbol) ? '찜꽁' : '찜'}
-                  </button>
-                </div>
-              </div>
-            </div>
             );
           })
         ) : (
-          <div className={styles.empty}>
-            {group === 'favorites' ? '⭐ 즐겨찾기한 코인이 없습니다. 별 버튼을 눌러 추가하세요!' : '😢 그런 코인은 없습니다...'}
+          <div className={styles.emptyState}>
+            <div className={styles.emptyCard}>
+              <div className={styles.emptyIcon}>🔍</div>
+              <div className={styles.emptyText}>
+                {group === 'favorites' ? (
+                  <>
+                    <strong>즐겨찾기한 코인이 없습니다</strong>
+                    <p>💕  버튼을 눌러 관심 코인을 추가하세요</p>
+                  </>
+                ) : searchTerm ? (
+                  <>
+                    <strong>"{searchTerm}" 검색 결과가 없습니다</strong>
+                    <p>다른 코인명이나 심볼로 검색해보세요</p>
+                  </>
+                ) : (
+                  <>
+                    <strong>표시할 코인이 없습니다</strong>
+                    <p>다른 탭을 선택하거나 전체 종목을 확인하세요</p>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         )}
       </div>
@@ -450,6 +643,8 @@ export default function Dashboard() {
           {toast}
         </div>
       )}
+      </div>
+      </div>
     </div>
   );
 }
