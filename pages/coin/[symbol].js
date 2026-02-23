@@ -1,5 +1,5 @@
 // pages/coin/[symbol].js
-import styles from '@/styles/CoinDetail.module.css';
+import styles from '@/styles/coinDetail.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';

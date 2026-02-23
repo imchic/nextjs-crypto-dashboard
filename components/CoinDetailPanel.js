@@ -10,7 +10,7 @@ import {
   Cell,
 } from 'recharts';
 import { IoBarChartOutline, IoReceiptOutline } from 'react-icons/io5';
-import styles from '@/styles/CoinDetail.module.css';
+import styles from '@/styles/coinDetail.module.css';
 
 const CANDLE_TYPES = [
   { id: 'minutes/1', label: '1분', desc: '초단타' },
