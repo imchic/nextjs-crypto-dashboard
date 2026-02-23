@@ -36,8 +36,7 @@ export default async function handler(req, res) {
     for (const batch of batches) {
       const markets = batch.join(',');
       const response = await fetch(`https://api.upbit.com/v1/ticker?markets=${markets}`, {
-        headers: { 'Accept': 'application/json' },
-        ...(proxyAgent && { agent: proxyAgent.https })
+        headers: { 'Accept': 'application/json' }
       });
       
       if (response.ok) {
