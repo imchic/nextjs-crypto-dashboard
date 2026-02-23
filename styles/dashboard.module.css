@@ -225,7 +225,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   border: 1px solid rgba(139, 127, 244, 0.3);
   border-radius: 6px;
   margin-top: 4px;
