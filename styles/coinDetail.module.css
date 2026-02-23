@@ -11,14 +11,46 @@
 
 /* 헤더 영역 */
 .header {
-  padding: 24px;
+  padding: 16px 24px;
   background: var(--bg-secondary);
-  border-bottom: 2px solid var(--accent-border);
+  border-bottom: 1px solid var(--border-light);
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.headerTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.headerPrice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.headerPrice .positive {
+  color: var(--green);
+  font-size: 12px;
+  padding: 3px 8px;
+  background: var(--green-bg);
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.headerPrice .negative {
+  color: var(--red);
+  font-size: 12px;
+  padding: 3px 8px;
+  background: var(--red-bg);
+  border-radius: 4px;
+  font-weight: 700;
 }
 
 .backBtn {
@@ -48,9 +80,9 @@
 }
 
 .title {
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 800;
-  margin-bottom: 8px;
+  margin: 0;
   letter-spacing: -1px;
   background: linear-gradient(90deg,
       var(--accent-primary) 0%,
@@ -62,38 +94,14 @@
 }
 
 .subtitle {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--text-tertiary);
-  margin-bottom: 20px;
+  margin: 0;
   font-weight: 600;
 }
 
 .price {
-  font-size: 32px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 0;
-  color: var(--text-primary);
-}
-
-.price .positive {
-  color: var(--green);
-  font-size: 18px;
-  padding: 6px 12px;
-  background: var(--green-bg);
-  border-radius: 8px;
-  font-weight: 700;
-}
-
-.price .negative {
-  color: var(--red);
-  font-size: 18px;
-  padding: 6px 12px;
-  background: var(--red-bg);
-  border-radius: 8px;
-  font-weight: 700;
+  display: none;
 }
 
 /* 캔들 타입 탭 (가로 스크롤) */
