@@ -1,23 +1,7 @@
-// 프록시 설정 (AWS EC2 Squid 프록시)
-const PROXY_URL = process.env.UPBIT_PROXY_URL || 'http://3.36.240.119:3128';
-let proxyAgent = null;
-
-if (PROXY_URL) {
-  const { HttpProxyAgent } = await import('http-proxy-agent');
-  const { HttpsProxyAgent } = await import('https-proxy-agent');
-  proxyAgent = {
-    http: new HttpProxyAgent(PROXY_URL),
-    https: new HttpsProxyAgent(PROXY_URL),
-  };
-}
-
 export default async function handler(req, res) {
   try {
-    // 1. 전체 마켓 리스트 가져오기 (한글명 포함)
-    const marketsListRes = await fetch('https://api.upbit.com/v1/market/all', {
-      headers: { 'Accept': 'application/json' },
-      ...(proxyAgent && { agent: proxyAgent.https })
-    });
+    // EC2 API 서버에서 마켓 데이터 가져오기
+    const marketsListRes = await fetch('http://3.36.240.119:5000/api/markets');
     
     if (!marketsListRes.ok) {
       throw new Error(`Market list API error: ${marketsListRes.status}`);

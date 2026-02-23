@@ -2,6 +2,8 @@
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 
+const API_SERVER = 'http://3.36.240.119:5000';
+
 export default async function handler(req, res) {
   try {
     // 환경변수에서 API 키 로드
@@ -14,23 +16,8 @@ export default async function handler(req, res) {
       });
     }
 
-    // 프록시 설정
-    const PROXY_URL = process.env.UPBIT_PROXY_URL || 'http://3.36.240.119:3128';
-    let proxyAgent = null;
-
-    if (PROXY_URL) {
-      const { HttpProxyAgent } = await import('http-proxy-agent');
-      const { HttpsProxyAgent } = await import('https-proxy-agent');
-      proxyAgent = {
-        http: new HttpProxyAgent(PROXY_URL),
-        https: new HttpsProxyAgent(PROXY_URL),
-      };
-    }
-
-    // 마켓 정보 가져오기 (한글명, 경고)
-    const marketsRes = await fetch('https://api.upbit.com/v1/market/all', {
-      ...(proxyAgent && { agent: proxyAgent.https })
-    });
+    // 마켓 정보 가져오기 (한글명, 경고) - EC2 API 서버에서 가져오기
+    const marketsRes = await fetch(`${API_SERVER}/api/markets`);
     const allMarkets = await marketsRes.json();
     const marketInfo = {};
     const krwListedCoins = new Set(); // KRW 마켓에 상장된 코인
@@ -56,34 +43,18 @@ export default async function handler(req, res) {
     const token = jwt.sign(payload, secret_key);
     const authorizationToken = `Bearer ${token}`;
 
-    // 업비트 계좌 조회
-    const response = await fetch('https://api.upbit.com/v1/accounts', {
-      headers: { Authorization: authorizationToken },
-      ...(proxyAgent && { agent: proxyAgent.https })
+    // 업비트 계좌 조회 - EC2 API 서버에서 처리
+    const response = await fetch(`${API_SERVER}/api/accounts`, {
+      headers: { Authorization: authorizationToken }
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Upbit API Error:', errorText);
-
-      // IP 제한 에러 감지
-      let errorMessage = 'Upbit API 호출 실패';
-      let isIpError = false;
-
-      try {
-        const errorObj = JSON.parse(errorText);
-        if (errorObj.error?.name === 'no_authorization_ip') {
-          isIpError = true;
-          errorMessage = '이 서버의 IP가 Upbit에 등록되지 않았습니다. Upbit 설정에서 IP 화이트리스트를 확인해주세요.';
-        }
-      } catch (e) {
-        // JSON 파싱 실패, 원본 메시지 사용
-      }
+      console.error('API Server Error:', errorText);
 
       return res.status(response.status).json({
-        error: errorMessage,
-        details: errorText,
-        isIpError: isIpError
+        error: 'API Server 호출 실패',
+        details: errorText
       });
     }
 
