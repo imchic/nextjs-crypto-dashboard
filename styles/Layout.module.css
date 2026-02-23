@@ -41,11 +41,14 @@
   filter: drop-shadow(0 0 4px rgba(139, 127, 244, 0.2));
   transition: all 0.3s ease;
   background: transparent;
+  padding: 6px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
 }
 
 .logoContainer:hover .logoIcon {
-  filter: drop-shadow(0 0 12px rgba(139, 127, 244, 0.6));
-  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(139, 127, 244, 0.4));
+  transform: scale(1.08);
 }
 
 .logo {
