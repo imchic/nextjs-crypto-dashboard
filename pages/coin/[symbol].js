@@ -84,6 +84,7 @@ export default function CoinDetail() {
   const [candleType, setCandleType] = useState('minutes/60');
   const [initialLoad, setInitialLoad] = useState(false);
   const [theme, setTheme] = useState('dark');
+  const [coinGeckoData, setCoinGeckoData] = useState(null);
 
   // 커스텀 툴팁 컴포넌트
   const CustomTooltip = ({ active, payload, label }) => {
@@ -153,6 +154,9 @@ export default function CoinDetail() {
     
     loadCoinData();
     setInitialLoad(true);
+
+    // CoinGecko 데이터 로드
+    loadCoinGeckoData();
 
     // 5초마다 가격 자동 업데이트 (백그라운드)
     const priceInterval = setInterval(() => {
@@ -237,6 +241,7 @@ export default function CoinDetail() {
             close: candle.trade_price,
             high: candle.high_price,
             low: candle.low_price,
+            volume: candle.candle_acc_trade_volume,
             // 캔들 몸통 (상승/하락)
             body: [Math.min(open, close), Math.max(open, close)],
             // 꼬리 (하단)
@@ -318,6 +323,19 @@ export default function CoinDetail() {
     }
   };
 
+  const loadCoinGeckoData = async () => {
+    try {
+      const res = await fetch(`/api/coingecko?symbol=${symbol}`);
+      const data = await res.json();
+      if (data && !data.error) {
+        setCoinGeckoData(data);
+        console.log('CoinGecko data loaded:', data);
+      }
+    } catch (e) {
+      console.error('CoinGecko error:', e);
+    }
+  };
+
   if (!router.isReady) {
     return (
       <div className={styles.container}>
@@ -379,6 +397,33 @@ export default function CoinDetail() {
           <span className={styles.priceValue}>₩{(coinData.trade_price_24h / 1000000000).toFixed(2)}B</span>
         </div>
       </div>
+
+      {/* 💰 시가총액 & 순위 섹션 */}
+      {coinGeckoData && (
+        <div className={styles.marketCapSection}>
+          <div className={styles.marketCapItem}>
+            <span className={styles.marketCapLabel}>시가총액</span>
+            <span className={styles.marketCapValue}>
+              ${(coinGeckoData.market_cap_usd / 1000000000).toFixed(2)}B
+            </span>
+            <span className={styles.marketCapKrw}>
+              ₩{(coinGeckoData.market_cap_krw / 1000000000000).toFixed(2)}T
+            </span>
+          </div>
+          {coinGeckoData.market_cap_rank && (
+            <div className={styles.marketCapItem}>
+              <span className={styles.marketCapLabel}>순위</span>
+              <span className={styles.marketCapRank}>#{coinGeckoData.market_cap_rank}</span>
+            </div>
+          )}
+          {coinGeckoData.btc_dominance && (
+            <div className={styles.marketCapItem}>
+              <span className={styles.marketCapLabel}>BTC 도미넌스</span>
+              <span className={styles.marketCapValue}>{coinGeckoData.btc_dominance.toFixed(2)}%</span>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* 캔들 타입 탭 (가로 스크롤) */}
       <div className={styles.tabs}>
@@ -455,6 +500,51 @@ export default function CoinDetail() {
             <div className={styles.empty}>😢 차트가 없네요...</div>
           )}
         </div>
+
+        {/* 거래량 차트 */}
+        {candleData.length > 0 && (
+          <div className={`${styles.volumeChartSection} ${theme}`}>
+            <h3 className={styles.volumeTitle}>📊 거래량</h3>
+            <ResponsiveContainer width="100%" height={150}>
+              <ComposedChart
+                data={candleData}
+                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid 
+                  stroke={theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.05)'} 
+                  strokeDasharray="3 3" 
+                />
+                <XAxis
+                  dataKey="time"
+                  stroke={theme === 'light' ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.5)'}
+                  tick={{ fontSize: 10, fill: theme === 'light' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)' }}
+                  axisLine={{ stroke: theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)' }}
+                />
+                <YAxis
+                  stroke={theme === 'light' ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.5)'}
+                  tick={{ fontSize: 10, fill: theme === 'light' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)' }}
+                  axisLine={{ stroke: theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)' }}
+                  tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`}
+                />
+                <Tooltip 
+                  formatter={(value) => `${(value / 1000000).toFixed(2)}M`}
+                  contentStyle={{
+                    backgroundColor: '#1a1a1a',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: '8px',
+                    padding: '8px 12px',
+                    fontSize: '12px',
+                  }}
+                />
+                <Bar dataKey="volume" barSize={8} radius={[2, 2, 0, 0]}>
+                  {candleData.map((entry, index) => (
+                    <Cell key={`vol-${index}`} fill={entry.isUp ? '#0ECB81' : '#F6465D'} opacity={0.7} />
+                  ))}
+                </Bar>
+              </ComposedChart>
+            </ResponsiveContainer>
+          </div>
+        )}
 
         {/* 호가/체결 (항상 표시) */}
         <div className={styles.bottomSection}>
