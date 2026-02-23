@@ -33,6 +33,24 @@ export default function CoinDetailPanel({ coin }) {
   const [showOrderbook, setShowOrderbook] = useState(true);
   const [orderbook, setOrderbook] = useState(null);
   const [trades, setTrades] = useState([]);
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    // 테마 초기 설정
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    
+    // MutationObserver로 테마 변경 감지
+    const observer = new MutationObserver(() => {
+      const newTheme = document.documentElement.getAttribute('data-theme') || savedTheme;
+      setTheme(newTheme);
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     if (!coin) return;
@@ -181,9 +199,12 @@ export default function CoinDetailPanel({ coin }) {
           ) : candleData.length > 0 ? (
             <ResponsiveContainer width="100%" height={400}>
               <ComposedChart data={candleData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                <XAxis dataKey="time" stroke="rgba(255,255,255,0.5)" style={{ fontSize: 10 }} />
-                <YAxis domain={['auto', 'auto']} stroke="rgba(255,255,255,0.5)" style={{ fontSize: 10 }} />
+                <CartesianGrid 
+                  strokeDasharray="3 3" 
+                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.1)'} 
+                />
+                <XAxis dataKey="time" stroke={theme === 'light' ? '#666666' : 'rgba(255,255,255,0.5)'} style={{ fontSize: 10 }} />
+                <YAxis domain={['auto', 'auto']} stroke={theme === 'light' ? '#666666' : 'rgba(255,255,255,0.5)'} style={{ fontSize: 10 }} />
                 <Tooltip content={<CustomTooltip />} />
                 <Bar dataKey="wickHigh" stackId="a" fill="transparent" />
                 <Bar dataKey="body" stackId="a">

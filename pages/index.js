@@ -458,7 +458,7 @@ export default function Dashboard() {
             className={`${styles.groupTab} ${group === 'recommended' ? styles.active : ''}`}
             onClick={() => setGroup('recommended')}
           >
-            <span className={styles.tabLabel}>돌돌이픽</span>
+            <span className={styles.tabLabel}>🤖 AI추천</span>
             <span className={styles.tabDesc}>엄선 Top10</span>
           </button>
           <button
@@ -508,7 +508,7 @@ export default function Dashboard() {
             <IoBulbOutline />
           </div>
           <div className={styles.pickText}>
-            <strong>돌돌이 코인판 | 투자는 본인 책임입니다</strong>
+            <strong>AI 추천 코인 | 투자는 본인 책임입니다</strong>
             <p>실시간 시장 데이터를 분석하여 거래량, 변동성, 수익 잠재력을 종합 평가한 코인을 선별했습니다. 각 코인의 투자 유형과 리스크를 확인하고 신중히 판단하세요.</p>
           </div>
         </div>

@@ -277,12 +277,15 @@ export default function CoinDetail() {
             high: candle.high_price,
             low: candle.low_price,
             volume: candle.candle_acc_trade_volume,
-            // 캔들 몸통 (상승/하락)
-            body: [Math.min(open, close), Math.max(open, close)],
-            // 꼬리 (하단)
-            lowerWick: [candle.low_price, Math.min(open, close)],
-            // 꼬리 (상단)
-            upperWick: [Math.max(open, close), candle.high_price],
+            // 캔들 몸통 높이 (상승/하락)
+            body: Math.abs(close - open),
+            bodyBase: Math.min(open, close),
+            // 꼬리 (하단) - 높이만
+            lowerWick: Math.min(open, close) - candle.low_price,
+            lowerWickBase: candle.low_price,
+            // 꼬리 (상단) - 높이만
+            upperWick: candle.high_price - Math.max(open, close),
+            upperWickBase: Math.max(open, close),
             isUp,
           };
         });
@@ -510,28 +513,45 @@ export default function CoinDetail() {
                 />
                 <Tooltip content={<CustomTooltip />} />
 
+                {/* 낮은가(wick) 베이스 - 투명 */}
+                <Bar dataKey="lowerWickBase" stackId="candle" barSize={6} fill="transparent" isAnimationActive={false} />
+                
                 {/* 하단 꼬리 */}
-                <Bar dataKey="lowerWick" barSize={2}>
+                <Bar dataKey="lowerWick" stackId="candle" barSize={6} radius={[0, 0, 0, 0]}>
                   {candleData.map((entry, index) => (
-                    <Cell key={`lower-${index}`} fill={entry.isUp ? '#0ECB81' : '#F6465D'} />
-                  ))}
-                </Bar>
-
-                {/* 캔들 몸통 */}
-                <Bar dataKey="body" barSize={10}>
-                  {candleData.map((entry, index) => (
-                    <Cell
-                      key={`body-${index}`}
+                    <Cell 
+                      key={`lower-${index}`} 
                       fill={entry.isUp ? '#0ECB81' : '#F6465D'}
-                      opacity={0.9}
+                      opacity={1}
                     />
                   ))}
                 </Bar>
 
-                {/* 상단 꼬리 */}
-                <Bar dataKey="upperWick" barSize={2}>
+                {/* 캔들 몸통 베이스 - 투명 */}
+                <Bar dataKey="bodyBase" stackId="candle" barSize={12} fill="transparent" isAnimationActive={false} />
+
+                {/* 캔들 몸통 */}
+                <Bar dataKey="body" stackId="candle" barSize={12}>
                   {candleData.map((entry, index) => (
-                    <Cell key={`upper-${index}`} fill={entry.isUp ? '#0ECB81' : '#F6465D'} />
+                    <Cell
+                      key={`body-${index}`}
+                      fill={entry.isUp ? '#0ECB81' : '#F6465D'}
+                      opacity={0.95}
+                    />
+                  ))}
+                </Bar>
+
+                {/* 상단 꼬리 베이스 - 투명 */}
+                <Bar dataKey="upperWickBase" stackId="candle" barSize={6} fill="transparent" isAnimationActive={false} />
+
+                {/* 상단 꼬리 */}
+                <Bar dataKey="upperWick" stackId="candle" barSize={6} radius={[0, 0, 0, 0]}>
+                  {candleData.map((entry, index) => (
+                    <Cell 
+                      key={`upper-${index}`} 
+                      fill={entry.isUp ? '#0ECB81' : '#F6465D'}
+                      opacity={1}
+                    />
                   ))}
                 </Bar>
               </ComposedChart>
