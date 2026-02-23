@@ -1,5 +1,5 @@
 // 프록시 설정 (AWS EC2 Squid 프록시)
-const PROXY_URL = process.env.UPBIT_PROXY_URL || null;
+const PROXY_URL = process.env.UPBIT_PROXY_URL || 'http://3.36.240.119:3128';
 let proxyAgent = null;
 
 if (PROXY_URL) {
