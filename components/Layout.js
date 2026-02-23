@@ -1,8 +1,8 @@
-import { useState, useEffect, createContext, useContext } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 import styles from '@/styles/Layout.module.css';
-import { IoSunnyOutline, IoMoonOutline, IoRefreshOutline } from 'react-icons/io5';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { createContext, useEffect, useState } from 'react';
+import { IoMoonOutline, IoRefreshOutline, IoSunnyOutline } from 'react-icons/io5';
 
 export const DashboardContext = createContext();
 
@@ -46,7 +46,7 @@ export default function Layout({ children }) {
       <div className={styles.wrapper}>
         <header className={styles.globalHeader}>
           <Link href="/">
-            <h1 className={styles.logo}>돌돌이 코인판</h1>
+            <h1 className={styles.logo}>임돌픽</h1>
           </Link>
           <div className={styles.headerRight}>
             {isDashboard && dashboardState.timestamp && (
@@ -61,7 +61,7 @@ export default function Layout({ children }) {
                 </button>
               </>
             )}
-            <button 
+            <button
               className={styles.themeBtn}
               onClick={toggleTheme}
               title={theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환'}
