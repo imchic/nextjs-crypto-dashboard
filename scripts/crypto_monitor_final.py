@@ -14,8 +14,9 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-# 설정
-EMAIL = "imchic8@gmail.com"
+# 설정 (환경변수에서 읽음)
+EMAIL = os.getenv("EMAIL", "imchic8@gmail.com")
+GOG_KEYRING_PASSWORD = os.getenv("GOG_KEYRING_PASSWORD", "lhb7683^^")
 PORTFOLIO_FILE = Path("/mnt/c/Users/imchi/.openclaw/workspace/crypto_portfolio.json")
 
 # 관심 알트코인 30개 (한글명 포함)
@@ -319,7 +320,7 @@ def send_email(html_body):
         try:
             # 환경변수 설정 (gog keyring 패스프레이즈)
             env = os.environ.copy()
-            env['GOG_KEYRING_PASSWORD'] = 'lhb7683^^'
+            env['GOG_KEYRING_PASSWORD'] = GOG_KEYRING_PASSWORD
             
             # 파일 내용 읽고 gog로 발송
             with open(temp_html, 'r', encoding='utf-8') as f:

@@ -6,6 +6,7 @@
 - 뉴스 분석
 - 양봉/음봉 판단
 - 액션 추천
+메일 전용 발송 (2026-02-23 업데이트)
 """
 
 import json
@@ -14,11 +15,11 @@ import urllib.parse
 from datetime import datetime
 import subprocess
 import sys
+import os
 
-# 설정
-TELEGRAM_TOKEN = "***REDACTED***"
-TELEGRAM_USER_ID = 8525813991
-EMAIL = "imchic8@gmail.com"
+# 설정 (환경변수에서 읽음)
+EMAIL = os.getenv("EMAIL", "imchic8@gmail.com")
+GOG_KEYRING_PASSWORD = os.getenv("GOG_KEYRING_PASSWORD", "lhb7683^^")
 
 # 주인님 포트폴리오 (최신 데이터)
 PORTFOLIO = {
@@ -336,7 +337,7 @@ def send_email(html_body):
         try:
             # 환경변수 설정 (gog keyring 패스프레이즈)
             env = os.environ.copy()
-            env['GOG_KEYRING_PASSWORD'] = 'lhb7683^^'
+            env['GOG_KEYRING_PASSWORD'] = GOG_KEYRING_PASSWORD
             
             # 파일 내용 읽고 gog로 발송
             with open(temp_html, 'r', encoding='utf-8') as f:
