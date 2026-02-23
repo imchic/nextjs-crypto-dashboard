@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 암호화폐 대시보드 - 돌돌이</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* 헤더 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timestamp {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* 통계 카드 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-value.green {
+            color: #10b981;
+        }
+
+        .stat-value.red {
+            color: #ef4444;
+        }
+
+        /* 코인 테이블 */
+        .coins-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .coins-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.2fr 1.2fr 1.2fr 1.2fr;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 12px;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .coin-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.2fr 1.2fr 1.2fr 1.2fr;
+            padding: 15px 20px;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        .coin-row:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .coin-name {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .coin-symbol {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .coin-korean {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .price {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .change {
+            text-align: right;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+
+        .change.up {
+            color: #10b981;
+        }
+
+        .change.down {
+            color: #ef4444;
+        }
+
+        .arrow {
+            font-size: 16px;
+        }
+
+        .high-low {
+            font-size: 12px;
+            color: #888;
+            text-align: right;
+        }
+
+        .volume {
+            font-size: 12px;
+            color: #888;
+            text-align: right;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .table-header,
+            .coin-row {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .high-low,
+            .volume {
+                display: none;
+            }
+        }
+
+        /* 로딩 애니메이션 */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #10b981;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .footer-link {
+            color: #10b981;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="header">
+            <h1>💰 암호화폐 대시보드</h1>
+            <div>
+                <div class="timestamp" id="timestamp">로딩 중...</div>
+            </div>
+        </div>
+
+        <!-- 통계 -->
+        <div class="stats-grid" id="stats">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>데이터 로딩 중...</p>
+            </div>
+        </div>
+
+        <!-- 코인 목록 -->
+        <div class="coins-section">
+            <div class="section-title">📊 실시간 시세 TOP 10</div>
+            <div id="coins-container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>시세 데이터 로딩 중...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 푸터 -->
+        <div class="footer">
+            🌙 돌돌이 암호화폐 분석 대시보드 | 
+            <a href="https://upbit.com" class="footer-link">업비트 공식 API</a> 연동
+        </div>
+    </div>
+
+    <script>
+        // 실시간 대시보드 데이터 로드
+        async function loadDashboard() {
+            try {
+                const response = await fetch('/crypto_dashboard.json');
+                const data = await response.json();
+                
+                renderStats(data);
+                renderCoins(data);
+                
+            } catch (error) {
+                console.error('데이터 로드 실패:', error);
+                document.getElementById('stats').innerHTML = '<p style="color: #ef4444; padding: 20px;">데이터를 불러올 수 없습니다.</p>';
+            }
+        }
+
+        // 통계 렌더링
+        function renderStats(data) {
+            const { stats, timestamp } = data;
+            
+            // 타임스탬프 업데이트
+            const date = new Date(timestamp);
+            document.getElementById('timestamp').textContent = date.toLocaleString('ko-KR');
+            
+            // 통계 카드 생성
+            const statsHtml = `
+                <div class="stat-card">
+                    <div class="stat-label">평균 변동률</div>
+                    <div class="stat-value ${stats.avg_change >= 0 ? 'green' : 'red'}">
+                        ${stats.avg_change >= 0 ? '📈' : '📉'}
+                        ${stats.avg_change > 0 ? '+' : ''}${stats.avg_change}%
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">상승 종목</div>
+                    <div class="stat-value green">
+                        🟢 ${stats.gainers}개
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">하락 종목</div>
+                    <div class="stat-value red">
+                        🔴 ${stats.losers}개
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">추적 종목</div>
+                    <div class="stat-value">
+                        📊 ${stats.total}개
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('stats').innerHTML = statsHtml;
+        }
+
+        // 코인 목록 렌더링
+        function renderCoins(data) {
+            const { coins } = data;
+            
+            const tableHtml = `
+                <div class="table-header">
+                    <div>종목</div>
+                    <div>현재가</div>
+                    <div style="text-align: right;">24h 변동</div>
+                    <div style="text-align: right;">고가 / 저가</div>
+                    <div style="text-align: right;">24h 거래대금</div>
+                    <div style="text-align: right;">거래량</div>
+                </div>
+                ${coins.map(coin => `
+                    <div class="coin-row">
+                        <div class="coin-name">
+                            <span class="coin-symbol">${coin.market.replace('KRW-', '')}</span>
+                            <span class="coin-korean">${coin.name}</span>
+                        </div>
+                        <div class="price">₩ ${coin.price.toLocaleString()}</div>
+                        <div class="change ${coin.change >= 0 ? 'up' : 'down'}">
+                            <span class="arrow">${coin.change >= 0 ? '📈' : '📉'}</span>
+                            ${coin.change > 0 ? '+' : ''}${coin.change}%
+                        </div>
+                        <div class="high-low">
+                            ₩${coin.high.toLocaleString()} / ₩${coin.low.toLocaleString()}
+                        </div>
+                        <div class="volume">
+                            ₩${(coin.trade_price_24h / 1000000000).toFixed(1)}B
+                        </div>
+                        <div class="volume">
+                            ${coin.volume.toLocaleString(undefined, {maximumFractionDigits: 0})}
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+            
+            document.getElementById('coins-container').innerHTML = tableHtml;
+        }
+
+        // 자동 새로고침 (30초마다)
+        loadDashboard();
+        setInterval(loadDashboard, 30000);
+    </script>
+</body>
+</html>

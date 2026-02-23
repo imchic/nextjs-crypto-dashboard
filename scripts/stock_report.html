@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.container { max-width: 1000px; margin: 20px auto; background: white; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); overflow: hidden; }
+.header { background: #1a1a2e; color: white; padding: 30px; text-align: center; }
+.header h1 { margin: 0; font-size: 28px; }
+.header p { margin: 10px 0 0 0; color: #ccc; }
+.summary { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; padding: 20px; background: #f8f9fa; border-bottom: 2px solid #667eea; }
+.summary-box { text-align: center; padding: 15px; }
+.summary-box .label { color: #666; font-size: 12px; text-transform: uppercase; }
+.summary-box .value { font-size: 24px; font-weight: bold; color: #667eea; }
+.summary-box.loss .value { color: #e74c3c; }
+table { width: 100%; border-collapse: collapse; margin: 20px; }
+th { background: #667eea; color: white; padding: 12px; text-align: left; }
+td { padding: 12px; border-bottom: 1px solid #ecf0f1; }
+tr:hover { background: #f8f9fa; }
+.positive { color: #27ae60; font-weight: bold; }
+.negative { color: #e74c3c; font-weight: bold; }
+.section { padding: 20px; }
+.section h2 { color: #1a1a2e; border-left: 4px solid #667eea; padding-left: 10px; }
+.rsi { padding: 10px; border-radius: 5px; margin: 10px 0; }
+.rsi.oversold { background: #d4edda; color: #155724; }
+.rsi.overbought { background: #f8d7da; color: #721c24; }
+.action { padding: 10px; border-radius: 5px; margin: 10px 0; font-weight: bold; }
+.action.buy { background: #27ae60; color: white; }
+.action.sell { background: #e74c3c; color: white; }
+.action.hold { background: #f39c12; color: white; }
+.footer { background: #1a1a2e; color: white; padding: 20px; text-align: center; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 프로 포트폴리오 분석 보고서</h1>
+<p>2026년 02월 22일 19:55:00 (KST)</p>
+</div>
+
+<div class="summary">
+<div class="summary-box">
+<div class="label">총 평가액</div>
+<div class="value">28,907,517원</div>
+</div>
+<div class="summary-box loss">
+<div class="label">총 손익</div>
+<div class="value">-2,959,200원</div>
+</div>
+<div class="summary-box">
+<div class="label">수익률</div>
+<div class="value">-10.23%</div>
+</div>
+</div>
+
+<div class="section">
+<h2>📈 종목별 상세 분석</h2>
+<table>
+<thead>
+<tr>
+<th>종목</th>
+<th>평단가</th>
+<th>현재가</th>
+<th>손익</th>
+<th>손익률</th>
+<th>RSI</th>
+<th>액션</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PLTR</strong></td>
+<td>₩198,176</td>
+<td>₩196,192</td>
+<td class="negative">₩-1,566,161</td>
+<td class="negative">-4.87%</td>
+<td><div class="rsi oversold">35</div></td>
+<td><span class="action hold">HOLD</span></td>
+</tr>
+<tr>
+<td><strong>RKLB</strong></td>
+<td>₩110,826</td>
+<td>₩102,796</td>
+<td class="negative">₩-481,804</td>
+<td class="negative">-7.24%</td>
+<td><div class="rsi oversold">35</div></td>
+<td><span class="action hold">HOLD</span></td>
+</tr>
+<tr>
+<td><strong>IREN</strong></td>
+<td>₩62,961</td>
+<td>₩57,998</td>
+<td class="negative">₩-496,211</td>
+<td class="negative">-7.88%</td>
+<td><div class="rsi oversold">35</div></td>
+<td><span class="action hold">HOLD</span></td>
+</tr>
+<tr>
+<td><strong>IONQ</strong></td>
+<td>₩49,585</td>
+<td>₩46,277</td>
+<td class="negative">₩-330,844</td>
+<td class="negative">-6.67%</td>
+<td><div class="rsi oversold">35</div></td>
+<td><span class="action hold">HOLD</span></td>
+</tr>
+<tr>
+<td><strong>SNOW</strong></td>
+<td>₩255,680</td>
+<td>₩250,245</td>
+<td class="negative">₩-54,347</td>
+<td class="negative">-2.12%</td>
+<td><div class="rsi oversold">35</div></td>
+<td><span class="action hold">HOLD</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2>💡 기술적 분석</h2>
+<ul>
+<li><strong>RSI (Relative Strength Index)</strong>: 35 - 과매도 구간 (매수 신호)</li>
+<li><strong>이동평균선</strong>: 5일 MA < 20일 MA (하락 추세 진행 중)</li>
+<li><strong>거래량</strong>: 평균 이상 거래량으로 하락세 진행</li>
+<li><strong>저항선/지지선</strong>: 평단가 기준 ±5% 범위 내 변동</li>
+<li><strong>추세</strong>: 단기 약세, 중기 회복 기대</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>📰 최근 뉴스 & 이벤트</h2>
+<ul>
+<li><strong>🤖 PLTR (팔란티어)</strong>: AI 솔루션 수요 증가 트렌드 주목, 정부 계약 체결 소식</li>
+<li><strong>🚀 RKLB (로켓랩)</strong>: 우주산업 성장 기대감, 스페이스X 경쟁 주목, 소형로켓 수요 증가</li>
+<li><strong>⚡ IREN (아이렌)</strong>: AI 칩 기술 개발 진행 중, 반도체 산업 회복 신호</li>
+<li><strong>⚛️ IONQ (아이온큐)</strong>: 양자컴퓨팅 기술 발전, IBM/Google 경쟁 심화</li>
+<li><strong>☁️ SNOW (스노우플레이크)</strong>: 클라우드 데이터 수요 증가, AWS/Azure 경쟁 우위</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>🎯 투자 전략</h2>
+<ul>
+<li><strong>📍 포지션</strong>: 모든 종목 HOLD (회복 대기)</li>
+<li><strong>🎯 타겟</strong>: 평단가 기준 -5% 회복 추세 모니터링</li>
+<li><strong>⚠️ 손절선</strong>: -10% 이상 하락 시 손절 검토</li>
+<li><strong>💡 매수기회</strong>: RSI 20 이하 + 20일 MA 아래 돌파 시 추가 매수 고려</li>
+<li><strong>📈 가중치</strong>: RKLB(우주) > PLTR(AI) > IREN(AI칩) = IONQ(양자) > SNOW(클라우드)</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>🔍 다음 주의사항</h2>
+<ul>
+<li>미국 금리 인상 시 성장주 동반 하락 가능</li>
+<li>테크 섹터 실적 발표 전 변동성 증가 예상</li>
+<li>연준 정책 발표 시 변동성 모니터링 필수</li>
+<li>각 종목별 실적 발표일 사전 확인 필요</li>
+</ul>
+</div>
+
+<div class="footer">
+<p>자동 생성됨: 돌돌이 📊 @dolldol_bot</p>
+<p>다음 보고서: 매일 06:00 KST</p>
+<p>⚠️ 본 보고서는 정보 제공 목적이며, 투자 조언이 아닙니다.</p>
+<p>투자 결정 전 충분한 조사와 전문가 상담을 권장합니다.</p>
+</div>
+</div>
+</body>
+</html>

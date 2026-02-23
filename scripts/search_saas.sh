@@ -1,0 +1,2 @@
+#!/bin/bash
+/home/linuxbrew/.linuxbrew/bin/gog gmail search 'from:stripe OR from:segment OR from:supabase OR from:firebase OR from:heroku OR from:vercel OR from:figma OR from:slack OR from:notion OR from:github OR from:gitlab OR from:jira OR from:confluence OR from:linear OR from:asana OR from:twilio OR from:sendgrid OR from:auth0 OR from:cloudflare OR from:netlify OR from:render OR from:railway OR from:fly OR from:planetscale OR from:mongodb OR from:prisma OR from:warp OR from:cursor OR from:anthropic' --max 100 --account imchic8@gmail.com --json 2>&1

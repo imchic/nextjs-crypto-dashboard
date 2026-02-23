@@ -1,0 +1,260 @@
+{
+  "timestamp": "2026-02-23T01:23:00.000Z",
+  "stats": {
+    "avg_change": -2.15,
+    "gainers_count": 0,
+    "losers_count": 10,
+    "total": 10,
+    "top_volume": "XRP",
+    "top_volume_amount": 1510.32
+  },
+  "by_change": {
+    "gainers": [],
+    "losers": [
+      {
+        "market": "KRW-BTC",
+        "symbol": "BTC",
+        "name": "비트코인",
+        "price": 99390000,
+        "change": -0.60,
+        "volume": 69119028002
+      },
+      {
+        "market": "KRW-ETH",
+        "symbol": "ETH",
+        "name": "이더리움",
+        "price": 2868000,
+        "change": -1.10,
+        "volume": 48169862507
+      },
+      {
+        "market": "KRW-SOL",
+        "symbol": "SOL",
+        "name": "솔라나",
+        "price": 122600,
+        "change": -2.15,
+        "volume": 18591054298
+      },
+      {
+        "market": "KRW-XRP",
+        "symbol": "XRP",
+        "name": "리플",
+        "price": 2047,
+        "change": -2.66,
+        "volume": 151032319808
+      },
+      {
+        "market": "KRW-DOT",
+        "symbol": "DOT",
+        "name": "폴카닷",
+        "price": 1935,
+        "change": -3.30,
+        "volume": 844096501
+      },
+      {
+        "market": "KRW-AVAX",
+        "symbol": "AVAX",
+        "name": "애벨란체",
+        "price": 13020,
+        "change": -2.91,
+        "volume": 1224308501
+      },
+      {
+        "market": "KRW-ADA",
+        "symbol": "ADA",
+        "name": "카르다노",
+        "price": 397,
+        "change": -3.41,
+        "volume": 6970247833
+      },
+      {
+        "market": "KRW-DOGE",
+        "symbol": "DOGE",
+        "name": "도지",
+        "price": 140,
+        "change": -3.45,
+        "volume": 17293697104
+      },
+      {
+        "market": "KRW-LINK",
+        "symbol": "LINK",
+        "name": "체인링크",
+        "price": 12800,
+        "change": -1.99,
+        "volume": 3287243835
+      },
+      {
+        "market": "KRW-UNI",
+        "symbol": "UNI",
+        "name": "유니스왑",
+        "price": 5090,
+        "change": -3.96,
+        "volume": 2302045553
+      }
+    ]
+  },
+  "by_volume": [
+    {
+      "market": "KRW-XRP",
+      "symbol": "XRP",
+      "name": "리플",
+      "price": 2047,
+      "change": -2.66,
+      "volume": 151032319808
+    },
+    {
+      "market": "KRW-BTC",
+      "symbol": "BTC",
+      "name": "비트코인",
+      "price": 99390000,
+      "change": -0.60,
+      "volume": 69119028002
+    },
+    {
+      "market": "KRW-ETH",
+      "symbol": "ETH",
+      "name": "이더리움",
+      "price": 2868000,
+      "change": -1.10,
+      "volume": 48169862507
+    },
+    {
+      "market": "KRW-SOL",
+      "symbol": "SOL",
+      "name": "솔라나",
+      "price": 122600,
+      "change": -2.15,
+      "volume": 18591054298
+    },
+    {
+      "market": "KRW-DOGE",
+      "symbol": "DOGE",
+      "name": "도지",
+      "price": 140,
+      "change": -3.45,
+      "volume": 17293697104
+    },
+    {
+      "market": "KRW-ADA",
+      "symbol": "ADA",
+      "name": "카르다노",
+      "price": 397,
+      "change": -3.41,
+      "volume": 6970247833
+    },
+    {
+      "market": "KRW-LINK",
+      "symbol": "LINK",
+      "name": "체인링크",
+      "price": 12800,
+      "change": -1.99,
+      "volume": 3287243835
+    },
+    {
+      "market": "KRW-UNI",
+      "symbol": "UNI",
+      "name": "유니스왑",
+      "price": 5090,
+      "change": -3.96,
+      "volume": 2302045553
+    },
+    {
+      "market": "KRW-AVAX",
+      "symbol": "AVAX",
+      "name": "애벨란체",
+      "price": 13020,
+      "change": -2.91,
+      "volume": 1224308501
+    },
+    {
+      "market": "KRW-DOT",
+      "symbol": "DOT",
+      "name": "폴카닷",
+      "price": 1935,
+      "change": -3.30,
+      "volume": 844096501
+    }
+  ],
+  "by_decline": [
+    {
+      "market": "KRW-UNI",
+      "symbol": "UNI",
+      "name": "유니스왑",
+      "price": 5090,
+      "change": -3.96,
+      "volume": 2302045553
+    },
+    {
+      "market": "KRW-DOGE",
+      "symbol": "DOGE",
+      "name": "도지",
+      "price": 140,
+      "change": -3.45,
+      "volume": 17293697104
+    },
+    {
+      "market": "KRW-ADA",
+      "symbol": "ADA",
+      "name": "카르다노",
+      "price": 397,
+      "change": -3.41,
+      "volume": 6970247833
+    },
+    {
+      "market": "KRW-DOT",
+      "symbol": "DOT",
+      "name": "폴카닷",
+      "price": 1935,
+      "change": -3.30,
+      "volume": 844096501
+    },
+    {
+      "market": "KRW-AVAX",
+      "symbol": "AVAX",
+      "name": "애벨란체",
+      "price": 13020,
+      "change": -2.91,
+      "volume": 1224308501
+    },
+    {
+      "market": "KRW-XRP",
+      "symbol": "XRP",
+      "name": "리플",
+      "price": 2047,
+      "change": -2.66,
+      "volume": 151032319808
+    },
+    {
+      "market": "KRW-SOL",
+      "symbol": "SOL",
+      "name": "솔라나",
+      "price": 122600,
+      "change": -2.15,
+      "volume": 18591054298
+    },
+    {
+      "market": "KRW-LINK",
+      "symbol": "LINK",
+      "name": "체인링크",
+      "price": 12800,
+      "change": -1.99,
+      "volume": 3287243835
+    },
+    {
+      "market": "KRW-ETH",
+      "symbol": "ETH",
+      "name": "이더리움",
+      "price": 2868000,
+      "change": -1.10,
+      "volume": 48169862507
+    },
+    {
+      "market": "KRW-BTC",
+      "symbol": "BTC",
+      "name": "비트코인",
+      "price": 99390000,
+      "change": -0.60,
+      "volume": 69119028002
+    }
+  ]
+}
