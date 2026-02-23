@@ -548,7 +548,7 @@ export default function Dashboard() {
                         <span className={styles.badge} data-type="caution">유의</span>
                       )}
                       {AIRDROP_COINS.includes(coin.symbol) && (
-                        <span className={styles.badge} data-type="airdrop"></span>
+                        <span className={styles.badge} data-type="airdrop">에어드롭</span>
                       )}
                     </div>
                     {RECOMMENDATION_REASONS[coin.symbol] && (
