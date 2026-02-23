@@ -80,6 +80,8 @@ export default function Dashboard() {
   useEffect(() => {
     loadData();
     loadExchangeRates();
+    // 페이지 진입 시 allMarkets 미리 로드
+    loadAllMarkets();
     const interval = setInterval(() => {
       loadData(false); // 백그라운드 업데이트 (로딩 표시 안 함)
       loadExchangeRates();
