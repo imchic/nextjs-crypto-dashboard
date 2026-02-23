@@ -553,9 +553,6 @@ export default function Dashboard() {
                     </div>
                     {RECOMMENDATION_REASONS[coin.symbol] && (
                       <div className={styles.recommendBox}>
-                        <div className={styles.recommendReason}>
-                          💡 {RECOMMENDATION_REASONS[coin.symbol].reason}
-                        </div>
                         <div className={styles.recommendMeta}>
                           <span className={styles.recommendType}>
                             {RECOMMENDATION_REASONS[coin.symbol].type}
