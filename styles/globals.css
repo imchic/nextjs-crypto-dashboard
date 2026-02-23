@@ -54,14 +54,18 @@
   --border-medium: rgba(0, 0, 0, 0.15);
   --border-strong: rgba(0, 0, 0, 0.25);
 
-  --accent-bg: rgba(139, 127, 244, 0.08);
-  --accent-border: rgba(139, 127, 244, 0.25);
+  /* 라이트 모드: 액센트 컬러 더 어둡게 */
+  --accent-primary: #6C5CE7;
+  --accent-secondary: #5A4BC9;
+  --accent-light: #8B7FF4;
+  --accent-bg: rgba(108, 92, 231, 0.08);
+  --accent-border: rgba(108, 92, 231, 0.25);
 
   --green-bg: rgba(14, 203, 129, 0.1);
   --red-bg: rgba(246, 70, 93, 0.1);
 
   --hover-overlay: rgba(0, 0, 0, 0.03);
-  --active-overlay: rgba(139, 127, 244, 0.1);
+  --active-overlay: rgba(108, 92, 231, 0.1);
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
