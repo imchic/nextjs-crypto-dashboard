@@ -303,8 +303,8 @@ export default function Dashboard() {
   } else if (group === 'losers') {
     coins = data.by_decline || [];
   } else if (group === 'recommended') {
-    // 추천 종목 = 거래량 상위 10개
-    coins = data.by_volume?.slice(0, 10) || [];
+    // 추천 종목 = 거래량 상위 30개
+    coins = data.by_volume?.slice(0, 30) || [];
   } else if (group === 'favorites') {
     // 즐겨찾기 - 모든 코인 데이터에서 찾기 (중복 제거)
     const allCoins = [...(allMarkets || []), ...(data.by_volume || []), ...(data.by_change?.gainers || []), ...(data.by_decline || [])];
