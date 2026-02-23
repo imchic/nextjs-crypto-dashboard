@@ -34,8 +34,8 @@
 }
 
 .logoIcon {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
   filter: drop-shadow(0 0 8px rgba(139, 127, 244, 0.3));
   transition: all 0.3s ease;
@@ -47,7 +47,7 @@
 }
 
 .logo {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   background: linear-gradient(90deg, 
     var(--accent-primary) 0%, 
