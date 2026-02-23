@@ -48,7 +48,7 @@ export default function Layout({ children }) {
           <Link href="/">
             <div className={styles.logoContainer}>
               <img src="/dolpick-icon.png" alt="DolPick" className={styles.logoIcon} />
-              <h1 className={styles.logo}>DolPick - 암호화폐 대시보드</h1>
+              <h1 className={styles.logo}>DolPick</h1>
             </div>
           </Link>
           <div className={styles.headerRight}>
