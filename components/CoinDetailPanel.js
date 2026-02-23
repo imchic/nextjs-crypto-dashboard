@@ -77,6 +77,7 @@ export default function CoinDetailPanel({ coin }) {
               close,
               high: candle.high_price,
               low: candle.low_price,
+              volume: candle.candle_acc_trade_volume,
               wickHigh: candle.high_price - Math.max(open, close),
               body: Math.abs(close - open),
               wickLow: Math.min(open, close) - candle.low_price,
@@ -219,6 +220,38 @@ export default function CoinDetailPanel({ coin }) {
             <div className={styles.empty}>차트 데이터가 없습니다</div>
           )}
         </div>
+
+        {/* 거래량 차트 */}
+        {candleData.length > 0 && (
+          <div className={styles.volumeChartSection}>
+            <h3 style={{ fontSize: '14px', marginBottom: '12px', color: theme === 'light' ? '#333' : '#fff' }}>📊 거래량</h3>
+            <ResponsiveContainer width="100%" height={150}>
+              <ComposedChart data={candleData}>
+                <CartesianGrid 
+                  strokeDasharray="3 3" 
+                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.1)'} 
+                />
+                <XAxis dataKey="time" stroke={theme === 'light' ? '#666666' : 'rgba(255,255,255,0.5)'} style={{ fontSize: 9 }} />
+                <YAxis stroke={theme === 'light' ? '#666666' : 'rgba(255,255,255,0.5)'} style={{ fontSize: 9 }} tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`} />
+                <Tooltip 
+                  formatter={(value) => `${(value / 1000000).toFixed(2)}M`}
+                  contentStyle={{
+                    backgroundColor: theme === 'light' ? '#ffffff' : '#1a1a1a',
+                    border: theme === 'light' ? '1px solid #cccccc' : '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: '8px',
+                    fontSize: '11px',
+                    color: theme === 'light' ? '#333' : '#fff'
+                  }}
+                />
+                <Bar dataKey="volume" barSize={6} radius={[2, 2, 0, 0]}>
+                  {candleData.map((entry, index) => (
+                    <Cell key={`vol-${index}`} fill={entry.open > entry.close ? '#F6465D' : '#0ECB81'} opacity={0.6} />
+                  ))}
+                </Bar>
+              </ComposedChart>
+            </ResponsiveContainer>
+          </div>
+        )}
 
         {/* 호가/체결 */}
         <div className={styles.bottomSection}>
