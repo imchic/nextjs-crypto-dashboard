@@ -46,7 +46,10 @@ export default function Layout({ children }) {
       <div className={styles.wrapper}>
         <header className={styles.globalHeader}>
           <Link href="/">
-            <h1 className={styles.logo}>임돌픽</h1>
+            <div className={styles.logoContainer}>
+              <img src="/dolpick-icon.png" alt="DolPick" className={styles.logoIcon} />
+              <h1 className={styles.logo}>임돌픽</h1>
+            </div>
           </Link>
           <div className={styles.headerRight}>
             {isDashboard && dashboardState.timestamp && (
