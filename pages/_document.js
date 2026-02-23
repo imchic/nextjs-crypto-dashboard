@@ -2,10 +2,9 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html lang="ko">
+    <Html lang="ko" suppressHydrationWarning>
       <Head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="DolPick - 암호화폐 대시보드 및 추천 플랫폼" />
         <meta name="theme-color" content="#1a1a1a" />
         

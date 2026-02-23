@@ -7,21 +7,33 @@ export default async function handler(req, res) {
     }
     
     const allMarkets = await marketsResponse.json();
-    const krwMarkets = allMarkets.filter(m => m.market.startsWith('KRW-'));
+    const krwMarkets = allMarkets.filter(m => m && m.market && m.market.startsWith('KRW-'));
     
     // 한글명 및 경고 매핑 생성
     const koreanNameMap = {};
     const marketWarningMap = {};
     krwMarkets.forEach(m => {
       const symbol = m.market.replace('KRW-', '');
-      koreanNameMap[symbol] = m.korean_name;
+      koreanNameMap[symbol] = m.korean_name || symbol;
       marketWarningMap[symbol] = m.market_warning || 'NONE';
     });
     
     const marketCodes = krwMarkets.map(m => m.market);
     
     if (marketCodes.length === 0) {
-      throw new Error('No KRW markets found');
+      // 마켓이 없으면 기본값 반환
+      return res.status(200).json({
+        timestamp: new Date().toISOString(),
+        stats: {
+          total_markets: 0,
+          gainers_count: 0,
+          losers_count: 0,
+          avg_change: 0,
+        },
+        by_volume: [],
+        by_change: { gainers: [] },
+        by_decline: [],
+      });
     }
     
     // 2. 전체 KRW 마켓 티커 데이터 가져오기 (한 번에 최대 100개씩)
@@ -32,27 +44,47 @@ export default async function handler(req, res) {
     }
     
     let allTickers = [];
-    for (const batch of batches) {
+    for (let i = 0; i < batches.length; i++) {
+      const batch = batches[i];
       const markets = batch.join(',');
-      const response = await fetch(`https://api.upbit.com/v1/ticker?markets=${markets}`, {
-        headers: { 'Accept': 'application/json' }
-      });
       
-      if (response.ok) {
-        const tickers = await response.json();
-        if (Array.isArray(tickers)) {
-          allTickers = allTickers.concat(tickers);
+      try {
+        const response = await fetch(`https://api.upbit.com/v1/ticker?markets=${markets}`, {
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+          const tickers = await response.json();
+          if (Array.isArray(tickers) && tickers.length > 0) {
+            allTickers = allTickers.concat(tickers);
+          }
         }
+      } catch (batchError) {
+        console.error(`Batch ${i} error:`, batchError);
+        // 배치 실패해도 계속 진행
       }
       
-      // API 요청 제한 고려 (초당 10회)
-      if (batches.length > 1) {
-        await new Promise(resolve => setTimeout(resolve, 100));
+      // API 요청 제한 고려 (초당 10회) + 요청 간 딜레이
+      if (i < batches.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 150));
       }
     }
     
+    // 데이터가 없으면 기본값 반환 (무한 새로고침 방지)
     if (!Array.isArray(allTickers) || allTickers.length === 0) {
-      throw new Error('No tickers returned from Upbit API');
+      console.warn('No tickers returned from Upbit API, returning empty dashboard');
+      return res.status(200).json({
+        timestamp: new Date().toISOString(),
+        stats: {
+          total_markets: 0,
+          gainers_count: 0,
+          losers_count: 0,
+          avg_change: 0,
+        },
+        by_volume: [],
+        by_change: { gainers: [] },
+        by_decline: [],
+      });
     }
     
     // 3. 데이터 포맷팅 (실시간 한글명 및 경고 사용)
@@ -107,6 +139,18 @@ export default async function handler(req, res) {
     res.status(200).json(dashboardData);
   } catch (error) {
     console.error('Dashboard API Error:', error);
-    res.status(500).json({ error: 'Failed to fetch data', message: error.message });
+    // 에러가 나도 빈 데이터 반환 (무한 새로고침 방지)
+    res.status(200).json({
+      timestamp: new Date().toISOString(),
+      stats: {
+        total_markets: 0,
+        gainers_count: 0,
+        losers_count: 0,
+        avg_change: 0,
+      },
+      by_volume: [],
+      by_change: { gainers: [] },
+      by_decline: [],
+    });
   }
 }
