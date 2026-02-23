@@ -385,7 +385,7 @@ export default function CoinDetail() {
           {candleLoading ? (
             <div className={styles.loading}>📊 차트 그리는 중...</div>
           ) : candleData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={450}>
+            <ResponsiveContainer width="100%" height={600}>
               <ComposedChart
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
