@@ -59,14 +59,32 @@ export default async function handler(req, res) {
           if (Array.isArray(data) && data.length > 0) {
             tickers = tickers.concat(data);
           }
+        } else if (tickerResponse.status === 429) {
+          // Rate limit - wait and retry
+          console.warn(`  [Chunk ${i + 1}] Rate limited (429), waiting...`);
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          
+          try {
+            const retryResponse = await fetch(
+              `https://api.upbit.com/v1/ticker?markets=${chunk.join(',')}`
+            );
+            if (retryResponse.ok) {
+              const data = await retryResponse.json();
+              console.log(`  [Chunk ${i + 1}] Retry OK: ${data.length} tickers`);
+              tickers = tickers.concat(data);
+            }
+          } catch (retryError) {
+            console.error(`  [Chunk ${i + 1}] Retry failed:`, retryError.message);
+          }
         }
       } catch (e) {
         console.error(`  [Chunk ${i}] Error:`, e.message);
       }
       
-      // API 요청 제한 고려
+      // API 요청 제한: 초당 10회 = 500ms 최소 대기
       if (i < chunks.length - 1) {
-        await new Promise(resolve => setTimeout(resolve, 150));
+        console.log(`  ⏳ Waiting 500ms before next chunk...`);
+        await new Promise(resolve => setTimeout(resolve, 500));
       }
     }
 

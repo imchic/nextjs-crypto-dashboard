@@ -71,17 +71,36 @@ export default async function handler(req, res) {
           if (Array.isArray(tickers) && tickers.length > 0) {
             allTickers = allTickers.concat(tickers);
           }
+        } else if (response.status === 429) {
+          // Rate limit - wait longer and retry
+          console.warn(`  [Batch ${i + 1}] Rate limited (429), waiting before retry...`);
+          await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 대기
+          
+          // 재시도
+          try {
+            const retryResponse = await fetch(
+              `https://api.upbit.com/v1/ticker?markets=${markets}`,
+              { headers: { 'Accept': 'application/json' } }
+            );
+            if (retryResponse.ok) {
+              const tickers = await retryResponse.json();
+              console.log(`  [Batch ${i + 1}] Retry successful: ${tickers.length} tickers`);
+              allTickers = allTickers.concat(tickers);
+            }
+          } catch (retryError) {
+            console.error(`  [Batch ${i + 1}] Retry failed:`, retryError.message);
+          }
         } else {
           console.warn(`  [Batch ${i + 1}] Non-OK response: ${response.status}`);
         }
       } catch (batchError) {
         console.error(`  [Batch ${i + 1}] Error:`, batchError.message);
-        // 배치 에러여도 계속 진행
       }
       
-      // API 요청 제한 고려 (초당 10회) + 요청 간 딜레이
+      // API 요청 제한 고려: 초당 10회 = 최소 100ms, 안전하게 500ms 사용
       if (i < batches.length - 1) {
-        await new Promise(resolve => setTimeout(resolve, 150));
+        console.log(`  ⏳ Waiting 500ms before next batch...`);
+        await new Promise(resolve => setTimeout(resolve, 500));
       }
     }
     
