@@ -41,6 +41,18 @@
   filter: drop-shadow(0 0 4px rgba(139, 127, 244, 0.2));
   transition: all 0.3s ease;
   background: transparent;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+/* 다크모드: 배경색 추가 */
+[data-theme="dark"] .logoIcon {
+  background: var(--bg-secondary);
+}
+
+/* 라이트모드: 투명 유지 */
+[data-theme="light"] .logoIcon {
+  background: transparent;
 }
 
 .logoContainer:hover .logoIcon {
