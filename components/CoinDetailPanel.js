@@ -307,7 +307,30 @@ export default function CoinDetailPanel({ coin }) {
                 </div>
                 <div className={styles.tradesList}>
                   {trades.slice(0, 20).map((trade, i) => {
-                    const time = trade.trade_time_utc.substring(0, 8);
+                    const time = (() => {
+                      try {
+                        // Prefer KST fields when present
+                        if (trade.trade_date_kst && trade.trade_time_kst) {
+                          const d = new Date(`${trade.trade_date_kst}T${trade.trade_time_kst}+09:00`);
+                          return d.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Seoul' });
+                        }
+                        if (trade.trade_time_kst) {
+                          const t = String(trade.trade_time_kst);
+                          if (/^\d{6}$/.test(t)) return `${t.substr(0,2)}:${t.substr(2,2)}:${t.substr(4,2)}`;
+                          return t;
+                        }
+                        if (trade.timestamp) {
+                          let t = Number(trade.timestamp);
+                          if (t > 0 && t < 1e12) t = t * 1000;
+                          const d = new Date(t);
+                          return d.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Seoul' });
+                        }
+                        if (trade.trade_time_utc) return trade.trade_time_utc.substring(0, 8);
+                      } catch (e) {
+                        return trade.trade_time_utc ? trade.trade_time_utc.substring(0,8) : '';
+                      }
+                      return '';
+                    })();
                     const isBuy = trade.ask_bid === 'BID';
                     return (
                       <div key={i} className={`${styles.tradeRow} ${isBuy ? styles.buyRow : styles.sellRow}`}>

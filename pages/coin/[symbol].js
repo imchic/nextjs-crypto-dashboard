@@ -204,6 +204,11 @@ export default function CoinDetail() {
     };
   }, [router.isReady, symbol]);
 
+              <div className={styles.tradesTotal}>
+                <span>전체 체결량</span>
+                <strong>₩{(trades.slice(0,20).reduce((s,t)=>s + (Number(t.trade_price || 0) * Number(t.trade_volume || 0)),0)).toLocaleString()}</strong>
+                <span className={styles.tradesTotalCount}>({trades.slice(0,20).reduce((s,t)=>s + Number(t.trade_volume || 0),0).toFixed(4)} 개)</span>
+              </div>
   // 캔들 타입 변경 시 또는 초기 로드 시
   useEffect(() => {
     if (!initialLoad || !symbol) return;
@@ -211,11 +216,9 @@ export default function CoinDetail() {
   }, [candleType, initialLoad, symbol]);
 
   const getCandleCount = (type) => {
-    switch (type) {
       case 'minutes/1':
         return 200;
       case 'minutes/3':
-        return 200;
       case 'minutes/5':
         return 100;
       case 'minutes/10':
@@ -639,8 +642,9 @@ export default function CoinDetail() {
                     {orderbook.orderbook_units.slice(0, 10).reverse().map((unit, i) => {
                       const maxSize = Math.max(...orderbook.orderbook_units.slice(0, 10).map(u => u.ask_size));
                       const percentage = (unit.ask_size / maxSize) * 100;
+                      const isBest = i === 0; // top of reversed sell list is best ask
                       return (
-                        <div key={i} className={styles.orderbookRow}>
+                        <div key={i} className={`${styles.orderbookRow} ${isBest ? styles.bestRow : ''}`}>
                           <div
                             className={styles.orderbookBar}
                             style={{
@@ -650,6 +654,7 @@ export default function CoinDetail() {
                           />
                           <span className={styles.orderbookPrice}>₩{unit.ask_price.toLocaleString()}</span>
                           <span className={styles.orderbookSize}>{unit.ask_size.toFixed(4)}</span>
+                          {isBest && <span className={styles.orderbookBestBadge}>BEST</span>}
                         </div>
                       );
                     })}
@@ -676,8 +681,9 @@ export default function CoinDetail() {
                     {orderbook.orderbook_units.slice(0, 10).map((unit, i) => {
                       const maxSize = Math.max(...orderbook.orderbook_units.slice(0, 10).map(u => u.bid_size));
                       const percentage = (unit.bid_size / maxSize) * 100;
+                      const isBest = i === 0; // first buy row is best bid
                       return (
-                        <div key={i} className={styles.orderbookRow}>
+                        <div key={i} className={`${styles.orderbookRow} ${isBest ? styles.bestRow : ''}`}>
                           <div
                             className={styles.orderbookBar}
                             style={{
@@ -687,6 +693,7 @@ export default function CoinDetail() {
                           />
                           <span className={styles.orderbookPrice}>₩{unit.bid_price.toLocaleString()}</span>
                           <span className={styles.orderbookSize}>{unit.bid_size.toFixed(4)}</span>
+                          {isBest && <span className={styles.orderbookBestBadge}>BEST</span>}
                         </div>
                       );
                     })}
@@ -701,18 +708,15 @@ export default function CoinDetail() {
               <div className={styles.tradesContainer}>
                 <h3>체결 내역</h3>
                 <div className={styles.tradesHeader}>
-                  <span>시간</span>
                   <span>가격</span>
                   <span>수량</span>
                   <span>구분</span>
                 </div>
                 <div className={styles.tradesList}>
                   {trades.slice(0, 20).map((trade, i) => {
-                    const time = trade.trade_time_utc.substring(0, 8);
                     const isBuy = trade.ask_bid === 'BID';
                     return (
                       <div key={i} className={`${styles.tradeRow} ${isBuy ? styles.buyRow : styles.sellRow}`}>
-                        <span className={styles.tradeTime}>{time}</span>
                         <span className={`${styles.tradePrice} ${isBuy ? styles.buy : styles.sell}`}>
                           ₩{trade.trade_price.toLocaleString()}
                         </span>

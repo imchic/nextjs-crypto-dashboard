@@ -398,6 +398,25 @@
   transition: width 0.3s ease;
 }
 
+/* Highlight best bid/ask row */
+.bestRow {
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12) inset;
+  border: 1px solid rgba(255,255,255,0.04);
+  transform: translateX(2px);
+}
+
+.orderbookBestBadge {
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: rgba(252, 213, 53, 0.12);
+  color: #FCD535;
+  z-index: 2;
+}
+
 .orderbookPrice,
 .orderbookSize {
   position: relative;
@@ -488,7 +507,7 @@
 
 .tradesHeader {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr 0.8fr;
+  grid-template-columns: 1.5fr 1fr 0.8fr;
   gap: 12px;
   padding: 10px 12px;
   background: var(--hover-overlay, 0.05);
@@ -511,7 +530,7 @@
 
 .tradeRow {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr 0.8fr;
+  grid-template-columns: 1.5fr 1fr 0.8fr;
   gap: 12px;
   padding: 10px 12px;
   font-size: 12px;
@@ -556,6 +575,27 @@
   padding: 4px 8px;
   border-radius: 4px;
   text-align: center;
+}
+
+/* total summary above trades */
+.tradesTotal {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+}
+
+.tradesTotal strong {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.tradesTotalCount {
+  color: var(--text-tertiary);
+  font-size: 12px;
 }
 
 .buyBadge {
