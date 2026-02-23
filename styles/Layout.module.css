@@ -49,9 +49,6 @@
 .logo {
   font-size: 22px;
   font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.8px;
-  margin: 0;
   background: linear-gradient(90deg, 
     var(--accent-primary) 0%, 
     var(--accent-light) 50%, 
@@ -62,6 +59,16 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradientFlow 3s ease infinite;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+/* 라이트 모드에서는 단색으로 */
+[data-theme="light"] .logo {
+  background: none;
+  -webkit-text-fill-color: unset;
+  color: var(--accent-primary);
+  animation: none;
 }
 
 @keyframes gradientFlow {
