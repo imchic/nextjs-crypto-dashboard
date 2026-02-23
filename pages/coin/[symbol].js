@@ -96,38 +96,38 @@ export default function CoinDetail() {
 
       return (
         <div style={{
-          backgroundColor: '#1a1a1a',
-          border: '1px solid rgba(255,255,255,0.2)',
+          backgroundColor: theme === 'light' ? '#ffffff' : '#1a1a1a',
+          border: theme === 'light' ? '1px solid #cccccc' : '1px solid rgba(255,255,255,0.2)',
           borderRadius: '8px',
           padding: '12px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
+          boxShadow: theme === 'light' ? '0 2px 8px rgba(0,0,0,0.1)' : '0 4px 12px rgba(0,0,0,0.5)',
         }}>
           <div style={{
             fontSize: '12px',
-            color: '#888',
+            color: theme === 'light' ? '#666' : '#888',
             marginBottom: '8px',
-            borderBottom: '1px solid rgba(255,255,255,0.1)',
+            borderBottom: theme === 'light' ? '1px solid #e0e0e0' : '1px solid rgba(255,255,255,0.1)',
             paddingBottom: '6px',
           }}>
             {label}
           </div>
-          <div style={{ fontSize: '13px', color: '#fff', marginBottom: '4px' }}>
-            <span style={{ color: '#888' }}>시가:</span> <span style={{ fontWeight: 'bold' }}>₩{data.open?.toLocaleString()}</span>
+          <div style={{ fontSize: '13px', color: theme === 'light' ? '#333' : '#fff', marginBottom: '4px' }}>
+            <span style={{ color: theme === 'light' ? '#888' : '#888' }}>시가:</span> <span style={{ fontWeight: 'bold' }}>₩{data.open?.toLocaleString()}</span>
           </div>
-          <div style={{ fontSize: '13px', color: '#fff', marginBottom: '4px' }}>
-            <span style={{ color: '#888' }}>고가:</span> <span style={{ fontWeight: 'bold', color: '#0ECB81' }}>₩{data.high?.toLocaleString()}</span>
+          <div style={{ fontSize: '13px', color: theme === 'light' ? '#333' : '#fff', marginBottom: '4px' }}>
+            <span style={{ color: theme === 'light' ? '#888' : '#888' }}>고가:</span> <span style={{ fontWeight: 'bold', color: '#0ECB81' }}>₩{data.high?.toLocaleString()}</span>
           </div>
-          <div style={{ fontSize: '13px', color: '#fff', marginBottom: '4px' }}>
-            <span style={{ color: '#888' }}>저가:</span> <span style={{ fontWeight: 'bold', color: '#F6465D' }}>₩{data.low?.toLocaleString()}</span>
+          <div style={{ fontSize: '13px', color: theme === 'light' ? '#333' : '#fff', marginBottom: '4px' }}>
+            <span style={{ color: theme === 'light' ? '#888' : '#888' }}>저가:</span> <span style={{ fontWeight: 'bold', color: '#F6465D' }}>₩{data.low?.toLocaleString()}</span>
           </div>
-          <div style={{ fontSize: '13px', color: '#fff', marginBottom: '8px' }}>
-            <span style={{ color: '#888' }}>종가:</span> <span style={{ fontWeight: 'bold' }}>₩{data.close?.toLocaleString()}</span>
+          <div style={{ fontSize: '13px', color: theme === 'light' ? '#333' : '#fff', marginBottom: '8px' }}>
+            <span style={{ color: theme === 'light' ? '#888' : '#888' }}>종가:</span> <span style={{ fontWeight: 'bold' }}>₩{data.close?.toLocaleString()}</span>
           </div>
           <div style={{
             fontSize: '13px',
             fontWeight: 'bold',
             color: isUp ? '#0ECB81' : '#F6465D',
-            borderTop: '1px solid rgba(255,255,255,0.1)',
+            borderTop: theme === 'light' ? '1px solid #e0e0e0' : '1px solid rgba(255,255,255,0.1)',
             paddingTop: '6px',
           }}>
             {isUp ? '▲' : '▼'} {isUp ? '+' : ''}{change.toLocaleString()} ({isUp ? '+' : ''}{changePercent}%)
@@ -451,25 +451,24 @@ export default function CoinDetail() {
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                 style={{
-                  backgroundColor: theme === 'light' ? '#f5f5f5' : 'transparent'
+                  backgroundColor: theme === 'light' ? '#ffffff' : 'transparent'
                 }}
               >
                 <CartesianGrid 
-                  stroke={theme === 'light' ? '#d0d0d0' : 'rgba(255,255,255,0.05)'} 
+                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.08)'} 
                   strokeDasharray="3 3" 
-                  fill={theme === 'light' ? '#ffffff' : 'transparent'}
                 />
                 <XAxis
                   dataKey="time"
-                  stroke={theme === 'light' ? '#000000' : 'rgba(255,255,255,0.5)'}
-                  tick={{ fontSize: 11, fill: theme === 'light' ? '#000000' : 'rgba(255,255,255,0.8)', fontWeight: 600 }}
-                  axisLine={{ stroke: theme === 'light' ? '#666666' : 'rgba(255,255,255,0.1)' }}
+                  stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
+                  tick={{ fontSize: 11, fill: theme === 'light' ? '#333333' : '#ffffff', fontWeight: 600 }}
+                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
                 />
                 <YAxis
-                  stroke={theme === 'light' ? '#000000' : 'rgba(255,255,255,0.5)'}
+                  stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
                   domain={['dataMin - 100', 'dataMax + 100']}
-                  tick={{ fontSize: 11, fill: theme === 'light' ? '#000000' : 'rgba(255,255,255,0.8)', fontWeight: 600 }}
-                  axisLine={{ stroke: theme === 'light' ? '#666666' : 'rgba(255,255,255,0.1)' }}
+                  tick={{ fontSize: 11, fill: theme === 'light' ? '#333333' : '#ffffff', fontWeight: 600 }}
+                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
                   tickFormatter={(value) => `₩${(value / 1000).toFixed(0)}K`}
                 />
                 <Tooltip content={<CustomTooltip />} />
@@ -514,34 +513,34 @@ export default function CoinDetail() {
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                 style={{
-                  backgroundColor: theme === 'light' ? '#f5f5f5' : 'transparent'
+                  backgroundColor: theme === 'light' ? '#ffffff' : 'transparent'
                 }}
               >
                 <CartesianGrid 
-                  stroke={theme === 'light' ? '#d0d0d0' : 'rgba(255,255,255,0.05)'} 
+                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.08)'} 
                   strokeDasharray="3 3" 
-                  fill={theme === 'light' ? '#ffffff' : 'transparent'}
                 />
                 <XAxis
                   dataKey="time"
-                  stroke={theme === 'light' ? '#000000' : 'rgba(255,255,255,0.5)'}
-                  tick={{ fontSize: 10, fill: theme === 'light' ? '#000000' : 'rgba(255,255,255,0.8)', fontWeight: 600 }}
-                  axisLine={{ stroke: theme === 'light' ? '#666666' : 'rgba(255,255,255,0.1)' }}
+                  stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
+                  tick={{ fontSize: 10, fill: theme === 'light' ? '#333333' : '#ffffff', fontWeight: 600 }}
+                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
                 />
                 <YAxis
-                  stroke={theme === 'light' ? '#000000' : 'rgba(255,255,255,0.5)'}
-                  tick={{ fontSize: 10, fill: theme === 'light' ? '#000000' : 'rgba(255,255,255,0.8)', fontWeight: 600 }}
-                  axisLine={{ stroke: theme === 'light' ? '#666666' : 'rgba(255,255,255,0.1)' }}
+                  stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
+                  tick={{ fontSize: 10, fill: theme === 'light' ? '#333333' : '#ffffff', fontWeight: 600 }}
+                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
                   tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`}
                 />
                 <Tooltip 
                   formatter={(value) => `${(value / 1000000).toFixed(2)}M`}
                   contentStyle={{
-                    backgroundColor: '#1a1a1a',
-                    border: '1px solid rgba(255,255,255,0.2)',
+                    backgroundColor: theme === 'light' ? '#ffffff' : '#1a1a1a',
+                    border: theme === 'light' ? '1px solid #cccccc' : '1px solid rgba(255,255,255,0.2)',
                     borderRadius: '8px',
                     padding: '8px 12px',
                     fontSize: '12px',
+                    color: theme === 'light' ? '#333333' : '#ffffff'
                   }}
                 />
                 <Bar dataKey="volume" barSize={8} radius={[2, 2, 0, 0]}>
