@@ -450,10 +450,14 @@ export default function CoinDetail() {
               <ComposedChart
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                style={{
+                  backgroundColor: theme === 'light' ? '#f5f5f5' : 'transparent'
+                }}
               >
                 <CartesianGrid 
-                  stroke={theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.05)'} 
+                  stroke={theme === 'light' ? '#d0d0d0' : 'rgba(255,255,255,0.05)'} 
                   strokeDasharray="3 3" 
+                  fill={theme === 'light' ? '#ffffff' : 'transparent'}
                 />
                 <XAxis
                   dataKey="time"
@@ -509,10 +513,14 @@ export default function CoinDetail() {
               <ComposedChart
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                style={{
+                  backgroundColor: theme === 'light' ? '#f5f5f5' : 'transparent'
+                }}
               >
                 <CartesianGrid 
-                  stroke={theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.05)'} 
+                  stroke={theme === 'light' ? '#d0d0d0' : 'rgba(255,255,255,0.05)'} 
                   strokeDasharray="3 3" 
+                  fill={theme === 'light' ? '#ffffff' : 'transparent'}
                 />
                 <XAxis
                   dataKey="time"
