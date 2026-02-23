@@ -34,6 +34,7 @@ export default async function handler(req, res) {
 
     // 3. 포맷팅 (실시간 한글명 사용)
     const formatted = tickers.map(ticker => {
+      if (!ticker || !ticker.market) return null;
       const symbol = ticker.market.replace('KRW-', '');
       return {
         symbol,
@@ -44,7 +45,7 @@ export default async function handler(req, res) {
         volume: ticker.acc_trade_price_24h,
         trade_volume: ticker.acc_trade_volume_24h,
       };
-    });
+    }).filter(Boolean); // null 값 제거
 
     // 거래대금 순 정렬
     formatted.sort((a, b) => b.volume - a.volume);

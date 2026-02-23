@@ -1,13 +1,12 @@
 export default async function handler(req, res) {
   try {
-    // EC2 API 서버에서 마켓 데이터 가져오기
-    const marketsListRes = await fetch('http://3.36.240.119:5000/api/markets');
-    
-    if (!marketsListRes.ok) {
-      throw new Error(`Market list API error: ${marketsListRes.status}`);
+    // 1. 모든 마켓 정보 조회 (직접 업비트 API 사용)
+    const marketsResponse = await fetch('https://api.upbit.com/v1/market/all');
+    if (!marketsResponse.ok) {
+      throw new Error(`Market list API error: ${marketsResponse.status}`);
     }
     
-    const allMarkets = await marketsListRes.json();
+    const allMarkets = await marketsResponse.json();
     const krwMarkets = allMarkets.filter(m => m.market.startsWith('KRW-'));
     
     // 한글명 및 경고 매핑 생성
@@ -52,29 +51,30 @@ export default async function handler(req, res) {
       }
     }
     
-    if (allTickers.length === 0) {
+    if (!Array.isArray(allTickers) || allTickers.length === 0) {
       throw new Error('No tickers returned from Upbit API');
     }
     
     // 3. 데이터 포맷팅 (실시간 한글명 및 경고 사용)
     const formatted = allTickers.map(ticker => {
+      if (!ticker || !ticker.market) return null;
       const symbol = ticker.market.replace('KRW-', '');
       const marketWarning = marketWarningMap[symbol] || 'NONE';
       
       return {
         market: ticker.market,
         symbol,
-        name: koreanNameMap[symbol] || symbol, // API에서 받은 한글명 사용
+        name: koreanNameMap[symbol] || symbol,
         price: ticker.trade_price,
         change: ticker.signed_change_rate * 100,
         volume: ticker.acc_trade_price_24h,
         high: ticker.high_price,
         low: ticker.low_price,
         volume_power: ticker.acc_trade_price_24h / (ticker.prev_closing_price * ticker.acc_trade_volume_24h || 1),
-        marketWarning, // 상장/유의/경고 정보
-        isNew: marketWarning === 'CAUTION' && ticker.timestamp > (Date.now() - 30 * 24 * 60 * 60 * 1000), // 30일 이내 신규
+        marketWarning,
+        isNew: marketWarning === 'CAUTION' && ticker.timestamp > (Date.now() - 30 * 24 * 60 * 60 * 1000),
       };
-    });
+    }).filter(Boolean); // null 값 제거
     
     // 4. 카테고리별 분류 (실시간 데이터 기반)
     const byVolume = [...formatted]
