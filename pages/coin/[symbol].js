@@ -70,6 +70,41 @@ const KOREAN_NAMES = {
   'SHIB': '시바이누',
 };
 
+// CustomAxisTick 컴포넌트 - 라이트/다크 모드 대응
+const CustomXAxisTick = ({ x, y, payload, theme }) => (
+  <g transform={`translate(${x},${y})`}>
+    <text
+      x={0}
+      y={0}
+      dy={16}
+      textAnchor="middle"
+      fill={theme === 'light' ? '#333333' : '#ffffff'}
+      fontSize="11px"
+      fontWeight="600"
+      fontFamily="Pretendard, system-ui"
+    >
+      {payload.value}
+    </text>
+  </g>
+);
+
+const CustomYAxisTick = ({ x, y, payload, theme, isCandleChart }) => (
+  <g transform={`translate(${x},${y})`}>
+    <text
+      x={0}
+      y={0}
+      dy={3}
+      textAnchor="end"
+      fill={theme === 'light' ? '#333333' : '#ffffff'}
+      fontSize="11px"
+      fontWeight="600"
+      fontFamily="Pretendard, system-ui"
+    >
+      {isCandleChart ? `₩${(payload.value / 1000).toFixed(0)}K` : `${(payload.value / 1000000).toFixed(0)}M`}
+    </text>
+  </g>
+);
+
 export default function CoinDetail() {
   const router = useRouter();
   const { symbol } = router.query;
@@ -461,15 +496,16 @@ export default function CoinDetail() {
                 <XAxis
                   dataKey="time"
                   stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
-                  tick={{ fontSize: 11, fill: theme === 'light' ? '#333333' : '#ffffff', fontWeight: 600 }}
                   axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
+                  tick={<CustomXAxisTick theme={theme} />}
+                  height={40}
                 />
                 <YAxis
                   stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
                   domain={['dataMin - 100', 'dataMax + 100']}
-                  tick={{ fontSize: 11, fill: theme === 'light' ? '#333333' : '#ffffff', fontWeight: 600 }}
+                  tick={<CustomYAxisTick theme={theme} isCandleChart={true} />}
                   axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  tickFormatter={(value) => `₩${(value / 1000).toFixed(0)}K`}
+                  width={60}
                 />
                 <Tooltip content={<CustomTooltip />} />
 
@@ -523,14 +559,15 @@ export default function CoinDetail() {
                 <XAxis
                   dataKey="time"
                   stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
-                  tick={{ fontSize: 10, fill: theme === 'light' ? '#333333' : '#ffffff', fontWeight: 600 }}
                   axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
+                  tick={<CustomXAxisTick theme={theme} />}
+                  height={35}
                 />
                 <YAxis
                   stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
-                  tick={{ fontSize: 10, fill: theme === 'light' ? '#333333' : '#ffffff', fontWeight: 600 }}
+                  tick={<CustomYAxisTick theme={theme} isCandleChart={false} />}
                   axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`}
+                  width={60}
                 />
                 <Tooltip 
                   formatter={(value) => `${(value / 1000000).toFixed(2)}M`}
