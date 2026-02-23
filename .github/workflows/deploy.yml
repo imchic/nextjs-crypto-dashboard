@@ -27,20 +27,21 @@ jobs:
     - name: Build
       run: npm run build
 
+    - name: Install Vercel CLI
+      run: npm install -g vercel
+
     - name: Deploy to Vercel (Production)
       if: github.ref == 'refs/heads/main' && success()
-      uses: vercel/action@v4
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        production: true
+      run: |
+        vercel deploy \
+          --token ${{ secrets.VERCEL_TOKEN }} \
+          --prod \
+          --yes
 
     - name: Deploy to Vercel (Preview)
       if: github.ref == 'refs/heads/develop' && success()
-      uses: vercel/action@v4
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        production: false
+      run: |
+        vercel deploy \
+          --token ${{ secrets.VERCEL_TOKEN }} \
+          --yes
+
