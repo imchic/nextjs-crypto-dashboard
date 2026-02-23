@@ -2,16 +2,22 @@
 
 export default async function handler(req, res) {
   try {
+    console.log('🔍 all-markets API: Starting...');
+    
     // 1. 모든 마켓 정보 조회 (한글명 포함)
     const marketsResponse = await fetch('https://api.upbit.com/v1/market/all');
     if (!marketsResponse.ok) {
-      return res.status(200).json([]); // 에러여도 빈 배열 반환
+      console.warn(`⚠️ Market list failed: ${marketsResponse.status}`);
+      return res.status(200).json([]);
     }
     
     const allMarkets = await marketsResponse.json();
+    console.log(`✅ Total markets: ${allMarkets.length}`);
     
     // KRW 마켓만 필터링 + 한글명 매핑 생성
     const krwMarkets = allMarkets.filter(m => m && m.market && m.market.startsWith('KRW-'));
+    console.log(`✅ KRW markets: ${krwMarkets.length}`);
+    
     const koreanNameMap = {};
     krwMarkets.forEach(m => {
       const symbol = m.market.replace('KRW-', '');
@@ -21,6 +27,7 @@ export default async function handler(req, res) {
     const marketCodes = krwMarkets.map(m => m.market);
 
     if (marketCodes.length === 0) {
+      console.warn('⚠️ No KRW markets');
       return res.status(200).json([]);
     }
 
@@ -31,22 +38,30 @@ export default async function handler(req, res) {
       chunks.push(marketCodes.slice(i, i + chunkSize));
     }
 
+    console.log(`📦 Fetching ${chunks.length} chunks...`);
+
     let tickers = [];
     for (let i = 0; i < chunks.length; i++) {
       const chunk = chunks[i];
       try {
+        console.log(`  [Chunk ${i + 1}/${chunks.length}] Requesting ${chunk.length} markets...`);
+        
         const tickerResponse = await fetch(
           `https://api.upbit.com/v1/ticker?markets=${chunk.join(',')}`
         );
+        
+        console.log(`  [Chunk ${i + 1}] Response: ${tickerResponse.status}`);
+        
         if (tickerResponse.ok) {
           const data = await tickerResponse.json();
-          if (Array.isArray(data)) {
+          console.log(`  [Chunk ${i + 1}] Got ${data.length} tickers`);
+          
+          if (Array.isArray(data) && data.length > 0) {
             tickers = tickers.concat(data);
           }
         }
       } catch (e) {
-        console.error(`Chunk ${i} fetch error:`, e);
-        // 청크 에러여도 계속 진행
+        console.error(`  [Chunk ${i}] Error:`, e.message);
       }
       
       // API 요청 제한 고려
@@ -54,6 +69,8 @@ export default async function handler(req, res) {
         await new Promise(resolve => setTimeout(resolve, 150));
       }
     }
+
+    console.log(`✅ Total tickers: ${tickers.length}`);
 
     // 3. 포맷팅 (실시간 한글명 사용)
     const formatted = tickers.map(ticker => {
@@ -68,15 +85,16 @@ export default async function handler(req, res) {
         volume: ticker.acc_trade_price_24h,
         trade_volume: ticker.acc_trade_volume_24h,
       };
-    }).filter(Boolean); // null 값 제거
+    }).filter(Boolean);
+
+    console.log(`✅ Formatted: ${formatted.length} coins`);
 
     // 거래대금 순 정렬
     formatted.sort((a, b) => b.volume - a.volume);
 
     res.status(200).json(formatted);
   } catch (error) {
-    console.error('All markets API error:', error);
-    // 에러여도 빈 배열 반환 (무한 새로고침 방지)
+    console.error('❌ All markets API error:', error.message);
     res.status(200).json([]);
   }
 }

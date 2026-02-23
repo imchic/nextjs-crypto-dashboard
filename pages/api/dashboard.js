@@ -1,13 +1,19 @@
 export default async function handler(req, res) {
   try {
+    console.log('📊 Dashboard API: Starting...');
+    
     // 1. 모든 마켓 정보 조회 (직접 업비트 API 사용)
     const marketsResponse = await fetch('https://api.upbit.com/v1/market/all');
     if (!marketsResponse.ok) {
+      console.warn(`⚠️ Market list API error: ${marketsResponse.status}`);
       throw new Error(`Market list API error: ${marketsResponse.status}`);
     }
     
     const allMarkets = await marketsResponse.json();
+    console.log(`✅ Markets fetched: ${allMarkets.length} total`);
+    
     const krwMarkets = allMarkets.filter(m => m && m.market && m.market.startsWith('KRW-'));
+    console.log(`✅ KRW markets: ${krwMarkets.length}`);
     
     // 한글명 및 경고 매핑 생성
     const koreanNameMap = {};
@@ -21,15 +27,10 @@ export default async function handler(req, res) {
     const marketCodes = krwMarkets.map(m => m.market);
     
     if (marketCodes.length === 0) {
-      // 마켓이 없으면 기본값 반환
+      console.warn('⚠️ No KRW markets found');
       return res.status(200).json({
         timestamp: new Date().toISOString(),
-        stats: {
-          total_markets: 0,
-          gainers_count: 0,
-          losers_count: 0,
-          avg_change: 0,
-        },
+        stats: { total_markets: 0, gainers_count: 0, losers_count: 0, avg_change: 0 },
         by_volume: [],
         by_change: { gainers: [] },
         by_decline: [],
@@ -43,25 +44,39 @@ export default async function handler(req, res) {
       batches.push(marketCodes.slice(i, i + batchSize));
     }
     
+    console.log(`📦 Fetching ${batches.length} batches of tickers...`);
+    
     let allTickers = [];
     for (let i = 0; i < batches.length; i++) {
       const batch = batches[i];
       const markets = batch.join(',');
       
       try {
-        const response = await fetch(`https://api.upbit.com/v1/ticker?markets=${markets}`, {
-          headers: { 'Accept': 'application/json' }
-        });
+        console.log(`  [Batch ${i + 1}/${batches.length}] Requesting ${batch.length} markets...`);
+        
+        const response = await fetch(
+          `https://api.upbit.com/v1/ticker?markets=${markets}`,
+          { 
+            headers: { 'Accept': 'application/json' },
+            timeout: 10000
+          }
+        );
+        
+        console.log(`  [Batch ${i + 1}] Response status: ${response.status}`);
         
         if (response.ok) {
           const tickers = await response.json();
+          console.log(`  [Batch ${i + 1}] Got ${tickers.length} tickers`);
+          
           if (Array.isArray(tickers) && tickers.length > 0) {
             allTickers = allTickers.concat(tickers);
           }
+        } else {
+          console.warn(`  [Batch ${i + 1}] Non-OK response: ${response.status}`);
         }
       } catch (batchError) {
-        console.error(`Batch ${i} error:`, batchError);
-        // 배치 실패해도 계속 진행
+        console.error(`  [Batch ${i + 1}] Error:`, batchError.message);
+        // 배치 에러여도 계속 진행
       }
       
       // API 요청 제한 고려 (초당 10회) + 요청 간 딜레이
@@ -70,17 +85,14 @@ export default async function handler(req, res) {
       }
     }
     
+    console.log(`✅ Total tickers fetched: ${allTickers.length}`);
+    
     // 데이터가 없으면 기본값 반환 (무한 새로고침 방지)
     if (!Array.isArray(allTickers) || allTickers.length === 0) {
-      console.warn('No tickers returned from Upbit API, returning empty dashboard');
+      console.warn('⚠️ No tickers returned from Upbit API, returning empty dashboard');
       return res.status(200).json({
         timestamp: new Date().toISOString(),
-        stats: {
-          total_markets: 0,
-          gainers_count: 0,
-          losers_count: 0,
-          avg_change: 0,
-        },
+        stats: { total_markets: 0, gainers_count: 0, losers_count: 0, avg_change: 0 },
         by_volume: [],
         by_change: { gainers: [] },
         by_decline: [],
@@ -106,7 +118,9 @@ export default async function handler(req, res) {
         marketWarning,
         isNew: marketWarning === 'CAUTION' && ticker.timestamp > (Date.now() - 30 * 24 * 60 * 60 * 1000),
       };
-    }).filter(Boolean); // null 값 제거
+    }).filter(Boolean);
+    
+    console.log(`✅ Formatted: ${formatted.length} coins`);
     
     // 4. 카테고리별 분류 (실시간 데이터 기반)
     const byVolume = [...formatted]
@@ -136,18 +150,14 @@ export default async function handler(req, res) {
       by_decline: losers,
     };
     
+    console.log('✅ Dashboard data ready');
     res.status(200).json(dashboardData);
   } catch (error) {
-    console.error('Dashboard API Error:', error);
+    console.error('❌ Dashboard API Error:', error.message);
     // 에러가 나도 빈 데이터 반환 (무한 새로고침 방지)
     res.status(200).json({
       timestamp: new Date().toISOString(),
-      stats: {
-        total_markets: 0,
-        gainers_count: 0,
-        losers_count: 0,
-        avg_change: 0,
-      },
+      stats: { total_markets: 0, gainers_count: 0, losers_count: 0, avg_change: 0 },
       by_volume: [],
       by_change: { gainers: [] },
       by_decline: [],
