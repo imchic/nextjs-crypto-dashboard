@@ -155,7 +155,8 @@ export default function CoinDetail() {
     // 마켓 정보(유의 등) 로드
     const fetchMarketInfo = async () => {
       try {
-        const res = await fetch('https://api.upbit.com/v1/market/all?isDetails=true');
+        // API 프록시를 통해 요청 (직접 Upbit API 호출 금지)
+        const res = await fetch('/api/all-markets');
         const markets = await res.json();
         const info = markets.find(m => m.market === `KRW-${symbol}`);
         if (info) {

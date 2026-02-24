@@ -156,7 +156,8 @@ export default function Dashboard() {
 
   const loadExchangeRates = async () => {
     try {
-      const response = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-USDT');
+      // API 프록시를 통해 요청 (직접 Upbit API 호출 금지)
+      const response = await fetch('/api/ticker?market=KRW-BTC,KRW-USDT');
       const data = await response.json();
 
       const btc = data.find(t => t.market === 'KRW-BTC');
