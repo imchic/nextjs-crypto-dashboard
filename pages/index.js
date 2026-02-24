@@ -677,17 +677,29 @@ export default function Dashboard() {
                         <span className={styles.badge} data-type="caution">유의</span>
                       )}
                     </div>
-                    {(recommendations[coin.symbol] || DAILY_RECOMMENDATIONS[coin.symbol]) && (
+                    {recommendations[coin.symbol] && (
                       <div className={styles.recommendBox}>
                         <div className={styles.recommendReason}>
-                          💡 {(recommendations[coin.symbol]?.reason || DAILY_RECOMMENDATIONS[coin.symbol]?.reason)}
+                          💡 {recommendations[coin.symbol]?.reason}
                         </div>
                         <div className={styles.recommendMeta}>
+                          <span className={styles.recommendScore} style={{ 
+                            background: (recommendations[coin.symbol]?.score || 0) >= 80 ? 'rgba(255, 215, 0, 0.1)' : 'var(--bg-tertiary)',
+                            color: (recommendations[coin.symbol]?.score || 0) >= 80 ? '#FFD700' : 'var(--text-secondary)',
+                            border: (recommendations[coin.symbol]?.score || 0) >= 80 ? '1px solid rgba(255, 215, 0, 0.3)' : '1px solid var(--border-medium)',
+                            padding: '2px 6px',
+                            borderRadius: '4px',
+                            fontSize: '11px',
+                            fontWeight: 'bold',
+                            marginRight: '6px'
+                          }}>
+                            🏆 {recommendations[coin.symbol]?.score || 0}점
+                          </span>
                           <span className={styles.recommendType}>
-                            {recommendations[coin.symbol]?.type || DAILY_RECOMMENDATIONS[coin.symbol]?.type}
+                            {recommendations[coin.symbol]?.type}
                           </span>
                           <span className={styles.recommendRisk}>
-                            {recommendations[coin.symbol]?.risk || DAILY_RECOMMENDATIONS[coin.symbol]?.risk}
+                            {recommendations[coin.symbol]?.risk}
                           </span>
                         </div>
                       </div>
