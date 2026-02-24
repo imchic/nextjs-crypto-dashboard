@@ -711,6 +711,7 @@ export default function Dashboard() {
                           💡 {recommendations[coin.symbol]?.reason}
                         </div>
                         <div className={styles.recommendMeta}>
+                          {/* 점수 뱃지 */}
                           <span className={styles.recommendScore} style={{ 
                             background: (recommendations[coin.symbol]?.score || 0) >= 80 ? 'rgba(255, 215, 0, 0.1)' : 'var(--bg-tertiary)',
                             color: (recommendations[coin.symbol]?.score || 0) >= 80 ? '#FFD700' : 'var(--text-secondary)',
@@ -723,6 +724,27 @@ export default function Dashboard() {
                           }}>
                             🏆 {recommendations[coin.symbol]?.score || 0}점
                           </span>
+
+                          {/* 체급 뱃지 추가 */}
+                          {recommendations[coin.symbol]?.category && (
+                            <span style={{ 
+                              background: recommendations[coin.symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.15)' : 
+                                         recommendations[coin.symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.1)' :
+                                         recommendations[coin.symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
+                              color: recommendations[coin.symbol].category.includes('대형') ? '#8B7FF4' : 
+                                     recommendations[coin.symbol].category.includes('중형') ? '#60A5FA' :
+                                     recommendations[coin.symbol].category.includes('스캠') ? '#FF4757' : 'var(--text-secondary)',
+                              border: recommendations[coin.symbol].category.includes('스캠') ? '1px solid #FF4757' : '1px solid var(--border-medium)',
+                              padding: '2px 6px',
+                              borderRadius: '4px',
+                              fontSize: '11px',
+                              fontWeight: 'bold',
+                              marginRight: '6px'
+                            }}>
+                              {recommendations[coin.symbol].category}
+                            </span>
+                          )}
+
                           <span className={styles.recommendType}>
                             {recommendations[coin.symbol]?.type}
                           </span>
