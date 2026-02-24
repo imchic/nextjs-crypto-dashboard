@@ -155,10 +155,27 @@ class RecommendationBatch {
       score = Math.min(100, score);
       score = Math.max(0, score);
 
+      // 코인 체급 분류 (대형/중형/소형/스캠주의)
+      let category = '🪙 소형주';
+      let categoryColor = 'default'; // 뱃지 색상용 (추후 사용)
+
+      // 1. 대형주 정의 (BTC, ETH 및 거래대금 최상위)
+      if (['BTC', 'ETH', 'XRP', 'SOL'].includes(symbol)) {
+        category = '👑 대형주';
+      } 
+      // 2. 중형주 (거래대금 500억 이상)
+      else if (data.volume > 50000000000) {
+        category = '🏢 중형주';
+      }
+      // 3. 스캠주의 (거래대금 10억 미만 OR 변동성 비정상)
+      else if (data.volume < 1000000000 || Math.abs(data.change) > 30) {
+        category = '☠️ 스캠주의';
+        score -= 20; // 스캠 위험 시 점수 차감
+      }
+      
       // 코인 특징 (3줄 요약)
       let description = COIN_DESCRIPTIONS[symbol];
       if (!description) {
-        // 특징 데이터가 없는 경우 자동 생성
         const trendText = data.change > 0 ? '상승세' : '조정세';
         const volText = data.volume > 1000000000 ? '폭발적' : '양호';
         description = `1. 업비트 원화 마켓에서 거래되는 암호화폐\n2. 현재 전일 대비 ${Math.abs(data.change).toFixed(1)}% ${trendText}를 보임\n3. 거래량 흐름이 ${volText}이며 시장의 주목을 받음`;
@@ -172,7 +189,8 @@ class RecommendationBatch {
         timestamp: new Date().toISOString(),
         change: parseFloat(data.change.toFixed(2)),
         volume: data.volume,
-        description: description // 특징 추가
+        description: description,
+        category: category // 체급 카테고리 추가
       };
     }
 
