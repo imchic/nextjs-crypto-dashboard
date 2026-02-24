@@ -141,17 +141,22 @@ export default async function handler(req, res) {
     
     console.log(`✅ Formatted: ${formatted.length} coins`);
     
-    // 3.5. CoinGecko 데이터 추가 (시가총액, 순위, BTC 도미넌스)
+    // 4. 카테고리별 분류 (실시간 데이터 기반) - 먼저 byVolume 생성
+    const byVolume = [...formatted]
+      .sort((a, b) => b.volume - a.volume)
+      .slice(0, 30);
+    
+    // 4.5. CoinGecko 데이터 추가 (시가총액, 순위, BTC 도미넌스)
     console.log('📊 Fetching CoinGecko market cap data...');
     const coingeckoData = {};
-    const top30Symbols = byVolume.slice(0, 30).map(c => c.symbol);
+    const top30Symbols = byVolume.map(c => c.symbol);
     
-    // 병렬로 CoinGecko 요청 (3개씩 배치)
-    const symbolBatchSize = 3;
+    // 병렬로 CoinGecko 요청 (1개씩 순차 처리)
+    const symbolBatchSize = 1;
     for (let i = 0; i < top30Symbols.length; i += symbolBatchSize) {
       const batch = top30Symbols.slice(i, i + symbolBatchSize);
       const promises = batch.map(symbol =>
-        fetch(`/api/coingecko?symbol=${symbol}`)
+        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/coingecko?symbol=${symbol}`)
           .then(res => res.ok ? res.json() : null)
           .catch(() => null)
       );
@@ -163,24 +168,24 @@ export default async function handler(req, res) {
         }
       });
       
-      // Rate limit 방지
+      // Rate limit 방지 - 500ms 대기
       if (i + symbolBatchSize < top30Symbols.length) {
-        await new Promise(resolve => setTimeout(resolve, 300));
+        await new Promise(resolve => setTimeout(resolve, 500));
       }
     }
     
     console.log(`✅ CoinGecko data fetched: ${Object.keys(coingeckoData).length} coins`);
     
-    // 4. 카테고리별 분류 (실시간 데이터 기반)
-    const byVolume = [...formatted]
-      .sort((a, b) => b.volume - a.volume)
-      .slice(0, 30)
-      .map(coin => ({
-        ...coin,
-        market_cap_rank: coingeckoData[coin.symbol]?.market_cap_rank || null,
-        market_cap_usd: coingeckoData[coin.symbol]?.market_cap_usd || null,
-        market_cap_krw: coingeckoData[coin.symbol]?.market_cap_krw || null,
-      }));
+    // byVolume에 CoinGecko 데이터 추가
+    const byVolumeWithCoinGecko = byVolume.map(coin => ({
+      ...coin,
+      market_cap_rank: coingeckoData[coin.symbol]?.market_cap_rank || null,
+      market_cap_usd: coingeckoData[coin.symbol]?.market_cap_usd || null,
+      market_cap_krw: coingeckoData[coin.symbol]?.market_cap_krw || null,
+    }));
+    
+    // 5. 추가 카테고리 분류
+
     
     const gainers = [...formatted]
       .filter(c => c.change > 0)
@@ -200,7 +205,7 @@ export default async function handler(req, res) {
         losers_count: formatted.filter(c => c.change < 0).length,
         avg_change: (formatted.reduce((sum, c) => sum + c.change, 0) / formatted.length).toFixed(2),
       },
-      by_volume: byVolume,
+      by_volume: byVolumeWithCoinGecko,
       by_change: { gainers },
       by_decline: losers,
     };
