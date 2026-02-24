@@ -1,0 +1,23 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "transform-remove-console",
+      {
+        "exclude": ["error", "warn"]
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "transform-remove-console",
+          {
+            "exclude": ["error", "warn"]
+          }
+        ]
+      ]
+    }
+  }
+}

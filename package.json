@@ -21,6 +21,7 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "sass": "^1.69.0"
   }
 }
