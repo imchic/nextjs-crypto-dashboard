@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "batch:recommendations": "node scripts/batch-recommendations.js"
   },
   "dependencies": {
     "http-proxy-agent": "^7.0.2",
