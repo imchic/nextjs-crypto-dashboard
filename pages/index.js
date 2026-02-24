@@ -249,7 +249,13 @@ export default function Dashboard() {
     addRecentSearch(coin);
     setSearchTerm('');
     setShowAutocomplete(false);
-    router.push(`/coin/${coin.symbol}`);
+    
+    // 화면 크기에 따라 분기 처리 (handleCoinClick과 동일)
+    if (window.innerWidth < 768) {
+      router.push(`/coin/${coin.symbol}`);
+    } else {
+      setSelectedCoin(coin);
+    }
   };
 
   const handlePortfolioClick = () => {
