@@ -6,7 +6,8 @@ import { useEffect, useState, useContext } from 'react';
 import { IoBulbOutline, IoSearchOutline } from 'react-icons/io5';
 import CoinDetailPanel from '@/components/CoinDetailPanel';
 import { DashboardContext } from '@/components/Layout';
-import { RocketIcon, WalletIcon, TrendingUpIcon, LoadingSpinner } from '@/components/Icons';
+import { RocketIcon, WalletIcon, TrendingUpIcon, TrendingDownIcon, BarChartIcon, HeartIcon, FireIcon, ErrorIcon, BotIcon } from '@/components/Icons';
+import LottieLoadingBar from '@/components/LottieLoadingBar';
 
 export default function Dashboard() {
   const { setDashboardState } = useContext(DashboardContext);
@@ -282,10 +283,7 @@ export default function Dashboard() {
     return (
       <div className={styles.container}>
         <div className={styles.loading}>
-          <div className={styles.spinner}></div>
-          <p>
-            <RocketIcon size={20} color="var(--primary-purple)" /> 코인 불러오는 중...
-          </p>
+          <LottieLoadingBar />
         </div>
       </div>
     );
@@ -295,7 +293,8 @@ export default function Dashboard() {
     return (
       <div className={styles.container}>
         <div className={styles.loading}>
-          <p>망했습니다 😭 새로고침 ㄱㄱ</p>
+          <ErrorIcon size={40} color="var(--danger-red)" />
+          <p>망했습니다. 새로고침 해주세요.</p>
         </div>
       </div>
     );
@@ -440,7 +439,9 @@ export default function Dashboard() {
             className={`${styles.groupTab} ${group === 'volume' ? styles.active : ''}`}
             onClick={() => setGroup('volume')}
           >
-            <span className={styles.tabLabel}>🔥 핫한놈들</span>
+            <span className={styles.tabLabel}>
+              <FireIcon size={18} /> 핫한놈들
+            </span>
             <span className={styles.tabDesc}>거래대금 Top10</span>
           </button>
           <button
@@ -456,21 +457,27 @@ export default function Dashboard() {
             className={`${styles.groupTab} ${group === 'losers' ? styles.active : ''}`}
             onClick={() => setGroup('losers')}
           >
-            <span className={styles.tabLabel}>😭 존버가미래다</span>
+            <span className={styles.tabLabel}>
+              <TrendingDownIcon size={18} /> 존버가미래다
+            </span>
             <span className={styles.tabDesc}>급락주 저가매수</span>
           </button>
           <button
             className={`${styles.groupTab} ${group === 'recommended' ? styles.active : ''}`}
             onClick={() => setGroup('recommended')}
           >
-            <span className={styles.tabLabel}>🤖 AI추천</span>
+            <span className={styles.tabLabel}>
+              <BotIcon size={18} /> AI추천
+            </span>
             <span className={styles.tabDesc}>엄선 Top10</span>
           </button>
           <button
             className={`${styles.groupTab} ${group === 'favorites' ? styles.active : ''}`}
             onClick={() => setGroup('favorites')}
           >
-            <span className={styles.tabLabel}>❤️ 찜꽁</span>
+            <span className={styles.tabLabel}>
+              <HeartIcon size={18} /> 찜꽁
+            </span>
             <span className={styles.tabDesc}>즐겨찾기 {favorites.length}개</span>
           </button>
           <button
@@ -525,10 +532,7 @@ export default function Dashboard() {
       <div className={styles.coinsList}>
         {loadingAll ? (
           <div className={styles.loading}>
-            <div className={styles.spinner}></div>
-            <p>
-              <RocketIcon size={20} color="var(--primary-purple)" /> 전체 종목 불러오는 중...
-            </p>
+            <LottieLoadingBar />
           </div>
         ) : filteredCoins.length > 0 ? (
           filteredCoins.map((coin, index) => {
@@ -613,7 +617,11 @@ export default function Dashboard() {
                         toggleFavorite(coin.symbol);
                       }}
                     >
-                      {favorites.includes(coin.symbol) ? '❤️' : '🤍'}
+                      <HeartIcon 
+                        size={18} 
+                        filled={favorites.includes(coin.symbol)}
+                        color={favorites.includes(coin.symbol) ? '#FF4757' : 'currentColor'}
+                      />
                     </button>
                   </div>
                 </div>

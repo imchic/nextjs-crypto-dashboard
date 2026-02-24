@@ -11,6 +11,8 @@ import {
 } from 'recharts';
 import { IoBarChartOutline, IoReceiptOutline } from 'react-icons/io5';
 import styles from '@/styles/coinDetail.module.css';
+import { BarChartIcon, ErrorIcon } from '@/components/Icons';
+import LottieLoadingBar from '@/components/LottieLoadingBar';
 
 const CANDLE_TYPES = [
   { id: 'minutes/1', label: '1분', desc: '초단타' },
@@ -196,7 +198,9 @@ export default function CoinDetailPanel({ coin }) {
       <div className={styles.content}>
         <div className={styles.chartSection}>
           {candleLoading ? (
-            <div className={styles.loading}>📊 차트 그리는 중...</div>
+            <div className={styles.loading} style={{ minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <LottieLoadingBar />
+            </div>
           ) : candleData.length > 0 ? (
             <ResponsiveContainer width="100%" height={400}>
               <ComposedChart data={candleData}>
@@ -224,7 +228,9 @@ export default function CoinDetailPanel({ coin }) {
         {/* 거래량 차트 */}
         {candleData.length > 0 && (
           <div className={styles.volumeChartSection}>
-            <h3 style={{ fontSize: '14px', marginBottom: '12px', color: theme === 'light' ? '#333' : '#fff' }}>📊 거래량</h3>
+            <h3 style={{ fontSize: '14px', marginBottom: '12px', color: theme === 'light' ? '#333' : '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <BarChartIcon size={16} color={theme === 'light' ? '#333' : '#fff'} /> 거래량
+            </h3>
             <ResponsiveContainer width="100%" height={150}>
               <ComposedChart data={candleData}>
                 <CartesianGrid 
@@ -293,7 +299,10 @@ export default function CoinDetailPanel({ coin }) {
                 </div>
               </div>
             ) : (
-              <div className={styles.empty}>😭 호가 데이터가 없어요...</div>
+              <div className={styles.empty}>
+                <ErrorIcon size={32} color="var(--text-tertiary)" />
+                <p>호가 데이터가 없습니다.</p>
+              </div>
             )
           ) : (
             trades.length > 0 ? (
@@ -357,7 +366,10 @@ export default function CoinDetailPanel({ coin }) {
                 </div>
               </div>
             ) : (
-              <div className={styles.empty}>😭 체결 데이터가 없어요...</div>
+              <div className={styles.empty}>
+                <ErrorIcon size={32} color="var(--text-tertiary)" />
+                <p>체결 데이터가 없습니다.</p>
+              </div>
             )
           )}
         </div>

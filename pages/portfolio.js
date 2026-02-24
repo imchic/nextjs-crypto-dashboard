@@ -2,6 +2,8 @@ import styles from '@/styles/portfolio.module.css';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { IoArrowBack, IoRefreshOutline } from 'react-icons/io5';
+import { WalletIcon } from '@/components/Icons';
+import LottieLoadingBar from '@/components/LottieLoadingBar';
 
 export default function Portfolio() {
   const router = useRouter();
@@ -153,7 +155,9 @@ export default function Portfolio() {
   if (loading) {
     return (
       <div className={styles.container}>
-        <div className={styles.loading}>💰 지갑 불러오는 중...</div>
+        <div className={styles.loading}>
+          <LottieLoadingBar />
+        </div>
       </div>
     );
   }
@@ -192,7 +196,9 @@ export default function Portfolio() {
         <button className={styles.backBtn} onClick={() => router.push('/')}>
           <IoArrowBack size={16} />
         </button>
-        <h1>💰 내 지갑</h1>
+        <h1>
+          <WalletIcon size={20} /> 내 지갑
+        </h1>
         <button className={styles.refreshBtn} onClick={fetchAccounts}>
           <IoRefreshOutline size={16} />
         </button>

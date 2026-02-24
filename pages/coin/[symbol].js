@@ -14,6 +14,8 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { BarChartIcon, ErrorIcon } from '@/components/Icons';
+import LottieLoadingBar from '@/components/LottieLoadingBar';
 
 const CANDLE_TYPES = [
   { id: 'minutes/1', label: '1분', desc: '초단타' },
@@ -385,7 +387,9 @@ export default function CoinDetail() {
   if (loading) {
     return (
       <div className={styles.container}>
-        <div className={styles.loading}>데이터 불러오는 중... 📊</div>
+        <div className={styles.loading}>
+          <LottieLoadingBar />
+        </div>
       </div>
     );
   }
@@ -393,7 +397,10 @@ export default function CoinDetail() {
   if (!coinData) {
     return (
       <div className={styles.container}>
-        <div className={styles.loading}>😭 {symbol} 데이터를 못찾았어요...</div>
+        <div className={styles.loading}>
+          <ErrorIcon size={40} color="var(--danger-red)" />
+          <p>{symbol} 데이터를 찾을 수 없습니다.</p>
+        </div>
       </div>
     );
   }
@@ -482,7 +489,9 @@ export default function CoinDetail() {
       <div className={styles.content}>
         <div className={`${styles.chartSection} ${theme}`}>
           {candleLoading ? (
-            <div className={styles.loading}>📊 차트 그리는 중...</div>
+            <div className={styles.loading} style={{ minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <LottieLoadingBar />
+            </div>
           ) : candleData.length > 0 ? (
             <ResponsiveContainer width="100%" height={600}>
               <ComposedChart
@@ -564,7 +573,9 @@ export default function CoinDetail() {
         {/* 거래량 차트 */}
         {candleData.length > 0 && (
           <div className={`${styles.volumeChartSection} ${theme}`}>
-            <h3 className={styles.volumeTitle}>📊 거래량</h3>
+            <h3 className={styles.volumeTitle}>
+              <BarChartIcon size={18} /> 거래량
+            </h3>
             <ResponsiveContainer width="100%" height={150}>
               <ComposedChart
                 data={candleData}
@@ -698,7 +709,10 @@ export default function CoinDetail() {
                 </div>
               </div>
             ) : (
-              <div className={styles.empty}>😭 호가 데이터가 없어요...</div>
+              <div className={styles.empty}>
+                <ErrorIcon size={32} color="var(--text-tertiary)" />
+                <p>호가 데이터가 없습니다.</p>
+              </div>
             )
           ) : (
             trades.length > 0 ? (
@@ -769,7 +783,10 @@ export default function CoinDetail() {
                 </div>
               </div>
             ) : (
-              <div className={styles.empty}>😭 체결 데이터가 없어요...</div>
+              <div className={styles.empty}>
+                <ErrorIcon size={32} color="var(--text-tertiary)" />
+                <p>체결 데이터가 없습니다.</p>
+              </div>
             )
           )}
         </div>
