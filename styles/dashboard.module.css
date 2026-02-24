@@ -623,6 +623,16 @@
   gap: 4px;
 }
 
+/* 모바일: sortBtn 최적화 */
+@media (max-width: 768px) {
+  .sortBtn {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+    gap: 2px;
+    padding: 0 2px;
+  }
+}
+
 .sortBtn:hover {
   color: var(--primary-purple);
   text-shadow: 0 0 8px rgba(139, 127, 244, 0.3);
@@ -1363,8 +1373,9 @@
 
   .columnHeaders,
   .coinRow {
-    grid-template-columns: 1fr 0.8fr 0.9fr;
+    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.6fr;
     gap: 8px;
+    padding: 8px 12px;
   }
 
   .colVolume {
@@ -1420,9 +1431,9 @@
 
   .columnHeaders,
   .coinRow {
-    grid-template-columns: 1.5fr 0.7fr 0.9fr;
+    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.6fr;
     gap: 6px;
-    padding: 10px 12px;
+    padding: 8px 10px;
   }
 
   .colVolume {
@@ -1465,6 +1476,12 @@
 
   .colVolume {
     font-size: 11px;
+  }
+
+  .sortBtn {
+    font-size: 8px;
+    letter-spacing: 0.2px;
+    gap: 1px;
   }
 
   .splitLayout {
