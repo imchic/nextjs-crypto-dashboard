@@ -60,7 +60,7 @@ export default function CoinsTable({ coins }) {
             
             <div className={styles.col6}>
               <div className={styles.volume}>
-                ₩{formatBillion(coin.trade_price_24h)}
+                ₩{formatBillion(coin.volume)}
               </div>
             </div>
           </div>
