@@ -554,6 +554,27 @@ export default function CoinDetail() {
           </div>
         </div>
         <div className={styles.subtitle}>{KOREAN_NAMES[symbol] || symbol}</div>
+
+        {/* 💡 코인 특징 (3줄 요약) - 상세 페이지 전용 */}
+        {recommendations[symbol]?.description && (
+          <div style={{
+            marginTop: '16px',
+            padding: '16px',
+            backgroundColor: 'var(--bg-tertiary)',
+            borderRadius: '12px',
+            border: '1px solid var(--border-medium)',
+            fontSize: '13px',
+            lineHeight: '1.6',
+            color: 'var(--text-secondary)'
+          }}>
+            <strong style={{ display: 'block', marginBottom: '8px', color: 'var(--text-primary)', fontSize: '14px' }}>
+              💡 코인 특징 (3줄 요약)
+            </strong>
+            <div style={{ whiteSpace: 'pre-line' }}>
+              {recommendations[symbol].description}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* 📊 가격 범위 섹션 */}
