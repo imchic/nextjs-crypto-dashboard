@@ -679,9 +679,7 @@ export default function Dashboard() {
                     </div>
                     {recommendations[coin.symbol] && (
                       <div className={styles.recommendBox}>
-                        <div className={styles.recommendReason}>
-                          💡 {recommendations[coin.symbol]?.reason}
-                        </div>
+                        {/* 추천 이유 텍스트 제거 (뱃지로 대체) */}
                         <div className={styles.recommendMeta}>
                           <span className={styles.recommendScore} style={{ 
                             background: (recommendations[coin.symbol]?.score || 0) >= 80 ? 'rgba(255, 215, 0, 0.1)' : 'var(--bg-tertiary)',
