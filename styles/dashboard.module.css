@@ -1863,3 +1863,57 @@
     width: 100%;
   }
 }
+
+/* ===== 초소형 화면 (max-width: 320px) ===== */
+@media (max-width: 320px) {
+  .columnHeaders,
+  .coinRow {
+    grid-template-columns: 1.2fr 0.5fr 0.6fr 0.4fr;
+    gap: 4px;
+    padding: 6px 8px;
+  }
+
+  .sortBtn {
+    font-size: 7px;
+    letter-spacing: 0.1px;
+    gap: 0;
+  }
+
+  .coinInfo {
+    gap: 6px;
+  }
+
+  .coinMark {
+    min-width: 24px;
+    font-size: 14px;
+  }
+
+  .coinSymbol {
+    font-size: 11px;
+  }
+
+  .coinName {
+    font-size: 9px;
+  }
+
+  .changeValue {
+    font-size: 11px;
+  }
+
+  .colPrice {
+    font-size: 11px;
+  }
+
+  .colVolume {
+    font-size: 9px;
+  }
+
+  .volumeContent {
+    gap: 2px;
+  }
+
+  .favoriteBtn {
+    padding: 2px 4px;
+    font-size: 9px;
+  }
+}
