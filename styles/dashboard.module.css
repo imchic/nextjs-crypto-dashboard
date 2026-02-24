@@ -589,7 +589,7 @@
 .sortBtn {
   background: none;
   border: none;
-  color: var(--text-tertiary);
+  color: var(--text-primary);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -602,12 +602,14 @@
   align-items: center;
   justify-content: flex-end;
   gap: 4px;
-  position: relative; /* 화살표 위치 조정을 위해 추가 */
+  position: relative;
+  opacity: 0.7; /* 기본 상태에서 살짝 투명하게 */
 }
 
 .sortBtn:hover {
   color: var(--primary-purple);
   text-shadow: 0 0 8px rgba(139, 127, 244, 0.3);
+  opacity: 1;
 }
 
 .sortBtn:active {
@@ -615,12 +617,13 @@
 }
 
 .sortBtn.active {
-  background: rgba(139, 127, 244, 0.1);
+  background: rgba(139, 127, 244, 0.15);
   border-radius: 4px;
-  padding: 4px 8px; /* 활성 상태에서 패딩 추가 */
-  margin: -4px -8px; /* 패딩만큼 마이너스 마진 */
-  color: var(--primary-purple);
+  padding: 4px 8px;
+  margin: -4px -8px; 
+  color: #fff; /* 활성 상태에서는 흰색으로 선명하게 */
   box-shadow: 0 0 10px rgba(139, 127, 244, 0.2);
+  opacity: 1; /* 활성 상태에서는 불투명 */
 }
 
 .sortArrow {
