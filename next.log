@@ -6183,3 +6183,1906 @@ CoinGecko API Error: Error: CoinGecko API error: 429
     at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
  GET /api/coingecko?symbol=SXP 500 in 42ms
  GET /api/coingecko?symbol=ATH 404 in 2ms
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 584ms
+ GET /api/coingecko?symbol=BTT 404 in 1ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 39ms
+ GET /api/coingecko?symbol=STEEM 404 in 3ms
+ GET /api/coingecko?symbol=ZIL 404 in 5ms
+Fetching CoinGecko data for FLOCK (flock)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 44ms
+ GET /api/coingecko?symbol=PEPE 404 in 5ms
+ GET /api/coingecko?symbol=TOSHI 404 in 1ms
+ GET /api/coingecko?symbol=AWE 404 in 3ms
+ GET /api/coingecko?symbol=ZK 404 in 3ms
+ GET /api/coingecko?symbol=LINEA 404 in 2ms
+Fetching CoinGecko data for SHIB (shiba-inu)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SHIB 500 in 41ms
+ GET /api/coingecko?symbol=POKT 404 in 4ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=DOGE 500 in 47ms
+ GET /api/coingecko?symbol=SENT 404 in 2ms
+Fetching CoinGecko data for YGG (yield-guild-games)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=YGG 500 in 40ms
+ GET /api/coingecko?symbol=BONK 404 in 4ms
+ GET /api/coingecko?symbol=BLAST 404 in 4ms
+Fetching CoinGecko data for AGLD (adventure-gold)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=AGLD 500 in 43ms
+Fetching CoinGecko data for ORBS (orbs)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 40ms
+Fetching CoinGecko data for FLOW (flow)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOW 500 in 54ms
+Fetching CoinGecko data for XEC (ecash)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=XEC 500 in 46ms
+ GET /api/coingecko?symbol=PUMP 404 in 4ms
+ GET /api/coingecko?symbol=BIO 404 in 5ms
+ GET /api/coingecko?symbol=MEW 404 in 4ms
+ GET /api/coingecko?symbol=STEEM 404 in 12ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 63ms
+ GET /api/coingecko?symbol=ZIL 404 in 3ms
+ GET /api/coingecko?symbol=ATH 404 in 2ms
+ GET /api/coingecko?symbol=BEAM 404 in 8ms
+ GET /api/coingecko?symbol=AWE 404 in 3ms
+ GET /api/coingecko?symbol=TOSHI 404 in 5ms
+ GET /api/coingecko?symbol=ZK 404 in 2ms
+ GET /api/coingecko?symbol=PENGU 404 in 4ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=DOGE 500 in 40ms
+ GET /api/coingecko?symbol=POKT 404 in 4ms
+ GET /api/coingecko?symbol=SENT 404 in 2ms
+ GET /api/coingecko?symbol=NOM 404 in 7ms
+Fetching CoinGecko data for AGLD (adventure-gold)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=AGLD 500 in 46ms
+Fetching CoinGecko data for ORBS (orbs)...
+ GET /api/coingecko?symbol=BLAST 404 in 5ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 43ms
+ GET /api/coingecko?symbol=AZTEC 404 in 0ms
+ GET /api/coingecko?symbol=BIO 404 in 10ms
+ GET /api/coingecko?symbol=PUMP 404 in 2ms
+ GET /api/coingecko?symbol=MEW 404 in 3ms
+Fetching CoinGecko data for SXP (swipe)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SXP 500 in 43ms
+ GET /api/coingecko?symbol=ATH 404 in 2ms
+ GET /api/coingecko?symbol=ZIL 404 in 5ms
+ GET /api/coingecko?symbol=BEAM 404 in 3ms
+Fetching CoinGecko data for FLOCK (flock)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 45ms
+ GET /api/coingecko?symbol=ZK 404 in 4ms
+ GET /api/coingecko?symbol=PENGU 404 in 2ms
+ GET /api/coingecko?symbol=LINEA 404 in 4ms
+ GET /api/coingecko?symbol=SENT 404 in 4ms
+ GET /api/coingecko?symbol=NOM 404 in 2ms
+Fetching CoinGecko data for YGG (yield-guild-games)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=YGG 500 in 56ms
+Fetching CoinGecko data for ORBS (orbs)...
+ GET /api/coingecko?symbol=AZTEC 404 in 3ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 40ms
+Fetching CoinGecko data for FLOW (flow)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOW 500 in 42ms
+Fetching CoinGecko data for SXP (swipe)...
+ GET /api/coingecko?symbol=MEW 404 in 3ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SXP 500 in 51ms
+ GET /api/coingecko?symbol=STEEM 404 in 5ms
+ GET /api/coingecko?symbol=BEAM 404 in 2ms
+Fetching CoinGecko data for FLOCK (flock)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 41ms
+ GET /api/coingecko?symbol=AWE 404 in 2ms
+ GET /api/coingecko?symbol=PENGU 404 in 3ms
+ GET /api/coingecko?symbol=LINEA 404 in 2ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=DOGE 500 in 48ms
+ GET /api/coingecko?symbol=NOM 404 in 7ms
+Fetching CoinGecko data for YGG (yield-guild-games)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=YGG 500 in 46ms
+Fetching CoinGecko data for AGLD (adventure-gold)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=AGLD 500 in 48ms
+ GET /api/coingecko?symbol=AZTEC 404 in 4ms
+Fetching CoinGecko data for FLOW (flow)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOW 500 in 46ms
+ GET /api/coingecko?symbol=BIO 404 in 6ms
+Fetching CoinGecko data for SXP (swipe)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SXP 500 in 48ms
+ GET /api/coingecko?symbol=STEEM 404 in 6ms
+ GET /api/coingecko?symbol=ATH 404 in 3ms
+Fetching CoinGecko data for FLOCK (flock)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 50ms
+ GET /api/coingecko?symbol=AWE 404 in 7ms
+ GET /api/coingecko?symbol=LINEA 404 in 3ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=DOGE 500 in 44ms
+Fetching CoinGecko data for YGG (yield-guild-games)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=YGG 500 in 45ms
+Fetching CoinGecko data for AGLD (adventure-gold)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=AGLD 500 in 47ms
+Fetching CoinGecko data for FLOW (flow)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOW 500 in 47ms
+ GET /api/coingecko?symbol=BIO 404 in 3ms
+ GET /api/coingecko?symbol=STEEM 404 in 2ms
+ GET /api/coingecko?symbol=ATH 404 in 2ms
+ GET /api/coingecko?symbol=AWE 404 in 5ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=DOGE 500 in 46ms
+Fetching CoinGecko data for AGLD (adventure-gold)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=AGLD 500 in 40ms
+ GET /api/coingecko?symbol=BIO 404 in 4ms
+ GET /api/coingecko?symbol=ATH 404 in 4ms
+📊 Dashboard API: Starting...
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 556ms
+ GET /api/coingecko?symbol=BTT 404 in 4ms
+ GET /api/coingecko?symbol=PEPE 404 in 4ms
+Fetching CoinGecko data for SHIB (shiba-inu)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SHIB 500 in 134ms
+ GET /api/coingecko?symbol=BONK 404 in 4ms
+Fetching CoinGecko data for XEC (ecash)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=XEC 500 in 46ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 47ms
+ GET /api/coingecko?symbol=TOSHI 404 in 6ms
+ GET /api/coingecko?symbol=POKT 404 in 3ms
+ GET /api/coingecko?symbol=BLAST 404 in 2ms
+ GET /api/coingecko?symbol=PUMP 404 in 3ms
+ GET /api/coingecko?symbol=ZIL 404 in 5ms
+ GET /api/coingecko?symbol=ZK 404 in 4ms
+ GET /api/coingecko?symbol=SENT 404 in 3ms
+Fetching CoinGecko data for ORBS (orbs)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 139ms
+ GET /api/coingecko?symbol=MEW 404 in 5ms
+ GET /api/coingecko?symbol=BEAM 404 in 5ms
+📊 Dashboard API: Starting...
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 546ms
+ GET /api/coingecko?symbol=BTT 404 in 1ms
+ GET / 200 in 117ms
+ GET /api/coingecko?symbol=PENGU 404 in 1ms
+ GET /api/dashboard 304 in 1ms
+ GET /api/dashboard 304 in 1ms
+ GET /api/coingecko?symbol=PEPE 404 in 3ms
+ GET /api/coingecko?symbol=NOM 404 in 30ms
+Fetching CoinGecko data for SHIB (shiba-inu)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SHIB 500 in 136ms
+ GET /api/coingecko?symbol=AZTEC 404 in 1ms
+ GET / 200 in 20ms
+ GET /api/dashboard 304 in 1ms
+ GET /api/dashboard 304 in 0ms
+ GET /api/coingecko?symbol=BONK 404 in 2ms
+Fetching CoinGecko data for SXP (swipe)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SXP 500 in 51ms
+Fetching CoinGecko data for XEC (ecash)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=XEC 500 in 40ms
+Fetching CoinGecko data for FLOCK (flock)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 44ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+ GET /api/coingecko?symbol=LINEA 404 in 3ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 415ms
+Fetching CoinGecko data for YGG (yield-guild-games)...
+ GET /api/coingecko?symbol=TOSHI 404 in 7ms
+ GET /api/coingecko?symbol=YGG 200 in 391ms
+ GET /api/coingecko?symbol=POKT 404 in 3ms
+Fetching CoinGecko data for FLOW (flow)...
+📊 Dashboard API: Starting...
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+ GET /api/coingecko?symbol=FLOW 200 in 298ms
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 548ms
+ GET /api/coingecko?symbol=BTT 404 in 6ms
+ GET /api/coingecko?symbol=BLAST 404 in 5ms
+ GET /api/coingecko?symbol=STEEM 404 in 5ms
+ GET /api/coingecko?symbol=PEPE 404 in 4ms
+ GET /api/coingecko?symbol=PUMP 404 in 3ms
+ GET /api/coingecko?symbol=AWE 404 in 2ms
+Fetching CoinGecko data for SHIB (shiba-inu)...
+ GET /api/coingecko?symbol=ZIL 404 in 4ms
+ GET /api/coingecko?symbol=SHIB 200 in 362ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+ GET /api/coingecko?symbol=DOGE 200 in 373ms
+ GET /api/coingecko?symbol=ZK 404 in 3ms
+ GET /api/coingecko?symbol=BONK 404 in 4ms
+Fetching CoinGecko data for AGLD (adventure-gold)...
+ GET /api/coingecko?symbol=AGLD 200 in 293ms
+ GET /api/coingecko?symbol=SENT 404 in 5ms
+Fetching CoinGecko data for XEC (ecash)...
+ GET /api/dashboard 304 in 5ms
+ GET /api/coingecko?symbol=XEC 200 in 293ms
+ GET /api/coingecko?symbol=BIO 404 in 5ms
+Fetching CoinGecko data for ORBS (orbs)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 56ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 48ms
+ GET /api/coingecko?symbol=ATH 404 in 4ms
+ GET /api/coingecko?symbol=MEW 404 in 3ms
+ GET /api/coingecko?symbol=TOSHI 404 in 2ms
+ GET /api/coingecko?symbol=BEAM 404 in 3ms
+ GET /api/coingecko?symbol=POKT 404 in 3ms
+ GET /api/coingecko?symbol=PENGU 404 in 4ms
+ GET /api/coingecko?symbol=BLAST 404 in 3ms
+ GET /api/coingecko?symbol=NOM 404 in 1ms
+📊 Dashboard API: Starting...
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+ GET /api/coingecko?symbol=PUMP 404 in 4ms
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 570ms
+ GET /api/coingecko?symbol=BTT 404 in 3ms
+ GET /api/coingecko?symbol=AZTEC 404 in 3ms
+ GET /api/coingecko?symbol=ZIL 404 in 2ms
+ GET /api/coingecko?symbol=PEPE 404 in 2ms
+Fetching CoinGecko data for SXP (swipe)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SXP 500 in 152ms
+ GET /api/coingecko?symbol=ZK 404 in 3ms
+Fetching CoinGecko data for SHIB (shiba-inu)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SHIB 500 in 46ms
+Fetching CoinGecko data for FLOCK (flock)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 45ms
+ GET /api/coingecko?symbol=SENT 404 in 5ms
+ GET /api/coingecko?symbol=BONK 404 in 3ms
+ GET /api/coingecko?symbol=LINEA 404 in 7ms
+Fetching CoinGecko data for ORBS (orbs)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 46ms
+Fetching CoinGecko data for XEC (ecash)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=XEC 500 in 47ms
+📊 Dashboard API: Starting...
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+Fetching CoinGecko data for YGG (yield-guild-games)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=YGG 500 in 53ms
+ GET /api/coingecko?symbol=MEW 404 in 4ms
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 579ms
+ GET /api/coingecko?symbol=BTT 404 in 3ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 41ms
+Fetching CoinGecko data for FLOW (flow)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOW 500 in 60ms
+ GET /api/coingecko?symbol=BEAM 404 in 4ms
+ GET /api/coingecko?symbol=PEPE 404 in 4ms
+ GET /api/coingecko?symbol=TOSHI 404 in 16ms
+ GET /api/coingecko?symbol=STEEM 404 in 3ms
+ GET /api/coingecko?symbol=PENGU 404 in 6ms
+Fetching CoinGecko data for SHIB (shiba-inu)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SHIB 500 in 41ms
+ GET /api/coingecko?symbol=POKT 404 in 6ms
+ GET /api/coingecko?symbol=AWE 404 in 3ms
+ GET /api/coingecko?symbol=NOM 404 in 1ms
+ GET /api/coingecko?symbol=BONK 404 in 1ms
+ GET /api/coingecko?symbol=BLAST 404 in 4ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=DOGE 500 in 47ms
+ GET /api/coingecko?symbol=AZTEC 404 in 5ms
+Fetching CoinGecko data for XEC (ecash)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=XEC 500 in 45ms
+ GET /api/coingecko?symbol=PUMP 404 in 4ms
+📊 Dashboard API: Starting...
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+Fetching CoinGecko data for AGLD (adventure-gold)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=AGLD 500 in 56ms
+Fetching CoinGecko data for SXP (swipe)...
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 564ms
+ GET /api/coingecko?symbol=BTT 404 in 3ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SXP 500 in 51ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 45ms
+ GET /api/coingecko?symbol=ZIL 404 in 3ms
+ GET /api/coingecko?symbol=BIO 404 in 3ms
+ GET /api/coingecko?symbol=PEPE 404 in 3ms
+Fetching CoinGecko data for FLOCK (flock)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 47ms
+ GET /api/coingecko?symbol=TOSHI 404 in 5ms
+ GET /api/coingecko?symbol=ZK 404 in 3ms
+ GET /api/coingecko?symbol=ATH 404 in 4ms
+Fetching CoinGecko data for SHIB (shiba-inu)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SHIB 500 in 47ms
+ GET /api/coingecko?symbol=LINEA 404 in 4ms
+ GET /api/coingecko?symbol=POKT 404 in 8ms
+ GET /api/coingecko?symbol=SENT 404 in 3ms
+ GET /api/coingecko?symbol=BONK 404 in 3ms
+Fetching CoinGecko data for YGG (yield-guild-games)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=YGG 500 in 49ms
+ GET /api/coingecko?symbol=BLAST 404 in 3ms
+Fetching CoinGecko data for ORBS (orbs)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 67ms
+Fetching CoinGecko data for XEC (ecash)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=XEC 500 in 44ms
+Fetching CoinGecko data for FLOW (flow)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOW 500 in 38ms
+ GET /api/coingecko?symbol=PUMP 404 in 1ms
+ GET /api/coingecko?symbol=MEW 404 in 9ms
+ GET /api/dashboard 304 in 4ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 50ms
+ GET /api/coingecko?symbol=STEEM 404 in 5ms
+ GET /api/coingecko?symbol=ZIL 404 in 10ms
+ GET /api/coingecko?symbol=BEAM 404 in 5ms
+ GET /api/coingecko?symbol=TOSHI 404 in 3ms
+ GET /api/coingecko?symbol=AWE 404 in 3ms
+ GET /api/coingecko?symbol=ZK 404 in 3ms
+ GET /api/coingecko?symbol=PENGU 404 in 4ms
+ GET /api/coingecko?symbol=POKT 404 in 3ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+ GET /api/coingecko?symbol=SENT 404 in 2ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=DOGE 500 in 40ms
+ GET /api/coingecko?symbol=NOM 404 in 10ms
+ GET / 200 in 22ms
+📊 Dashboard API: Starting...
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+ GET /api/coingecko?symbol=BLAST 404 in 3ms
+Fetching CoinGecko data for ORBS (orbs)...
+Fetching CoinGecko data for AGLD (adventure-gold)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 49ms
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 591ms
+ GET /api/coingecko?symbol=BTT 404 in 4ms
+ GET /api/dashboard 304 in 3ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=AGLD 500 in 118ms
+ GET /api/coingecko?symbol=AZTEC 404 in 3ms
+ GET /api/coingecko?symbol=PUMP 404 in 2ms
+ GET /api/coingecko?symbol=MEW 404 in 2ms
+ GET /api/coingecko?symbol=PEPE 404 in 1ms
+ GET /api/coingecko?symbol=BIO 404 in 2ms
+Fetching CoinGecko data for SXP (swipe)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SXP 500 in 110ms
+ GET /api/coingecko?symbol=ZIL 404 in 5ms
+ GET /api/coingecko?symbol=BEAM 404 in 2ms
+Fetching CoinGecko data for SHIB (shiba-inu)...
+ GET /api/coingecko?symbol=ATH 404 in 9ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SHIB 500 in 41ms
+Fetching CoinGecko data for FLOCK (flock)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 42ms
+ ✓ Compiled in 155ms (1019 modules)
+📊 Dashboard API: Starting...
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+ GET /api/coingecko?symbol=ZK 404 in 12ms
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 569ms
+ GET /api/coingecko?symbol=BTT 404 in 2ms
+ GET /api/coingecko?symbol=PENGU 404 in 1ms
+ GET /api/coingecko?symbol=BONK 404 in 2ms
+ GET /api/coingecko?symbol=LINEA 404 in 2ms
+ GET /api/coingecko?symbol=SENT 404 in 2ms
+ GET /api/coingecko?symbol=PEPE 404 in 9ms
+ GET /api/coingecko?symbol=NOM 404 in 2ms
+Fetching CoinGecko data for XEC (ecash)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=XEC 500 in 45ms
+Fetching CoinGecko data for YGG (yield-guild-games)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=YGG 500 in 43ms
+Fetching CoinGecko data for ORBS (orbs)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 46ms
+Fetching CoinGecko data for SHIB (shiba-inu)...
+ GET /api/coingecko?symbol=AZTEC 404 in 4ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SHIB 500 in 45ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 81ms
+Fetching CoinGecko data for FLOW (flow)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOW 500 in 42ms
+ GET /api/coingecko?symbol=MEW 404 in 2ms
+Fetching CoinGecko data for SXP (swipe)...
+ GET /api/coingecko?symbol=BONK 404 in 3ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SXP 500 in 45ms
+ GET /api/coingecko?symbol=TOSHI 404 in 1ms
+ GET /api/coingecko?symbol=STEEM 404 in 1ms
+ GET /api/coingecko?symbol=BEAM 404 in 5ms
+Fetching CoinGecko data for XEC (ecash)...
+Fetching CoinGecko data for FLOCK (flock)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=XEC 500 in 47ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 140ms
+ GET /api/coingecko?symbol=POKT 404 in 3ms
+ GET /api/coingecko?symbol=AWE 404 in 6ms
+ GET /api/dashboard 304 in 3ms
+ GET /api/coingecko?symbol=PENGU 404 in 2ms
+Fetching CoinGecko data for VTHO (vethor-token)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=VTHO 500 in 42ms
+ GET /api/coingecko?symbol=LINEA 404 in 3ms
+ GET /api/coingecko?symbol=BLAST 404 in 2ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=DOGE 500 in 45ms
+ GET /api/coingecko?symbol=NOM 404 in 3ms
+ GET /api/coingecko?symbol=TOSHI 404 in 3ms
+Fetching CoinGecko data for YGG (yield-guild-games)...
+ GET /api/coingecko?symbol=PUMP 404 in 2ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=YGG 500 in 56ms
+ GET / 200 in 100ms
+Fetching CoinGecko data for AGLD (adventure-gold)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=AGLD 500 in 54ms
+📊 Dashboard API: Starting...
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+ GET /api/coingecko?symbol=AZTEC 404 in 6ms
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 544ms
+ GET /api/coingecko?symbol=BTT 404 in 4ms
+ GET /api/dashboard 304 in 4ms
+ GET /api/coingecko?symbol=POKT 404 in 2ms
+ GET /api/coingecko?symbol=ZIL 404 in 3ms
+Fetching CoinGecko data for FLOW (flow)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOW 500 in 48ms
+ ✓ Compiled in 171ms (1019 modules)
+ GET /api/coingecko?symbol=BIO 404 in 152ms
+Fetching CoinGecko data for SXP (swipe)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SXP 500 in 43ms
+ GET /api/coingecko?symbol=PEPE 404 in 3ms
+ GET /api/coingecko?symbol=BLAST 404 in 7ms
+ GET /api/coingecko?symbol=ZK 404 in 2ms
+ GET /api/coingecko?symbol=STEEM 404 in 2ms
+ GET /api/coingecko?symbol=ATH 404 in 3ms
+Fetching CoinGecko data for FLOCK (flock)...
+Fetching CoinGecko data for SHIB (shiba-inu)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOCK 500 in 46ms
+ GET /api/coingecko?symbol=PUMP 404 in 3ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=SHIB 500 in 133ms
+ GET /api/coingecko?symbol=SENT 404 in 1ms
+ GET /api/coingecko?symbol=AWE 404 in 2ms
+ GET /api/coingecko?symbol=LINEA 404 in 2ms
+ GET /api/coingecko?symbol=ZIL 404 in 1ms
+Fetching CoinGecko data for ORBS (orbs)...
+ GET /api/coingecko?symbol=BONK 404 in 8ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=ORBS 500 in 48ms
+Fetching CoinGecko data for DOGE (dogecoin)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=DOGE 500 in 42ms
+ GET / 200 in 48ms
+Fetching CoinGecko data for YGG (yield-guild-games)...
+ GET /api/coingecko?symbol=ZK 404 in 2ms
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=YGG 500 in 82ms
+Fetching CoinGecko data for XEC (ecash)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=XEC 500 in 39ms
+ GET /api/coingecko?symbol=MEW 404 in 1ms
+Fetching CoinGecko data for AGLD (adventure-gold)...
+📊 Dashboard API: Starting...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=AGLD 500 in 39ms
+✅ Markets fetched: 695 total
+✅ KRW markets: 239
+📦 Fetching 3 batches of tickers...
+✅ Tickers fetched: 239
+✅ Formatted: 239 coins
+📊 CoinGecko 데이터를 백그라운드에서 수집 중...
+✅ Dashboard data ready
+ GET /api/dashboard 200 in 534ms
+ GET /api/coingecko?symbol=BTT 404 in 5ms
+ GET /api/dashboard 304 in 4ms
+ GET /api/coingecko?symbol=SENT 404 in 4ms
+Fetching CoinGecko data for FLOW (flow)...
+CoinGecko API Error: Error: CoinGecko API error: 429
+    at handler (webpack-internal:///(api)/./pages/api/coingecko.js:63:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async K (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:2871)
+    at async U.render (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/compiled/next-server/pages-api.runtime.dev.js:21:3955)
+    at async DevServer.runApi (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:603:9)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/next-server.js:269:37)
+    at async DevServer.handleRequestImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/admin/Desktop/dev/nextjs-crypto-dashboard/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/coingecko?symbol=FLOW 500 in 42ms
