@@ -33,13 +33,20 @@
   align-items: center;
   justify-content: center;
   width: auto;
-  height: 100px;
+  height: 60px;
   background: transparent;
   border-radius: 0;
   color: white;
   box-shadow: none;
   overflow: visible;
   mix-blend-mode: multiply;
+}
+
+/* 데스크탑: 더 크게 */
+@media (min-width: 1024px) {
+  .logoIcon {
+    height: 80px;
+  }
 }
 
 .logoImage {

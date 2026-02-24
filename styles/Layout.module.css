@@ -36,7 +36,7 @@
 
 .logoIcon {
   width: auto;
-  height: 80px;
+  height: 50px;
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 0 4px rgba(139, 127, 244, 0.2));
@@ -48,6 +48,13 @@
   display: block;
   line-height: 0;
   margin: 0;
+}
+
+/* 데스크탑: 더 크게 */
+@media (min-width: 1024px) {
+  .logoIcon {
+    height: 70px;
+  }
 }
 
 /* 다크모드: 배경색 + screen blend */
