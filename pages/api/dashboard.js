@@ -1,5 +1,18 @@
+// API 응답 캐시 (메모리)
+const apiCache = {
+  data: null,
+  timestamp: 0,
+  ttl: 5000, // 5초 캐시
+};
+
 export default async function handler(req, res) {
   try {
+    // 캐시 확인
+    const now = Date.now();
+    if (apiCache.data && (now - apiCache.timestamp) < apiCache.ttl) {
+      return res.status(200).json(apiCache.data);
+    }
+
     console.log('📊 Dashboard API: Starting...');
     
     // 1. 모든 마켓 정보 조회 (직접 업비트 API 사용)
@@ -28,16 +41,19 @@ export default async function handler(req, res) {
     
     if (marketCodes.length === 0) {
       console.warn('⚠️ No KRW markets found');
-      return res.status(200).json({
+      const emptyResponse = {
         timestamp: new Date().toISOString(),
         stats: { total_markets: 0, gainers_count: 0, losers_count: 0, avg_change: 0 },
         by_volume: [],
         by_change: { gainers: [] },
         by_decline: [],
-      });
+      };
+      apiCache.data = emptyResponse;
+      apiCache.timestamp = now;
+      return res.status(200).json(emptyResponse);
     }
     
-    // 2. 전체 KRW 마켓 티커 데이터 가져오기 (한 번에 최대 100개씩)
+    // 2. 전체 KRW 마켓 티커 데이터 가져오기 (한 번에 최대 100개씩, Rate Limit 방지)
     const batchSize = 100;
     const batches = [];
     for (let i = 0; i < marketCodes.length; i += batchSize) {
@@ -48,97 +64,76 @@ export default async function handler(req, res) {
     
     let allTickers = [];
     for (let i = 0; i < batches.length; i++) {
-      const batch = batches[i];
-      const markets = batch.join(',');
+      const batchCodes = batches[i];
+      const tickersUrl = `https://api.upbit.com/v1/ticker?markets=${batchCodes.join(',')}`;
       
       try {
-        console.log(`  [Batch ${i + 1}/${batches.length}] Requesting ${batch.length} markets...`);
-        
-        const response = await fetch(
-          `https://api.upbit.com/v1/ticker?markets=${markets}`,
-          { 
-            headers: { 'Accept': 'application/json' },
-            timeout: 10000
+        const tickersResponse = await fetch(tickersUrl, {
+          headers: {
+            'User-Agent': 'DolPick/1.0',
           }
-        );
+        });
         
-        console.log(`  [Batch ${i + 1}] Response status: ${response.status}`);
-        
-        if (response.ok) {
-          const tickers = await response.json();
-          console.log(`  [Batch ${i + 1}] Got ${tickers.length} tickers`);
+        if (tickersResponse.status === 429) {
+          console.warn('⚠️ Rate limited by Upbit API, waiting before retry...');
+          // Rate limit 발생 시 500ms 대기
+          await new Promise(resolve => setTimeout(resolve, 500));
           
-          if (Array.isArray(tickers) && tickers.length > 0) {
-            allTickers = allTickers.concat(tickers);
-          }
-        } else if (response.status === 429) {
-          // Rate limit - wait longer and retry
-          console.warn(`  [Batch ${i + 1}] Rate limited (429), waiting before retry...`);
-          await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 대기
-          
-          // 재시도
-          try {
-            const retryResponse = await fetch(
-              `https://api.upbit.com/v1/ticker?markets=${markets}`,
-              { headers: { 'Accept': 'application/json' } }
-            );
-            if (retryResponse.ok) {
-              const tickers = await retryResponse.json();
-              console.log(`  [Batch ${i + 1}] Retry successful: ${tickers.length} tickers`);
-              allTickers = allTickers.concat(tickers);
+          // 재시도 (한 번)
+          const retryResponse = await fetch(tickersUrl, {
+            headers: {
+              'User-Agent': 'DolPick/1.0',
             }
-          } catch (retryError) {
-            console.error(`  [Batch ${i + 1}] Retry failed:`, retryError.message);
+          });
+          
+          if (!retryResponse.ok) {
+            console.warn(`⚠️ Batch ${i + 1} failed: ${retryResponse.status}`);
+            continue;
           }
+          
+          const batchTickers = await retryResponse.json();
+          allTickers.push(...batchTickers);
+        } else if (!tickersResponse.ok) {
+          console.warn(`⚠️ Batch ${i + 1} failed: ${tickersResponse.status}`);
+          continue;
         } else {
-          console.warn(`  [Batch ${i + 1}] Non-OK response: ${response.status}`);
+          const batchTickers = await tickersResponse.json();
+          allTickers.push(...batchTickers);
         }
-      } catch (batchError) {
-        console.error(`  [Batch ${i + 1}] Error:`, batchError.message);
+      } catch (error) {
+        console.warn(`⚠️ Batch ${i + 1} error:`, error.message);
+        continue;
       }
       
-      // API 요청 제한 고려: 초당 10회 = 최소 100ms, 안전하게 500ms 사용
+      // 배치 사이에 200ms 대기 (Rate Limit 방지)
       if (i < batches.length - 1) {
-        console.log(`  ⏳ Waiting 500ms before next batch...`);
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 200));
       }
     }
     
-    console.log(`✅ Total tickers fetched: ${allTickers.length}`);
+    console.log(`✅ Tickers fetched: ${allTickers.length}`);
     
-    // 데이터가 없으면 기본값 반환 (무한 새로고침 방지)
-    if (!Array.isArray(allTickers) || allTickers.length === 0) {
-      console.warn('⚠️ No tickers returned from Upbit API, returning empty dashboard');
-      return res.status(200).json({
-        timestamp: new Date().toISOString(),
-        stats: { total_markets: 0, gainers_count: 0, losers_count: 0, avg_change: 0 },
-        by_volume: [],
-        by_change: { gainers: [] },
-        by_decline: [],
-      });
-    }
-    
-    // 3. 데이터 포맷팅 (실시간 한글명 및 경고 사용)
+    // 3. 데이터 포맷팅
     const formatted = allTickers.map(ticker => {
-      if (!ticker || !ticker.market) return null;
       const symbol = ticker.market.replace('KRW-', '');
-      const marketWarning = marketWarningMap[symbol] || 'NONE';
+      const change = ((ticker.trade_price - ticker.opening_price) / ticker.opening_price) * 100;
       
       return {
         market: ticker.market,
         symbol,
         name: koreanNameMap[symbol] || symbol,
         price: ticker.trade_price,
-        change: ticker.signed_change_rate * 100,
-        volume: ticker.acc_trade_price_24h,
-        high: ticker.high_price,
-        low: ticker.low_price,
-        volume_power: ticker.acc_trade_price_24h / (ticker.prev_closing_price * ticker.acc_trade_volume_24h || 1),
-        marketWarning,
-        isNew: marketWarning === 'CAUTION' && ticker.timestamp > (Date.now() - 30 * 24 * 60 * 60 * 1000),
+        change: parseFloat(change.toFixed(2)),
+        volume: ticker.acc_trade_volume_24h,
+        high: ticker.high_price_24h,
+        low: ticker.low_price_24h,
+        trade_price_24h: ticker.acc_trade_price_24h,
+        volume_power: ticker.trade_volume_24h / ticker.acc_trade_volume_24h || 1,
+        marketWarning: marketWarningMap[symbol] || 'NONE',
+        isNew: symbol === 'NEW',
       };
-    }).filter(Boolean);
-    
+    });
+
     console.log(`✅ Formatted: ${formatted.length} coins`);
     
     // 4. 카테고리별 분류 (실시간 데이터 기반)
@@ -183,6 +178,10 @@ export default async function handler(req, res) {
         console.error('백그라운드 CoinGecko 로드 실패:', e.message);
       }
     })();
+    
+    // 캐시 저장
+    apiCache.data = dashboardData;
+    apiCache.timestamp = now;
     
     console.log('✅ Dashboard data ready');
     res.status(200).json(dashboardData);
