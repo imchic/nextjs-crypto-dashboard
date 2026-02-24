@@ -225,6 +225,27 @@ export default function Dashboard() {
     localStorage.setItem('recentSearches', JSON.stringify(newSearches));
   };
 
+  const getDisplayCoins = () => {
+    if (!data) return [];
+    if (group === 'all') return allMarkets;
+    if (group === 'volume') return data.by_volume || [];
+    if (group === 'gainers') return data.by_change?.gainers || [];
+    if (group === 'losers') return data.by_decline || [];
+    if (group === 'recommended') {
+      const allCoins = allMarkets.length > 0 ? allMarkets : (data.by_volume || []);
+      return allCoins.filter(coin => recommendations[coin.symbol]);
+    }
+    if (group === 'favorites') {
+      const allCoins = [...(allMarkets || []), ...(data.by_volume || []), ...(data.by_change?.gainers || []), ...(data.by_decline || [])];
+      const uniqueCoins = allCoins.reduce((acc, coin) => {
+        if (!acc.find(c => c.symbol === coin.symbol)) acc.push(coin);
+        return acc;
+      }, []);
+      return uniqueCoins.filter(coin => favorites.includes(coin.symbol));
+    }
+    return [];
+  };
+
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
