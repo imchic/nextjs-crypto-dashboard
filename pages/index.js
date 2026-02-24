@@ -345,8 +345,18 @@ export default function Dashboard() {
   } else if (group === 'losers') {
     coins = data.by_decline || [];
   } else if (group === 'recommended') {
-    // 추천 종목 = 거래량 상위 30개
-    coins = data.by_volume?.slice(0, 30) || [];
+    // 추천 종목 = 배치 결과(recommendations)에 있는 코인들
+    // 전체 코인(allMarkets) 중에서 recommendations에 있는 것만 필터링
+    const allCoins = allMarkets.length > 0 ? allMarkets : (data.by_volume || []);
+    
+    coins = allCoins.filter(coin => recommendations[coin.symbol]);
+    
+    // 점수 높은 순으로 정렬
+    coins.sort((a, b) => {
+      const scoreA = recommendations[a.symbol]?.score || 0;
+      const scoreB = recommendations[b.symbol]?.score || 0;
+      return scoreB - scoreA;
+    });
   } else if (group === 'favorites') {
     // 즐겨찾기 - 모든 코인 데이터에서 찾기 (중복 제거)
     const allCoins = [...(allMarkets || []), ...(data.by_volume || []), ...(data.by_change?.gainers || []), ...(data.by_decline || [])];

@@ -15,23 +15,58 @@ class RecommendationBatch {
     this.recommendations = {};
   }
 
-  // 시뮬레이션 데이터: 실제로는 API에서 가져옴
+  // 실제 Upbit API 데이터 수집
   async fetchMarketData() {
-    console.log('📊 시장 데이터 수집 중...');
+    console.log('📊 시장 데이터 수집 중 (Upbit API)...');
     
-    // 실제 구현: Upbit API에서 가져오기
-    return {
-      'SOL': { change: 12.5, volume: 1200000000, trend: 'up_strong' },
-      'XRP': { change: 8.3, volume: 950000000, trend: 'up' },
-      'AVAX': { change: 7.8, volume: 850000000, trend: 'up' },
-      'NEAR': { change: 6.5, volume: 620000000, trend: 'up' },
-      'ARB': { change: 4.2, volume: 580000000, trend: 'stable' },
-      'OP': { change: 3.8, volume: 520000000, trend: 'stable' },
-      'MATIC': { change: 5.1, volume: 610000000, trend: 'up' },
-      'LINK': { change: 2.3, volume: 450000000, trend: 'stable' },
-      'UNI': { change: 3.9, volume: 520000000, trend: 'stable' },
-      'ATOM': { change: 2.8, volume: 380000000, trend: 'stable' },
-    };
+    try {
+      // 1. 모든 KRW 마켓 조회
+      const marketRes = await fetch('https://api.upbit.com/v1/market/all?isDetails=false');
+      if (!marketRes.ok) throw new Error(`Market fetch failed: ${marketRes.status}`);
+      
+      const markets = await marketRes.json();
+      const krwMarkets = markets
+        .filter(m => m.market.startsWith('KRW-'))
+        .map(m => m.market);
+      
+      console.log(`✅ KRW 마켓 발견: ${krwMarkets.length}개`);
+      
+      // 2. 티커 조회 (최대 100개씩)
+      // Upbit API 제한 고려하여 상위 100개만 우선 분석 (알트코인 포함)
+      const targets = krwMarkets.slice(0, 100); 
+      
+      const tickerRes = await fetch(`https://api.upbit.com/v1/ticker?markets=${targets.join(',')}`);
+      if (!tickerRes.ok) throw new Error(`Ticker fetch failed: ${tickerRes.status}`);
+      
+      const tickers = await tickerRes.json();
+      
+      // 3. 데이터 변환
+      const marketData = {};
+      tickers.forEach(t => {
+        const symbol = t.market.replace('KRW-', '');
+        // 등락률 계산
+        const change = ((t.trade_price - t.opening_price) / t.opening_price) * 100;
+        
+        // 트렌드 분석
+        let trend = 'stable';
+        if (change >= 5) trend = 'up_strong';
+        else if (change > 0) trend = 'up';
+        else if (change <= -5) trend = 'down_strong';
+        else if (change < 0) trend = 'down';
+        
+        marketData[symbol] = {
+          change: parseFloat(change.toFixed(2)),
+          volume: t.acc_trade_price_24h, // 거래대금 (원화)
+          price: t.trade_price,
+          trend: trend
+        };
+      });
+      
+      return marketData;
+    } catch (error) {
+      console.error('❌ 데이터 수집 실패:', error);
+      return {}; 
+    }
   }
 
   // 분석 알고리즘
