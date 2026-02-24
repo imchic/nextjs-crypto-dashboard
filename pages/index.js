@@ -771,21 +771,22 @@ export default function Dashboard() {
 
                           {/* 체급 뱃지 추가 */}
                           {recommendations[coin.symbol]?.category && (
-                            <span style={{ 
-                              background: recommendations[coin.symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.15)' : 
-                                         recommendations[coin.symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.1)' :
-                                         recommendations[coin.symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
-                              color: recommendations[coin.symbol].category.includes('대형') ? '#8B7FF4' : 
-                                     recommendations[coin.symbol].category.includes('중형') ? '#60A5FA' :
-                                     recommendations[coin.symbol].category.includes('스캠') ? '#FF4757' : 'var(--text-secondary)',
-                              border: recommendations[coin.symbol].category.includes('스캠') ? '1px solid #FF4757' : '1px solid var(--border-medium)',
-                              padding: '2px 6px',
-                              borderRadius: '4px',
-                              fontSize: '11px',
-                              fontWeight: 'bold',
-                              marginRight: '6px'
-                            }}>
+                            <span className={`${styles.recommendBadge} ${styles[`category${recommendations[coin.symbol].category.replace(/[^a-zA-Z0-9]/g, '')}`]}`}> 
                               {recommendations[coin.symbol].category}
+                            </span>
+                          )}
+
+                          {/* 투자 타입 뱃지 */}
+                          {recommendations[coin.symbol]?.type && (
+                            <span className={`${styles.recommendBadge} ${styles[`type${recommendations[coin.symbol].type.replace(/[^a-zA-Z0-9]/g, '')}`]}`}> 
+                              {recommendations[coin.symbol].type}
+                            </span>
+                          )}
+
+                          {/* 위험도 뱃지 */}
+                          {recommendations[coin.symbol]?.risk && (
+                            <span className={`${styles.recommendBadge} ${styles[`risk${recommendations[coin.symbol].risk.replace(/[^a-zA-Z0-9]/g, '')}`]}`}> 
+                              {recommendations[coin.symbol].risk}
                             </span>
                           )}
                         </div>
