@@ -1,4 +1,7 @@
 // pages/api/ticker.js
+// EC2 포트 5000 프록시 사용 (CORS + 429 레이트 제한 해결)
+const EC2_API_URL = 'http://3.36.240.119:5000';
+
 export default async function handler(req, res) {
   const { market } = req.query;
 
@@ -7,36 +10,22 @@ export default async function handler(req, res) {
   }
 
   try {
-    const markets = market.split(',');
-    let response = await fetch(
-      `https://api.upbit.com/v1/ticker?markets=${market}`
-    );
-    let data = await response.json();
-
-    // 만약 전체 요청이 실패했으면 (404 또는 에러), 개별 마켓 검증
-    if (!Array.isArray(data) || data.length === 0) {
-      const validTickers = [];
-
-      for (const m of markets) {
-        try {
-          const singleRes = await fetch(`https://api.upbit.com/v1/ticker?markets=${m}`);
-          const singleData = await singleRes.json();
-
-          // 유효한 데이터(배열이고 길이가 1 이상)만 추가
-          if (Array.isArray(singleData) && singleData.length > 0) {
-            validTickers.push(singleData[0]);
-          }
-        } catch (e) {
-          // 개별 요청 실패는 무시하고 계속
-        }
-      }
-
-      return res.status(200).json(validTickers);
-    }
-
+    // EC2 서버를 통해 요청 프록시
+    const response = await fetch(`${EC2_API_URL}/api/ticker?markets=${market}`);
+    const data = await response.json();
+    
     res.status(200).json(data);
   } catch (error) {
-    console.error('API Error:', error);
-    res.status(500).json({ error: 'Failed to fetch ticker' });
+    console.error('Ticker API Error:', error);
+    // 폴백: 직접 Upbit API 호출 (EC2 다운 시)
+    try {
+      const fallbackResponse = await fetch(
+        `https://api.upbit.com/v1/ticker?markets=${market}`
+      );
+      const fallbackData = await fallbackResponse.json();
+      res.status(200).json(fallbackData);
+    } catch (fallbackError) {
+      res.status(500).json({ error: 'Failed to fetch ticker' });
+    }
   }
 }
