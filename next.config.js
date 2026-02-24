@@ -9,19 +9,11 @@ const nextConfig = {
   productionBrowserSourceMaps: false, // Source maps 비활성화
   compress: true, // Gzip 압축
   
-  // SWC minifier 설정 (더 강력한 난독화)
-  swcMinify: true,
-  
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // 클라이언트 사이드 난독화
-      config.optimization = {
-        ...config.optimization,
-        usedExports: true,
-        sideEffects: false,
-      };
-    }
-    return config;
+  // SWC 컴파일러 설정 (Console 제거 포함)
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
   },
 };
 
