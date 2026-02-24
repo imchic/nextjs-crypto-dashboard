@@ -1,0 +1,11 @@
+# OpenClaw Cron 설정
+# Asia/Seoul (GMT+9) 시간대
+
+# 06:00 - 주식 심화 분석
+0 6 * * * stock-monitor-v2
+
+# 08:00 - AI추천 암호화폐 분석
+0 8 * * * ai-recommendations-monitor
+
+# 10:00 - Gmail 자동 라벨 분류
+0 10 * * * gmail-auto-label

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": "./*"
+    },
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "jsx": "preserve",
+    "strict": false
+  },
+  "include": ["next.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
