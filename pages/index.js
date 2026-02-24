@@ -611,7 +611,7 @@ export default function Dashboard() {
       {/* 컬럼 헤더 (정렬 버튼) */}
       <div className={styles.columnHeaders}>
         <button 
-          className={styles.sortBtn}
+          className={`${styles.sortBtn} ${sortBy === 'name' ? styles.active : ''}`}
           onClick={() => {
             if (sortBy === 'name') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -621,11 +621,11 @@ export default function Dashboard() {
             }
           }}
         >
-          코인명 {sortBy === 'name' && (sortOrder === 'asc' ? '↑' : '↓')}
+          코인명 {sortBy === 'name' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
         </button>
 
         <button 
-          className={styles.sortBtn}
+          className={`${styles.sortBtn} ${sortBy === 'score' ? styles.active : ''}`}
           onClick={() => {
             if (sortBy === 'score') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -635,11 +635,11 @@ export default function Dashboard() {
             }
           }}
         >
-          점수 {sortBy === 'score' && (sortOrder === 'asc' ? '↑' : '↓')}
+          점수 {sortBy === 'score' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
         </button>
 
         <button 
-          className={styles.sortBtn}
+          className={`${styles.sortBtn} ${sortBy === 'category' ? styles.active : ''}`}
           onClick={() => {
             if (sortBy === 'category') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -649,11 +649,11 @@ export default function Dashboard() {
             }
           }}
         >
-          코인형태 {sortBy === 'category' && (sortOrder === 'asc' ? '↑' : '↓')}
+          코인형태 {sortBy === 'category' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
         </button>
 
         <button 
-          className={styles.sortBtn}
+          className={`${styles.sortBtn} ${sortBy === 'change' ? styles.active : ''}`}
           onClick={() => {
             if (sortBy === 'change') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -663,11 +663,11 @@ export default function Dashboard() {
             }
           }}
         >
-          수익률 {sortBy === 'change' && (sortOrder === 'asc' ? '↑' : '↓')}
+          수익률 {sortBy === 'change' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
         </button>
 
         <button 
-          className={styles.sortBtn}
+          className={`${styles.sortBtn} ${sortBy === 'price' ? styles.active : ''}`}
           onClick={() => {
             if (sortBy === 'price') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -677,11 +677,11 @@ export default function Dashboard() {
             }
           }}
         >
-          {unit === 'KRW' ? '현재가 (원)' : unit === 'BTC' ? '현재가 (BTC)' : '현재가 ($)'} {sortBy === 'price' && (sortOrder === 'asc' ? '↑' : '↓')}
+          {unit === 'KRW' ? '현재가 (원)' : unit === 'BTC' ? '현재가 (BTC)' : '현재가 ($)'} {sortBy === 'price' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
         </button>
 
         <button 
-          className={styles.sortBtn}
+          className={`${styles.sortBtn} ${sortBy === 'volume' ? styles.active : ''}`}
           onClick={() => {
             if (sortBy === 'volume') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -691,7 +691,7 @@ export default function Dashboard() {
             }
           }}
         >
-          거래량 {sortBy === 'volume' && (sortOrder === 'asc' ? '↑' : '↓')}
+          거래량 {sortBy === 'volume' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
         </button>
       </div>
 

@@ -602,6 +602,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 4px;
+  position: relative; /* 화살표 위치 조정을 위해 추가 */
 }
 
 .sortBtn:hover {
@@ -611,6 +612,29 @@
 
 .sortBtn:active {
   transform: scale(0.98);
+}
+
+.sortBtn.active {
+  background: rgba(139, 127, 244, 0.1);
+  border-radius: 4px;
+  padding: 4px 8px; /* 활성 상태에서 패딩 추가 */
+  margin: -4px -8px; /* 패딩만큼 마이너스 마진 */
+  color: var(--primary-purple);
+  box-shadow: 0 0 10px rgba(139, 127, 244, 0.2);
+}
+
+.sortArrow {
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+}
+
+.sortArrow.asc {
+  transform: translateY(-2px) rotate(0deg);
+}
+
+.sortArrow.desc {
+  transform: translateY(2px) rotate(180deg);
 }
 
 .colSymbol {
