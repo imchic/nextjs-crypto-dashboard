@@ -24,7 +24,7 @@
 .logoContainer {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0;
   cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
@@ -35,26 +35,48 @@
 }
 
 .logoIcon {
-  width: 44px;
-  height: 44px;
+  width: auto;
+  height: 80px;
   object-fit: contain;
+  object-position: center;
   filter: drop-shadow(0 0 4px rgba(139, 127, 244, 0.2));
   transition: all 0.3s ease;
   background: transparent;
-  padding: 8px;
-  border-radius: 50%;
+  padding: 0;
+  border-radius: 0;
+  mix-blend-mode: multiply;
+  display: block;
+  line-height: 0;
+  margin: 0;
 }
 
-/* 다크모드: 배경색 추가 */
+/* 다크모드: 배경색 + screen blend */
 [data-theme="dark"] .logoIcon {
-  background: rgba(139, 127, 244, 0.15);
+  background: transparent;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 4px rgba(139, 127, 244, 0.2)) brightness(1.1) contrast(1.2);
+  display: block;
+  line-height: 0;
 }
 
+/* 라이트모드: 배경색 + multiply blend */
 [data-theme="light"] .logoIcon {
-  background: rgba(108, 92, 231, 0.1);
+  background: transparent;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 0 4px rgba(108, 92, 231, 0.3)) brightness(0.95) contrast(1.1);
+  display: block;
+  line-height: 0;
+}
+
+/* 데스크탑: 더 크게 */
+@media (min-width: 1024px) {
+  .logoIcon {
+    height: 80px;
+  }
 }
 
 .logo {
+  display: none;
   font-size: 22px;
   font-weight: 900;
   letter-spacing: -0.5px;
@@ -395,8 +417,8 @@
   }
 
   .logoIcon {
-    width: 40px;
-    height: 40px;
+    width: 150px;
+    height: 150px;
   }
 
   .logo {

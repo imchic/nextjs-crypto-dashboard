@@ -13,20 +13,20 @@ export default async function handler(req, res) {
       return res.status(200).json(apiCache.data);
     }
 
-    console.log('📊 Dashboard API: Starting...');
+    console.log('Dashboard API: Starting...');
     
     // 1. 모든 마켓 정보 조회 (직접 업비트 API 사용)
     const marketsResponse = await fetch('https://api.upbit.com/v1/market/all');
     if (!marketsResponse.ok) {
-      console.warn(`⚠️ Market list API error: ${marketsResponse.status}`);
-      throw new Error(`Market list API error: ${marketsResponse.status}`);
+      console.warn('Market list API error: ' + marketsResponse.status);
+      throw new Error('Market list API error: ' + marketsResponse.status);
     }
     
     const allMarkets = await marketsResponse.json();
-    console.log(`✅ Markets fetched: ${allMarkets.length} total`);
+    console.log('Markets fetched: ' + allMarkets.length + ' total');
     
     const krwMarkets = allMarkets.filter(m => m && m.market && m.market.startsWith('KRW-'));
-    console.log(`✅ KRW markets: ${krwMarkets.length}`);
+    console.log('KRW markets: ' + krwMarkets.length);
     
     // 한글명 및 경고 매핑 생성
     const koreanNameMap = {};
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     const marketCodes = krwMarkets.map(m => m.market);
     
     if (marketCodes.length === 0) {
-      console.warn('⚠️ No KRW markets found');
+      console.warn('No KRW markets found');
       const emptyResponse = {
         timestamp: new Date().toISOString(),
         stats: { total_markets: 0, gainers_count: 0, losers_count: 0, avg_change: 0 },
@@ -60,12 +60,12 @@ export default async function handler(req, res) {
       batches.push(marketCodes.slice(i, i + batchSize));
     }
     
-    console.log(`📦 Fetching ${batches.length} batches of tickers...`);
+    console.log('Fetching ' + batches.length + ' batches of tickers...');
     
     let allTickers = [];
     for (let i = 0; i < batches.length; i++) {
       const batchCodes = batches[i];
-      const tickersUrl = `https://api.upbit.com/v1/ticker?markets=${batchCodes.join(',')}`;
+      const tickersUrl = 'https://api.upbit.com/v1/ticker?markets=' + batchCodes.join(',');
       
       try {
         const tickersResponse = await fetch(tickersUrl, {
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
         });
         
         if (tickersResponse.status === 429) {
-          console.warn('⚠️ Rate limited by Upbit API, waiting before retry...');
+          console.warn('Rate limited by Upbit API, waiting before retry...');
           // Rate limit 발생 시 500ms 대기
           await new Promise(resolve => setTimeout(resolve, 500));
           
@@ -87,21 +87,21 @@ export default async function handler(req, res) {
           });
           
           if (!retryResponse.ok) {
-            console.warn(`⚠️ Batch ${i + 1} failed: ${retryResponse.status}`);
+            console.warn('Batch ' + (i + 1) + ' failed: ' + retryResponse.status);
             continue;
           }
           
           const batchTickers = await retryResponse.json();
           allTickers.push(...batchTickers);
         } else if (!tickersResponse.ok) {
-          console.warn(`⚠️ Batch ${i + 1} failed: ${tickersResponse.status}`);
+          console.warn('Batch ' + (i + 1) + ' failed: ' + tickersResponse.status);
           continue;
         } else {
           const batchTickers = await tickersResponse.json();
           allTickers.push(...batchTickers);
         }
       } catch (error) {
-        console.warn(`⚠️ Batch ${i + 1} error:`, error.message);
+        console.warn('Batch ' + (i + 1) + ' error: ' + error.message);
         continue;
       }
       
@@ -111,7 +111,7 @@ export default async function handler(req, res) {
       }
     }
     
-    console.log(`✅ Tickers fetched: ${allTickers.length}`);
+    console.log('Tickers fetched: ' + allTickers.length);
     
     // 3. 데이터 포맷팅
     const formatted = allTickers.map(ticker => {
@@ -134,7 +134,7 @@ export default async function handler(req, res) {
       };
     });
 
-    console.log(`✅ Formatted: ${formatted.length} coins`);
+    console.log('Formatted: ' + formatted.length + ' coins');
     
     // 4. 카테고리별 분류 (실시간 데이터 기반)
     const byVolume = [...formatted]
@@ -165,17 +165,17 @@ export default async function handler(req, res) {
     };
     
     // 백그라운드에서 CoinGecko 데이터 수집 (응답을 기다리지 않음)
-    console.log('📊 CoinGecko 데이터를 백그라운드에서 수집 중...');
+    console.log('CoinGecko 데이터를 백그라운드에서 수집 중...');
     (async () => {
       try {
         const top30Symbols = byVolume.map(c => c.symbol);
         for (let i = 0; i < top30Symbols.length; i++) {
-          await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/coingecko?symbol=${top30Symbols[i]}`)
+          await fetch((process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000') + '/api/coingecko?symbol=' + top30Symbols[i])
             .catch(() => null);
-          await new Promise(resolve => setTimeout(resolve, 1000)); // 1초 대기
+          await new Promise(resolve => setTimeout(resolve, 1000));
         }
       } catch (e) {
-        console.error('백그라운드 CoinGecko 로드 실패:', e.message);
+        console.error('백그라운드 CoinGecko 로드 실패: ' + e.message);
       }
     })();
     
@@ -183,10 +183,10 @@ export default async function handler(req, res) {
     apiCache.data = dashboardData;
     apiCache.timestamp = now;
     
-    console.log('✅ Dashboard data ready');
+    console.log('Dashboard data ready');
     res.status(200).json(dashboardData);
   } catch (error) {
-    console.error('❌ Dashboard API Error:', error.message);
+    console.error('Dashboard API Error: ' + error.message);
     // 에러가 나도 빈 데이터 반환 (무한 새로고침 방지)
     res.status(200).json({
       timestamp: new Date().toISOString(),

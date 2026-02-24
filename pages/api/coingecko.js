@@ -58,11 +58,12 @@ export default async function handler(req, res) {
     console.log(`Fetching CoinGecko data for ${symbol} (${coinGeckoId})...`);
     
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${coinGeckoId}?localization=false&market_data=true&tickers=false`
+      'https://api.coingecko.com/api/v3/coins/${coinGeckoId}?localization=false&market_data=true&tickers=false'
     );
 
     if (!response.ok) {
-      throw new Error(`CoinGecko API error: ${response.status}`);
+      //throw new Error(`CoinGecko API error: ${response.status}`);
+      console.error(`CoinGecko API HTTP ${response.status}:`, response.statusText);
     }
 
     const data = await response.json();

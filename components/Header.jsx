@@ -1,7 +1,6 @@
 // components/Header.jsx
 import { useState, useEffect } from 'react';
 import styles from '@/styles/header.module.css';
-import { WalletIcon } from '@/components/Icons';
 
 export default function Header({ timestamp }) {
   const [dominance, setDominance] = useState({ btc: 0, eth: 0, totalMarketCap: 0 });
@@ -49,9 +48,8 @@ export default function Header({ timestamp }) {
       <header className={styles.header}>
         <div className={styles.brand}>
           <div className={styles.logoIcon}>
-            <WalletIcon size={22} />
+            <img src="/logos/imdol-logo.png" alt="IMDOL COIN" className={styles.logoImage} />
           </div>
-          <h1 className={styles.logoText}>DolPick</h1>
         </div>
         <div className={styles.status}>
           <span className={styles.liveIndicator}>

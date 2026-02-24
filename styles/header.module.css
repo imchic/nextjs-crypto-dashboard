@@ -3,35 +3,81 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding: 0px 16px;
   background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
-  height: 60px;
+  height: auto;
+  min-height: auto;
+}
+
+/* 데스크탑: 패딩 추가 */
+@media (min-width: 1024px) {
+  .header {
+    padding: 10px 20px;
+  }
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0;
+}
 }
 
 .logoIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #8B7FF4 0%, #6D5DF0 100%);
-  border-radius: 8px;
+  width: auto;
+  height: 100px;
+  background: transparent;
+  border-radius: 0;
   color: white;
-  box-shadow: 0 0 15px rgba(139, 127, 244, 0.4);
+  box-shadow: none;
+  overflow: visible;
+  mix-blend-mode: multiply;
+}
+
+.logoImage {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 0 12px rgba(139, 127, 244, 0.6));
+  display: block;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* 다크모드 */
+[data-theme="dark"] .logoIcon {
+  mix-blend-mode: screen;
+}
+
+[data-theme="dark"] .logoImage {
+  filter: drop-shadow(0 0 12px rgba(139, 127, 244, 0.6)) brightness(1.1) contrast(1.2);
+  display: block;
+  line-height: 0;
+}
+
+/* 라이트모드 */
+[data-theme="light"] .logoIcon {
+  mix-blend-mode: multiply;
+}
+
+[data-theme="light"] .logoImage {
+  filter: drop-shadow(0 0 12px rgba(108, 92, 231, 0.4)) brightness(0.95) contrast(1.1);
+  display: block;
+  line-height: 0;
 }
 
 .logoText {
+  display: none;
   font-size: 22px;
   font-weight: 900;
   margin: 0;
@@ -44,7 +90,24 @@
 .status {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
+}
+
+/* 모바일: 더 compact */
+@media (max-width: 768px) {
+  .status {
+    gap: 4px;
+    font-size: 12px;
+  }
+}
+
+/* 데스크탑: 더 넉넉 */
+@media (min-width: 1024px) {
+  .status {
+    gap: 16px;
+    font-size: 14px;
+  }
+}
 }
 
 .liveIndicator {
@@ -76,6 +139,14 @@
   background: rgba(255, 255, 255, 0.05);
   padding: 4px 8px;
   border-radius: 4px;
+  display: none;
+}
+
+/* 데스크탑: 표시 */
+@media (min-width: 1024px) {
+  .timestamp {
+    display: block;
+  }
 }
 
 @keyframes pulse {
@@ -91,8 +162,15 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding: 12px 20px;
   position: sticky;
-  top: 60px;
+  top: 80px;
   z-index: 99;
+}
+
+/* 데스크탑: 더 아래 */
+@media (min-width: 1024px) {
+  .dominanceBar {
+    top: 100px;
+  }
 }
 
 .dominanceContainer {

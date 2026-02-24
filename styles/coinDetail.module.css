@@ -16,7 +16,7 @@
 
 /* 헤더 영역 */
 .header {
-  padding: 16px 24px;
+  padding: 12px 16px;
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-light);
   position: sticky;
@@ -29,32 +29,32 @@
 .headerTitle {
   display: flex;
   align-items: baseline;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 4px;
 }
 
 .headerPrice {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  gap: 6px;
+  font-size: 12px;
 }
 
 .headerPrice .positive {
   color: var(--green);
-  font-size: 12px;
-  padding: 3px 8px;
+  font-size: 10px;
+  padding: 2px 6px;
   background: var(--green-bg);
-  border-radius: 4px;
+  border-radius: 3px;
   font-weight: 700;
 }
 
 .headerPrice .negative {
   color: var(--red);
-  font-size: 12px;
-  padding: 3px 8px;
+  font-size: 10px;
+  padding: 2px 6px;
   background: var(--red-bg);
-  border-radius: 4px;
+  border-radius: 3px;
   font-weight: 700;
 }
 
@@ -62,20 +62,20 @@
   background: var(--bg-tertiary);
   border: 1px solid var(--border-medium);
   color: var(--text-primary);
-  padding: 10px 16px;
-  border-radius: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-weight: 600;
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  gap: 6px;
+  font-size: 12px;
 }
 
 .backBtn svg {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .backBtn:hover {
@@ -85,10 +85,10 @@
 }
 
 .title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 800;
   margin: 0;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   background: linear-gradient(90deg,
       var(--accent-primary) 0%,
       var(--accent-light) 50%,
@@ -99,22 +99,22 @@
 }
 
 .subtitle {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-tertiary);
   margin: 0;
   font-weight: 600;
 }
 
 .shortInsight {
-  margin-top: 8px;
-  font-size: 14px;
+  margin-top: 4px;
+  font-size: 12px;
   color: var(--primary-purple);
   font-weight: 600;
   background: rgba(139, 127, 244, 0.08);
   border: 1px solid rgba(139, 127, 244, 0.2);
-  padding: 10px 16px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(139, 127, 244, 0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(139, 127, 244, 0.1);
 }
 
 .price {
@@ -124,8 +124,8 @@
 /* 캔들 타입 탭 (가로 스크롤) */
 .tabs {
   display: flex;
-  gap: 4px;
-  padding: 12px 20px;
+  gap: 3px;
+  padding: 8px 16px;
   overflow-x: auto;
   background: var(--bg-primary);
   border-bottom: 1px solid var(--border-light);
@@ -140,18 +140,18 @@
   background: transparent;
   border: none;
   color: var(--text-tertiary);
-  padding: 8px 14px;
-  font-size: 13px;
+  padding: 6px 10px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 5px;
   transition: all 0.15s ease;
   white-space: nowrap;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
   position: relative;
 }
 
@@ -169,16 +169,16 @@
 }
 
 .tabLabel {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: -0.2px;
 }
 
 .tabDesc {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 500;
   color: var(--text-disabled);
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .tab.active .tabDesc {
@@ -188,7 +188,7 @@
 
 /* 차트 영역 */
 .chartContainer {
-  padding: 24px;
+  padding: 16px;
   background: var(--bg-primary);
 }
 
@@ -502,45 +502,45 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 24px;
+  gap: 6px;
+  padding: 12px 16px;
   margin: 0;
   background: linear-gradient(135deg, rgba(252, 213, 53, 0.12) 0%, rgba(252, 213, 53, 0.04) 100%);
   border: 1.5px solid rgba(252, 213, 53, 0.35);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(252, 213, 53, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(252, 213, 53, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.1);
 }
 
 .currentPriceLabel {
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 900;
   color: #FCD535;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   opacity: 0.8;
 }
 
 .currentPriceValue {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 900;
   display: flex;
   align-items: baseline;
-  gap: 16px;
+  gap: 10px;
   font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
 }
 
 .currentPriceValue.up {
   color: #0ECB81;
-  text-shadow: 0 0 24px rgba(14, 203, 129, 0.4);
+  text-shadow: 0 0 16px rgba(14, 203, 129, 0.3);
 }
 
 .currentPriceValue.down {
   color: #F6465D;
-  text-shadow: 0 0 24px rgba(246, 70, 93, 0.4);
+  text-shadow: 0 0 16px rgba(246, 70, 93, 0.3);
 }
 
 .currentPriceChange {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 900;
   opacity: 0.9;
 }

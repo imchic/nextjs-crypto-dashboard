@@ -75,8 +75,7 @@ export default function Layout({ children }) {
         <header className={styles.globalHeader}>
           <Link href="/">
             <div className={styles.logoContainer}>
-              <img src="/dolpick-icon.png" alt="DolPick" className={styles.logoIcon} />
-              <h1 className={styles.logo}>DolPick</h1>
+              <img src="/logos/imdol-logo.png" alt="IMDOL COIN" className={styles.logoIcon} />
             </div>
           </Link>
           <div className={styles.headerRight}>

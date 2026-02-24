@@ -203,8 +203,15 @@ export default function Dashboard() {
   };
 
   const handleCoinClick = (coin) => {
-    // 무조건 상세페이지로 이동 (데스크탑에서도 모바일 뷰 사용)
-    router.push(`/coin/${coin.symbol}`);
+    // 모바일 (1024px 이하): /coin/[symbol]으로 이동
+    // 데스크탑 (1024px+): splitLayout에서 상세 표시
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      router.push('/coin/' + coin.symbol);
+    } else {
+      // 데스크탑: splitLayout 표시
+      setSelectedCoin(coin);
+      window.scrollTo(0, 0);
+    }
   };
 
   const addRecentSearch = (coin) => {
