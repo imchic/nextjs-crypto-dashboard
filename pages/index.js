@@ -6,6 +6,7 @@ import { useEffect, useState, useContext } from 'react';
 import { IoBulbOutline, IoSearchOutline } from 'react-icons/io5';
 import CoinDetailPanel from '@/components/CoinDetailPanel';
 import { DashboardContext } from '@/components/Layout';
+import { RocketIcon, WalletIcon, TrendingUpIcon, LoadingSpinner } from '@/components/Icons';
 
 export default function Dashboard() {
   const { setDashboardState } = useContext(DashboardContext);
@@ -282,7 +283,9 @@ export default function Dashboard() {
       <div className={styles.container}>
         <div className={styles.loading}>
           <div className={styles.spinner}></div>
-          <p>코인 불러오는 중... 🚀</p>
+          <p>
+            <RocketIcon size={20} color="var(--primary-purple)" /> 코인 불러오는 중...
+          </p>
         </div>
       </div>
     );
@@ -444,7 +447,9 @@ export default function Dashboard() {
             className={`${styles.groupTab} ${group === 'gainers' ? styles.active : ''}`}
             onClick={() => setGroup('gainers')}
           >
-            <span className={styles.tabLabel}>🚀 풀매수가즈아</span>
+            <span className={styles.tabLabel}>
+              <TrendingUpIcon size={18} /> 풀매수가즈아
+            </span>
             <span className={styles.tabDesc}>급등주 추천</span>
           </button>
           <button
@@ -472,7 +477,9 @@ export default function Dashboard() {
             className={styles.groupTab}
             onClick={handlePortfolioClick}
           >
-            <span className={styles.tabLabel}>💰 내지갑</span>
+            <span className={styles.tabLabel}>
+              <WalletIcon size={18} /> 내지갑
+            </span>
             <span className={styles.tabDesc}>포트폴리오</span>
           </button>
         </div>
@@ -519,7 +526,9 @@ export default function Dashboard() {
         {loadingAll ? (
           <div className={styles.loading}>
             <div className={styles.spinner}></div>
-            <p>전체 종목 불러오는 중... 🚀</p>
+            <p>
+              <RocketIcon size={20} color="var(--primary-purple)" /> 전체 종목 불러오는 중...
+            </p>
           </div>
         ) : filteredCoins.length > 0 ? (
           filteredCoins.map((coin, index) => {

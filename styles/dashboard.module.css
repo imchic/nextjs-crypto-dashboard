@@ -1523,3 +1523,33 @@
     margin-left: 2px;
   }
 }
+
+/* 아이콘 스타일 */
+.tabLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.tabLabel svg {
+  flex-shrink: 0;
+  color: var(--primary-purple);
+  transition: transform 0.2s ease;
+}
+
+.groupTab:hover .tabLabel svg {
+  transform: scale(1.15);
+}
+
+.loading p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.loading p svg {
+  flex-shrink: 0;
+  animation: spin 1s linear infinite;
+}
