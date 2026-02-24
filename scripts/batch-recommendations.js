@@ -41,42 +41,43 @@ class RecommendationBatch {
     const recommendations = {};
 
     for (const [symbol, data] of Object.entries(marketData)) {
-      // 점수 계산 (0-10)
-      let score = 5; // 기본값
+      // 점수 계산 (0-100)
+      let score = 50; // 기본값
       let reason = '';
       let type = '';
       let risk = '';
 
-      // 변동률 분석
+      // 변동률 분석 (0-40점)
       if (data.change > 10) {
-        score += 3;
+        score += 30;
         reason = `🚀 급상승 중 (+${data.change.toFixed(1)}%)`;
       } else if (data.change > 5) {
-        score += 2;
+        score += 20;
         reason = `📈 상승 중 (+${data.change.toFixed(1)}%)`;
       } else if (data.change > 0) {
-        score += 1;
+        score += 10;
         reason = `➡️ 소폭 상승 (+${data.change.toFixed(1)}%)`;
       } else {
+        score -= 10;
         reason = `📉 하락세 (${data.change.toFixed(1)}%)`;
       }
 
-      // 거래량 분석
+      // 거래량 분석 (0-30점)
       if (data.volume > 1000000000) {
-        score += 2;
+        score += 20;
         reason += ' • 거래량 폭증';
       } else if (data.volume > 500000000) {
-        score += 1;
+        score += 10;
         reason += ' • 거래량 증가';
       }
 
-      // 추세 분석
+      // 추세 분석 (0-30점)
       if (data.trend === 'up_strong') {
-        score += 2;
+        score += 20;
         type = '🚀 대박노리기';
         risk = '🔴 높음';
       } else if (data.trend === 'up') {
-        score += 1;
+        score += 10;
         type = '💰 월급벌기';
         risk = '🟡 중간';
       } else {
@@ -84,15 +85,15 @@ class RecommendationBatch {
         risk = '🟢 낮음';
       }
 
-      // 점수 정규화 (0-10)
-      score = Math.min(10, score);
+      // 점수 정규화 (0-100)
+      score = Math.min(100, score);
       score = Math.max(0, score);
 
       recommendations[symbol] = {
         reason,
         type,
         risk,
-        score: parseFloat(score.toFixed(1)),
+        score: parseInt(score),
         timestamp: new Date().toISOString(),
         change: parseFloat(data.change.toFixed(2)),
         volume: data.volume,
@@ -164,7 +165,7 @@ class RecommendationBatch {
           console.log(`  이유: ${data.reason}`);
           console.log(`  타입: ${data.type}`);
           console.log(`  위험: ${data.risk}`);
-          console.log(`  점수: ${data.score}/10`);
+          console.log(`  점수: ${data.score}/100`);
           console.log(`  변동: ${data.change > 0 ? '+' : ''}${data.change}%`);
         });
 

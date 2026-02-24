@@ -1,5 +1,5 @@
 ﻿import styles from '@/styles/dashboard.module.css';
-import RECOMMENDATION_REASONS from '@/utils/recommendReasons';
+//import RECOMMENDATION_REASONS from '@/utils/recommendReasons';
 import getTodayRecommendations from '@/utils/dailyRecommendations';
 import AIRDROP_COINS from '@/utils/airdropCoins';
 import { useRouter } from 'next/router';
@@ -677,17 +677,17 @@ export default function Dashboard() {
                         <span className={styles.badge} data-type="caution">유의</span>
                       )}
                     </div>
-                    {(recommendations[coin.symbol] || RECOMMENDATION_REASONS[coin.symbol]) && (
+                    {(recommendations[coin.symbol] || DAILY_RECOMMENDATIONS[coin.symbol]) && (
                       <div className={styles.recommendBox}>
                         <div className={styles.recommendReason}>
-                          💡 {(recommendations[coin.symbol]?.reason || RECOMMENDATION_REASONS[coin.symbol]?.reason)}
+                          💡 {(recommendations[coin.symbol]?.reason || DAILY_RECOMMENDATIONS[coin.symbol]?.reason)}
                         </div>
                         <div className={styles.recommendMeta}>
                           <span className={styles.recommendType}>
-                            {recommendations[coin.symbol]?.type || RECOMMENDATION_REASONS[coin.symbol]?.type}
+                            {recommendations[coin.symbol]?.type || DAILY_RECOMMENDATIONS[coin.symbol]?.type}
                           </span>
                           <span className={styles.recommendRisk}>
-                            {recommendations[coin.symbol]?.risk || RECOMMENDATION_REASONS[coin.symbol]?.risk}
+                            {recommendations[coin.symbol]?.risk || DAILY_RECOMMENDATIONS[coin.symbol]?.risk}
                           </span>
                         </div>
                       </div>
