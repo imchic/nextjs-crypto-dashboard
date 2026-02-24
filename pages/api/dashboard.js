@@ -141,10 +141,46 @@ export default async function handler(req, res) {
     
     console.log(`✅ Formatted: ${formatted.length} coins`);
     
+    // 3.5. CoinGecko 데이터 추가 (시가총액, 순위, BTC 도미넌스)
+    console.log('📊 Fetching CoinGecko market cap data...');
+    const coingeckoData = {};
+    const top30Symbols = byVolume.slice(0, 30).map(c => c.symbol);
+    
+    // 병렬로 CoinGecko 요청 (3개씩 배치)
+    const symbolBatchSize = 3;
+    for (let i = 0; i < top30Symbols.length; i += symbolBatchSize) {
+      const batch = top30Symbols.slice(i, i + symbolBatchSize);
+      const promises = batch.map(symbol =>
+        fetch(`/api/coingecko?symbol=${symbol}`)
+          .then(res => res.ok ? res.json() : null)
+          .catch(() => null)
+      );
+      
+      const results = await Promise.all(promises);
+      results.forEach((data, idx) => {
+        if (data) {
+          coingeckoData[batch[idx]] = data;
+        }
+      });
+      
+      // Rate limit 방지
+      if (i + symbolBatchSize < top30Symbols.length) {
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
+    }
+    
+    console.log(`✅ CoinGecko data fetched: ${Object.keys(coingeckoData).length} coins`);
+    
     // 4. 카테고리별 분류 (실시간 데이터 기반)
     const byVolume = [...formatted]
       .sort((a, b) => b.volume - a.volume)
-      .slice(0, 30);
+      .slice(0, 30)
+      .map(coin => ({
+        ...coin,
+        market_cap_rank: coingeckoData[coin.symbol]?.market_cap_rank || null,
+        market_cap_usd: coingeckoData[coin.symbol]?.market_cap_usd || null,
+        market_cap_krw: coingeckoData[coin.symbol]?.market_cap_krw || null,
+      }));
     
     const gainers = [...formatted]
       .filter(c => c.change > 0)

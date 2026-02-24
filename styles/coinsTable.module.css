@@ -108,6 +108,11 @@
   color: #888;
 }
 
+.marketCap {
+  font-size: 12px;
+  color: #888;
+}
+
 @media (max-width: 1024px) {
   .tableHeader,
   .coinRow {

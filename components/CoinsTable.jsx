@@ -22,8 +22,8 @@ export default function CoinsTable({ coins }) {
           <div className={styles.col2}>현재가</div>
           <div className={styles.col3}>24h 변동</div>
           <div className={styles.col4}>고가 / 저가</div>
-          <div className={styles.col5}>거래대금</div>
-          <div className={styles.col6}>거래량</div>
+          <div className={styles.col5}>시가총액</div>
+          <div className={styles.col6}>거래대금</div>
         </div>
 
         {coins.map((coin) => (
@@ -50,14 +50,17 @@ export default function CoinsTable({ coins }) {
             </div>
             
             <div className={styles.col5}>
-              <div className={styles.volume}>
-                ₩{formatBillion(coin.trade_price_24h)}
+              <div className={styles.marketCap}>
+                {coin.market_cap_krw 
+                  ? `₩${formatBillion(coin.market_cap_krw)} ${coin.market_cap_rank ? `#${coin.market_cap_rank}` : ''}`
+                  : '-'
+                }
               </div>
             </div>
             
             <div className={styles.col6}>
               <div className={styles.volume}>
-                {formatCurrency(Math.floor(coin.volume))}
+                ₩{formatBillion(coin.trade_price_24h)}
               </div>
             </div>
           </div>
