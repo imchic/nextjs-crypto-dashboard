@@ -1,7 +1,8 @@
 /* styles/coinDetail.module.css */
 
 .container {
-  max-width: 480px; /* 모바일 앱 뷰로 고정 */
+  max-width: 480px;
+  /* 모바일 앱 뷰로 고정 */
   margin: 0 auto;
   padding: 0;
   min-height: 100vh;
@@ -9,7 +10,8 @@
   color: var(--text-primary);
   border-left: 1px solid var(--border-light);
   border-right: 1px solid var(--border-light);
-  box-shadow: 0 0 50px rgba(0,0,0,0.5); /* 데스크탑에서 구분감 */
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  /* 데스크탑에서 구분감 */
 }
 
 /* 헤더 영역 */
@@ -288,101 +290,126 @@
 }
 
 .bottomSection {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  border-radius: 12px;
-  padding: 20px;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(139, 127, 244, 0.05) 100%);
+  border: 1.5px solid rgba(139, 127, 244, 0.2);
+  border-radius: 16px;
+  padding: 24px;
   margin-top: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .bottomTabs {
   display: flex;
   gap: 8px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--border-light);
-  padding-bottom: 16px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--border-light);
+  padding-bottom: 12px;
 }
 
 .bottomTab {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-medium);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(139, 127, 244, 0.2);
   color: var(--text-secondary);
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  letter-spacing: 0.3px;
 }
 
 .bottomTab svg {
   font-size: 16px;
+  transition: transform 0.3s ease;
 }
 
 .bottomTab:hover {
-  background: var(--active-overlay);
+  background: linear-gradient(135deg, rgba(139, 127, 244, 0.15) 0%, rgba(139, 127, 244, 0.08) 100%);
   color: var(--text-primary);
+  border-color: rgba(139, 127, 244, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 127, 244, 0.1);
+}
+
+.bottomTab:hover svg {
+  transform: scale(1.1);
 }
 
 .bottomTab.active {
-  background: var(--accent-primary);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, rgba(139, 127, 244, 0.9) 100%);
   border-color: var(--accent-primary);
   color: #ffffff;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 6px 20px rgba(139, 127, 244, 0.4);
+  font-weight: 800;
 }
 
 /* 호가창 스타일 */
 .orderbookContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(139, 127, 244, 0.15);
 }
 
 @media (max-width: 480px) {
   .orderbookContainer {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 12px;
+    gap: 0;
+    padding: 0;
   }
 }
 
 .orderbookSell,
 .orderbookBuy {
   flex: 1;
+  border: 1px solid rgba(139, 127, 244, 0.1);
+}
+
+.orderbookSell {
+  border-bottom: 2px solid rgba(246, 70, 93, 0.15);
+}
+
+.orderbookBuy {
+  border-top: 2px solid rgba(14, 203, 129, 0.15);
 }
 
 .orderbookSell h3,
 .orderbookBuy h3 {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 16px;
   color: var(--text-primary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--border-light);
+  letter-spacing: 1px;
+  padding: 12px 16px 8px 16px;
+  margin: 0;
+  border-bottom: none;
 }
 
 .orderbookSell h3 {
   color: #F6465D;
-  border-bottom-color: rgba(246, 70, 93, 0.3);
+  background: linear-gradient(90deg, rgba(246, 70, 93, 0.08) 0%, transparent 100%);
 }
 
 .orderbookBuy h3 {
   color: #0ECB81;
-  border-bottom-color: rgba(14, 203, 129, 0.3);
+  background: linear-gradient(90deg, rgba(14, 203, 129, 0.08) 0%, transparent 100%);
 }
 
 .orderbookList {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;
+  padding: 0 16px 16px 16px;
 }
 
 .orderbookRow {
@@ -390,16 +417,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 12px;
+  padding: 10px 12px;
   font-size: 13px;
-  background: var(--hover-overlay);
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 6px;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.orderbookRow:last-child {
+  margin-bottom: 0;
 }
 
 .orderbookRow:hover {
-  background: var(--active-overlay);
-  transform: translateX(4px);
+  background: rgba(139, 127, 244, 0.1);
+  transform: translateX(3px);
+  box-shadow: 0 2px 8px rgba(139, 127, 244, 0.08);
 }
 
 .orderbookBar {
@@ -409,27 +443,36 @@
   bottom: 0;
   z-index: 0;
   pointer-events: none;
-  border-radius: 4px;
-  transition: width 0.3s ease;
+  border-radius: 6px;
+  transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0.8;
 }
 
 /* Highlight best bid/ask row */
 .bestRow {
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12) inset;
-  border: 1px solid rgba(255,255,255,0.04);
-  transform: translateX(2px);
+  background: linear-gradient(90deg, rgba(252, 213, 53, 0.08) 0%, rgba(252, 213, 53, 0.02) 100%);
+  box-shadow: 0 0 12px rgba(252, 213, 53, 0.1) inset;
+  border: 1px solid rgba(252, 213, 53, 0.25);
+  transform: scale(1.02) translateX(2px);
+  padding: 11px 13px;
+}
+
+.bestRow:hover {
+  box-shadow: 0 0 16px rgba(252, 213, 53, 0.15) inset, 0 2px 8px rgba(252, 213, 53, 0.1);
 }
 
 .orderbookBestBadge {
   margin-left: 8px;
-  font-size: 11px;
-  font-weight: 800;
-  padding: 4px 6px;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 5px 8px;
   border-radius: 6px;
-  background: rgba(252, 213, 53, 0.12);
+  background: linear-gradient(135deg, rgba(252, 213, 53, 0.2) 0%, rgba(252, 213, 53, 0.1) 100%);
   color: #FCD535;
   z-index: 2;
+  border: 1px solid rgba(252, 213, 53, 0.3);
+  box-shadow: 0 2px 6px rgba(252, 213, 53, 0.15);
+  letter-spacing: 0.5px;
 }
 
 .orderbookPrice,
@@ -439,13 +482,19 @@
 }
 
 .orderbookPrice {
-  font-weight: 700;
-  color: var(--text-primary, 0.9);
+  font-weight: 800;
+  color: var(--text-primary);
+  min-width: 120px;
+  text-align: right;
+  font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
 }
 
 .orderbookSize {
-  font-weight: 600;
-  color: var(--text-primary, 0.6);
+  font-weight: 700;
+  color: var(--text-secondary);
+  min-width: 80px;
+  text-align: right;
+  font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
 }
 
 /* 현재가 */
@@ -453,44 +502,47 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 20px;
-  margin: 16px 0;
-  background: linear-gradient(135deg, rgba(252, 213, 53, 0.1), rgba(252, 213, 53, 0.05));
-  border: 2px solid rgba(252, 213, 53, 0.3);
+  gap: 12px;
+  padding: 24px;
+  margin: 0;
+  background: linear-gradient(135deg, rgba(252, 213, 53, 0.12) 0%, rgba(252, 213, 53, 0.04) 100%);
+  border: 1.5px solid rgba(252, 213, 53, 0.35);
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(252, 213, 53, 0.1);
+  box-shadow: 0 8px 24px rgba(252, 213, 53, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.1);
 }
 
 .currentPriceLabel {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-primary, 0.5);
+  font-size: 11px;
+  font-weight: 900;
+  color: #FCD535;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  opacity: 0.8;
 }
 
 .currentPriceValue {
-  font-size: 28px;
-  font-weight: 800;
+  font-size: 32px;
+  font-weight: 900;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: baseline;
+  gap: 16px;
+  font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
 }
 
 .currentPriceValue.up {
   color: #0ECB81;
-  text-shadow: 0 0 20px rgba(14, 203, 129, 0.3);
+  text-shadow: 0 0 24px rgba(14, 203, 129, 0.4);
 }
 
 .currentPriceValue.down {
   color: #F6465D;
-  text-shadow: 0 0 20px rgba(246, 70, 93, 0.3);
+  text-shadow: 0 0 24px rgba(246, 70, 93, 0.4);
 }
 
 .currentPriceChange {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 900;
+  opacity: 0.9;
 }
 
 .orderbookGrid {
@@ -508,208 +560,183 @@
 
 /* 체결 내역 스타일 */
 .tradesContainer {
-  padding: 12px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-medium);
+  padding: 0;
+  background: transparent;
+  border: none;
   border-radius: 12px;
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
 }
 
 .tradesContainer h3 {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
   margin-bottom: 16px;
-  color: var(--text-primary, 0.9);
+  margin-top: 0;
+  padding: 0;
+  color: var(--text-primary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .tradesHeader {
   display: grid;
   grid-template-columns: 80px 80px 1.2fr 0.9fr;
   gap: 12px;
-  padding: 8px 12px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius: 10px;
-  margin-bottom: 10px;
+  padding: 8px 16px;
+  background: linear-gradient(90deg, rgba(139, 127, 244, 0.08) 0%, transparent 100%);
+  border-bottom: 2px solid rgba(139, 127, 244, 0.15);
+  border-radius: 0;
+  margin-bottom: 0;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 900;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  align-items: center;
+  line-height: 1.2;
 }
 
 .tradesList {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 0;
   max-height: 400px;
   overflow-y: auto;
+  border: 1px solid rgba(139, 127, 244, 0.15);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  background: rgba(255, 255, 255, 0.01);
 }
 
 .tradeRow {
   display: grid;
   grid-template-columns: 80px 80px 1.2fr 0.9fr;
   gap: 12px;
-  padding: 8px 12px;
+  padding: 8px 16px;
   font-size: 13px;
   background: transparent;
-  border-radius: 8px;
-  border-left: 3px solid transparent;
-  transition: transform 0.12s ease, background 0.12s ease;
+  border-radius: 0;
+  border-left: none;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   align-items: center;
+  border-bottom: 1px solid rgba(139, 127, 244, 0.08);
+  min-height: auto;
+  line-height: 1.2;
+}
+
+.tradeRow:last-child {
+  border-bottom: none;
 }
 
 .tradeRow:hover {
-  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  transform: translateY(-3px);
+  background: linear-gradient(90deg, rgba(139, 127, 244, 0.08) 0%, rgba(139, 127, 244, 0.03) 100%);
+  transform: none;
 }
 
 .tradeRow.buyRow {
-  border-left-color: rgba(14, 203, 129, 0.5);
   background: rgba(14, 203, 129, 0.03);
 }
 
+.tradeRow.buyRow:hover {
+  background: rgba(14, 203, 129, 0.08);
+}
+
 .tradeRow.sellRow {
-  border-left-color: rgba(246, 70, 93, 0.5);
   background: rgba(246, 70, 93, 0.03);
 }
 
+.tradeRow.sellRow:hover {
+  background: rgba(246, 70, 93, 0.08);
+}
+
 .tradeTime {
-  color: var(--text-primary, 0.5);
+  color: var(--text-tertiary);
   font-size: 11px;
   text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .tradePrice {
-  font-weight: 800;
+  font-weight: 900;
   font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
   font-size: 13px;
+  letter-spacing: 0.3px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .tradePrice.buy {
   color: #0ECB81;
+  text-shadow: 0 0 12px rgba(14, 203, 129, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .tradePrice.sell {
   color: #F6465D;
+  text-shadow: 0 0 12px rgba(246, 70, 93, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .tradeVolume {
-  color: var(--text-tertiary);
-  font-weight: 600;
+  color: var(--text-secondary);
+  font-weight: 800;
   text-align: right;
+  font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .tradeBadge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 8px;
+  padding: 6px 10px;
   font-size: 11px;
-  font-weight: 800;
-  border-radius: 999px;
-  border: 1px solid transparent;
-}
-
-/* subtle zebra striping */
-.tradesList > div:nth-child(2n) {
-  background: rgba(255,255,255,0.01);
-}
-
-.tradePrice {
-  font-weight: 700;
-}
-
-.tradeVolume {
-  color: var(--text-primary, 0.6);
-  font-weight: 600;
-}
-
-.tradeBadge {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-align: center;
-}
-
-/* total summary above trades */
-.tradesTotal {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 10px 14px;
-  margin-bottom: 12px;
-  background: linear-gradient(90deg, rgba(252,213,53,0.06), rgba(252,213,53,0.02));
-  border: 1px solid rgba(252,213,53,0.12);
-  border-radius: 12px;
-}
-
-.tradesTotal strong {
-  font-size: 18px;
   font-weight: 900;
-  color: var(--text-primary);
+  border-radius: 6px;
+  border: 1px solid transparent;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.tradesTotalCount {
-  color: var(--text-tertiary);
-  font-size: 12px;
-}
-
-.tradesTotalLabel {
-  font-size: 12px;
-  color: var(--text-tertiary);
-  font-weight: 700;
-}
-
-.tradesTotalMain {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-
-.tradesTotalAmount {
-  font-size: 18px;
-  color: var(--accent-primary);
-}
-
-.tradesTotalUnit {
-  font-size: 12px;
-  color: var(--text-tertiary);
-}
-
-.tradesTotalKrw {
-  font-size: 13px;
-  color: var(--text-primary);
-  margin-left: 8px;
-  font-weight: 700;
-}
-
-.buyBadge {
-  background: rgba(14, 203, 129, 0.08);
+.tradeBadge.buyBadge {
+  background: linear-gradient(135deg, rgba(14, 203, 129, 0.15) 0%, rgba(14, 203, 129, 0.08) 100%);
   color: #0ECB81;
-  border-color: rgba(14, 203, 129, 0.25);
-  box-shadow: 0 6px 12px rgba(14,203,129,0.03);
+  border-color: rgba(14, 203, 129, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 6px rgba(14, 203, 129, 0.15);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.sellBadge {
-  background: rgba(246, 70, 93, 0.08);
+.tradeBadge.sellBadge {
+  background: linear-gradient(135deg, rgba(246, 70, 93, 0.15) 0%, rgba(246, 70, 93, 0.08) 100%);
   color: #F6465D;
-  border-color: rgba(246,70,93,0.25);
-  box-shadow: 0 6px 12px rgba(246,70,93,0.03);
+  border-color: rgba(246, 70, 93, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 6px rgba(246, 70, 93, 0.15);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* make badges similar to portfolio status chips */
 .tradeBadge.statusPositive {
-  background: rgba(38,166,154,0.08);
+  background: rgba(38, 166, 154, 0.08);
   color: #26a69a;
-  border-color: rgba(38,166,154,0.4);
+  border-color: rgba(38, 166, 154, 0.4);
 }
+
 .tradeBadge.statusNegative {
-  background: rgba(239,83,80,0.08);
+  background: rgba(239, 83, 80, 0.08);
   color: #ef5350;
-  border-color: rgba(239,83,80,0.4);
+  border-color: rgba(239, 83, 80, 0.4);
 }
 
 .row {
@@ -836,15 +863,15 @@
     gap: 12px;
     padding: 12px 16px;
   }
-  
+
   .priceItem {
     padding: 10px;
   }
-  
+
   .priceLabel {
     font-size: 10px;
   }
-  
+
   .priceValue {
     font-size: 16px;
   }
@@ -961,6 +988,96 @@
 
 .chartContainer {
   padding: 12px;
+}
+
+/* 실시간 체결량 통계 섹션 */
+.tradesTotal {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 16px;
+  padding: 20px 16px;
+  background: linear-gradient(135deg, rgba(139, 127, 244, 0.08) 0%, rgba(76, 175, 255, 0.04) 100%);
+  border: 1.5px solid rgba(139, 127, 244, 0.2);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(139, 127, 244, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.tradesTotalLabel {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  text-align: left;
+  grid-column: 1 / -1;
+  margin-bottom: 8px;
+  display: block;
+  opacity: 0.8;
+}
+
+.tradesTotal {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 20px 16px;
+  background: linear-gradient(135deg, rgba(139, 127, 244, 0.08) 0%, rgba(76, 175, 255, 0.04) 100%);
+  border: 1.5px solid rgba(139, 127, 244, 0.2);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(139, 127, 244, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.tradesTotalMain,
+.tradesTotalKrw {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(139, 127, 244, 0.12) 0%, rgba(139, 127, 244, 0.05) 100%);
+  border: 1px solid rgba(139, 127, 244, 0.25);
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tradesTotalMain:hover,
+.tradesTotalKrw:hover {
+  background: linear-gradient(135deg, rgba(139, 127, 244, 0.18) 0%, rgba(139, 127, 244, 0.1) 100%);
+  border-color: rgba(139, 127, 244, 0.4);
+  box-shadow: 0 4px 12px rgba(139, 127, 244, 0.15);
+  transform: translateY(-2px);
+}
+
+.tradesTotalAmount {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #8B7FF4 0%, #4CAFFE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
+  text-shadow: 0 2px 8px rgba(139, 127, 244, 0.1);
+}
+
+.tradesTotalUnit {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tradesTotalKrw {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+  justify-content: center;
+  font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
+  letter-spacing: -0.3px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chartSection {
