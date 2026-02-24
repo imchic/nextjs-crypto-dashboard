@@ -16,6 +16,7 @@ import {
 } from 'recharts';
 import { BarChartIcon, ErrorIcon, HeartIcon } from '@/components/Icons';
 import LottieLoadingBar from '@/components/LottieLoadingBar';
+import getTodayRecommendations from '@/utils/dailyRecommendations';
 
 const CANDLE_TYPES = [
   { id: 'minutes/1', label: '1분', desc: '초단타' },
@@ -124,6 +125,8 @@ export default function CoinDetail() {
   const [coinGeckoData, setCoinGeckoData] = useState(null);
   const [favorites, setFavorites] = useState([]);
   const [chartHeight, setChartHeight] = useState(600);
+  const [marketInfo, setMarketInfo] = useState(null); // 유의/신규 정보
+  const [recommendations, setRecommendations] = useState({}); // AI 추천 정보
 
   useEffect(() => {
     // 차트 높이 반응형 조정
@@ -142,9 +145,31 @@ export default function CoinDetail() {
         console.error('Failed to parse favorites', e);
       }
     }
+
+    // AI 추천 정보 로드
+    setRecommendations(getTodayRecommendations());
+    
+    // 마켓 정보(유의 등) 로드
+    const fetchMarketInfo = async () => {
+      try {
+        const res = await fetch('https://api.upbit.com/v1/market/all?isDetails=true');
+        const markets = await res.json();
+        const info = markets.find(m => m.market === `KRW-${symbol}`);
+        if (info) {
+          setMarketInfo({
+            market_warning: info.market_warning,
+            // 최근 상장 여부는 대략적으로 판단 불가하므로 생략하거나 별도 로직 필요
+            // 여기서는 유의 종목만 체크
+          });
+        }
+      } catch (e) {
+        console.error('Failed to fetch market info', e);
+      }
+    };
+    if (symbol) fetchMarketInfo();
     
     return () => window.removeEventListener('resize', updateHeight);
-  }, []);
+  }, [symbol]);
 
   const toggleFavorite = () => {
     if (!symbol) return;
@@ -452,8 +477,10 @@ export default function CoinDetail() {
         </Link>
 
         <div className={styles.headerTitle}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             <h1 className={styles.title}>{symbol}</h1>
+            
+            {/* 즐겨찾기 버튼 */}
             <button 
               onClick={toggleFavorite} 
               style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', alignItems: 'center', transition: 'transform 0.2s' }}
@@ -465,6 +492,59 @@ export default function CoinDetail() {
                 color={favorites.includes(symbol) ? '#FF4757' : 'var(--text-tertiary)'} 
               />
             </button>
+
+            {/* 유의 종목 뱃지 */}
+            {marketInfo?.market_warning === 'CAUTION' && (
+              <span style={{ 
+                backgroundColor: 'rgba(255, 193, 7, 0.15)', 
+                color: '#FFC107', 
+                padding: '4px 8px', 
+                borderRadius: '6px', 
+                fontSize: '12px', 
+                fontWeight: '800',
+                border: '1px solid rgba(255, 193, 7, 0.3)'
+              }}>유의</span>
+            )}
+
+            {/* AI 추천 뱃지들 */}
+            {recommendations[symbol] && (
+              <>
+                <span style={{ 
+                  background: (recommendations[symbol]?.score || 0) >= 80 ? 'rgba(255, 215, 0, 0.15)' : 'var(--bg-tertiary)',
+                  color: (recommendations[symbol]?.score || 0) >= 80 ? '#FFD700' : 'var(--text-secondary)',
+                  border: (recommendations[symbol]?.score || 0) >= 80 ? '1px solid rgba(255, 215, 0, 0.4)' : '1px solid var(--border-medium)',
+                  padding: '4px 8px',
+                  borderRadius: '6px',
+                  fontSize: '12px',
+                  fontWeight: '800',
+                  boxShadow: (recommendations[symbol]?.score || 0) >= 80 ? '0 0 10px rgba(255, 215, 0, 0.1)' : 'none'
+                }}>
+                  🏆 {recommendations[symbol].score}점
+                </span>
+                <span style={{ 
+                  background: 'var(--bg-tertiary)', 
+                  color: 'var(--text-primary)', 
+                  padding: '4px 8px', 
+                  borderRadius: '6px', 
+                  fontSize: '12px',
+                  fontWeight: '600',
+                  border: '1px solid var(--border-medium)'
+                }}>
+                  {recommendations[symbol].type}
+                </span>
+                <span style={{ 
+                  background: 'var(--bg-tertiary)', 
+                  color: 'var(--text-secondary)', 
+                  padding: '4px 8px', 
+                  borderRadius: '6px', 
+                  fontSize: '12px',
+                  fontWeight: '600',
+                  border: '1px solid var(--border-medium)'
+                }}>
+                  {recommendations[symbol].risk}
+                </span>
+              </>
+            )}
           </div>
           <div className={styles.headerPrice}>
             ₩{coinData.price.toLocaleString('ko-KR')}
