@@ -708,7 +708,8 @@
 
 .coinMark {
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.2);
+  /*color: rgba(255, 255, 255, 0.2);*/
+  color: var(--text-primary); /* 혹은 var(--text-secondary) 등 선명한 변수 사용 */
   cursor: pointer;
   flex-shrink: 0;
   transition: all 0.2s ease;
@@ -719,7 +720,8 @@
 
 .coinMark.medal {
   font-size: 24px;
-  filter: drop-shadow(0 0 8px rgba(139, 127, 244, 0.5));
+  filter: none; /* drop-shadow 제거 */
+  opacity: 1;
 }
 
 .coinMark.rank {
