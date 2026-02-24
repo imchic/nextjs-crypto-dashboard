@@ -43,8 +43,8 @@ export default function Layout({ children }) {
     };
 
     fetchGlobalData();
-    // Refresh every 5 seconds
-    const interval = setInterval(fetchGlobalData, 5000);
+    // Refresh every 30 seconds (캐싱 때문에 간격 증가)
+    const interval = setInterval(fetchGlobalData, 30000);
     return () => clearInterval(interval);
   }, []);
 
