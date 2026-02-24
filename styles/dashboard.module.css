@@ -883,6 +883,10 @@
   text-align: center;
   padding: 120px 32px;
   color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .spinner {
@@ -1585,6 +1589,11 @@
   justify-content: center;
   gap: 16px;
   padding: 40px 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
 }
 
 .lottieContainer p {
