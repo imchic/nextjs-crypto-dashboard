@@ -1673,3 +1673,155 @@
     width: 0%;
   }
 }
+
+/* ===== 모바일 레이아웃 최적화 (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  /* 코인 아이템 컴팩트화 */
+  .coinItem {
+    padding: 8px 12px !important;
+    gap: 8px !important;
+    min-height: auto !important;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: start;
+  }
+
+  /* 순위/메달 */
+  .coinMark {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 12px !important;
+    min-width: 32px;
+  }
+
+  /* 코인 상세 정보 */
+  .coinDetails {
+    gap: 2px !important;
+  }
+
+  .coinNameRow {
+    gap: 4px !important;
+    font-size: 13px !important;
+    height: 20px;
+    align-items: center;
+  }
+
+  .coinSymbol {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  .coinName {
+    font-size: 11px !important;
+    color: var(--text-secondary);
+  }
+
+  /* 추천 박스 숨김 (모바일에서는 공간 낭비) */
+  .recommendBox {
+    display: none !important;
+  }
+
+  /* 변화율 컬럼 */
+  .colChange {
+    min-width: 50px;
+    text-align: right;
+  }
+
+  .changeValue {
+    font-size: 12px !important;
+    font-weight: 700;
+    padding: 2px 4px;
+  }
+
+  /* 가격 컬럼 */
+  .colPrice {
+    min-width: 70px;
+    text-align: right;
+    font-size: 12px !important;
+    font-weight: 700;
+  }
+
+  /* 거래량 + 찜 버튼 */
+  .colVolume {
+    display: none !important;
+  }
+
+  /* 코인 목록 컨테이너 */
+  .container {
+    padding: 8px 0 !important;
+  }
+
+  /* 배지 축소 */
+  .badge {
+    font-size: 9px !important;
+    padding: 1px 3px !important;
+    margin-left: 2px !important;
+  }
+
+  /* 행 높이 최소화 */
+  .coinItem {
+    border-bottom: 0.5px solid var(--border-light) !important;
+  }
+
+  /* 검색 박스 */
+  .searchBox {
+    margin-bottom: 8px;
+  }
+
+  /* 그룹 탭 가로 스크롤 */
+  .groupTabs {
+    overflow-x: auto;
+    padding: 8px 0 !important;
+    gap: 6px !important;
+  }
+
+  .groupTab {
+    min-width: 80px;
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+
+  .tabLabel {
+    gap: 2px !important;
+  }
+
+  .tabDesc {
+    display: none;
+  }
+
+  /* 정렬 버튼 */
+  .sortButton {
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* 단위 전환 버튼 */
+  .unitButtons {
+    gap: 4px !important;
+  }
+
+  .unitBtn {
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* 헤더 높이 축소 */
+  .headerControls {
+    gap: 6px !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* 상세 패널 (데스크탑 only) */
+  .detailPanel {
+    display: none !important;
+  }
+
+  .splitLayout {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .listPanel {
+    width: 100%;
+  }
+}
