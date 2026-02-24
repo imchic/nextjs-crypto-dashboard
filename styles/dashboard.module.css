@@ -593,10 +593,10 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* 모바일: 4 컬럼만 표시 (코인명, 수익률, 현재가, 거래량) */
+/* 모바일: 4 컬럼 + 거래량 표시 (코인명, 수익률, 현재가, 거래량) */
 @media (max-width: 768px) {
   .columnHeaders {
-    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.6fr;
+    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.5fr;
     gap: 8px;
     padding: 8px 12px;
     font-size: 10px;
@@ -1373,13 +1373,14 @@
 
   .columnHeaders,
   .coinRow {
-    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.6fr;
+    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.5fr;
     gap: 8px;
     padding: 8px 12px;
   }
 
   .colVolume {
-    display: none;
+    display: block !important;
+    font-size: 11px;
   }
 }
 
@@ -1431,13 +1432,14 @@
 
   .columnHeaders,
   .coinRow {
-    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.6fr;
+    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.5fr;
     gap: 6px;
     padding: 8px 10px;
   }
 
   .colVolume {
-    display: none;
+    display: block !important;
+    font-size: 10px;
   }
 
   .coinInfo {
