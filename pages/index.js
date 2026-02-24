@@ -35,6 +35,8 @@ export default function Dashboard() {
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const [autocompleteResults, setAutocompleteResults] = useState([]);
   const [selectedCoin, setSelectedCoin] = useState(null);
+  const [sortBy, setSortBy] = useState('volume'); // volume, price, name, change
+  const [sortOrder, setSortOrder] = useState('desc'); // desc, asc
 
   const showToast = (message) => {
     setToast(message);
@@ -335,6 +337,33 @@ export default function Dashboard() {
     (coin.name && coin.name.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
+  // 정렬 적용
+  const sortedCoins = [...filteredCoins].sort((a, b) => {
+    let compareValue = 0;
+
+    switch (sortBy) {
+      case 'volume':
+        compareValue = (a.volume || 0) - (b.volume || 0);
+        break;
+      case 'price':
+        compareValue = (a.price || 0) - (b.price || 0);
+        break;
+      case 'name':
+        compareValue = (a.name || '').localeCompare(b.name || '', 'ko-KR');
+        break;
+      case 'change':
+        compareValue = (a.change || 0) - (b.change || 0);
+        break;
+      case 'symbol':
+        compareValue = (a.symbol || '').localeCompare(b.symbol || '');
+        break;
+      default:
+        compareValue = 0;
+    }
+
+    return sortOrder === 'desc' ? -compareValue : compareValue;
+  });
+
   return (
     <div className={selectedCoin ? styles.splitLayout : styles.fullLayout}>
       {/* 좌측: 상세 정보 (선택된 경우에만) */}
@@ -505,14 +534,63 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* 컬럼 헤더 */}
+      {/* 컬럼 헤더 (정렬 버튼) */}
       <div className={styles.columnHeaders}>
-        <div className={styles.colSymbol}>코인명</div>
-        <div className={styles.colChange}>수익률</div>
-        <div className={styles.colPrice}>
-          {unit === 'KRW' ? '현재가 (원)' : unit === 'BTC' ? '현재가 (BTC)' : '현재가 ($)'}
-        </div>
-        <div className={styles.colVolume}>거래량</div>
+        <button 
+          className={styles.sortBtn}
+          onClick={() => {
+            if (sortBy === 'name') {
+              setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+            } else {
+              setSortBy('name');
+              setSortOrder('asc');
+            }
+          }}
+        >
+          코인명 {sortBy === 'name' && (sortOrder === 'asc' ? '↑' : '↓')}
+        </button>
+
+        <button 
+          className={styles.sortBtn}
+          onClick={() => {
+            if (sortBy === 'change') {
+              setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+            } else {
+              setSortBy('change');
+              setSortOrder('desc');
+            }
+          }}
+        >
+          수익률 {sortBy === 'change' && (sortOrder === 'asc' ? '↑' : '↓')}
+        </button>
+
+        <button 
+          className={styles.sortBtn}
+          onClick={() => {
+            if (sortBy === 'price') {
+              setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+            } else {
+              setSortBy('price');
+              setSortOrder('desc');
+            }
+          }}
+        >
+          {unit === 'KRW' ? '현재가 (원)' : unit === 'BTC' ? '현재가 (BTC)' : '현재가 ($)'} {sortBy === 'price' && (sortOrder === 'asc' ? '↑' : '↓')}
+        </button>
+
+        <button 
+          className={styles.sortBtn}
+          onClick={() => {
+            if (sortBy === 'volume') {
+              setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+            } else {
+              setSortBy('volume');
+              setSortOrder('desc');
+            }
+          }}
+        >
+          거래량 {sortBy === 'volume' && (sortOrder === 'asc' ? '↑' : '↓')}
+        </button>
       </div>
 
       {/* 돌돌이픽 설명 */}
@@ -534,8 +612,8 @@ export default function Dashboard() {
           <div className={styles.loading}>
             <LottieLoadingBar />
           </div>
-        ) : filteredCoins.length > 0 ? (
-          filteredCoins.map((coin, index) => {
+        ) : sortedCoins.length > 0 ? (
+          sortedCoins.map((coin, index) => {
             // 순위 표시 로직
             let rankDisplay;
             if (index === 0) {
