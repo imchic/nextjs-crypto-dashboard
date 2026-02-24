@@ -8,9 +8,16 @@
 /* 분할 레이아웃 (코인 선택 시) */
 .splitLayout {
   display: flex;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 50px);
   gap: 0;
   background: var(--bg-primary);
+}
+
+/* 데스크탑은 더 큼 */
+@media (min-width: 1024px) {
+  .splitLayout {
+    height: calc(100vh - 130px);
+  }
 }
 
 .detailPanel {

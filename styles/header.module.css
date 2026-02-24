@@ -169,7 +169,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding: 12px 20px;
   position: sticky;
-  top: 80px;
+  top: 60px;
   z-index: 99;
 }
 
@@ -311,6 +311,78 @@
 
   .marketCapValue {
     font-size: 14px;
+  }
+}
+
+/* ===== 모바일 헤더 정리 (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  /* 헤더 높이 극소화 */
+  .header {
+    padding: 8px 12px !important;
+    height: 50px;
+    min-height: 50px;
+  }
+
+  /* 로고 축소 */
+  .logoIcon {
+    height: 48px !important;
+  }
+
+  /* 로고 좌측 여유 없음 */
+  .brand {
+    margin-right: auto;
+  }
+
+  /* Status 섹션 간소화 */
+  .status {
+    gap: 0 !important;
+    margin-right: 0;
+  }
+
+  /* LIVE 표시만 유지 */
+  .liveIndicator {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 12px;
+    gap: 3px;
+  }
+
+  .liveDot {
+    width: 4px;
+    height: 4px;
+  }
+
+  /* Timestamp 완전 숨김 */
+  .timestamp {
+    display: none !important;
+  }
+
+  /* Dominance Bar 모바일에서 숨김 */
+  .dominanceBar {
+    display: none !important;
+  }
+
+  /* Dominance Bar가 숨겨지면 콘텐츠 상단 조정 */
+  & ~ .mainContent,
+  & ~ .listPanel {
+    padding-top: 0;
+  }
+}
+
+/* ===== 매우 좁은 화면 (max-width: 480px) ===== */
+@media (max-width: 480px) {
+  .header {
+    padding: 6px 10px !important;
+    height: 48px;
+  }
+
+  .logoIcon {
+    height: 40px !important;
+  }
+
+  .liveIndicator {
+    font-size: 9px;
+    padding: 1px 4px;
   }
 }
 
