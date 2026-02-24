@@ -14,7 +14,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { BarChartIcon, ErrorIcon } from '@/components/Icons';
+import { BarChartIcon, ErrorIcon, HeartIcon } from '@/components/Icons';
 import LottieLoadingBar from '@/components/LottieLoadingBar';
 
 const CANDLE_TYPES = [
@@ -122,6 +122,31 @@ export default function CoinDetail() {
   const [initialLoad, setInitialLoad] = useState(false);
   const [theme, setTheme] = useState('dark');
   const [coinGeckoData, setCoinGeckoData] = useState(null);
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('coinFavorites');
+    if (saved) {
+      try {
+        setFavorites(JSON.parse(saved));
+      } catch (e) {
+        console.error('Failed to parse favorites', e);
+      }
+    }
+  }, []);
+
+  const toggleFavorite = () => {
+    if (!symbol) return;
+    
+    let newFavorites;
+    if (favorites.includes(symbol)) {
+      newFavorites = favorites.filter(s => s !== symbol);
+    } else {
+      newFavorites = [...favorites, symbol];
+    }
+    setFavorites(newFavorites);
+    localStorage.setItem('coinFavorites', JSON.stringify(newFavorites));
+  };
 
   // 커스텀 툴팁 컴포넌트
   const CustomTooltip = ({ active, payload, label }) => {
@@ -416,7 +441,20 @@ export default function CoinDetail() {
         </Link>
 
         <div className={styles.headerTitle}>
-          <h1 className={styles.title}>{symbol}</h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <h1 className={styles.title}>{symbol}</h1>
+            <button 
+              onClick={toggleFavorite} 
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', alignItems: 'center', transition: 'transform 0.2s' }}
+              title={favorites.includes(symbol) ? "즐겨찾기 해제" : "즐겨찾기 추가"}
+            >
+              <HeartIcon 
+                size={22} 
+                filled={favorites.includes(symbol)} 
+                color={favorites.includes(symbol) ? '#FF4757' : 'var(--text-tertiary)'} 
+              />
+            </button>
+          </div>
           <div className={styles.headerPrice}>
             ₩{coinData.price.toLocaleString('ko-KR')}
             <span className={coinData.change > 0 ? styles.positive : styles.negative}>
