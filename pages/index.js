@@ -204,13 +204,8 @@ export default function Dashboard() {
   };
 
   const handleCoinClick = (coin) => {
-    // 모바일: 상세페이지로 이동
-    if (window.innerWidth < 768) {
-      router.push(`/coin/${coin.symbol}`);
-    } else {
-      // 데스크톱: 분할창 표시
-      setSelectedCoin(coin);
-    }
+    // 무조건 상세페이지로 이동 (데스크탑에서도 모바일 뷰 사용)
+    router.push(`/coin/${coin.symbol}`);
   };
 
   const addRecentSearch = (coin) => {
@@ -271,12 +266,8 @@ export default function Dashboard() {
     setSearchTerm('');
     setShowAutocomplete(false);
     
-    // 화면 크기에 따라 분기 처리 (handleCoinClick과 동일)
-    if (window.innerWidth < 768) {
-      router.push(`/coin/${coin.symbol}`);
-    } else {
-      setSelectedCoin(coin);
-    }
+    // 무조건 상세페이지로 이동
+    router.push(`/coin/${coin.symbol}`);
   };
 
   const handlePortfolioClick = () => {

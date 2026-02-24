@@ -124,17 +124,19 @@ export default function CoinDetail() {
   const [theme, setTheme] = useState('dark');
   const [coinGeckoData, setCoinGeckoData] = useState(null);
   const [favorites, setFavorites] = useState([]);
-  const [chartHeight, setChartHeight] = useState(600);
+  // const [chartHeight, setChartHeight] = useState(600);
   const [marketInfo, setMarketInfo] = useState(null); // 유의/신규 정보
   const [recommendations, setRecommendations] = useState({}); // AI 추천 정보
 
   useEffect(() => {
-    // 차트 높이 반응형 조정
+    // 차트 높이 반응형 조정 -> 고정 높이(350px) 사용으로 제거
+    /*
     const updateHeight = () => {
       setChartHeight(window.innerWidth < 480 ? 350 : 600);
     };
     updateHeight(); // 초기 실행
     window.addEventListener('resize', updateHeight);
+    */
     
     // 즐겨찾기 로드
     const saved = localStorage.getItem('coinFavorites');
@@ -168,7 +170,7 @@ export default function CoinDetail() {
     };
     if (symbol) fetchMarketInfo();
     
-    return () => window.removeEventListener('resize', updateHeight);
+    // return () => window.removeEventListener('resize', updateHeight);
   }, [symbol]);
 
   const toggleFavorite = () => {
@@ -643,7 +645,7 @@ export default function CoinDetail() {
               <LottieLoadingBar />
             </div>
           ) : candleData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={chartHeight}>
+            <ResponsiveContainer width="100%" height={350}>
               <ComposedChart
                 data={candleData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
