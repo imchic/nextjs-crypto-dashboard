@@ -412,22 +412,6 @@ export default function Dashboard() {
       case 'change':
         compareValue = (a.change || 0) - (b.change || 0);
         break;
-      case 'score':
-        // 추천 점수가 없는 코인은 0점으로 처리
-        compareValue = (recommendations[a.symbol]?.score || 0) - (recommendations[b.symbol]?.score || 0);
-        break;
-      case 'category':
-        // 카테고리 순서 정의 (대형주 > 중형주 > 소형주 > 스캠주의)
-        const categoryOrder = {
-          '👑 대형주': 4,
-          '🏢 중형주': 3,
-          '🪙 소형주': 2,
-          '☠️ 스캠주의': 1,
-        };
-        const categoryA = recommendations[a.symbol]?.category || '🪙 소형주';
-        const categoryB = recommendations[b.symbol]?.category || '🪙 소형주';
-        compareValue = categoryOrder[categoryA] - categoryOrder[categoryB];
-        break;
       case 'symbol':
         compareValue = (a.symbol || '').localeCompare(b.symbol || '');
         break;
@@ -611,7 +595,7 @@ export default function Dashboard() {
       {/* 컬럼 헤더 (정렬 버튼) */}
       <div className={styles.columnHeaders}>
         <button 
-          className={`${styles.sortBtn} ${sortBy === 'name' ? styles.active : ''}`}
+          className={styles.sortBtn}
           onClick={() => {
             if (sortBy === 'name') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -621,39 +605,11 @@ export default function Dashboard() {
             }
           }}
         >
-          코인명 {sortBy === 'name' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
+          코인명 {sortBy === 'name' && (sortOrder === 'asc' ? '↑' : '↓')}
         </button>
 
         <button 
-          className={`${styles.sortBtn} ${sortBy === 'score' ? styles.active : ''}`}
-          onClick={() => {
-            if (sortBy === 'score') {
-              setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-            } else {
-              setSortBy('score');
-              setSortOrder('desc');
-            }
-          }}
-        >
-          점수 {sortBy === 'score' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
-        </button>
-
-        <button 
-          className={`${styles.sortBtn} ${sortBy === 'category' ? styles.active : ''}`}
-          onClick={() => {
-            if (sortBy === 'category') {
-              setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-            } else {
-              setSortBy('category');
-              setSortOrder('desc');
-            }
-          }}
-        >
-          코인형태 {sortBy === 'category' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
-        </button>
-
-        <button 
-          className={`${styles.sortBtn} ${sortBy === 'change' ? styles.active : ''}`}
+          className={styles.sortBtn}
           onClick={() => {
             if (sortBy === 'change') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -663,11 +619,11 @@ export default function Dashboard() {
             }
           }}
         >
-          수익률 {sortBy === 'change' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
+          수익률 {sortBy === 'change' && (sortOrder === 'asc' ? '↑' : '↓')}
         </button>
 
         <button 
-          className={`${styles.sortBtn} ${sortBy === 'price' ? styles.active : ''}`}
+          className={styles.sortBtn}
           onClick={() => {
             if (sortBy === 'price') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -677,11 +633,11 @@ export default function Dashboard() {
             }
           }}
         >
-          {unit === 'KRW' ? '현재가 (원)' : unit === 'BTC' ? '현재가 (BTC)' : '현재가 ($)'} {sortBy === 'price' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
+          {unit === 'KRW' ? '현재가 (원)' : unit === 'BTC' ? '현재가 (BTC)' : '현재가 ($)'} {sortBy === 'price' && (sortOrder === 'asc' ? '↑' : '↓')}
         </button>
 
         <button 
-          className={`${styles.sortBtn} ${sortBy === 'volume' ? styles.active : ''}`}
+          className={styles.sortBtn}
           onClick={() => {
             if (sortBy === 'volume') {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -691,7 +647,7 @@ export default function Dashboard() {
             }
           }}
         >
-          거래량 {sortBy === 'volume' && <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.asc : styles.desc}`}>{'▲'}</span>}
+          거래량 {sortBy === 'volume' && (sortOrder === 'asc' ? '↑' : '↓')}
         </button>
       </div>
 
@@ -771,24 +727,30 @@ export default function Dashboard() {
 
                           {/* 체급 뱃지 추가 */}
                           {recommendations[coin.symbol]?.category && (
-                            <span className={`${styles.recommendBadge} ${styles[`category${recommendations[coin.symbol].category.replace(/[^a-zA-Z0-9]/g, '')}`]}`}> 
+                            <span style={{ 
+                              background: recommendations[coin.symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.15)' : 
+                                         recommendations[coin.symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.1)' :
+                                         recommendations[coin.symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
+                              color: recommendations[coin.symbol].category.includes('대형') ? '#8B7FF4' : 
+                                     recommendations[coin.symbol].category.includes('중형') ? '#60A5FA' :
+                                     recommendations[coin.symbol].category.includes('스캠') ? '#FF4757' : 'var(--text-secondary)',
+                              border: recommendations[coin.symbol].category.includes('스캠') ? '1px solid #FF4757' : '1px solid var(--border-medium)',
+                              padding: '2px 6px',
+                              borderRadius: '4px',
+                              fontSize: '11px',
+                              fontWeight: 'bold',
+                              marginRight: '6px'
+                            }}>
                               {recommendations[coin.symbol].category}
                             </span>
                           )}
 
-                          {/* 투자 타입 뱃지 */}
-                          {recommendations[coin.symbol]?.type && (
-                            <span className={`${styles.recommendBadge} ${styles[`type${recommendations[coin.symbol].type.replace(/[^a-zA-Z0-9]/g, '')}`]}`}> 
-                              {recommendations[coin.symbol].type}
-                            </span>
-                          )}
-
-                          {/* 위험도 뱃지 */}
-                          {recommendations[coin.symbol]?.risk && (
-                            <span className={`${styles.recommendBadge} ${styles[`risk${recommendations[coin.symbol].risk.replace(/[^a-zA-Z0-9]/g, '')}`]}`}> 
-                              {recommendations[coin.symbol].risk}
-                            </span>
-                          )}
+                          <span className={styles.recommendType}>
+                            {recommendations[coin.symbol]?.type}
+                          </span>
+                          <span className={styles.recommendRisk}>
+                            {recommendations[coin.symbol]?.risk}
+                          </span>
                         </div>
                       </div>
                     )}
