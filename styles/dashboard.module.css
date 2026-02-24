@@ -105,7 +105,7 @@
 
 .placeholderIcon {
   font-size: 64px;
-  opacity: 0.3;
+  opacity: 1;
   margin-bottom: 20px;
 }
 
@@ -129,7 +129,6 @@
   position: sticky;
   top: 0;
   background: var(--bg-primary);
-  backdrop-filter: blur(20px);
   z-index: 100;
   box-shadow: var(--shadow-md);
 }
@@ -275,7 +274,7 @@
 
 .noResultsIcon {
   font-size: 32px;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .noResultsText {
@@ -574,7 +573,6 @@
   gap: 12px;
   padding: 14px 16px;
   background: var(--bg-secondary);
-  backdrop-filter: blur(10px);
   border-bottom: 2px solid var(--border-medium);
   border-top: 1px solid var(--border-light);
   font-size: 11px;
@@ -655,14 +653,13 @@
   text-align: center;
   max-width: 420px;
   box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(20px);
 }
 
 .emptyIcon {
   font-size: 80px;
-  opacity: 0.25;
+  opacity: 1;
   margin-bottom: 28px;
-  filter: grayscale(1);
+  filter: none;
 }
 
 .emptyText {
@@ -806,7 +803,6 @@
   padding: 5px 10px;
   border-radius: 6px;
   white-space: nowrap;
-  backdrop-filter: blur(10px);
 }
 
 .recommendType {
