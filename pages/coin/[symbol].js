@@ -576,6 +576,11 @@ export default function CoinDetail() {
           </div>
         </div>
         <div className={styles.subtitle}>{KOREAN_NAMES[symbol] || symbol}</div>
+        {recommendations[symbol]?.short_insight && (
+          <div className={styles.shortInsight}>
+            {recommendations[symbol].short_insight}
+          </div>
+        )}
 
         {/* 💡 코인 특징 (3줄 요약) - 상세 페이지 전용 */}
         {recommendations[symbol]?.description && (
