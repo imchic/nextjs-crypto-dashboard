@@ -744,13 +744,6 @@ export default function Dashboard() {
                               {recommendations[coin.symbol].category}
                             </span>
                           )}
-
-                          <span className={styles.recommendType}>
-                            {recommendations[coin.symbol]?.type}
-                          </span>
-                          <span className={styles.recommendRisk}>
-                            {recommendations[coin.symbol]?.risk}
-                          </span>
                         </div>
                       </div>
                     )}
