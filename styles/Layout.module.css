@@ -36,25 +36,14 @@
 
 .logoIcon {
   width: auto;
-  height: 50px;
+  height: 80px;
   object-fit: contain;
-  object-position: center;
   filter: drop-shadow(0 0 4px rgba(139, 127, 244, 0.2));
   transition: all 0.3s ease;
   background: transparent;
   padding: 0;
   border-radius: 0;
   mix-blend-mode: multiply;
-  display: block;
-  line-height: 0;
-  margin: 0;
-}
-
-/* 데스크탑: 더 크게 */
-@media (min-width: 1024px) {
-  .logoIcon {
-    height: 70px;
-  }
 }
 
 /* 다크모드: 배경색 + screen blend */
@@ -62,8 +51,6 @@
   background: transparent;
   mix-blend-mode: screen;
   filter: drop-shadow(0 0 4px rgba(139, 127, 244, 0.2)) brightness(1.1) contrast(1.2);
-  display: block;
-  line-height: 0;
 }
 
 /* 라이트모드: 배경색 + multiply blend */
@@ -71,8 +58,6 @@
   background: transparent;
   mix-blend-mode: multiply;
   filter: drop-shadow(0 0 4px rgba(108, 92, 231, 0.3)) brightness(0.95) contrast(1.1);
-  display: block;
-  line-height: 0;
 }
 
 /* 데스크탑: 더 크게 */
@@ -415,7 +400,7 @@
 /* ============ 반응형 (480px 이하 모바일) ============ */
 @media (max-width: 480px) {
   .globalHeader {
-    padding: 12px 16px;
+    padding: 4px 8px;
     gap: 8px;
   }
 
@@ -424,8 +409,8 @@
   }
 
   .logoIcon {
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
   }
 
   .logo {
