@@ -106,12 +106,13 @@
 .shortInsight {
   margin-top: 8px;
   font-size: 14px;
-  color: var(--text-primary);
+  color: var(--primary-purple);
   font-weight: 600;
   background: rgba(139, 127, 244, 0.08);
   border: 1px solid rgba(139, 127, 244, 0.2);
   padding: 10px 16px;
   border-radius: 8px;
+  box-shadow: 0 0 15px rgba(139, 127, 244, 0.1);
 }
 
 .price {

@@ -569,7 +569,7 @@
 /* ============ 컬럼 ?�더 ============ */
 .columnHeaders {
   display: grid;
-  grid-template-columns: 2fr 0.7fr 0.8fr 1fr;
+  grid-template-columns: 1.5fr 0.6fr 0.8fr 0.6fr 0.8fr 1fr; /* 코인명, 점수, 코인형태, 수익률, 현재가, 거래량 */
   gap: 12px;
   padding: 14px 16px;
   background: var(--bg-secondary);

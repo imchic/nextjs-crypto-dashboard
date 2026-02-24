@@ -412,6 +412,22 @@ export default function Dashboard() {
       case 'change':
         compareValue = (a.change || 0) - (b.change || 0);
         break;
+      case 'score':
+        // 추천 점수가 없는 코인은 0점으로 처리
+        compareValue = (recommendations[a.symbol]?.score || 0) - (recommendations[b.symbol]?.score || 0);
+        break;
+      case 'category':
+        // 카테고리 순서 정의 (대형주 > 중형주 > 소형주 > 스캠주의)
+        const categoryOrder = {
+          '👑 대형주': 4,
+          '🏢 중형주': 3,
+          '🪙 소형주': 2,
+          '☠️ 스캠주의': 1,
+        };
+        const categoryA = recommendations[a.symbol]?.category || '🪙 소형주';
+        const categoryB = recommendations[b.symbol]?.category || '🪙 소형주';
+        compareValue = categoryOrder[categoryA] - categoryOrder[categoryB];
+        break;
       case 'symbol':
         compareValue = (a.symbol || '').localeCompare(b.symbol || '');
         break;
@@ -606,6 +622,34 @@ export default function Dashboard() {
           }}
         >
           코인명 {sortBy === 'name' && (sortOrder === 'asc' ? '↑' : '↓')}
+        </button>
+
+        <button 
+          className={styles.sortBtn}
+          onClick={() => {
+            if (sortBy === 'score') {
+              setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+            } else {
+              setSortBy('score');
+              setSortOrder('desc');
+            }
+          }}
+        >
+          점수 {sortBy === 'score' && (sortOrder === 'asc' ? '↑' : '↓')}
+        </button>
+
+        <button 
+          className={styles.sortBtn}
+          onClick={() => {
+            if (sortBy === 'category') {
+              setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+            } else {
+              setSortBy('category');
+              setSortOrder('desc');
+            }
+          }}
+        >
+          코인형태 {sortBy === 'category' && (sortOrder === 'asc' ? '↑' : '↓')}
         </button>
 
         <button 
