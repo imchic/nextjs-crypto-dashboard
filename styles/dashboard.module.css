@@ -573,7 +573,7 @@
   margin: 0;
 }
 
-/* ============ 컬럼 ?�더 ============ */
+/* ============ 컬럼 헤더 ============ */
 .columnHeaders {
   display: grid;
   grid-template-columns: 1.5fr 0.6fr 0.8fr 0.6fr 0.8fr 1fr; /* 코인명, 점수, 코인형태, 수익률, 현재가, 거래량 */
@@ -591,6 +591,18 @@
   top: 160px;
   z-index: 98;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 모바일: 4 컬럼만 표시 (코인명, 수익률, 현재가, 거래량) */
+@media (max-width: 768px) {
+  .columnHeaders {
+    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.6fr;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    top: 60px;
+  }
 }
 
 .sortBtn {
