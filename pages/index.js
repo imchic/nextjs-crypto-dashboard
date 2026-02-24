@@ -1,5 +1,6 @@
 ﻿import styles from '@/styles/dashboard.module.css';
 import RECOMMENDATION_REASONS from '@/utils/recommendReasons';
+import getTodayRecommendations from '@/utils/dailyRecommendations';
 import AIRDROP_COINS from '@/utils/airdropCoins';
 import { useRouter } from 'next/router';
 import { useEffect, useState, useContext } from 'react';
@@ -37,6 +38,7 @@ export default function Dashboard() {
   const [selectedCoin, setSelectedCoin] = useState(null);
   const [sortBy, setSortBy] = useState('volume'); // volume, price, name, change
   const [sortOrder, setSortOrder] = useState('desc'); // desc, asc
+  const [recommendations, setRecommendations] = useState(() => getTodayRecommendations());
 
   const showToast = (message) => {
     setToast(message);
@@ -99,6 +101,34 @@ export default function Dashboard() {
       loadAllMarkets();
     }
   }, [group, allMarketsLoaded, loadingAll]);
+
+  // 매일 자정에 새 추천 로드
+  useEffect(() => {
+    const checkAndUpdateRecommendations = () => {
+      const newRecommendations = getTodayRecommendations();
+      setRecommendations(newRecommendations);
+    };
+
+    // 초기 로드
+    checkAndUpdateRecommendations();
+
+    // 자정마다 업데이트 (매일 00:00)
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
+    
+    const timeUntilMidnight = tomorrow.getTime() - now.getTime();
+    
+    // 첫 번째 자정까지 대기
+    const midnightTimer = setTimeout(() => {
+      checkAndUpdateRecommendations();
+      // 그 이후로는 매일 자정에 업데이트
+      setInterval(checkAndUpdateRecommendations, 24 * 60 * 60 * 1000);
+    }, timeUntilMidnight);
+
+    return () => clearTimeout(midnightTimer);
+  }, []);
 
   const loadData = async (showLoadingIndicator = true) => {
     try {
@@ -647,17 +677,17 @@ export default function Dashboard() {
                         <span className={styles.badge} data-type="caution">유의</span>
                       )}
                     </div>
-                    {RECOMMENDATION_REASONS[coin.symbol] && (
+                    {(recommendations[coin.symbol] || RECOMMENDATION_REASONS[coin.symbol]) && (
                       <div className={styles.recommendBox}>
                         <div className={styles.recommendReason}>
-                          💡 {RECOMMENDATION_REASONS[coin.symbol].reason}
+                          💡 {(recommendations[coin.symbol]?.reason || RECOMMENDATION_REASONS[coin.symbol]?.reason)}
                         </div>
                         <div className={styles.recommendMeta}>
                           <span className={styles.recommendType}>
-                            {RECOMMENDATION_REASONS[coin.symbol].type}
+                            {recommendations[coin.symbol]?.type || RECOMMENDATION_REASONS[coin.symbol]?.type}
                           </span>
                           <span className={styles.recommendRisk}>
-                            {RECOMMENDATION_REASONS[coin.symbol].risk}
+                            {recommendations[coin.symbol]?.risk || RECOMMENDATION_REASONS[coin.symbol]?.risk}
                           </span>
                         </div>
                       </div>

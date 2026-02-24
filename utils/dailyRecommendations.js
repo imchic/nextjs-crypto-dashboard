@@ -1,0 +1,101 @@
+// 일일 추천 배치 결과 (매일 새로 갱신)
+// 실제 운영 시: 별도 배치 스크립트에서 DB 갱신
+
+const DAILY_RECOMMENDATIONS = {
+  // 기본 추천 타입 정의
+  types: {
+    high_risk: { label: '🚀 대박노리기', color: 'danger' },
+    medium_risk: { label: '💰 월급벌기', color: 'warning' },
+    low_risk: { label: '🍚 밥값벌기', color: 'success' }
+  },
+
+  // 오늘 날짜별 추천 (2026-02-24 예시)
+  '2026-02-24': {
+    'SOL': {
+      reason: '🚀 L1 체인 강자, 급상승 시작',
+      type: '🚀 대박노리기',
+      risk: '🔴 높음',
+      score: 8.5
+    },
+    'XRP': {
+      reason: '⚖️ 규제 뉴스 긍정적',
+      type: '💰 월급벌기',
+      risk: '🟡 중간',
+      score: 7.2
+    },
+    'AVAX': {
+      reason: '🏔️ 기관 투자 유입',
+      type: '🚀 대박노리기',
+      risk: '🔴 높음',
+      score: 7.8
+    },
+    'NEAR': {
+      reason: '🔮 AI 소식 긍정적',
+      type: '🚀 대박노리기',
+      risk: '🔴 높음',
+      score: 7.5
+    },
+    'ARB': {
+      reason: '⚡ L2 솔루션 주목',
+      type: '💰 월급벌기',
+      risk: '🟡 중간',
+      score: 6.8
+    },
+    'OP': {
+      reason: '🔴 이더리움 생태 성장',
+      type: '💰 월급벌기',
+      risk: '🟡 중간',
+      score: 6.5
+    },
+    'MATIC': {
+      reason: '🟣 폴리곤 업그레이드',
+      type: '💰 월급벌기',
+      risk: '🟡 중간',
+      score: 6.8
+    },
+    'LINK': {
+      reason: '🔗 오라클 수요 증가',
+      type: '🍚 밥값벌기',
+      risk: '🟢 낮음',
+      score: 7.0
+    },
+    'UNI': {
+      reason: '🦄 DEX 거래량 증가',
+      type: '💰 월급벌기',
+      risk: '🟡 중간',
+      score: 6.9
+    },
+    'ATOM': {
+      reason: '🌌 생태계 확장',
+      type: '💰 월급벌기',
+      risk: '🟡 중간',
+      score: 6.6
+    }
+  }
+};
+
+export function getTodayRecommendations() {
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  
+  // 오늘 데이터가 없으면 어제 또는 기본값
+  const recommendations = DAILY_RECOMMENDATIONS[today] || 
+                         getYesterdayRecommendations() ||
+                         {};
+  
+  return recommendations;
+}
+
+export function getYesterdayRecommendations() {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayStr = yesterday.toISOString().split('T')[0];
+  
+  return DAILY_RECOMMENDATIONS[yesterdayStr] || null;
+}
+
+export function addRecommendationForDate(date, recommendations) {
+  // 날짜별로 추천 추가 (배치 작업용)
+  DAILY_RECOMMENDATIONS[date] = recommendations;
+}
+
+export default getTodayRecommendations;
