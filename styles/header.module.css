@@ -3,84 +3,98 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-light);
+  padding: 12px 20px;
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-sm);
+  height: 60px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .logoIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, rgba(139, 127, 244, 0.2), rgba(139, 127, 244, 0.1));
-  border-radius: 10px;
-  color: var(--primary-purple);
-  border: 1px solid rgba(139, 127, 244, 0.3);
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #8B7FF4 0%, #6D5DF0 100%);
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 0 15px rgba(139, 127, 244, 0.4);
 }
 
 .logoText {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 22px;
+  font-weight: 900;
   margin: 0;
   letter-spacing: -0.5px;
-  background: linear-gradient(90deg, #fff 0%, #ccc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #fff;
+  font-family: 'Pretendard', sans-serif;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .status {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .liveIndicator {
   font-size: 11px;
   font-weight: 700;
   color: #0ECB81;
-  animation: pulse 2s infinite;
+  background: rgba(14, 203, 129, 0.1);
+  padding: 4px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(14, 203, 129, 0.2);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  background-color: #0ECB81;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
 }
 
 .timestamp {
   font-size: 13px;
-  color: var(--text-tertiary);
-  font-weight: 600;
-  font-feature-settings: "tnum";
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  font-family: monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% { box-shadow: 0 0 0 0 rgba(14, 203, 129, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(14, 203, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(14, 203, 129, 0); }
 }
 
 @media (max-width: 480px) {
   .header {
-    padding: 12px 16px;
-  }
-  
-  .logoIcon {
-    width: 32px;
-    height: 32px;
+    padding: 10px 16px;
+    height: 56px;
   }
   
   .logoText {
     font-size: 18px;
+  }
+  
+  .timestamp {
+    display: none; /* 모바일에서는 시간 숨김 (공간 확보) */
   }
 }

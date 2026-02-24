@@ -19,7 +19,10 @@ export default function Header({ timestamp }) {
         <h1 className={styles.logoText}>DolPick</h1>
       </div>
       <div className={styles.status}>
-        <span className={styles.liveIndicator}>● Live</span>
+        <span className={styles.liveIndicator}>
+          <span className={styles.liveDot}></span>
+          Live
+        </span>
         <span className={styles.timestamp}>{formatTime(timestamp)}</span>
       </div>
     </header>
