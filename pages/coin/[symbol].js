@@ -1,5 +1,9 @@
 // pages/coin/[symbol].js
+import CandleChartLW from '@/components/CandleChartLW';
+import { BarChartIcon, ErrorIcon, HeartIcon } from '@/components/Icons';
+import LottieLoadingBar from '@/components/LottieLoadingBar';
 import styles from '@/styles/coinDetail.module.css';
+import getTodayRecommendations from '@/utils/dailyRecommendations';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -14,9 +18,6 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { BarChartIcon, ErrorIcon, HeartIcon } from '@/components/Icons';
-import LottieLoadingBar from '@/components/LottieLoadingBar';
-import getTodayRecommendations from '@/utils/dailyRecommendations';
 
 const CANDLE_TYPES = [
   { id: 'minutes/1', label: '1분', desc: '초단타' },
@@ -137,7 +138,7 @@ export default function CoinDetail() {
     updateHeight(); // 초기 실행
     window.addEventListener('resize', updateHeight);
     */
-    
+
     // 즐겨찾기 로드
     const saved = localStorage.getItem('coinFavorites');
     if (saved) {
@@ -150,7 +151,7 @@ export default function CoinDetail() {
 
     // AI 추천 정보 로드
     setRecommendations(getTodayRecommendations());
-    
+
     // 마켓 정보(유의 등) 로드
     const fetchMarketInfo = async () => {
       try {
@@ -169,13 +170,13 @@ export default function CoinDetail() {
       }
     };
     if (symbol) fetchMarketInfo();
-    
+
     // return () => window.removeEventListener('resize', updateHeight);
   }, [symbol]);
 
   const toggleFavorite = () => {
     if (!symbol) return;
-    
+
     let newFavorites;
     if (favorites.includes(symbol)) {
       newFavorites = favorites.filter(s => s !== symbol);
@@ -240,18 +241,18 @@ export default function CoinDetail() {
 
   useEffect(() => {
     if (!router.isReady || !symbol) return;
-    
+
     // 테마 초기 설정
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
-    
+
     // MutationObserver로 테마 변경 감지
     const observer = new MutationObserver(() => {
       const newTheme = document.documentElement.getAttribute('data-theme') || savedTheme;
       setTheme(newTheme);
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    
+
     loadCoinData();
     setInitialLoad(true);
 
@@ -329,6 +330,7 @@ export default function CoinDetail() {
           const open = candle.opening_price;
           const close = candle.trade_price;
           const isUp = close >= open;
+          const timestamp = Math.floor(new Date(candle.candle_date_time_utc).getTime() / 1000);
 
           return {
             time: new Date(candle.candle_date_time_utc).toLocaleTimeString('ko-KR', {
@@ -337,20 +339,12 @@ export default function CoinDetail() {
               hour: '2-digit',
               minute: '2-digit',
             }),
+            timestamp,
             open: candle.opening_price,
             close: candle.trade_price,
             high: candle.high_price,
             low: candle.low_price,
             volume: candle.candle_acc_trade_volume,
-            // 캔들 몸통 높이 (상승/하락)
-            body: Math.abs(close - open),
-            bodyBase: Math.min(open, close),
-            // 꼬리 (하단) - 높이만
-            lowerWick: Math.min(open, close) - candle.low_price,
-            lowerWickBase: candle.low_price,
-            // 꼬리 (상단) - 높이만
-            upperWick: candle.high_price - Math.max(open, close),
-            upperWickBase: Math.max(open, close),
             isUp,
           };
         });
@@ -481,28 +475,28 @@ export default function CoinDetail() {
         <div className={styles.headerTitle}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             <h1 className={styles.title}>{symbol}</h1>
-            
+
             {/* 즐겨찾기 버튼 */}
-            <button 
-              onClick={toggleFavorite} 
+            <button
+              onClick={toggleFavorite}
               style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', alignItems: 'center', transition: 'transform 0.2s' }}
               title={favorites.includes(symbol) ? "즐겨찾기 해제" : "즐겨찾기 추가"}
             >
-              <HeartIcon 
-                size={22} 
-                filled={favorites.includes(symbol)} 
-                color={favorites.includes(symbol) ? '#FF4757' : 'var(--text-tertiary)'} 
+              <HeartIcon
+                size={22}
+                filled={favorites.includes(symbol)}
+                color={favorites.includes(symbol) ? '#FF4757' : 'var(--text-tertiary)'}
               />
             </button>
 
             {/* 유의 종목 뱃지 */}
             {marketInfo?.market_warning === 'CAUTION' && (
-              <span style={{ 
-                backgroundColor: 'rgba(255, 193, 7, 0.15)', 
-                color: '#FFC107', 
-                padding: '4px 8px', 
-                borderRadius: '6px', 
-                fontSize: '12px', 
+              <span style={{
+                backgroundColor: 'rgba(255, 193, 7, 0.15)',
+                color: '#FFC107',
+                padding: '4px 8px',
+                borderRadius: '6px',
+                fontSize: '12px',
                 fontWeight: '800',
                 border: '1px solid rgba(255, 193, 7, 0.3)'
               }}>유의</span>
@@ -511,7 +505,7 @@ export default function CoinDetail() {
             {/* AI 추천 뱃지들 */}
             {recommendations[symbol] && (
               <>
-                <span style={{ 
+                <span style={{
                   background: (recommendations[symbol]?.score || 0) >= 80 ? 'rgba(255, 215, 0, 0.15)' : 'var(--bg-tertiary)',
                   color: (recommendations[symbol]?.score || 0) >= 80 ? '#FFD700' : 'var(--text-secondary)',
                   border: (recommendations[symbol]?.score || 0) >= 80 ? '1px solid rgba(255, 215, 0, 0.4)' : '1px solid var(--border-medium)',
@@ -526,13 +520,13 @@ export default function CoinDetail() {
 
                 {/* 체급 뱃지 (대형/중형/소형/스캠) */}
                 {recommendations[symbol]?.category && (
-                  <span style={{ 
-                    background: recommendations[symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.2)' : 
-                               recommendations[symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.15)' :
-                               recommendations[symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
-                    color: recommendations[symbol].category.includes('대형') ? '#8B7FF4' : 
-                           recommendations[symbol].category.includes('중형') ? '#60A5FA' :
-                           recommendations[symbol].category.includes('스캠') ? '#FF4757' : 'var(--text-secondary)',
+                  <span style={{
+                    background: recommendations[symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.2)' :
+                      recommendations[symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.15)' :
+                        recommendations[symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
+                    color: recommendations[symbol].category.includes('대형') ? '#8B7FF4' :
+                      recommendations[symbol].category.includes('중형') ? '#60A5FA' :
+                        recommendations[symbol].category.includes('스캠') ? '#FF4757' : 'var(--text-secondary)',
                     border: recommendations[symbol].category.includes('스캠') ? '1px solid #FF4757' : '1px solid var(--border-medium)',
                     padding: '4px 8px',
                     borderRadius: '6px',
@@ -543,22 +537,22 @@ export default function CoinDetail() {
                   </span>
                 )}
 
-                <span style={{ 
-                  background: 'var(--bg-tertiary)', 
-                  color: 'var(--text-primary)', 
-                  padding: '4px 8px', 
-                  borderRadius: '6px', 
+                <span style={{
+                  background: 'var(--bg-tertiary)',
+                  color: 'var(--text-primary)',
+                  padding: '4px 8px',
+                  borderRadius: '6px',
                   fontSize: '12px',
                   fontWeight: '600',
                   border: '1px solid var(--border-medium)'
                 }}>
                   {recommendations[symbol].type}
                 </span>
-                <span style={{ 
-                  background: 'var(--bg-tertiary)', 
-                  color: 'var(--text-secondary)', 
-                  padding: '4px 8px', 
-                  borderRadius: '6px', 
+                <span style={{
+                  background: 'var(--bg-tertiary)',
+                  color: 'var(--text-secondary)',
+                  padding: '4px 8px',
+                  borderRadius: '6px',
                   fontSize: '12px',
                   fontWeight: '600',
                   border: '1px solid var(--border-medium)'
@@ -670,78 +664,7 @@ export default function CoinDetail() {
               <LottieLoadingBar />
             </div>
           ) : candleData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={350}>
-              <ComposedChart
-                data={candleData}
-                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-                style={{
-                  backgroundColor: 'transparent'
-                }}
-              >
-                <CartesianGrid 
-                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.08)'} 
-                  strokeDasharray="3 3" 
-                />
-                <XAxis
-                  dataKey="time"
-                  stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
-                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  tick={{ fill: theme === 'light' ? '#333333' : '#ffffff', fontSize: 13, fontWeight: 700 }}
-                  height={45}
-                />
-                <YAxis
-                  stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
-                  domain={['dataMin - 100', 'dataMax + 100']}
-                  tick={{ fill: theme === 'light' ? '#333333' : '#ffffff', fontSize: 13, fontWeight: 700 }}
-                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  width={70}
-                  tickFormatter={(value) => `₩${(value / 1000).toFixed(0)}K`}
-                />
-                <Tooltip content={<CustomTooltip />} />
-
-                {/* 낮은가(wick) 베이스 - 투명 */}
-                <Bar dataKey="lowerWickBase" stackId="candle" barSize={6} fill="transparent" isAnimationActive={false} />
-                
-                {/* 하단 꼬리 */}
-                <Bar dataKey="lowerWick" stackId="candle" barSize={6} radius={[0, 0, 0, 0]}>
-                  {candleData.map((entry, index) => (
-                    <Cell 
-                      key={`lower-${index}`} 
-                      fill={entry.isUp ? '#0ECB81' : '#F6465D'}
-                      opacity={1}
-                    />
-                  ))}
-                </Bar>
-
-                {/* 캔들 몸통 베이스 - 투명 */}
-                <Bar dataKey="bodyBase" stackId="candle" barSize={12} fill="transparent" isAnimationActive={false} />
-
-                {/* 캔들 몸통 */}
-                <Bar dataKey="body" stackId="candle" barSize={12}>
-                  {candleData.map((entry, index) => (
-                    <Cell
-                      key={`body-${index}`}
-                      fill={entry.isUp ? '#0ECB81' : '#F6465D'}
-                      opacity={0.95}
-                    />
-                  ))}
-                </Bar>
-
-                {/* 상단 꼬리 베이스 - 투명 */}
-                <Bar dataKey="upperWickBase" stackId="candle" barSize={6} fill="transparent" isAnimationActive={false} />
-
-                {/* 상단 꼬리 */}
-                <Bar dataKey="upperWick" stackId="candle" barSize={6} radius={[0, 0, 0, 0]}>
-                  {candleData.map((entry, index) => (
-                    <Cell 
-                      key={`upper-${index}`} 
-                      fill={entry.isUp ? '#0ECB81' : '#F6465D'}
-                      opacity={1}
-                    />
-                  ))}
-                </Bar>
-              </ComposedChart>
-            </ResponsiveContainer>
+            <CandleChartLW data={candleData} height={350} />
           ) : (
             <div className={styles.empty}>😢 차트가 없네요...</div>
           )}
@@ -761,9 +684,9 @@ export default function CoinDetail() {
                   backgroundColor: 'transparent'
                 }}
               >
-                <CartesianGrid 
-                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.08)'} 
-                  strokeDasharray="3 3" 
+                <CartesianGrid
+                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.08)'}
+                  strokeDasharray="3 3"
                 />
                 <XAxis
                   dataKey="time"
@@ -779,7 +702,7 @@ export default function CoinDetail() {
                   width={70}
                   tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`}
                 />
-                <Tooltip 
+                <Tooltip
                   formatter={(value) => `${(value / 1000000).toFixed(2)}M`}
                   contentStyle={{
                     backgroundColor: theme === 'light' ? '#ffffff' : '#1a1a1a',
@@ -898,10 +821,10 @@ export default function CoinDetail() {
                 <div className={styles.tradesTotal}>
                   <span className={styles.tradesTotalLabel}>실시간 체결량 (최근 20)</span>
                   <div className={styles.tradesTotalMain}>
-                    <strong className={styles.tradesTotalAmount}>{trades.slice(0,20).reduce((s,t)=>s + Number(t.trade_volume || 0),0).toFixed(4)}</strong>
+                    <strong className={styles.tradesTotalAmount}>{trades.slice(0, 20).reduce((s, t) => s + Number(t.trade_volume || 0), 0).toFixed(4)}</strong>
                     <span className={styles.tradesTotalUnit}>개</span>
                   </div>
-                  <div className={styles.tradesTotalKrw}>₩{trades.slice(0,20).reduce((s,t)=>s + (Number(t.trade_price || 0) * Number(t.trade_volume || 0)),0).toLocaleString()}</div>
+                  <div className={styles.tradesTotalKrw}>₩{trades.slice(0, 20).reduce((s, t) => s + (Number(t.trade_price || 0) * Number(t.trade_volume || 0)), 0).toLocaleString()}</div>
                 </div>
 
                 <div className={styles.tradesHeader}>
@@ -924,7 +847,7 @@ export default function CoinDetail() {
                         // If only trade_time_kst (no date) exists, format HHMMSS -> HH:MM:SS
                         if (trade.trade_time_kst) {
                           const t = String(trade.trade_time_kst);
-                          if (/^\d{6}$/.test(t)) return `${t.substr(0,2)}:${t.substr(2,2)}:${t.substr(4,2)}`;
+                          if (/^\d{6}$/.test(t)) return `${t.substr(0, 2)}:${t.substr(2, 2)}:${t.substr(4, 2)}`;
                           return t;
                         }
 

@@ -13,6 +13,7 @@
     "http-proxy-agent": "^7.0.2",
     "https-proxy-agent": "^7.0.6",
     "jsonwebtoken": "^9.0.3",
+    "lightweight-charts": "^5.1.0",
     "lottie-react": "^2.4.1",
     "next": "^14.0.0",
     "react": "^18.0.0",
