@@ -7,10 +7,10 @@ import LottieLoadingBar from '@/components/LottieLoadingBar';
 import getTodayRecommendations from '@/utils/dailyRecommendations';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
-import { IoBulbOutline, IoSearchOutline } from 'react-icons/io5';
+import { IoBulbOutline, IoMoonOutline, IoSearchOutline, IoSunnyOutline } from 'react-icons/io5';
 
 export default function Dashboard() {
-  const { setDashboardState } = useContext(DashboardContext);
+  const { setDashboardState, theme, toggleTheme } = useContext(DashboardContext);
   const router = useRouter();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -518,6 +518,15 @@ export default function Dashboard() {
                   </div>
                 )}
               </div>
+
+              {/* 테마 토글 버튼 */}
+              <button
+                className={styles.themeToggleBtn}
+                onClick={toggleTheme}
+                title={theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환'}
+              >
+                {theme === 'dark' ? <IoSunnyOutline size={20} /> : <IoMoonOutline size={20} />}
+              </button>
             </div>
 
             {/* 그룹 탭 */}
@@ -656,6 +665,10 @@ export default function Dashboard() {
             >
               거래량 {sortBy === 'volume' && (sortOrder === 'asc' ? '↑' : '↓')}
             </button>
+
+            <div className={styles.sortBtn} style={{ cursor: 'default' }}>
+              즐겨찾기
+            </div>
           </div>
 
           {/* 돌돌이픽 설명 */}
@@ -734,7 +747,9 @@ export default function Dashboard() {
 
                               {/* 체급 뱃지 추가 */}
                               {recommendations[coin.symbol]?.category && (
-                                <span style={{
+                                <span 
+                                  className={recommendations[coin.symbol].category.includes('스캠') ? styles.scamBadge : ''}
+                                  style={{
                                   background: recommendations[coin.symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.15)' :
                                     recommendations[coin.symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.1)' :
                                       recommendations[coin.symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
@@ -778,29 +793,30 @@ export default function Dashboard() {
                     </div>
 
                     <div className={styles.colVolume}>
-                      <div className={styles.volumeContent}>
-                        <span>{formatPriceKorean(coin.volume)}</span>
-                        <button
-                          className={`${styles.favoriteBtn} ${favorites.includes(coin.symbol) ? styles.active : ''}`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            const btn = e.currentTarget;
-                            if (btn) {
-                              btn.classList.add(styles.animate);
-                              setTimeout(() => {
-                                if (btn) btn.classList.remove(styles.animate);
-                              }, 600);
-                            }
-                            toggleFavorite(coin.symbol);
-                          }}
-                        >
-                          <HeartIcon
-                            size={18}
-                            filled={favorites.includes(coin.symbol)}
-                            color={favorites.includes(coin.symbol) ? '#FF4757' : 'currentColor'}
-                          />
-                        </button>
-                      </div>
+                      {formatPriceKorean(coin.volume)}
+                    </div>
+
+                    <div className={styles.colFavorite}>
+                      <button
+                        className={`${styles.favoriteBtn} ${favorites.includes(coin.symbol) ? styles.active : ''}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const btn = e.currentTarget;
+                          if (btn) {
+                            btn.classList.add(styles.animate);
+                            setTimeout(() => {
+                              if (btn) btn.classList.remove(styles.animate);
+                            }, 600);
+                          }
+                          toggleFavorite(coin.symbol);
+                        }}
+                      >
+                        <HeartIcon
+                          size={18}
+                          filled={favorites.includes(coin.symbol)}
+                          color={favorites.includes(coin.symbol) ? '#FF4757' : 'currentColor'}
+                        />
+                      </button>
                     </div>
                   </div>
                 );

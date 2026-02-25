@@ -651,7 +651,9 @@ export default function CoinDetail() {
 
                 {/* 체급 뱃지 (대형/중형/소형/스캠) */}
                 {recommendations[symbol]?.category && (
-                  <span style={{
+                  <span 
+                    className={recommendations[symbol].category.includes('스캠') ? styles.scamBadge : ''}
+                    style={{
                     background: recommendations[symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.2)' :
                       recommendations[symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.15)' :
                         recommendations[symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',

@@ -195,17 +195,18 @@
 /* ============ 검색바 ============ */
 .headerControls {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
   padding: 16px 24px;
   background: var(--bg-secondary);
+  align-items: flex-start;
 }
 
 .searchWrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 100%;
+  flex: 1;
 }
 
 .searchBox {
@@ -414,14 +415,53 @@
   box-shadow: 0 0 15px rgba(139, 127, 244, 0.1);
 }
 
+/* 테마 토글 버튼 */
+.themeToggleBtn {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+
+.themeToggleBtn:hover {
+  background: rgba(139, 127, 244, 0.1);
+  border-color: rgba(139, 127, 244, 0.3);
+  box-shadow: 0 0 15px rgba(139, 127, 244, 0.1);
+  transform: rotate(20deg);
+}
+
+.themeToggleBtn:active {
+  transform: rotate(20deg) scale(0.95);
+}
+
 /* ============ 그룹 ??============ */
 .groupTabs {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
   gap: 0;
   border-bottom: 1px solid var(--border-light);
   padding: 0 16px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+/* 데스크탑: 전체 너비 */
+@media (min-width: 1024px) {
+  .groupTabs {
+    padding: 0;
+  }
 }
 
 .groupTab {
@@ -436,18 +476,33 @@
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   white-space: nowrap;
-  flex-shrink: 0;
+  flex: 0 0 auto;
   letter-spacing: 0.3px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 2px;
+  text-align: center;
+}
+
+/* 데스크탑: 균등 너비 */
+@media (min-width: 1024px) {
+  .groupTab {
+    flex: 1 1 auto;
+    padding: 12px 8px;
+  }
 }
 
 .tabLabel {
   font-size: 13px;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
 }
 
 .tabDesc {
@@ -455,6 +510,7 @@
   font-weight: 500;
   color: var(--text-disabled);
   letter-spacing: 0px;
+  text-align: center;
 }
 
 .groupTab:hover {
@@ -495,6 +551,9 @@
 /* ============ ?�위 ??============ */
 .tabs {
   display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
   gap: 0;
   border-bottom: 1px solid var(--border-light);
   padding: 0 16px;
@@ -514,7 +573,8 @@
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   white-space: nowrap;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  text-align: center;
 }
 
 .tab:hover {
@@ -576,8 +636,8 @@
 /* ============ 컬럼 헤더 ============ */
 .columnHeaders {
   display: grid;
-  grid-template-columns: 1.5fr 0.6fr 0.8fr 0.6fr 0.8fr 1fr;
-  /* 코인명, 점수, 코인형태, 수익률, 현재가, 거래량 */
+  grid-template-columns: 2fr 0.7fr 0.8fr 1fr 0.5fr;
+  /* 코인명, 수익률, 현재가, 거래량, 즐겨찾기 */
   gap: 12px;
   padding: 14px 16px;
   background: var(--bg-secondary);
@@ -594,10 +654,10 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* 모바일: 4 컬럼 + 거래량 표시 (코인명, 수익률, 현재가, 거래량) */
+/* 모바일: 5 컬럼 (코인명, 수익률, 현재가, 거래량, 즐겨찾기) */
 @media (max-width: 768px) {
   .columnHeaders {
-    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.5fr;
+    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.5fr 0.4fr;
     gap: 8px;
     padding: 8px 12px;
     font-size: 10px;
@@ -622,6 +682,12 @@
   align-items: center;
   justify-content: flex-end;
   gap: 4px;
+}
+
+/* 헤더의 코인명만 중앙 정렬 */
+.columnHeaders .sortBtn:first-child {
+  text-align: center;
+  justify-content: center;
 }
 
 /* 모바일: sortBtn 최적화 */
@@ -657,6 +723,13 @@
 
 .colVolume {
   text-align: right;
+}
+
+.colFavorite {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ============ 코인 리스트 ============ */
@@ -714,7 +787,7 @@
 
 .coinRow {
   display: grid;
-  grid-template-columns: 2fr 0.7fr 0.8fr 1fr;
+  grid-template-columns: 2fr 0.7fr 0.8fr 1fr 0.5fr;
   gap: 12px;
   padding: 12px 16px;
   border-bottom: 1px solid var(--border-light);
@@ -981,7 +1054,7 @@
 
   .columnHeaders,
   .coinRow {
-    grid-template-columns: 1fr 0.8fr 0.9fr;
+    grid-template-columns: 1.5fr 0.6fr 0.7fr 0.4fr;
     gap: 8px;
     padding: 12px 12px;
   }
@@ -990,12 +1063,22 @@
     display: none;
   }
 
+  .colFavorite {
+    display: flex;
+  }
+
   .header {
     padding: 0;
   }
 
   .headerControls {
     padding: 10px 12px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .themeToggleBtn {
+    align-self: flex-start;
   }
 
   .tabs {
@@ -1125,10 +1208,20 @@
 /* ============ ?�위 ?�택 ??============ */
 .unitTabs {
   display: flex;
+  flex-wrap: nowrap;
+  justify-content: stretch;
+  align-items: center;
   gap: 4px;
   padding: 8px 16px;
   border-bottom: 1px solid var(--border-light);
   background: var(--bg-secondary);
+}
+
+/* 데스크탑: 전체 너비 */
+@media (min-width: 1024px) {
+  .unitTabs {
+    padding: 8px 0;
+  }
 }
 
 .unitTab {
@@ -1141,7 +1234,15 @@
   cursor: pointer;
   transition: all 0.2s ease;
   border-radius: 6px;
-  flex: 1;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+/* 데스크탑: 패딩 조정 */
+@media (min-width: 1024px) {
+  .unitTab {
+    padding: 8px 12px;
+  }
 }
 
 .unitTab:hover {
@@ -1159,6 +1260,9 @@
 /* ============ 메뉴 ??============ */
 .menuTabs {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
   gap: 8px;
   padding: 8px 16px;
   border-bottom: 1px solid var(--border-light);
@@ -1174,7 +1278,8 @@
   cursor: pointer;
   transition: all 0.2s ease;
   border-radius: 8px;
-  flex: 1;
+  flex: 1 1 auto;
+  text-align: center;
 }
 
 .menuTab:hover {
@@ -2153,4 +2258,22 @@
   .colChange {
     min-width: 50px;
   }
+}
+
+/* 스캠주의 뱃지 깜빡임 애니메이션 (3초간) */
+.scamBadge {
+  animation: scamBlink 3s ease-in-out;
+}
+
+@keyframes scamBlink {
+  0%, 100% { opacity: 1; }
+  10% { opacity: 0.3; }
+  20% { opacity: 1; }
+  30% { opacity: 0.3; }
+  40% { opacity: 1; }
+  50% { opacity: 0.3; }
+  60% { opacity: 1; }
+  70% { opacity: 0.3; }
+  80% { opacity: 1; }
+  90% { opacity: 0.3; }
 }
