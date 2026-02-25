@@ -127,6 +127,7 @@ export default function CoinDetail() {
   // const [chartHeight, setChartHeight] = useState(600);
   const [marketInfo, setMarketInfo] = useState(null); // 유의/신규 정보
   const [recommendations, setRecommendations] = useState({}); // AI 추천 정보
+  const [upbitFearIndex, setUpbitFearIndex] = useState(null); // 업비트 커스텀 공포지수
 
   useEffect(() => {
     // 차트 높이 반응형 조정 -> 고정 높이(350px) 사용으로 제거
@@ -254,7 +255,9 @@ export default function CoinDetail() {
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     loadCoinData();
+    console.log('✅ Initial loadCoinData called');
     setInitialLoad(true);
+    console.log('✅ setInitialLoad(true) called');
 
     // CoinGecko 데이터 로드
     loadCoinGeckoData();
@@ -272,9 +275,21 @@ export default function CoinDetail() {
 
   // 캔들 타입 변경 시 또는 초기 로드 시
   useEffect(() => {
-    if (!initialLoad || !symbol) return;
+    console.log('🔍 Candle useEffect:', { initialLoad, symbol, candleType });
+    if (!initialLoad || !symbol) {
+      console.warn('⚠️ Skipping candles - initialLoad:', initialLoad, 'symbol:', symbol);
+      return;
+    }
+    console.log('✅ Loading candles...');
     loadCandles();
   }, [candleType, initialLoad, symbol]);
+
+  // 캔들 데이터 또는 호가 데이터 로드되면 공포지수 계산
+  useEffect(() => {
+    if (candleData && candleData.length > 0) {
+      loadUpbitFearIndex();
+    }
+  }, [candleData, orderbook]);
 
   const getCandleCount = (type) => {
     switch (type) {
@@ -368,12 +383,17 @@ export default function CoinDetail() {
       }
       const market = `KRW-${symbol}`;
 
+      console.log('🔄 loadCoinData called:', { market, showLoadingIndicator, timestamp: new Date().toISOString() });
+
       // 1. Current price
       const tickerRes = await fetch(`/api/ticker?market=${market}`);
+      console.log('📊 Ticker response status:', tickerRes.status);
       const tickerData = await tickerRes.json();
+      console.log('📊 Ticker data:', tickerData);
 
       if (tickerData && tickerData.length > 0) {
         const ticker = tickerData[0];
+        console.log('✅ Ticker data set successfully');
         setCoinData({
           symbol,
           price: ticker.trade_price,
@@ -384,29 +404,41 @@ export default function CoinDetail() {
           trade_price_24h: ticker.acc_trade_price_24h,
         });
 
-        // 2. Orderbook (백그라운드일 때만 스킵 가능)
-        if (showLoadingIndicator) {
-          try {
-            const orderbookRes = await fetch(`/api/orderbook?market=${market}`);
-            const orderbookData = await orderbookRes.json();
-            if (orderbookData && orderbookData.length > 0) {
-              setOrderbook(orderbookData[0]);
-            }
-          } catch (e) {
-            console.error('Orderbook error:', e);
+        // 2. Orderbook (항상 로드)
+        console.log('🟡 Attempting to fetch orderbook...');
+        try {
+          const orderbookRes = await fetch(`/api/orderbook?market=${market}`);
+          console.log('📍 Orderbook response status:', orderbookRes.status);
+          const orderbookData = await orderbookRes.json();
+          console.log('📍 Orderbook data:', orderbookData);
+          if (orderbookData && orderbookData.length > 0) {
+            console.log('✅ Orderbook set successfully');
+            setOrderbook(orderbookData[0]);
+          } else {
+            console.warn('⚠️ Orderbook data is empty or invalid:', orderbookData);
           }
-
-          // 3. Trades
-          try {
-            const tradesRes = await fetch(`/api/trades?market=${market}&count=20`);
-            const tradesData = await tradesRes.json();
-            if (tradesData && tradesData.length > 0) {
-              setTrades(tradesData);
-            }
-          } catch (e) {
-            console.error('Trades error:', e);
-          }
+        } catch (e) {
+          console.error('❌ Orderbook error:', e.message, e);
         }
+
+        // 3. Trades (항상 로드)
+        console.log('🟡 Attempting to fetch trades...');
+        try {
+          const tradesRes = await fetch(`/api/trades?market=${market}&count=20`);
+          console.log('📜 Trades response status:', tradesRes.status);
+          const tradesData = await tradesRes.json();
+          console.log('📜 Trades data:', tradesData);
+          if (tradesData && tradesData.length > 0) {
+            console.log('✅ Trades set successfully');
+            setTrades(tradesData);
+          } else {
+            console.warn('⚠️ Trades data is empty or invalid:', tradesData);
+          }
+        } catch (e) {
+          console.error('❌ Trades error:', e.message, e);
+        }
+      } else {
+        console.warn('⚠️ Ticker data is empty or invalid:', tickerData);
       }
 
       if (showLoadingIndicator) {
@@ -430,6 +462,105 @@ export default function CoinDetail() {
       }
     } catch (e) {
       console.error('CoinGecko error:', e);
+    }
+  };
+
+  const loadUpbitFearIndex = async () => {
+    try {
+      // 촛대 데이터로 계산
+      if (!candleData || candleData.length === 0) return;
+
+      // 상승/하락 촛대 개수
+      const upCandles = candleData.filter(c => c.close >= c.open).length;
+      const downCandles = candleData.filter(c => c.close < c.open).length;
+      const total = upCandles + downCandles;
+
+      if (total === 0) return;
+
+      // 1. 촛대 기반 공포지수 (하락 비율)
+      let fearIndex = 100 * (downCandles / total);
+
+      // 2. 변동성 조정 (24h 변동률 절대값)
+      if (coinData?.signed_change_rate !== undefined) {
+        const volatility = Math.abs(coinData.signed_change_rate);
+        fearIndex = fearIndex * 0.6 + volatility * 100 * 0.4;
+      }
+
+      // 3. 호가 심리 조정 (매도/매수 잔량)
+      if (orderbook && orderbook.orderbook_units && orderbook.orderbook_units.length > 0) {
+        let askVolume = 0; // 매도
+        let bidVolume = 0; // 매수
+
+        orderbook.orderbook_units.forEach(unit => {
+          askVolume += unit.ask_size || 0;
+          bidVolume += unit.bid_size || 0;
+        });
+
+        if (askVolume + bidVolume > 0) {
+          const askRatio = askVolume / (askVolume + bidVolume);
+          fearIndex = fearIndex * 0.7 + (askRatio * 100) * 0.3;
+        }
+      }
+
+      fearIndex = Math.min(100, Math.max(0, fearIndex));
+
+      const getClassification = (value) => {
+        if (value >= 75) return 'Extreme Fear';
+        if (value >= 60) return 'Fear';
+        if (value >= 40) return 'Neutral';
+        if (value >= 25) return 'Greed';
+        return 'Extreme Greed';
+      };
+
+      const getHumor = (classification) => {
+        const humors = {
+          'Extreme Fear': [
+            '니 자동 손절 시스템 작동 중...',
+            '존버? 뭐 하는 건데 그리고 싶지도 않으네',
+            '손가락이 가려운 그런 날...',
+            '이따 손절 쒀봤나? 나 쒀버렸어'
+          ],
+          'Fear': [
+            '여기가 바닥 아닐까..? (아님)',
+            '약한자는 탈락! 강자만 남는다 💪',
+            '매수 기회? 아니 매도 기회?',
+            '손절 이벤트 열렸습니다 🎉'
+          ],
+          'Neutral': [
+            '중립이라고? 그럼 뭘 해요?',
+            '어디가 정상 가격인지 아무도 모른다',
+            '방향성? 그게 뭐죠?',
+            '맞다고 했다가 틀린다'
+          ],
+          'Greed': [
+            '달로 가자고 했잖아! 🚀',
+            '이건 뜨는 거 맞다고 했는데?',
+            '모두 환호할 준비는 되셨나요?',
+            '천정? 자동으로 올라갑니다만?'
+          ],
+          'Extreme Greed': [
+            '존버는 선택이 아닌 필수다 ✋',
+            '손을 놓으면 지는 거다! 🤚',
+            '월급날까지 기다려 내가 다시 들어간다',
+            '이게 정상이 되는 날이 올거야'
+          ]
+        };
+
+        const jokes = humors[classification] || ['뭔가 이상한데...?'];
+        return jokes[Math.floor(Math.random() * jokes.length)];
+      };
+
+      setUpbitFearIndex({
+        value: Math.round(fearIndex),
+        classification: getClassification(fearIndex),
+        humor: getHumor(getClassification(fearIndex)),
+        upCandles,
+        downCandles,
+        upRatio: ((upCandles / total) * 100).toFixed(1),
+        downRatio: ((downCandles / total) * 100).toFixed(1)
+      });
+    } catch (e) {
+      console.error('Fear Index error:', e);
     }
   };
 
@@ -632,6 +763,135 @@ export default function CoinDetail() {
               <span className={styles.marketCapRank}>#{coinGeckoData.market_cap_rank}</span>
             </div>
           )}
+        </div>
+      )}
+
+      {/*  업비트 커스텀 공포지수 섹션 */}
+      {upbitFearIndex && (
+        <div className={styles.fearIndexSection} style={{
+          padding: '16px 24px',
+          background: 'var(--bg-secondary)',
+          borderBottom: '1px solid var(--border-light)'
+        }}>
+          <h3 style={{
+            fontSize: '13px',
+            fontWeight: '800',
+            margin: '0 0 12px 0',
+            color: 'var(--text-primary)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.5px'
+          }}>
+            유탱 에겐지수 🥶
+          </h3>
+          <div style={{
+            padding: '12px',
+            background: 'var(--bg-tertiary)',
+            borderRadius: '8px',
+            border: '1px solid var(--border-light)'
+          }}>
+            {/* 유머 멘트 */}
+            {upbitFearIndex.humor && (
+              <div style={{
+                textAlign: 'center',
+                marginBottom: '12px',
+                paddingBottom: '12px',
+                borderBottom: '1px solid rgba(255,255,255,0.1)'
+              }}>
+                <span style={{
+                  fontSize: '12px',
+                  fontWeight: '600',
+                  color: 'var(--text-secondary)',
+                  fontStyle: 'italic',
+                  lineHeight: '1.5',
+                  display: 'block'
+                }}>
+                  "{upbitFearIndex.humor}"
+                </span>
+              </div>
+            )}
+
+            {/* 진행 바 */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              marginBottom: '12px'
+            }}>
+              <div style={{
+                flex: 1,
+                height: '24px',
+                background: 'rgba(255,255,255,0.08)',
+                borderRadius: '6px',
+                overflow: 'hidden',
+                border: '1px solid rgba(255,255,255,0.1)'
+              }}>
+                <div
+                  style={{
+                    height: '100%',
+                    width: `${upbitFearIndex.value}%`,
+                    background: upbitFearIndex.value >= 70 ? '#27AE60' :
+                      upbitFearIndex.value >= 50 ? '#F39C12' :
+                        upbitFearIndex.value >= 30 ? '#E74C3C' : '#8B0000',
+                    transition: 'width 0.3s ease'
+                  }}
+                />
+              </div>
+              <span style={{
+                fontSize: '18px',
+                fontWeight: '800',
+                color: 'var(--text-primary)',
+                minWidth: '45px',
+                textAlign: 'center'
+              }}>
+                {upbitFearIndex.value}
+              </span>
+            </div>
+
+            {/* 통계 */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              gap: '8px',
+              fontSize: '12px',
+              color: 'var(--text-secondary)'
+            }}>
+              <div style={{ padding: '8px', background: 'rgba(255,255,255,0.04)', borderRadius: '4px' }}>
+                <div style={{ fontSize: '10px', opacity: 0.7, marginBottom: '2px' }}>상승봉</div>
+                <div style={{ fontWeight: '700', color: '#0ECB81' }}>{upbitFearIndex.upCandles}개</div>
+              </div>
+              <div style={{ padding: '8px', background: 'rgba(255,255,255,0.04)', borderRadius: '4px' }}>
+                <div style={{ fontSize: '10px', opacity: 0.7, marginBottom: '2px' }}>하락봉</div>
+                <div style={{ fontWeight: '700', color: '#F6465D' }}>{upbitFearIndex.downCandles}개</div>
+              </div>
+              <div style={{ padding: '8px', background: 'rgba(255,255,255,0.04)', borderRadius: '4px' }}>
+                <div style={{ fontSize: '10px', opacity: 0.7, marginBottom: '2px' }}>하락률</div>
+                <div style={{ fontWeight: '700', color: '#FCD535' }}>{upbitFearIndex.downRatio}%</div>
+              </div>
+            </div>
+
+            {/* 상태 설명 */}
+            <div style={{
+              marginTop: '12px',
+              padding: '8px 12px',
+              background: upbitFearIndex.value >= 70 ? 'rgba(39, 174, 96, 0.1)' :
+                upbitFearIndex.value >= 50 ? 'rgba(243, 156, 18, 0.1)' :
+                  upbitFearIndex.value >= 30 ? 'rgba(231, 76, 60, 0.1)' : 'rgba(139, 0, 0, 0.1)',
+              border: `1px solid ${upbitFearIndex.value >= 70 ? 'rgba(39, 174, 96, 0.3)' :
+                upbitFearIndex.value >= 50 ? 'rgba(243, 156, 18, 0.3)' :
+                  upbitFearIndex.value >= 30 ? 'rgba(231, 76, 60, 0.3)' : 'rgba(139, 0, 0, 0.3)'}`,
+              borderRadius: '6px',
+              fontSize: '12px',
+              fontWeight: '600',
+              color: 'var(--text-secondary)',
+              textAlign: 'center'
+            }}>
+              {upbitFearIndex.value >= 70 ? '🟢 월급 전... 손 못 놨어 ✋' :
+                upbitFearIndex.value >= 50 ? '🟠 그래 여기가 시작이지 🚀' :
+                  upbitFearIndex.value >= 45 ? '🟡 뭘 해야 하는데?? 🤔' :
+                    upbitFearIndex.value >= 25 ? '🔴 존버... 제발 🥺' :
+                      '🔴 이건 뭐하는 건데 😅'}
+            </div>
+          </div>
         </div>
       )}
 
