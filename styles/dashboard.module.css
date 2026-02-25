@@ -576,7 +576,8 @@
 /* ============ 컬럼 헤더 ============ */
 .columnHeaders {
   display: grid;
-  grid-template-columns: 1.5fr 0.6fr 0.8fr 0.6fr 0.8fr 1fr; /* 코인명, 점수, 코인형태, 수익률, 현재가, 거래량 */
+  grid-template-columns: 1.5fr 0.6fr 0.8fr 0.6fr 0.8fr 1fr;
+  /* 코인명, 점수, 코인형태, 수익률, 현재가, 거래량 */
   gap: 12px;
   padding: 14px 16px;
   background: var(--bg-secondary);
@@ -738,7 +739,8 @@
 .coinMark {
   font-size: 18px;
   /*color: rgba(255, 255, 255, 0.2);*/
-  color: var(--text-primary); /* 혹은 var(--text-secondary) 등 선명한 변수 사용 */
+  color: var(--text-primary);
+  /* 혹은 var(--text-secondary) 등 선명한 변수 사용 */
   cursor: pointer;
   flex-shrink: 0;
   transition: all 0.2s ease;
@@ -749,7 +751,8 @@
 
 .coinMark.medal {
   font-size: 24px;
-  filter: none; /* drop-shadow 제거 */
+  filter: none;
+  /* drop-shadow 제거 */
   opacity: 1;
 }
 
@@ -1218,16 +1221,16 @@
 
 .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, 
-    #8B7FF4 0%, 
-    #A78BFA 25%, 
-    #C7A4FF 50%, 
-    #A78BFA 75%, 
-    #8B7FF4 100%);
+  background: linear-gradient(90deg,
+      #8B7FF4 0%,
+      #A78BFA 25%,
+      #C7A4FF 50%,
+      #A78BFA 75%,
+      #8B7FF4 100%);
   background-size: 200% 100%;
   animation: shimmer 2s ease-in-out infinite;
   position: relative;
-  box-shadow: 
+  box-shadow:
     0 0 10px rgba(139, 127, 244, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
     inset 0 -1px 0 rgba(0, 0, 0, 0.2);
@@ -1241,10 +1244,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.4), 
-    transparent);
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
   animation: slide 2s ease-in-out infinite;
   border-radius: 2px;
 }
@@ -1680,16 +1683,16 @@
 
 .loadingAnimation .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, 
-    #8B7FF4 0%, 
-    #A78BFA 25%, 
-    #C7A4FF 50%, 
-    #A78BFA 75%, 
-    #8B7FF4 100%);
+  background: linear-gradient(90deg,
+      #8B7FF4 0%,
+      #A78BFA 25%,
+      #C7A4FF 50%,
+      #A78BFA 75%,
+      #8B7FF4 100%);
   background-size: 200% 100%;
   animation: shimmer 2s ease-in-out infinite;
   position: relative;
-  box-shadow: 
+  box-shadow:
     0 0 10px rgba(139, 127, 244, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
     inset 0 -1px 0 rgba(0, 0, 0, 0.2);
@@ -1714,6 +1717,7 @@
 
 /* ===== 모바일 레이아웃 최적화 (max-width: 768px) ===== */
 @media (max-width: 768px) {
+
   /* 코인 아이템 컴팩트화 */
   .coinItem {
     padding: 8px 12px !important;
@@ -1866,6 +1870,7 @@
 
 /* ===== 초소형 화면 (max-width: 320px) ===== */
 @media (max-width: 320px) {
+
   .columnHeaders,
   .coinRow {
     grid-template-columns: 1.2fr 0.5fr 0.6fr 0.4fr;
@@ -1915,5 +1920,168 @@
   .favoriteBtn {
     padding: 2px 4px;
     font-size: 9px;
+  }
+}
+
+/* ===== 중간 태블릿 반응형 (768px 이하) ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .header {
+    padding: 12px 16px;
+  }
+
+  .headerTop {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .headerBottom {
+    padding: 0 16px 16px;
+  }
+
+  .splitLayout {
+    height: calc(100vh - 100px);
+  }
+
+  .detailPanel {
+    flex: 0 0 50%;
+  }
+
+  .detailContent {
+    padding: 16px;
+  }
+
+  .detailHeader h2 {
+    font-size: 20px;
+  }
+
+  .detailPrice {
+    font-size: 24px;
+  }
+
+  .summarySection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statCard {
+    padding: 14px;
+  }
+
+  .statLabel {
+    font-size: 11px;
+  }
+
+  .statValue {
+    font-size: 16px;
+  }
+
+  .tabButtons {
+    gap: 8px;
+    padding: 0 16px;
+  }
+
+  .tabBtn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .columnGroup {
+    gap: 12px;
+  }
+
+  .colName {
+    min-width: 80px;
+  }
+
+  .colPrice {
+    min-width: 70px;
+  }
+
+  .colChange {
+    min-width: 60px;
+  }
+}
+
+/* ===== 소형 태블릿 반응형 (640px 이하) ===== */
+@media (max-width: 640px) {
+  .container {
+    padding: 12px;
+  }
+
+  .header {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .headerTop {
+    padding: 10px 12px;
+  }
+
+  .headerBottom {
+    padding: 0 12px 12px;
+  }
+
+  .splitLayout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .detailPanel {
+    flex: 0 0 auto;
+    border-right: none;
+    border-bottom: 2px solid var(--border-medium);
+    max-height: 50vh;
+  }
+
+  .listPanel {
+    flex: 1;
+    min-height: 50vh;
+  }
+
+  .summarySection {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .statCard {
+    padding: 12px;
+  }
+
+  .statLabel {
+    font-size: 10px;
+  }
+
+  .statValue {
+    font-size: 14px;
+  }
+
+  .tabButtons {
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .tabBtn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .columnGroup {
+    gap: 8px;
+    padding: 0 12px;
+  }
+
+  .colName {
+    min-width: 70px;
+  }
+
+  .colPrice {
+    min-width: 60px;
+    font-size: 11px;
+  }
+
+  .colChange {
+    min-width: 50px;
   }
 }

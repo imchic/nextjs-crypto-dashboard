@@ -1083,3 +1083,166 @@
 .chartSection {
   padding: 12px;
 }
+
+/* ===== 반응형 설정 ===== */
+
+/* 태블릿 (768px 이하) */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .header {
+    padding: 10px 12px;
+  }
+
+  .headerTitle {
+    gap: 6px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .headerPrice {
+    font-size: 11px;
+  }
+
+  .currentPrice {
+    font-size: 20px;
+  }
+
+  .priceInfo {
+    font-size: 10px;
+  }
+
+  .detailRow {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .label {
+    font-size: 11px;
+  }
+
+  .value {
+    font-size: 12px;
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    max-height: 100vh;
+  }
+
+  .header {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .headerTitle {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .symbol {
+    font-size: 11px;
+  }
+
+  .currentPrice {
+    font-size: 18px;
+  }
+
+  .headerPrice {
+    font-size: 10px;
+    flex-wrap: wrap;
+  }
+
+  .priceInfo {
+    font-size: 9px;
+  }
+
+  .closeBtn {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .section {
+    margin-bottom: 12px;
+  }
+
+  .sectionTitle {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .detailRow {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .label {
+    font-size: 10px;
+    flex: 0 0 60px;
+  }
+
+  .value {
+    font-size: 11px;
+  }
+
+  .detailRow.highlight {
+    padding: 10px;
+  }
+
+  .tabButtonsContainer {
+    overflow-x: auto;
+    padding: 8px;
+  }
+
+  .tabButton {
+    padding: 6px 10px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .tabButton.active {
+    font-size: 10px;
+  }
+
+  .chartSection {
+    padding: 8px;
+  }
+
+  .tradesListItem {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .tradeTime {
+    font-size: 9px;
+    min-width: 60px;
+  }
+
+  .tradePrice {
+    font-size: 10px;
+  }
+
+  .tradeAmount {
+    font-size: 9px;
+  }
+
+  .tradeValue {
+    font-size: 9px;
+  }
+
+  .tradesTotalKrw {
+    font-size: 14px;
+  }
+}

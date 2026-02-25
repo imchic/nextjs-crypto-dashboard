@@ -114,6 +114,7 @@
 }
 
 @media (max-width: 1024px) {
+
   .tableHeader,
   .coinRow {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -130,6 +131,7 @@
 }
 
 @media (max-width: 768px) {
+
   .tableHeader,
   .coinRow {
     grid-template-columns: 1fr 1fr 1fr;
@@ -149,5 +151,107 @@
   .tableHeader,
   .coinRow {
     padding: 12px 15px;
+  }
+
+  .symbol {
+    font-size: 13px;
+  }
+
+  .korean {
+    font-size: 11px;
+  }
+
+  .price {
+    font-size: 13px;
+  }
+
+  .col3 {
+    font-size: 13px;
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .section {
+    border-radius: 8px;
+  }
+
+  .title {
+    font-size: 13px;
+    padding: 12px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .tableWrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tableHeader,
+  .coinRow {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    padding: 10px 12px;
+    font-size: 10px;
+  }
+
+  .tableHeader {
+    font-size: 9px;
+  }
+
+  .col2,
+  .col3,
+  .col4,
+  .col5,
+  .col6 {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .col4,
+  .col5,
+  .col6 {
+    display: none;
+  }
+
+  .col1 {
+    gap: 2px;
+  }
+
+  .symbol {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .korean {
+    font-size: 9px;
+  }
+
+  .price {
+    font-size: 11px;
+  }
+
+  .col3 {
+    gap: 4px;
+    font-size: 11px;
+  }
+
+  .arrow {
+    font-size: 14px;
+  }
+
+  .highLow {
+    display: none;
+  }
+
+  .volume {
+    display: none;
+  }
+
+  .marketCap {
+    display: none;
+  }
+
+  .coinRow:hover {
+    background: rgba(255, 255, 255, 0.12);
   }
 }

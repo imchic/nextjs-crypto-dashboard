@@ -54,4 +54,37 @@
   .value {
     font-size: 20px;
   }
+
+  .label {
+    font-size: 11px;
+  }
+
+  .statCard {
+    padding: 14px;
+  }
+}
+
+/* 모바일 반응형 (480px 이하) */
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .statCard {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .label {
+    font-size: 9px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .value {
+    font-size: 14px;
+    gap: 4px;
+  }
 }

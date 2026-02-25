@@ -149,3 +149,51 @@ code {
   font-weight: 700 !important;
   font-size: 13px !important;
 }
+
+/* ===== 반응형 설정 ===== */
+
+/* 태블릿 (768px 이상) */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  [data-theme="dark"] .recharts-cartesian-axis-tick text {
+    font-size: 11px !important;
+  }
+
+  [data-theme="light"] .recharts-cartesian-axis-tick text {
+    font-size: 11px !important;
+  }
+
+  .recharts-cartesian-axis-tick text {
+    font-size: 11px !important;
+  }
+}
+
+/* 모바일 (480px 이상) */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    font-size: 13px;
+  }
+
+  [data-theme="dark"] .recharts-cartesian-axis-tick text {
+    font-size: 10px !important;
+  }
+
+  [data-theme="light"] .recharts-cartesian-axis-tick text {
+    font-size: 10px !important;
+  }
+
+  .recharts-cartesian-axis-tick text {
+    font-size: 10px !important;
+  }
+}

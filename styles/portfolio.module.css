@@ -326,3 +326,295 @@
     color: #ffffff;
     box-shadow: 0 2px 8px rgba(139, 127, 244, 0.3);
 }
+
+/* ===== 태블릿 반응형 (768px 이하) ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 16px;
+    }
+
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 18px;
+    }
+
+    .sectionHeader {
+        margin-bottom: 10px;
+    }
+
+    .sectionTitle {
+        font-size: 14px;
+    }
+
+    .sectionSubtitle {
+        font-size: 12px;
+    }
+
+    .summary {
+        margin-bottom: 20px;
+    }
+
+    .summaryCard {
+        padding: 16px;
+    }
+
+    .summaryLabel {
+        font-size: 12px;
+    }
+
+    .summaryValue {
+        font-size: 20px;
+    }
+
+    .summaryChips {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+    }
+
+    .summaryChip {
+        padding: 8px 12px;
+        flex-direction: column;
+    }
+
+    .chipLabel {
+        font-size: 10px;
+    }
+
+    .chipValue {
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .accountCard {
+        margin-bottom: 12px;
+    }
+
+    .accountHeader {
+        padding: 12px;
+    }
+
+    .currency {
+        font-size: 14px;
+    }
+
+    .avgPrice {
+        font-size: 11px;
+    }
+
+    .accountBody {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .balanceRow {
+        padding: 8px 0;
+        font-size: 12px;
+    }
+
+    .balance,
+    .locked,
+    .value {
+        font-size: 12px;
+    }
+
+    .profitPositive,
+    .profitNegative,
+    .profitZero {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+}
+
+/* ===== 모바일 반응형 (480px 이하) ===== */
+@media (max-width: 480px) {
+    .container {
+        padding: 12px;
+    }
+
+    .header {
+        padding: 12px 0;
+        margin-bottom: 16px;
+        gap: 8px;
+    }
+
+    .header h1 {
+        font-size: 16px;
+    }
+
+    .backBtn,
+    .refreshBtn {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    .sectionHeader {
+        margin-bottom: 8px;
+    }
+
+    .sectionTitle {
+        font-size: 13px;
+    }
+
+    .sectionSubtitle {
+        font-size: 11px;
+    }
+
+    .summary {
+        margin-bottom: 16px;
+    }
+
+    .summaryCard {
+        padding: 12px;
+    }
+
+    .summaryLabel {
+        font-size: 11px;
+    }
+
+    .summaryValue {
+        font-size: 18px;
+    }
+
+    .summaryChips {
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 10px;
+    }
+
+    .summaryChip {
+        padding: 6px 10px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chipLabel {
+        font-size: 9px;
+    }
+
+    .chipValue {
+        font-size: 11px;
+    }
+
+    .summarySub {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+        gap: 6px;
+    }
+
+    .moodLabel {
+        font-size: 10px;
+    }
+
+    .moodChip {
+        font-size: 11px;
+    }
+
+    .accountList {
+        gap: 10px;
+    }
+
+    .accountCard {
+        margin-bottom: 10px;
+    }
+
+    .accountHeader {
+        padding: 10px;
+    }
+
+    .currencyRow {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .currency {
+        font-size: 13px;
+    }
+
+    .badges {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .statusChip,
+    .badge {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+
+    .avgPrice {
+        font-size: 10px;
+        width: 100%;
+    }
+
+    .accountBody {
+        padding: 10px;
+        gap: 6px;
+    }
+
+    .balanceRow {
+        padding: 6px 0;
+        font-size: 11px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .balanceRow span:first-child {
+        flex: 0 0 auto;
+        color: var(--text-secondary);
+        font-size: 10px;
+    }
+
+    .balanceRow span:last-child {
+        text-align: right;
+        flex: 1;
+    }
+
+    .balance,
+    .locked,
+    .value {
+        font-size: 11px;
+    }
+
+    .profitPositive,
+    .profitNegative,
+    .profitZero {
+        padding: 2px 6px;
+        font-size: 10px;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .profitLabel {
+        font-size: 9px;
+    }
+
+    .error {
+        margin-top: 20vh;
+    }
+
+    .error h2 {
+        font-size: 18px;
+    }
+
+    .error p {
+        font-size: 12px;
+    }
+
+    .hint {
+        font-size: 11px;
+        padding: 10px;
+    }
+
+    .backBtnWithText {
+        padding: 5px 8px;
+        font-size: 11px;
+        gap: 4px;
+    }
+}
