@@ -38,6 +38,7 @@ export default function Dashboard() {
   const [sortBy, setSortBy] = useState('volume'); // volume, price, name, change
   const [sortOrder, setSortOrder] = useState('desc'); // desc, asc
   const [recommendations, setRecommendations] = useState(() => getTodayRecommendations());
+  const [isTabDropdownOpen, setIsTabDropdownOpen] = useState(false);
 
   const showToast = (message) => {
     setToast(message);
@@ -606,9 +607,99 @@ export default function Dashboard() {
                 $ 달러
               </button>
             </div>
-          </div>
 
-          {/* 컬럼 헤더 (정렬 버튼) */}
+            {/* 모바일: 그룹 탭 드롭다운 */}
+            <div className={styles.groupTabsDropdown}>
+              <button 
+                className={styles.tabDropdownBtn}
+                onClick={() => setIsTabDropdownOpen(!isTabDropdownOpen)}
+              >
+                <span>
+                  {group === 'all' && '🚀 전체종목'} 
+                  {group === 'volume' && '🔥 핫한놈들'} 
+                  {group === 'gainers' && '풀매수가즈아'} 
+                  {group === 'losers' && '존버가미래다'} 
+                  {group === 'recommended' && 'AI추천'} 
+                  {group === 'favorites' && '찜꽁'} 
+                </span>
+                <span>{isTabDropdownOpen ? '▲' : '▼'}</span>
+              </button>
+              {isTabDropdownOpen && (
+                <div className={styles.tabDropdownMenu}>
+                  <div 
+                    className={`${styles.tabDropdownItem} ${group === 'all' ? styles.active : ''}`}
+                    onClick={() => {
+                      setGroup('all');
+                      setIsTabDropdownOpen(false);
+                    }}
+                  >
+                    <span className={styles.tabDropdownItemLabel}>🚀 전체종목</span>
+                    <span className={styles.tabDropdownItemDesc} style={{ color: '#60A5FA' }}>다 살펴봐 꽉</span>
+                  </div>
+                  <div 
+                    className={`${styles.tabDropdownItem} ${group === 'volume' ? styles.active : ''}`}
+                    onClick={() => {
+                      setGroup('volume');
+                      setIsTabDropdownOpen(false);
+                    }}
+                  >
+                    <span className={styles.tabDropdownItemLabel}>🔥 핫한놈들</span>
+                    <span className={styles.tabDropdownItemDesc} style={{ color: '#F97316' }}>요즘 뜨는 중</span>
+                  </div>
+                  <div 
+                    className={`${styles.tabDropdownItem} ${group === 'gainers' ? styles.active : ''}`}
+                    onClick={() => {
+                      setGroup('gainers');
+                      setIsTabDropdownOpen(false);
+                    }}
+                  >
+                    <span className={styles.tabDropdownItemLabel}>풀매수가즈아</span>
+                    <span className={styles.tabDropdownItemDesc} style={{ color: '#10B981' }}>위로만 간다</span>
+                  </div>
+                  <div 
+                    className={`${styles.tabDropdownItem} ${group === 'losers' ? styles.active : ''}`}
+                    onClick={() => {
+                      setGroup('losers');
+                      setIsTabDropdownOpen(false);
+                    }}
+                  >
+                    <span className={styles.tabDropdownItemLabel}>존버가미래다</span>
+                    <span className={styles.tabDropdownItemDesc} style={{ color: '#3B82F6' }}>떨어질 땐 담자</span>
+                  </div>
+                  <div 
+                    className={`${styles.tabDropdownItem} ${group === 'recommended' ? styles.active : ''}`}
+                    onClick={() => {
+                      setGroup('recommended');
+                      setIsTabDropdownOpen(false);
+                    }}
+                  >
+                    <span className={styles.tabDropdownItemLabel}>AI추천</span>
+                    <span className={styles.tabDropdownItemDesc} style={{ color: '#A855F7' }}>봇이 추천함</span>
+                  </div>
+                  <div 
+                    className={`${styles.tabDropdownItem} ${group === 'favorites' ? styles.active : ''}`}
+                    onClick={() => {
+                      setGroup('favorites');
+                      setIsTabDropdownOpen(false);
+                    }}
+                  >
+                    <span className={styles.tabDropdownItemLabel}>찜꽁</span>
+                    <span className={styles.tabDropdownItemDesc} style={{ color: '#EC4899' }}>내가 찜한 거 {favorites.length}개</span>
+                  </div>
+                  <div 
+                    className={styles.tabDropdownItem}
+                    onClick={() => {
+                      handlePortfolioClick();
+                      setIsTabDropdownOpen(false);
+                    }}
+                  >
+                    <span className={styles.tabDropdownItemLabel}>내지갑</span>
+                    <span className={styles.tabDropdownItemDesc} style={{ color: '#EAB308' }}>내 돈 어디?</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
           <div className={styles.columnHeaders}>
             <button
               className={styles.sortBtn}
