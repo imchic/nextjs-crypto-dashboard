@@ -9,10 +9,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { IoArrowBack, IoBarChartOutline, IoReceiptOutline } from 'react-icons/io5';
 import {
-  Bar,
   CartesianGrid,
-  Cell,
   ComposedChart,
+  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -714,11 +713,14 @@ export default function CoinDetail() {
                     color: theme === 'light' ? '#333333' : '#ffffff'
                   }}
                 />
-                <Bar dataKey="volume" barSize={8} radius={[2, 2, 0, 0]}>
-                  {candleData.map((entry, index) => (
-                    <Cell key={`vol-${index}`} fill={entry.isUp ? '#0ECB81' : '#F6465D'} opacity={0.7} />
-                  ))}
-                </Bar>
+                <Line
+                  type="monotone"
+                  dataKey="volume"
+                  stroke="#6366F1"
+                  dot={false}
+                  strokeWidth={2}
+                  isAnimationActive={false}
+                />
               </ComposedChart>
             </ResponsiveContainer>
           </div>

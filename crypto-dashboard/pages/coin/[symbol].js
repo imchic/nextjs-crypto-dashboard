@@ -6,10 +6,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { IoArrowBack, IoBarChartOutline, IoReceiptOutline } from 'react-icons/io5';
 import {
-  Bar,
   CartesianGrid,
-  Cell,
   ComposedChart,
+  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -176,18 +175,18 @@ export default function CoinDetail() {
 
   useEffect(() => {
     if (!router.isReady || !symbol) return;
-    
+
     // 테마 초기 설정
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
-    
+
     // MutationObserver로 테마 변경 감지
     const observer = new MutationObserver(() => {
       const newTheme = document.documentElement.getAttribute('data-theme') || savedTheme;
       setTheme(newTheme);
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    
+
     loadCoinData();
     setInitialLoad(true);
 
@@ -503,9 +502,9 @@ export default function CoinDetail() {
                   backgroundColor: 'transparent'
                 }}
               >
-                <CartesianGrid 
-                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.08)'} 
-                  strokeDasharray="3 3" 
+                <CartesianGrid
+                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.08)'}
+                  strokeDasharray="3 3"
                 />
                 <XAxis
                   dataKey="time"
@@ -521,7 +520,7 @@ export default function CoinDetail() {
                   width={70}
                   tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`}
                 />
-                <Tooltip 
+                <Tooltip
                   formatter={(value) => `${(value / 1000000).toFixed(2)}M`}
                   contentStyle={{
                     backgroundColor: theme === 'light' ? '#ffffff' : '#1a1a1a',
@@ -532,11 +531,14 @@ export default function CoinDetail() {
                     color: theme === 'light' ? '#333333' : '#ffffff'
                   }}
                 />
-                <Bar dataKey="volume" barSize={8} radius={[2, 2, 0, 0]}>
-                  {candleData.map((entry, index) => (
-                    <Cell key={`vol-${index}`} fill={entry.isUp ? '#0ECB81' : '#F6465D'} opacity={0.7} />
-                  ))}
-                </Bar>
+                <Line
+                  type="monotone"
+                  dataKey="volume"
+                  stroke="#6366F1"
+                  dot={false}
+                  strokeWidth={2}
+                  isAnimationActive={false}
+                />
               </ComposedChart>
             </ResponsiveContainer>
           </div>
@@ -637,10 +639,10 @@ export default function CoinDetail() {
                 <div className={styles.tradesTotal}>
                   <span className={styles.tradesTotalLabel}>실시간 체결량 (최근 20)</span>
                   <div className={styles.tradesTotalMain}>
-                    <strong className={styles.tradesTotalAmount}>{trades.slice(0,20).reduce((s,t)=>s + Number(t.trade_volume || 0),0).toFixed(4)}</strong>
+                    <strong className={styles.tradesTotalAmount}>{trades.slice(0, 20).reduce((s, t) => s + Number(t.trade_volume || 0), 0).toFixed(4)}</strong>
                     <span className={styles.tradesTotalUnit}>개</span>
                   </div>
-                  <div className={styles.tradesTotalKrw}>₩{trades.slice(0,20).reduce((s,t)=>s + (Number(t.trade_price || 0) * Number(t.trade_volume || 0)),0).toLocaleString()}</div>
+                  <div className={styles.tradesTotalKrw}>₩{trades.slice(0, 20).reduce((s, t) => s + (Number(t.trade_price || 0) * Number(t.trade_volume || 0)), 0).toLocaleString()}</div>
                 </div>
 
                 <div className={styles.tradesHeader}>
@@ -663,7 +665,7 @@ export default function CoinDetail() {
                         // If only trade_time_kst (no date) exists, format HHMMSS -> HH:MM:SS
                         if (trade.trade_time_kst) {
                           const t = String(trade.trade_time_kst);
-                          if (/^\d{6}$/.test(t)) return `${t.substr(0,2)}:${t.substr(2,2)}:${t.substr(4,2)}`;
+                          if (/^\d{6}$/.test(t)) return `${t.substr(0, 2)}:${t.substr(2, 2)}:${t.substr(4, 2)}`;
                           return t;
                         }
 
