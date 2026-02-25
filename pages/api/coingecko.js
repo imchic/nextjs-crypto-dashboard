@@ -50,13 +50,13 @@ export default async function handler(req, res) {
 
   try {
     const coinGeckoId = SYMBOL_TO_COINGECKO_ID[symbol.toUpperCase()];
-    
+
     if (!coinGeckoId) {
       return res.status(404).json({ error: `Unknown symbol: ${symbol}` });
     }
 
     console.log(`Fetching CoinGecko data for ${symbol} (${coinGeckoId})...`);
-    
+
     const response = await fetch(
       'https://api.coingecko.com/api/v3/coins/${coinGeckoId}?localization=false&market_data=true&tickers=false'
     );
@@ -75,7 +75,6 @@ export default async function handler(req, res) {
       market_cap_rank: data.market_cap_data?.market_cap_rank || null,
       market_cap_usd: data.market_data?.market_cap?.usd || null,
       market_cap_krw: data.market_data?.market_cap?.krw || null,
-      btc_dominance: data.market_data?.btc_dominance || null,
       image: data.image?.small || null,
     };
 

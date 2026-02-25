@@ -454,12 +454,6 @@ export default function CoinDetail() {
               <span className={styles.marketCapRank}>#{coinGeckoData.market_cap_rank}</span>
             </div>
           )}
-          {coinGeckoData.btc_dominance && (
-            <div className={styles.marketCapItem}>
-              <span className={styles.marketCapLabel}>BTC 도미넌스</span>
-              <span className={styles.marketCapValue}>{coinGeckoData.btc_dominance.toFixed(2)}%</span>
-            </div>
-          )}
         </div>
       )}
 
