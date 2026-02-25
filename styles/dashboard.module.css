@@ -507,10 +507,15 @@
 
 .tabDesc {
   font-size: 10px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-disabled);
   letter-spacing: 0px;
   text-align: center;
+  transition: color 0.3s ease;
+}
+
+.groupTab:hover .tabDesc {
+  opacity: 1;
 }
 
 .groupTab:hover {

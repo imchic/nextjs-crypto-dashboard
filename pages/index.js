@@ -1,7 +1,7 @@
 ﻿import styles from '@/styles/dashboard.module.css';
 //import RECOMMENDATION_REASONS from '@/utils/recommendReasons';
 import CoinDetailPanel from '@/components/CoinDetailPanel';
-import { BotIcon, ErrorIcon, FireIcon, HeartIcon, TrendingDownIcon, TrendingUpIcon, WalletIcon } from '@/components/Icons';
+import { BotIcon, ErrorIcon, FireIcon, HeartIcon, RocketIcon, TrendingDownIcon, TrendingUpIcon, WalletIcon } from '@/components/Icons';
 import { DashboardContext } from '@/components/Layout';
 import LottieLoadingBar from '@/components/LottieLoadingBar';
 import getTodayRecommendations from '@/utils/dailyRecommendations';
@@ -535,8 +535,8 @@ export default function Dashboard() {
                 className={`${styles.groupTab} ${group === 'all' ? styles.active : ''}`}
                 onClick={() => setGroup('all')}
               >
-                <span className={styles.tabLabel}>📋 전체종목</span>
-                <span className={styles.tabDesc}>업비트 전체</span>
+                <span className={styles.tabLabel}><RocketIcon size={18} /> 전체종목</span>
+                <span className={styles.tabDesc} style={{ color: '#60A5FA' }}>다 살펴봐 꽉</span>
               </button>
               <button
                 className={`${styles.groupTab} ${group === 'volume' ? styles.active : ''}`}
@@ -545,7 +545,7 @@ export default function Dashboard() {
                 <span className={styles.tabLabel}>
                   <FireIcon size={18} /> 핫한놈들
                 </span>
-                <span className={styles.tabDesc}>거래대금 Top10</span>
+                <span className={styles.tabDesc} style={{ color: '#F97316' }}>요즘 뜨는 중</span>
               </button>
               <button
                 className={`${styles.groupTab} ${group === 'gainers' ? styles.active : ''}`}
@@ -554,7 +554,7 @@ export default function Dashboard() {
                 <span className={styles.tabLabel}>
                   <TrendingUpIcon size={18} /> 풀매수가즈아
                 </span>
-                <span className={styles.tabDesc}>급등주 추천</span>
+                <span className={styles.tabDesc} style={{ color: '#10B981' }}>위로만 간다</span>
               </button>
               <button
                 className={`${styles.groupTab} ${group === 'losers' ? styles.active : ''}`}
@@ -563,7 +563,7 @@ export default function Dashboard() {
                 <span className={styles.tabLabel}>
                   <TrendingDownIcon size={18} /> 존버가미래다
                 </span>
-                <span className={styles.tabDesc}>급락주 저가매수</span>
+                <span className={styles.tabDesc} style={{ color: '#3B82F6' }}>떨어질 땐 담자</span>
               </button>
               <button
                 className={`${styles.groupTab} ${group === 'recommended' ? styles.active : ''}`}
@@ -572,7 +572,7 @@ export default function Dashboard() {
                 <span className={styles.tabLabel}>
                   <BotIcon size={18} /> AI추천
                 </span>
-                <span className={styles.tabDesc}>엄선 Top10</span>
+                <span className={styles.tabDesc} style={{ color: '#A855F7' }}>봇이 추천함</span>
               </button>
               <button
                 className={`${styles.groupTab} ${group === 'favorites' ? styles.active : ''}`}
@@ -581,7 +581,7 @@ export default function Dashboard() {
                 <span className={styles.tabLabel}>
                   <HeartIcon size={18} /> 찜꽁
                 </span>
-                <span className={styles.tabDesc}>즐겨찾기 {favorites.length}개</span>
+                <span className={styles.tabDesc} style={{ color: '#EC4899' }}>내가 찜한 거 {favorites.length}개</span>
               </button>
               <button
                 className={styles.groupTab}
@@ -590,7 +590,7 @@ export default function Dashboard() {
                 <span className={styles.tabLabel}>
                   <WalletIcon size={18} /> 내지갑
                 </span>
-                <span className={styles.tabDesc}>포트폴리오</span>
+                <span className={styles.tabDesc} style={{ color: '#EAB308' }}>내 돈 어디?</span>
               </button>
             </div>
 
