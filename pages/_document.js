@@ -9,9 +9,9 @@ export default function Document() {
         <meta name="theme-color" content="#1a1a1a" />
         
         {/* Favicon */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/logos/imdol-logo.png" />
+        <link rel="apple-touch-icon" href="/logos/imdol-logo.png" />
+        <link rel="shortcut icon" href="/logos/imdol-logo.png" />
         
         {/* 폰트 */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
