@@ -1,4 +1,5 @@
 // pages/coin/[symbol].js
+import CandleChartLW from '@/components/CandleChartLW';
 import styles from '@/styles/coinDetail.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -484,78 +485,7 @@ export default function CoinDetail() {
           {candleLoading ? (
             <div className={styles.loading}>📊 차트 그리는 중...</div>
           ) : candleData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={600}>
-              <ComposedChart
-                data={candleData}
-                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-                style={{
-                  backgroundColor: 'transparent'
-                }}
-              >
-                <CartesianGrid 
-                  stroke={theme === 'light' ? '#e0e0e0' : 'rgba(255,255,255,0.08)'} 
-                  strokeDasharray="3 3" 
-                />
-                <XAxis
-                  dataKey="time"
-                  stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
-                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  tick={{ fill: theme === 'light' ? '#333333' : '#ffffff', fontSize: 13, fontWeight: 700 }}
-                  height={45}
-                />
-                <YAxis
-                  stroke={theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)'}
-                  domain={['dataMin - 100', 'dataMax + 100']}
-                  tick={{ fill: theme === 'light' ? '#333333' : '#ffffff', fontSize: 13, fontWeight: 700 }}
-                  axisLine={{ stroke: theme === 'light' ? '#cccccc' : 'rgba(255,255,255,0.15)' }}
-                  width={70}
-                  tickFormatter={(value) => `₩${(value / 1000).toFixed(0)}K`}
-                />
-                <Tooltip content={<CustomTooltip />} />
-
-                {/* 낮은가(wick) 베이스 - 투명 */}
-                <Bar dataKey="lowerWickBase" stackId="candle" barSize={6} fill="transparent" isAnimationActive={false} />
-                
-                {/* 하단 꼬리 */}
-                <Bar dataKey="lowerWick" stackId="candle" barSize={6} radius={[0, 0, 0, 0]}>
-                  {candleData.map((entry, index) => (
-                    <Cell 
-                      key={`lower-${index}`} 
-                      fill={entry.isUp ? '#0ECB81' : '#F6465D'}
-                      opacity={1}
-                    />
-                  ))}
-                </Bar>
-
-                {/* 캔들 몸통 베이스 - 투명 */}
-                <Bar dataKey="bodyBase" stackId="candle" barSize={12} fill="transparent" isAnimationActive={false} />
-
-                {/* 캔들 몸통 */}
-                <Bar dataKey="body" stackId="candle" barSize={12}>
-                  {candleData.map((entry, index) => (
-                    <Cell
-                      key={`body-${index}`}
-                      fill={entry.isUp ? '#0ECB81' : '#F6465D'}
-                      opacity={0.95}
-                    />
-                  ))}
-                </Bar>
-
-                {/* 상단 꼬리 베이스 - 투명 */}
-                <Bar dataKey="upperWickBase" stackId="candle" barSize={6} fill="transparent" isAnimationActive={false} />
-
-                {/* 상단 꼬리 */}
-                <Bar dataKey="upperWick" stackId="candle" barSize={6} radius={[0, 0, 0, 0]}>
-                  {candleData.map((entry, index) => (
-                    <Cell 
-                      key={`upper-${index}`} 
-                      fill={entry.isUp ? '#0ECB81' : '#F6465D'}
-                      opacity={1}
-                    />
-                  ))}
-                </Bar>
-              </ComposedChart>
-            </ResponsiveContainer>
+            <CandleChartLW data={candleData} height={600} />
           ) : (
             <div className={styles.empty}>😢 차트가 없네요...</div>
           )}

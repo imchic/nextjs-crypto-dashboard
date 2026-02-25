@@ -107,6 +107,8 @@ export default function Portfolio() {
       const profit = currentValue - buyValue;
       const profitRate = buyValue > 0 ? (profit / buyValue) * 100 : 0;
 
+      console.log(`[${account.currency}] ticker:`, ticker, 'hasValidTicker:', hasValidTicker, 'profitRate:', profitRate, 'profit:', profit);
+
       totalInvested += buyValue;
       totalCurrent += currentValue;
 
