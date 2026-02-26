@@ -388,7 +388,8 @@ export default function Dashboard() {
         .filter(c => c.change > 0)
         .sort((a, b) => b.change - a.change);
     } else {
-      coins = gainers;
+      // API 데이터도 수익률순 정렬
+      coins = [...gainers].sort((a, b) => b.change - a.change);
     }
   } else if (group === 'losers') {
     // API 데이터가 없으면 allMarkets에서 fallback
@@ -398,7 +399,8 @@ export default function Dashboard() {
         .filter(c => c.change < 0)
         .sort((a, b) => a.change - b.change);
     } else {
-      coins = losers;
+      // API 데이터도 수익률순 정렬
+      coins = [...losers].sort((a, b) => a.change - b.change);
     }
   } else if (group === 'recommended') {
     // 추천 종목 = 배치 결과(recommendations)의 모든 코인
