@@ -39,6 +39,7 @@ const SYMBOL_TO_COINGECKO_ID = {
   'DYDX': 'dydx',
   'MATIC': 'matic-network',
   'SHIB': 'shiba-inu',
+  'PUNDIX': 'pundi-x-2',
 };
 
 export default async function handler(req, res) {

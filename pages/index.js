@@ -39,6 +39,7 @@ export default function Dashboard() {
   const [sortOrder, setSortOrder] = useState('desc'); // desc, asc
   const [recommendations, setRecommendations] = useState(() => getTodayRecommendations());
   const [isTabDropdownOpen, setIsTabDropdownOpen] = useState(false);
+  const [showCriteria, setShowCriteria] = useState(false);
 
   const showToast = (message) => {
     setToast(message);
@@ -282,6 +283,13 @@ export default function Dashboard() {
     router.push('/portfolio');
   };
 
+  // 추천 탭 진입 시 점수 순으로 정렬
+  useEffect(() => {
+    if (group === 'recommended') {
+      setSortBy('score');
+      setSortOrder('desc');
+    }
+  }, [group]);
 
   const toggleFavorite = (symbol) => {
     setFavorites(prev => {
@@ -422,6 +430,10 @@ export default function Dashboard() {
         break;
       case 'symbol':
         compareValue = (a.symbol || '').localeCompare(b.symbol || '');
+        break;
+      case 'score':
+        // 추천 점수 순 (높을수록 먼저)
+        compareValue = (recommendations[a.symbol]?.score || 0) - (recommendations[b.symbol]?.score || 0);
         break;
       default:
         compareValue = 0;
@@ -610,23 +622,23 @@ export default function Dashboard() {
 
             {/* 모바일: 그룹 탭 드롭다운 */}
             <div className={styles.groupTabsDropdown}>
-              <button 
+              <button
                 className={styles.tabDropdownBtn}
                 onClick={() => setIsTabDropdownOpen(!isTabDropdownOpen)}
               >
                 <span>
-                  {group === 'all' && '🚀 전체종목'} 
-                  {group === 'volume' && '🔥 핫한놈들'} 
-                  {group === 'gainers' && '풀매수가즈아'} 
-                  {group === 'losers' && '존버가미래다'} 
-                  {group === 'recommended' && 'AI추천'} 
-                  {group === 'favorites' && '찜꽁'} 
+                  {group === 'all' && '🚀 전체종목'}
+                  {group === 'volume' && '🔥 핫한놈들'}
+                  {group === 'gainers' && '풀매수가즈아'}
+                  {group === 'losers' && '존버가미래다'}
+                  {group === 'recommended' && 'AI추천'}
+                  {group === 'favorites' && '찜꽁'}
                 </span>
                 <span>{isTabDropdownOpen ? '▲' : '▼'}</span>
               </button>
               {isTabDropdownOpen && (
                 <div className={styles.tabDropdownMenu}>
-                  <div 
+                  <div
                     className={`${styles.tabDropdownItem} ${group === 'all' ? styles.active : ''}`}
                     onClick={() => {
                       setGroup('all');
@@ -636,7 +648,7 @@ export default function Dashboard() {
                     <span className={styles.tabDropdownItemLabel}>🚀 전체종목</span>
                     <span className={styles.tabDropdownItemDesc} style={{ color: '#60A5FA' }}>다 살펴봐 꽉</span>
                   </div>
-                  <div 
+                  <div
                     className={`${styles.tabDropdownItem} ${group === 'volume' ? styles.active : ''}`}
                     onClick={() => {
                       setGroup('volume');
@@ -646,7 +658,7 @@ export default function Dashboard() {
                     <span className={styles.tabDropdownItemLabel}>🔥 핫한놈들</span>
                     <span className={styles.tabDropdownItemDesc} style={{ color: '#F97316' }}>요즘 뜨는 중</span>
                   </div>
-                  <div 
+                  <div
                     className={`${styles.tabDropdownItem} ${group === 'gainers' ? styles.active : ''}`}
                     onClick={() => {
                       setGroup('gainers');
@@ -656,7 +668,7 @@ export default function Dashboard() {
                     <span className={styles.tabDropdownItemLabel}>풀매수가즈아</span>
                     <span className={styles.tabDropdownItemDesc} style={{ color: '#10B981' }}>위로만 간다</span>
                   </div>
-                  <div 
+                  <div
                     className={`${styles.tabDropdownItem} ${group === 'losers' ? styles.active : ''}`}
                     onClick={() => {
                       setGroup('losers');
@@ -666,7 +678,7 @@ export default function Dashboard() {
                     <span className={styles.tabDropdownItemLabel}>존버가미래다</span>
                     <span className={styles.tabDropdownItemDesc} style={{ color: '#3B82F6' }}>떨어질 땐 담자</span>
                   </div>
-                  <div 
+                  <div
                     className={`${styles.tabDropdownItem} ${group === 'recommended' ? styles.active : ''}`}
                     onClick={() => {
                       setGroup('recommended');
@@ -676,7 +688,7 @@ export default function Dashboard() {
                     <span className={styles.tabDropdownItemLabel}>AI추천</span>
                     <span className={styles.tabDropdownItemDesc} style={{ color: '#A855F7' }}>봇이 추천함</span>
                   </div>
-                  <div 
+                  <div
                     className={`${styles.tabDropdownItem} ${group === 'favorites' ? styles.active : ''}`}
                     onClick={() => {
                       setGroup('favorites');
@@ -686,7 +698,7 @@ export default function Dashboard() {
                     <span className={styles.tabDropdownItemLabel}>찜꽁</span>
                     <span className={styles.tabDropdownItemDesc} style={{ color: '#EC4899' }}>내가 찜한 거 {favorites.length}개</span>
                   </div>
-                  <div 
+                  <div
                     className={styles.tabDropdownItem}
                     onClick={() => {
                       handlePortfolioClick();
@@ -764,15 +776,70 @@ export default function Dashboard() {
 
           {/* 돌돌이픽 설명 */}
           {group === 'recommended' && (
-            <div className={styles.pickExplanation}>
-              <div className={styles.pickIcon}>
-                <IoBulbOutline />
+            <>
+              <div className={styles.pickExplanation} onClick={() => setShowCriteria(!showCriteria)} style={{ cursor: 'pointer' }}>
+                <div className={styles.pickIcon}>
+                  <IoBulbOutline />
+                </div>
+                <div className={styles.pickText}>
+                  <strong>AI 추천 코인 | 투자는 본인 책임입니다</strong>
+                  <p>실시간 시장 데이터를 분석하여 거래량, 변동성, 수익 잠재력을 종합 평가한 코인을 선별했습니다. 각 코인의 투자 유형과 리스크를 확인하고 신중히 판단하세요.</p>
+                </div>
+                <div style={{ marginLeft: 'auto', color: 'var(--text-tertiary)', fontSize: '18px', transition: 'transform 0.2s', transform: showCriteria ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</div>
               </div>
-              <div className={styles.pickText}>
-                <strong>AI 추천 코인 | 투자는 본인 책임입니다</strong>
-                <p>실시간 시장 데이터를 분석하여 거래량, 변동성, 수익 잠재력을 종합 평가한 코인을 선별했습니다. 각 코인의 투자 유형과 리스크를 확인하고 신중히 판단하세요.</p>
-              </div>
-            </div>
+
+              {/* 상세 선별 기준 */}
+              {showCriteria && (
+                <div className={styles.criteriaSection}>
+                  <div className={styles.criteriaGrid}>
+                    <div className={styles.criteriaCard}>
+                      <div className={styles.criteriaIcon}>📊</div>
+                      <div className={styles.criteriaTitle}>변동률 분석</div>
+                      <ul className={styles.criteriaList}>
+                        <li>🚀 +10% 이상 급상승 → <strong>+30점</strong></li>
+                        <li>📈 +5~10% 상승 → <strong>+20점</strong></li>
+                        <li>➡️ +0~5% 소폭상승 → <strong>+10점</strong></li>
+                        <li>📉 음수 (하락) → <strong>-10점</strong></li>
+                      </ul>
+                    </div>
+
+                    <div className={styles.criteriaCard}>
+                      <div className={styles.criteriaIcon}>💹</div>
+                      <div className={styles.criteriaTitle}>거래량 분석</div>
+                      <ul className={styles.criteriaList}>
+                        <li>⚡ 10억 초과 (폭증) → <strong>+20점</strong></li>
+                        <li>📈 5억~10억 (증가) → <strong>+10점</strong></li>
+                      </ul>
+                    </div>
+
+                    <div className={styles.criteriaCard}>
+                      <div className={styles.criteriaIcon}>📈</div>
+                      <div className={styles.criteriaTitle}>추세 분석</div>
+                      <ul className={styles.criteriaList}>
+                        <li>strong_up → <strong>+20점</strong></li>
+                        <li className={styles.tagRisk}>🚀 대박노리기 | 🔴 높음</li>
+                        <li>up → <strong>+10점</strong></li>
+                        <li className={styles.tagMedium}>💰 월급벌기 | 🟡 중간</li>
+                      </ul>
+                    </div>
+
+                    <div className={styles.criteriaCard}>
+                      <div className={styles.criteriaIcon}>⚖️</div>
+                      <div className={styles.criteriaTitle}>체급 분류</div>
+                      <ul className={styles.criteriaList}>
+                        <li>👑 대형주: BTC, ETH, XRP, SOL</li>
+                        <li>🏢 중형주: 거래대금 500억 초과</li>
+                        <li>🪙 소형주: 기본값</li>
+                        <li className={styles.tagScam}>☠️ 스캠주의: 10억 미만 (-20점)</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className={styles.criteriaNote}>
+                    💡 <strong>최종 점수</strong>는 4가지를 종합해 <strong>0~100점</strong>으로 평가합니다. 점수가 높을수록 관심도/수익 잠재력이 높다는 의미입니다.
+                  </div>
+                </div>
+              )}
+            </>
           )}
 
           {/* 코인 리스트 */}
@@ -838,22 +905,22 @@ export default function Dashboard() {
 
                               {/* 체급 뱃지 추가 */}
                               {recommendations[coin.symbol]?.category && (
-                                <span 
+                                <span
                                   className={recommendations[coin.symbol].category.includes('스캠') ? styles.scamBadge : ''}
                                   style={{
-                                  background: recommendations[coin.symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.15)' :
-                                    recommendations[coin.symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.1)' :
-                                      recommendations[coin.symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
-                                  color: recommendations[coin.symbol].category.includes('대형') ? '#8B7FF4' :
-                                    recommendations[coin.symbol].category.includes('중형') ? '#60A5FA' :
-                                      recommendations[coin.symbol].category.includes('스캠') ? '#FF4757' : 'var(--text-secondary)',
-                                  border: recommendations[coin.symbol].category.includes('스캠') ? '1px solid #FF4757' : '1px solid var(--border-medium)',
-                                  padding: '2px 6px',
-                                  borderRadius: '4px',
-                                  fontSize: '11px',
-                                  fontWeight: 'bold',
-                                  marginRight: '6px'
-                                }}>
+                                    background: recommendations[coin.symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.15)' :
+                                      recommendations[coin.symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.1)' :
+                                        recommendations[coin.symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
+                                    color: recommendations[coin.symbol].category.includes('대형') ? '#8B7FF4' :
+                                      recommendations[coin.symbol].category.includes('중형') ? '#60A5FA' :
+                                        recommendations[coin.symbol].category.includes('스캠') ? '#FF4757' : 'var(--text-secondary)',
+                                    border: recommendations[coin.symbol].category.includes('스캠') ? '1px solid #FF4757' : '1px solid var(--border-medium)',
+                                    padding: '2px 6px',
+                                    borderRadius: '4px',
+                                    fontSize: '11px',
+                                    fontWeight: 'bold',
+                                    marginRight: '6px'
+                                  }}>
                                   {recommendations[coin.symbol].category}
                                 </span>
                               )}
