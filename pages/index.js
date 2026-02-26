@@ -140,6 +140,11 @@ export default function Dashboard() {
       }
       const response = await fetch('/api/dashboard');
       const dashboardData = await response.json();
+      console.log('Dashboard API response:', {
+        by_volume: dashboardData.by_volume?.length || 0,
+        gainers: dashboardData.by_change?.gainers?.length || 0,
+        losers: dashboardData.by_decline?.length || 0,
+      });
       setData(dashboardData);
       const newTimestamp = new Date().toISOString();
       setLastUpdated(newTimestamp);
@@ -374,11 +379,27 @@ export default function Dashboard() {
   if (group === 'all') {
     coins = allMarkets;
   } else if (group === 'volume') {
-    coins = data.by_volume || [];
+    coins = (data.by_volume || []).length > 0 ? data.by_volume : allMarkets;
   } else if (group === 'gainers') {
-    coins = data.by_change?.gainers || [];
+    // API 데이터가 없으면 allMarkets에서 fallback
+    const gainers = data.by_change?.gainers || [];
+    if (gainers.length === 0 && allMarkets.length > 0) {
+      coins = [...allMarkets]
+        .filter(c => c.change > 0)
+        .sort((a, b) => b.change - a.change);
+    } else {
+      coins = gainers;
+    }
   } else if (group === 'losers') {
-    coins = data.by_decline || [];
+    // API 데이터가 없으면 allMarkets에서 fallback
+    const losers = data.by_decline || [];
+    if (losers.length === 0 && allMarkets.length > 0) {
+      coins = [...allMarkets]
+        .filter(c => c.change < 0)
+        .sort((a, b) => a.change - b.change);
+    } else {
+      coins = losers;
+    }
   } else if (group === 'recommended') {
     // 추천 종목 = 배치 결과(recommendations)의 모든 코인
     // 시장 데이터는 allMarkets 또는 data에서 가져오기
