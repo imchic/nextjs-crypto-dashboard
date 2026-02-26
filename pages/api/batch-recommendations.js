@@ -5,7 +5,6 @@
  */
 
 const { spawn } = require('child_process');
-const path = require('path');
 
 export const config = {
     maxDuration: 60, // 최대 60초
@@ -31,9 +30,8 @@ export default async function handler(req, res) {
         return new Promise((resolve) => {
             // Node.js 스크립트 실행
             const batchProcess = spawn('node', [
-                path.join(process.cwd(), 'scripts/batch-recommendations.js')
+                require.resolve('../scripts/batch-recommendations.js')
             ], {
-                cwd: process.cwd(),
                 stdio: ['pipe', 'pipe', 'pipe'],
             });
 
