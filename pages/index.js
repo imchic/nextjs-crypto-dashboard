@@ -97,8 +97,9 @@ export default function Dashboard() {
   }, []);
 
   // 전체 종목 로드 (한 번만)
+  // 'all' 또는 'recommended' 그룹에서 필요 (추천은 241개 모두를 필터링해야 함)
   useEffect(() => {
-    if (group === 'all' && !allMarketsLoaded && !loadingAll) {
+    if ((group === 'all' || group === 'recommended') && !allMarketsLoaded && !loadingAll) {
       loadAllMarkets();
     }
   }, [group, allMarketsLoaded, loadingAll]);
@@ -379,11 +380,28 @@ export default function Dashboard() {
   } else if (group === 'losers') {
     coins = data.by_decline || [];
   } else if (group === 'recommended') {
-    // 추천 종목 = 배치 결과(recommendations)에 있는 코인들
-    // 전체 코인(allMarkets) 중에서 recommendations에 있는 것만 필터링
+    // 추천 종목 = 배치 결과(recommendations)의 모든 코인
+    // 시장 데이터는 allMarkets 또는 data에서 가져오기
     const allCoins = allMarkets.length > 0 ? allMarkets : (data.by_volume || []);
 
-    coins = allCoins.filter(coin => recommendations[coin.symbol]);
+    // recommendations에 있는 모든 코인 심볼 추출
+    const recommendedSymbols = Object.keys(recommendations);
+
+    // 추천 코인이 market data에 없으면 stub 데이터 생성
+    coins = recommendedSymbols.map(symbol => {
+      const marketData = allCoins.find(c => c.symbol === symbol);
+      if (marketData) {
+        return marketData;
+      }
+      // 시장 데이터가 없으면 추천 데이터로 스텁 생성
+      return {
+        symbol,
+        name: symbol,
+        price: 0,
+        change: 0,
+        volume: 0,
+      };
+    });
 
     // 점수 높은 순으로 정렬
     coins.sort((a, b) => {
@@ -906,7 +924,7 @@ export default function Dashboard() {
                               {/* 체급 뱃지 추가 */}
                               {recommendations[coin.symbol]?.category && (
                                 <span
-                                  className={recommendations[coin.symbol].category.includes('스캠') ? styles.scamBadge : ''}
+                                  className={`${styles.recommendCategory} ${recommendations[coin.symbol].category.includes('스캠') ? styles.scamBadge : ''}`}
                                   style={{
                                     background: recommendations[coin.symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.15)' :
                                       recommendations[coin.symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.1)' :

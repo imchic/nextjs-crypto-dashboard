@@ -1,5 +1,18 @@
 /* styles/dashboard.module.css */
 
+/* 애니메이션: 3초 깜빡거림 */
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
 /* 전체 레이아웃 (기본) */
 .fullLayout {
   background: var(--bg-primary);
@@ -1039,6 +1052,7 @@
   background: var(--bg-tertiary);
   color: var(--text-primary);
   border: 1px solid var(--border-medium);
+  animation: pulse 3s ease-in-out infinite;
 }
 
 .highScore {
@@ -1055,6 +1069,7 @@
   padding: 5px 10px;
   border-radius: 6px;
   white-space: nowrap;
+  animation: pulse 3s ease-in-out infinite;
 }
 
 .recommendType {
@@ -1069,6 +1084,15 @@
   color: var(--text-secondary);
   border: 1px solid var(--border-medium);
   box-shadow: var(--shadow-sm);
+}
+
+.recommendCategory {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  animation: pulse 3s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
