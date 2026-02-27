@@ -4,6 +4,7 @@ import { BarChartIcon, ErrorIcon, HeartIcon } from '@/components/Icons';
 import LottieLoadingBar from '@/components/LottieLoadingBar';
 import styles from '@/styles/coinDetail.module.css';
 import getTodayRecommendations from '@/utils/dailyRecommendations';
+import { KOREAN_NAMES } from '@/utils/koreanNames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -31,47 +32,6 @@ const CANDLE_TYPES = [
   { id: 'weeks', label: '주봉', desc: '장기투자' },
   { id: 'months', label: '월봉', desc: '존버' },
 ];
-
-const KOREAN_NAMES = {
-  'SOL': '솔라나',
-  'XRP': '리플',
-  'ADA': '카르다노',
-  'AVAX': '애벨란체',
-  'DOGE': '도지',
-  'NEAR': '니어',
-  'DOT': '폴카닷',
-  'LINK': '체인링크',
-  'UNI': '유니스왑',
-  'ARB': '아비트럼',
-  'AGLD': '어드벤처골드',
-  'KITE': '카이트',
-  'ORBS': '오브스',
-  'STX': '스택스',
-  'BLUR': '블러',
-  'SEI': '세이',
-  'SAND': '샌드박스',
-  'MANA': '디센트럴랜드',
-  'FLOW': '플로우',
-  'ENSO': '엔소',
-  'SXP': '스와이프',
-  'AZTEC': '아즈텍',
-  'BTC': '비트코인',
-  'CYBER': '사이버',
-  'YGG': '일드길드',
-  'FLOCK': '플록',
-  'VTHO': '비토로',
-  'SOMI': '솔미',
-  'OM': '오엠',
-  'BARD': '바드',
-  'ETH': '이더리움',
-  'USDT': '테더',
-  'USDC': '유에스디씨',
-  'BNB': '바이낸스코인',
-  'XEC': '이캐시',
-  'DYDX': '디와이디엑스',
-  'MATIC': '폴리곤',
-  'SHIB': '시바이누',
-};
 
 // CustomAxisTick 컴포넌트 - 라이트/다크 모드 대응
 const CustomXAxisTick = ({ x, y, payload, theme }) => (
@@ -152,7 +112,7 @@ export default function CoinDetail() {
     // AI 추천 정보 로드
     setRecommendations(getTodayRecommendations());
 
-    // 마켓 정보(유의 등) 로드
+    // 마켓 정보(유의, 한글명 등) 로드
     const fetchMarketInfo = async () => {
       try {
         // API 프록시를 통해 요청 (직접 Upbit API 호출 금지)
@@ -162,8 +122,7 @@ export default function CoinDetail() {
         if (info) {
           setMarketInfo({
             market_warning: info.market_warning,
-            // 최근 상장 여부는 대략적으로 판단 불가하므로 생략하거나 별도 로직 필요
-            // 여기서는 유의 종목만 체크
+            korean_name: info.korean_name,
           });
         }
       } catch (e) {
@@ -651,21 +610,21 @@ export default function CoinDetail() {
 
                 {/* 체급 뱃지 (대형/중형/소형/스캠) */}
                 {recommendations[symbol]?.category && (
-                  <span 
+                  <span
                     className={recommendations[symbol].category.includes('스캠') ? styles.scamBadge : ''}
                     style={{
-                    background: recommendations[symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.2)' :
-                      recommendations[symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.15)' :
-                        recommendations[symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
-                    color: recommendations[symbol].category.includes('대형') ? '#8B7FF4' :
-                      recommendations[symbol].category.includes('중형') ? '#60A5FA' :
-                        recommendations[symbol].category.includes('스캠') ? '#FF4757' : 'var(--text-secondary)',
-                    border: recommendations[symbol].category.includes('스캠') ? '1px solid #FF4757' : '1px solid var(--border-medium)',
-                    padding: '4px 8px',
-                    borderRadius: '6px',
-                    fontSize: '12px',
-                    fontWeight: '700'
-                  }}>
+                      background: recommendations[symbol].category.includes('대형') ? 'rgba(139, 127, 244, 0.2)' :
+                        recommendations[symbol].category.includes('중형') ? 'rgba(59, 130, 246, 0.15)' :
+                          recommendations[symbol].category.includes('스캠') ? '#000000' : 'var(--bg-tertiary)',
+                      color: recommendations[symbol].category.includes('대형') ? '#8B7FF4' :
+                        recommendations[symbol].category.includes('중형') ? '#60A5FA' :
+                          recommendations[symbol].category.includes('스캠') ? '#FF4757' : 'var(--text-secondary)',
+                      border: recommendations[symbol].category.includes('스캠') ? '1px solid #FF4757' : '1px solid var(--border-medium)',
+                      padding: '4px 8px',
+                      borderRadius: '6px',
+                      fontSize: '12px',
+                      fontWeight: '700'
+                    }}>
                     {recommendations[symbol].category}
                   </span>
                 )}
@@ -702,7 +661,7 @@ export default function CoinDetail() {
             </span>
           </div>
         </div>
-        <div className={styles.subtitle}>{KOREAN_NAMES[symbol] || symbol}</div>
+        <div className={styles.subtitle}>{marketInfo?.korean_name || KOREAN_NAMES[symbol] || symbol}</div>
         {recommendations[symbol]?.short_insight && (
           <div className={styles.shortInsight}>
             {recommendations[symbol].short_insight}
