@@ -1,7 +1,7 @@
 ﻿import styles from '@/styles/dashboard.module.css';
 //import RECOMMENDATION_REASONS from '@/utils/recommendReasons';
 import CoinDetailPanel from '@/components/CoinDetailPanel';
-import { BotIcon, ErrorIcon, FireIcon, HeartIcon, RocketIcon, TrendingDownIcon, TrendingUpIcon, WalletIcon } from '@/components/Icons';
+import { BotIcon, ErrorIcon, FireIcon, HeartIcon, RocketIcon, TrendingDownIcon, TrendingUpIcon } from '@/components/Icons';
 import { DashboardContext } from '@/components/Layout';
 import LottieLoadingBar from '@/components/LottieLoadingBar';
 import getTodayRecommendations from '@/utils/dailyRecommendations';
@@ -283,10 +283,6 @@ export default function Dashboard() {
 
     // 무조건 상세페이지로 이동
     router.push(`/coin/${coin.symbol}`);
-  };
-
-  const handlePortfolioClick = () => {
-    router.push('/portfolio');
   };
 
   // 추천 탭 진입 시 점수 순으로 정렬
@@ -637,15 +633,7 @@ export default function Dashboard() {
                 </span>
                 <span className={styles.tabDesc} style={{ color: '#EC4899' }}>내가 찜한 거 {favorites.length}개</span>
               </button>
-              <button
-                className={styles.groupTab}
-                onClick={handlePortfolioClick}
-              >
-                <span className={styles.tabLabel}>
-                  <WalletIcon size={18} /> 내지갑
-                </span>
-                <span className={styles.tabDesc} style={{ color: '#EAB308' }}>내 돈 어디?</span>
-              </button>
+
             </div>
 
             {/* 단위 선택 */}
@@ -738,16 +726,6 @@ export default function Dashboard() {
                   >
                     <span className={styles.tabDropdownItemLabel}>찜꽁</span>
                     <span className={styles.tabDropdownItemDesc} style={{ color: '#EC4899' }}>내가 찜한 거 {favorites.length}개</span>
-                  </div>
-                  <div
-                    className={styles.tabDropdownItem}
-                    onClick={() => {
-                      handlePortfolioClick();
-                      setIsTabDropdownOpen(false);
-                    }}
-                  >
-                    <span className={styles.tabDropdownItemLabel}>내지갑</span>
-                    <span className={styles.tabDropdownItemDesc} style={{ color: '#EAB308' }}>내 돈 어디?</span>
                   </div>
                 </div>
               )}
@@ -1059,7 +1037,7 @@ export default function Dashboard() {
           )}
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
